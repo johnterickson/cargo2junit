@@ -1,6 +1,6 @@
 [[package]]
 name = "cargo2junit"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "junit-report 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.88 (registry+https://github.com/rust-lang/crates.io-index)",
