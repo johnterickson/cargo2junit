@@ -59,4 +59,6 @@ steps:
     inputs: 
       testResultsFormat: 'JUnit'
       testResultsFiles: 'test_results.xml'
+      testRunTitle: $[ variables['System.JobDisplayName'] ]
+      buildPlatform: $[ variables['System.JobDisplayName'] ]
     condition: succeededOrFailed()
