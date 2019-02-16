@@ -14,27 +14,27 @@ strategy:
       HOST_IMAGE: ubuntu-16.04
       CHANNEL: stable
 steps:
-  # - powershell: Invoke-WebRequest -Uri https://win.rustup.rs/ -OutFile rustup-init.exe
-  #   condition: and(succeeded(), eq(variables['Agent.OS'],'Windows_NT'))
-  # - script: |
-  #     set TARGET=%SYSTEM_JOBDISPLAYNAME%
-  #     rustup-init.exe -y --default-host %TARGET% --default-toolchain %CHANNEL%
-  #     set PATH=%PATH%;%USERPROFILE%\.cargo\bin
-  #     echo "##vso[task.setvariable variable=PATH;]%PATH%"
-  #   condition: and(succeeded(), eq(variables['Agent.OS'],'Windows_NT'))
-  - bash: |
+  - powershell: Invoke-WebRequest -Uri https://win.rustup.rs/ -OutFile rustup-init.exe
+    condition: and(succeeded(), eq(variables['Agent.OS'],'Windows_NT'))
+  - script: |
+      set TARGET=%SYSTEM_JOBDISPLAYNAME%
+      rustup-init.exe -y --default-host %TARGET% --default-toolchain %CHANNEL%
+      set PATH=%PATH%;%USERPROFILE%\.cargo\bin
+      echo "##vso[task.setvariable variable=PATH;]%PATH%"
+    condition: and(succeeded(), eq(variables['Agent.OS'],'Windows_NT'))
+  - script: |
       export TARGET=$SYSTEM_JOBDISPLAYNAME
-      curl https://sh.rustup.rs -sSf | sh -s -- -y--default-host $TARGET --default-toolchain $CHANNEL
+      curl https://sh.rustup.rs -sSf | sh -s -- -y --default-host $TARGET --default-toolchain $CHANNEL
       export PATH=$PATH:~/.cargo/bin
       echo "##vso[task.setvariable variable=PATH;]$PATH"
-    # condition: and(succeeded(), ne(variables['Agent.OS'],'Windows_NT'))
-  - bash: |
+    condition: and(succeeded(), ne(variables['Agent.OS'],'Windows_NT'))
+  - script: |
       rustc -V
       cargo -V
-  - bash: |
+  - script: |
       cargo install --git https://github.com/johnterickson/cargo2junit.git
-  - bash: |
-      cargo test -- -Z unstable-options --format json | tee test_results.json
+  - script: |
+      cargo test -- -Z unstable-options --format json > test_results.json
       cat test_results.json
       cat test_results.json | cargo2junit > test_results.xml
   - task: PublishTestResults@2
