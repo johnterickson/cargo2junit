@@ -1,8 +1,18 @@
 [package]
 name = "cargo2junit"
+description = "Converts cargo's json output (from stdin) to JUnit XML (to stdout)"
 version = "0.1.0"
 authors = ["John Erickson <john.t.erickson@gmail.com>"]
 edition = "2018"
+repository = "https://github.com/johnterickson/cargo2junit"
+readme = "README.md"
+keywords = ["cargo", "test", "junit"]
+categories = ["development-tools::testing"]
+license = "MIT"
+
+[badges]
+azure-devops = { repository = "https://github.com/johnterickson/cargo2junit", branch = "master", service = "github" }
+maintenance = { status = "experimental" }
 
 [dependencies]
 junit-report = "0.1.2"
