@@ -10,34 +10,53 @@ strategy:
     x86_64-apple-darwin:
       HOST_IMAGE: macos-10.13
       CHANNEL: stable
-    x86_64-unknown-linux-gnu_stable:
+    x86_64-pc-linux-gnu:
       HOST_IMAGE: ubuntu-16.04
       CHANNEL: stable
 steps:
   - powershell: Invoke-WebRequest -Uri https://win.rustup.rs/ -OutFile rustup-init.exe
     condition: and(succeeded(), eq(variables['Agent.OS'],'Windows_NT'))
+    displayName: Install rustup [Windows]
   - script: |
       set TARGET=%SYSTEM_JOBDISPLAYNAME%
       rustup-init.exe -y --default-host %TARGET% --default-toolchain %CHANNEL%
       set PATH=%PATH%;%USERPROFILE%\.cargo\bin
       echo "##vso[task.setvariable variable=PATH;]%PATH%"
     condition: and(succeeded(), eq(variables['Agent.OS'],'Windows_NT'))
+    displayName: Install toolchain [Windows]
   - script: |
       export TARGET=$SYSTEM_JOBDISPLAYNAME
       curl https://sh.rustup.rs -sSf | sh -s -- -y --default-host $TARGET --default-toolchain $CHANNEL
       export PATH=$PATH:~/.cargo/bin
       echo "##vso[task.setvariable variable=PATH;]$PATH"
     condition: and(succeeded(), ne(variables['Agent.OS'],'Windows_NT'))
+    displayName: Install rustup and toolchain [Linux & OSX]
   - script: |
       rustc -V
       cargo -V
+    displayName: Check rustc and cargo versions
   - script: |
       cargo install --git https://github.com/johnterickson/cargo2junit.git
+    displayName: Install cargo2junit
   - script: |
       cargo test -- -Z unstable-options --format json > test_results.json
-      cat test_results.json
+      type test_results.json
+    condition: and(succeeded(), eq(variables['Agent.OS'],'Windows_NT'))
+    displayName: run cargo test [Windows]
+  - script: |
+      cargo test -- -Z unstable-options --format json | tee test_results.json
+    condition: and(succeeded(), ne(variables['Agent.OS'],'Windows_NT'))
+    displayName: run cargo test [Linux & OSX]
+  - script: |
+      type test_results.json | cargo2junit > test_results.xml
+    condition: and(succeededOrFailed(), eq(variables['Agent.OS'],'Windows_NT'))
+    displayName: convert to junit [Windows]
+  - script: |
       cat test_results.json | cargo2junit > test_results.xml
+    condition: and(succeededOrFailed(), ne(variables['Agent.OS'],'Windows_NT'))
+    displayName: convert to junit [Linux & OSX]
   - task: PublishTestResults@2
     inputs: 
       testResultsFormat: 'JUnit'
       testResultsFiles: 'test_results.xml'
+    condition: succeededOrFailed()
