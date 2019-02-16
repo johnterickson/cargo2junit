@@ -4,13 +4,16 @@ pool:
   vmImage:  $[ variables['HOST_IMAGE'] ]
 strategy:
   matrix:
+    x86_64-pc-windows-gnu:
+      HOST_IMAGE: vs2017-win2016
+      CHANNEL: stable
     x86_64-pc-windows-msvc:
       HOST_IMAGE: vs2017-win2016
       CHANNEL: stable
     x86_64-apple-darwin:
       HOST_IMAGE: macos-10.13
       CHANNEL: stable
-    x86_64-pc-linux-gnu:
+    x86_64-unknown-linux-gnu:
       HOST_IMAGE: ubuntu-16.04
       CHANNEL: stable
 steps:
