@@ -1,0 +1,10 @@
+[package]
+name = "cargo2junit"
+version = "0.1.0"
+authors = ["John Erickson <john.t.erickson@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+junit-report = "0.1.2"
+serde_json = "1.0.38"
+serde = { version = "1.0", features = ["derive"] }
