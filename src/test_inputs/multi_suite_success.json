@@ -1,0 +1,52 @@
+{ "type": "suite", "event": "started", "test_count": 5 }
+{ "type": "test", "event": "started", "name": "blob::create_and_delete_container" }
+{ "type": "test", "event": "started", "name": "client::delete_tables" }
+{ "type": "test", "event": "started", "name": "client::list_tables" }
+{ "type": "test", "event": "started", "name": "sharedkey::create_signature" }
+{ "type": "test", "name": "sharedkey::create_signature", "event": "ok" }
+{ "type": "test", "event": "started", "name": "table::create_and_delete_table" }
+{ "type": "test", "name": "client::list_tables", "event": "ok" }
+{ "type": "test", "name": "client::delete_tables", "event": "ok" }
+{ "type": "test", "name": "table::create_and_delete_table", "event": "ok" }
+{ "type": "test", "name": "blob::create_and_delete_container", "event": "ok" }
+{ "type": "suite", "event": "ok", "passed": 5, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 3 }
+{ "type": "test", "event": "started", "name": "types::blob_deserialize" }
+{ "type": "test", "event": "started", "name": "types::drop_deserialize" }
+{ "type": "test", "event": "started", "name": "types::manifest_deserialize" }
+{ "type": "test", "name": "types::blob_deserialize", "event": "ok" }
+{ "type": "test", "name": "types::drop_deserialize", "event": "ok" }
+{ "type": "test", "name": "types::manifest_deserialize", "event": "ok" }
+{ "type": "suite", "event": "ok", "passed": 3, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 5 }
+{ "type": "test", "event": "started", "name": "blobhash::blob_hashes" }
+{ "type": "test", "event": "started", "name": "blockhash::block_hashes" }
+{ "type": "test", "event": "started", "name": "chunker::chunk_bytes" }
+{ "type": "test", "event": "started", "name": "chunker::real_rolling_hash" }
+{ "type": "test", "name": "chunker::real_rolling_hash", "event": "ok" }
+{ "type": "test", "event": "started", "name": "chunker::simple_rolling_hash" }
+{ "type": "test", "name": "chunker::simple_rolling_hash", "event": "ok" }
+{ "type": "test", "name": "chunker::chunk_bytes", "event": "ok" }
+{ "type": "test", "name": "blockhash::block_hashes", "event": "ok" }
+{ "type": "test", "name": "blobhash::blob_hashes", "event": "ok" }
+{ "type": "suite", "event": "ok", "passed": 5, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }

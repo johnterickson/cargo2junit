@@ -124,33 +124,33 @@ fn main() -> Result<()> {
 mod tests {
     use junit_report::*;
     use std::io::*;
-
     use crate::parse;
 
-    fn test_parse(input: &str) -> Result<Report> {
-        parse(BufReader::new(input.as_bytes()), "test", Utc::now())
+    fn parse_bytes(bytes: &[u8]) -> Result<Report> {
+        parse(BufReader::new(bytes), "test", Utc::now())
+    }
+
+    fn parse_string(input: &str) -> Result<Report> {
+        parse_bytes(input.as_bytes())
     }
 
     #[test]
     fn error_on_garbage() {
-        assert!(test_parse("garbage").is_err());
+        assert!(parse_string("garbage").is_err());
     }
 
     #[test]
-    fn success() {
-        let input = r##"
-{ "type": "suite", "event": "started", "test_count": 1 }
-{ "type": "test", "event": "started", "name": "tests::success" }
-{ "type": "test", "name": "tests::success", "event": "ok" }
-{ "type": "suite", "event": "ok", "passed": 1, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
-{ "type": "suite", "event": "started", "test_count": 0 }
-{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
-        "##;
-        let report = test_parse(input).expect("Could not parse test input");
+    fn success_single_suite() {
+        let _report = parse_bytes(include_bytes!("test_inputs/success.json")).expect("Could not parse test input");
     }
 
-    // #[test]
-    // fn fails() {
-    //     assert_eq!(2 + 2, 3);
-    // }
+    #[test]
+    fn failded_single_suite() {
+        let _report = parse_bytes(include_bytes!("test_inputs/failed.json")).expect("Could not parse test input");
+    }
+
+    #[test]
+    fn multi_suite_success() {
+        let _report = parse_bytes(include_bytes!("test_inputs/multi_suite_success.json")).expect("Could not parse test input");
+    }
 }
