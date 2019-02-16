@@ -11,7 +11,7 @@ categories = ["development-tools::testing"]
 license = "MIT"
 
 [badges]
-azure-devops = { repository = "https://github.com/johnterickson/cargo2junit", branch = "master", service = "github" }
+# azure-devops = { repository = "https://github.com/johnterickson/cargo2junit", branch = "master", service = "github" }
 maintenance = { status = "experimental" }
 
 [dependencies]

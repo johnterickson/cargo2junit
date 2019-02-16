@@ -39,7 +39,7 @@ steps:
       cargo -V
     displayName: Check rustc and cargo versions
   - script: |
-      cargo install --git https://github.com/johnterickson/cargo2junit.git
+      cargo install cargo2junit
     displayName: Install cargo2junit
   - script: |
       cargo test -- -Z unstable-options --format json > test_results.json

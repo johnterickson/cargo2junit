@@ -5,7 +5,7 @@
 
 To use, first install:
 ```
-cargo install --git https://github.com/johnterickson/cargo2junit.git
+cargo install cargo2junit
 ```
 
 Then, run cargo test and convert:
