@@ -4,6 +4,7 @@ extern crate serde;
 use junit_report::*;
 use serde::{Deserialize, Serialize};
 use std;
+use std::collections::BTreeSet;
 use std::io::*;
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
@@ -38,6 +39,8 @@ enum TestEvent {
     Ok { name: String },
     #[serde(rename = "failed")]
     Failed { name: String, stdout: String },
+    #[serde(rename = "ignored")]
+    Ignored { name: String },
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
@@ -63,21 +66,38 @@ fn parse<T: BufRead>(
     let mut r = Report::new();
     let mut suite_index = 0;
     let mut current_suite: Option<TestSuite> = None;
+    let mut tests: BTreeSet<String> = BTreeSet::new();
 
     for line in input.lines() {
         let line = line?;
-        let e: Event = serde_json::from_str(&line)?;
+
+        if line.chars().next() != Some('{') {
+            continue;
+        }
+
+        // println!("'{}'", &line);
+        let e: Event = serde_json::from_str(&line).map_err(|e| {
+            Error::new(
+                ErrorKind::Other,
+                format!("Error parsing '{}': {}", &line, e),
+            )
+        })?;
+        // println!("{:?}", e);
         match e {
             Event::Suite { event } => match event {
                 SuiteEvent::Started { test_count: _ } => {
                     assert!(current_suite.is_none());
+                    assert!(tests.is_empty());
                     let mut ts = TestSuite::new(&format!("{} #{}", suite_name_prefix, suite_index));
                     ts.set_timestamp(timestamp);
                     current_suite = Some(ts);
                     suite_index += 1;
                 }
                 SuiteEvent::Ok { results: _ } | SuiteEvent::Failed { results: _ } => {
-                    r.add_testsuite(current_suite.expect("Test event found outside of suite!"));
+                    assert!(tests.is_empty());
+                    r.add_testsuite(
+                        current_suite.expect("Suite complete event found outside of suite!"),
+                    );
                     current_suite = None;
                 }
             },
@@ -86,10 +106,15 @@ fn parse<T: BufRead>(
                     .as_mut()
                     .expect("Test event found outside of suite!");
                 match event {
+                    TestEvent::Started { name } => {
+                        assert!(tests.insert(name));
+                    }
                     TestEvent::Ok { name } => {
+                        assert!(tests.remove(&name));
                         current_suite.add_testcase(TestCase::success(&name, Duration::zero()));
                     }
                     TestEvent::Failed { name, stdout } => {
+                        assert!(tests.remove(&name));
                         current_suite.add_testcase(TestCase::failure(
                             &name,
                             Duration::zero(),
@@ -97,7 +122,9 @@ fn parse<T: BufRead>(
                             &stdout,
                         ));
                     }
-                    _ => {}
+                    TestEvent::Ignored { name } => {
+                        assert!(tests.remove(&name));
+                    }
                 }
             }
         }
@@ -122,9 +149,9 @@ fn main() -> Result<()> {
 
 #[cfg(test)]
 mod tests {
+    use crate::parse;
     use junit_report::*;
     use std::io::*;
-    use crate::parse;
 
     fn parse_bytes(bytes: &[u8]) -> Result<Report> {
         parse(BufReader::new(bytes), "test", Utc::now())
@@ -136,21 +163,30 @@ mod tests {
 
     #[test]
     fn error_on_garbage() {
-        assert!(parse_string("garbage").is_err());
+        assert!(parse_string("{garbage}").is_err());
     }
 
     #[test]
     fn success_single_suite() {
-        let _report = parse_bytes(include_bytes!("test_inputs/success.json")).expect("Could not parse test input");
+        let _report = parse_bytes(include_bytes!("test_inputs/success.json"))
+            .expect("Could not parse test input");
     }
 
     #[test]
     fn failded_single_suite() {
-        let _report = parse_bytes(include_bytes!("test_inputs/failed.json")).expect("Could not parse test input");
+        let _report = parse_bytes(include_bytes!("test_inputs/failed.json"))
+            .expect("Could not parse test input");
     }
 
     #[test]
     fn multi_suite_success() {
-        let _report = parse_bytes(include_bytes!("test_inputs/multi_suite_success.json")).expect("Could not parse test input");
+        let _report = parse_bytes(include_bytes!("test_inputs/multi_suite_success.json"))
+            .expect("Could not parse test input");
+    }
+
+    #[test]
+    fn cargo_project_failure() {
+        let _report = parse_bytes(include_bytes!("test_inputs/cargo_failure.json"))
+            .expect("Could not parse test input");
     }
 }
