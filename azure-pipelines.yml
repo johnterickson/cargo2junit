@@ -42,6 +42,9 @@ steps:
       cargo install cargo2junit
     displayName: Install cargo2junit
   - script: |
+      cargo build
+    displayName: build
+  - script: |
       cargo test -- -Z unstable-options --format json > test_results.json
       type test_results.json
     condition: and(succeeded(), eq(variables['Agent.OS'],'Windows_NT'))
@@ -51,11 +54,15 @@ steps:
     condition: and(succeeded(), ne(variables['Agent.OS'],'Windows_NT'))
     displayName: run cargo test [Linux & OSX]
   - script: |
-      type test_results.json | cargo2junit > test_results.xml
+      type test_results.json | cargo2junit > test_results_lkg.xml
+      type test_results.json | .\target\debug\cargo2junit.exe > test_results.xml
+      fc test_results_lkg.xml test_results.xml
     condition: and(succeededOrFailed(), eq(variables['Agent.OS'],'Windows_NT'))
     displayName: convert to junit [Windows]
   - script: |
-      cat test_results.json | cargo2junit > test_results.xml
+      cat test_results.json | cargo2junit > test_results_lkg.xml
+      cat test_results.json | ./target/debug/cargo2junit > test_results.xml
+      diff test_results_lkg.xml test_results.xml
     condition: and(succeededOrFailed(), ne(variables['Agent.OS'],'Windows_NT'))
     displayName: convert to junit [Linux & OSX]
   - task: PublishTestResults@2
