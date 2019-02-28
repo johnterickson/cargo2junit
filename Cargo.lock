@@ -1,8 +1,8 @@
 [[package]]
 name = "cargo2junit"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
- "junit-report 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "junit-report 0.1.2 (git+https://github.com/johnterickson/junit-report-rs)",
  "serde 1.0.88 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde_json 1.0.38 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
@@ -25,7 +25,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "junit-report"
 version = "0.1.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+source = "git+https://github.com/johnterickson/junit-report-rs#6b52d56a92e68c863ca2570e42ee7a30e77c7f7e"
 dependencies = [
  "chrono 0.4.6 (registry+https://github.com/rust-lang/crates.io-index)",
  "xml-rs 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -155,7 +155,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [metadata]
 "checksum chrono 0.4.6 (registry+https://github.com/rust-lang/crates.io-index)" = "45912881121cb26fad7c38c17ba7daa18764771836b34fab7d3fbd93ed633878"
 "checksum itoa 0.4.3 (registry+https://github.com/rust-lang/crates.io-index)" = "1306f3464951f30e30d12373d31c79fbd52d236e5e896fd92f96ec7babbbe60b"
-"checksum junit-report 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "a66f79aac3defc1e75658d5c729ab62a7bb00372286eba5c60e2950d67d8f725"
+"checksum junit-report 0.1.2 (git+https://github.com/johnterickson/junit-report-rs)" = "<none>"
 "checksum libc 0.2.48 (registry+https://github.com/rust-lang/crates.io-index)" = "e962c7641008ac010fa60a7dfdc1712449f29c44ef2d4702394aea943ee75047"
 "checksum num-integer 0.1.39 (registry+https://github.com/rust-lang/crates.io-index)" = "e83d528d2677f0518c570baf2b7abdcf0cd2d248860b68507bdcb3e91d4c0cea"
 "checksum num-traits 0.2.6 (registry+https://github.com/rust-lang/crates.io-index)" = "0b3a5d7cc97d6d30d8b9bc8fa19bf45349ffe46241e8816f50f62f6d6aaabee1"

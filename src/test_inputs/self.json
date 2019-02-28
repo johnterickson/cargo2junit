@@ -1,0 +1,12 @@
+{ "type": "suite", "event": "started", "test_count": 5 }
+{ "type": "test", "event": "started", "name": "tests::cargo_project_failure" }
+{ "type": "test", "event": "started", "name": "tests::error_on_garbage" }
+{ "type": "test", "event": "started", "name": "tests::failded_single_suite" }
+{ "type": "test", "event": "started", "name": "tests::multi_suite_success" }
+{ "type": "test", "name": "tests::error_on_garbage", "event": "ok", "duration": 0.2131}
+{ "type": "test", "event": "started", "name": "tests::success_single_suite" }
+{ "type": "test", "name": "tests::failded_single_suite", "event": "ok", "duration": 0.5697}
+{ "type": "test", "name": "tests::success_single_suite", "event": "ok", "duration": 0.2754}
+{ "type": "test", "name": "tests::multi_suite_success", "event": "ok", "duration": 2.1462}
+{ "type": "test", "name": "tests::cargo_project_failure", "event": "ok", "duration": 78.5406}
+{ "type": "suite", "event": "ok", "passed": 5, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }

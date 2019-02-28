@@ -43,7 +43,7 @@ enum TestEvent {
     Ignored { name: String },
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(tag = "type")]
 enum Event {
     #[serde(rename = "suite")]
@@ -55,6 +55,7 @@ enum Event {
     Test {
         #[serde(flatten)]
         event: TestEvent,
+        duration: Option<f64>,
     },
 }
 
@@ -71,7 +72,7 @@ fn parse<T: BufRead>(
     for line in input.lines() {
         let line = line?;
 
-        if line.chars().next() != Some('{') {
+        if line.chars().filter(|c| !c.is_whitespace()).next() != Some('{') {
             continue;
         }
 
@@ -94,30 +95,33 @@ fn parse<T: BufRead>(
                     suite_index += 1;
                 }
                 SuiteEvent::Ok { results: _ } | SuiteEvent::Failed { results: _ } => {
-                    assert!(tests.is_empty());
+                    assert_eq!(None, tests.iter().next());
                     r.add_testsuite(
                         current_suite.expect("Suite complete event found outside of suite!"),
                     );
                     current_suite = None;
                 }
             },
-            Event::Test { event } => {
+            Event::Test { event, duration } => {
                 let current_suite = current_suite
                     .as_mut()
                     .expect("Test event found outside of suite!");
+                let duration_ms = duration.unwrap_or(0.0);
+                let duration = Duration::nanoseconds((duration_ms * 1_000_000.0) as i64);
+
                 match event {
                     TestEvent::Started { name } => {
                         assert!(tests.insert(name));
                     }
                     TestEvent::Ok { name } => {
                         assert!(tests.remove(&name));
-                        current_suite.add_testcase(TestCase::success(&name, Duration::zero()));
+                        current_suite.add_testcase(TestCase::success(&name, duration));
                     }
                     TestEvent::Failed { name, stdout } => {
                         assert!(tests.remove(&name));
                         current_suite.add_testcase(TestCase::failure(
                             &name,
-                            Duration::zero(),
+                            duration,
                             "cargo test",
                             &stdout,
                         ));
