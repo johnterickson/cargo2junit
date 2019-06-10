@@ -28,7 +28,7 @@ steps:
     condition: and(succeeded(), eq(variables['Agent.OS'],'Darwin'))
     displayName: Install rustup and toolchain [OSX]
   - bash: |
-      rustup toolchain install $CHANNEL-$TARGET
+      rustup toolchain install --no-self-update $CHANNEL-$TARGET
       rustup default $CHANNEL-$TARGET
     displayName: Select toolchain
   - script: |
