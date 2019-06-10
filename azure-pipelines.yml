@@ -32,6 +32,7 @@ steps:
       rustup default $CHANNEL-$TARGET
     displayName: Select toolchain
   - script: |
+      rustup toolchain list
       rustc -V
       cargo -V
     displayName: Check rustc and cargo versions
