@@ -5,35 +5,32 @@ pool:
 strategy:
   matrix:
     x86_64-pc-windows-gnu:
+      TARGET: x86_64-pc-windows-gnu
       HOST_IMAGE: vs2017-win2016
       CHANNEL: stable
     x86_64-pc-windows-msvc:
+      TARGET: x86_64-pc-windows-msvc
       HOST_IMAGE: vs2017-win2016
       CHANNEL: stable
     x86_64-apple-darwin:
+      TARGET: x86_64-apple-darwin
       HOST_IMAGE: macos-10.13
       CHANNEL: stable
     x86_64-unknown-linux-gnu:
+      TARGET: x86_64-unknown-linux-gnu
       HOST_IMAGE: ubuntu-16.04
       CHANNEL: stable
 steps:
-  - powershell: Invoke-WebRequest -Uri https://win.rustup.rs/ -OutFile rustup-init.exe
-    condition: and(succeeded(), eq(variables['Agent.OS'],'Windows_NT'))
-    displayName: Install rustup [Windows]
-  - script: |
-      set TARGET=%SYSTEM_JOBDISPLAYNAME%
-      rustup-init.exe -y --default-host %TARGET% --default-toolchain %CHANNEL%
-      set PATH=%PATH%;%USERPROFILE%\.cargo\bin
-      echo "##vso[task.setvariable variable=PATH;]%PATH%"
-    condition: and(succeeded(), eq(variables['Agent.OS'],'Windows_NT'))
-    displayName: Install toolchain [Windows]
-  - script: |
+  - bash: |
       export TARGET=$SYSTEM_JOBDISPLAYNAME
       curl https://sh.rustup.rs -sSf | sh -s -- -y --default-host $TARGET --default-toolchain $CHANNEL
       export PATH=$PATH:~/.cargo/bin
       echo "##vso[task.setvariable variable=PATH;]$PATH"
-    condition: and(succeeded(), ne(variables['Agent.OS'],'Windows_NT'))
-    displayName: Install rustup and toolchain [Linux & OSX]
+    condition: and(succeeded(), eq(variables['Agent.OS'],'Darwin'))
+    displayName: Install rustup and toolchain [OSX]
+  - bash: |
+      rustup toolchain default $CHANNEL-$TARGET
+    displayName: Select toolchain
   - script: |
       rustc -V
       cargo -V
