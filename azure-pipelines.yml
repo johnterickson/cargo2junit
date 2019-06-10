@@ -22,16 +22,19 @@ strategy:
       CHANNEL: stable
 steps:
   - bash: |
+      set -x
       curl https://sh.rustup.rs -sSf | sh -s -- -y --default-host $TARGET --default-toolchain $CHANNEL
       export PATH=$PATH:~/.cargo/bin
       echo "##vso[task.setvariable variable=PATH;]$PATH"
     condition: and(succeeded(), eq(variables['Agent.OS'],'Darwin'))
     displayName: Install rustup and toolchain [OSX]
   - bash: |
+      set -x
       rustup toolchain install --no-self-update $CHANNEL-$TARGET
       rustup default $CHANNEL-$TARGET
     displayName: Select toolchain
   - script: |
+      set -x
       rustup toolchain list
       rustc -V
       cargo -V
