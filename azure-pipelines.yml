@@ -1,67 +1,54 @@
 # Recommened editor for this file: https://github.com/Microsoft/azure-pipelines-vscode
 name: cargo
 pool:
-  vmImage:  $[ variables['HOST_IMAGE'] ]
+  vmImage:  $(VM_IMAGE)
 strategy:
   matrix:
     x86_64-pc-windows-gnu:
       TARGET: x86_64-pc-windows-gnu
-      HOST_IMAGE: vs2017-win2016
+      VM_IMAGE: vs2017-win2016
       CHANNEL: stable
     x86_64-pc-windows-msvc:
       TARGET: x86_64-pc-windows-msvc
-      HOST_IMAGE: vs2017-win2016
+      VM_IMAGE: vs2017-win2016
       CHANNEL: stable
     x86_64-apple-darwin:
       TARGET: x86_64-apple-darwin
-      HOST_IMAGE: macos-10.13
+      VM_IMAGE: macos-10.13
       CHANNEL: stable
     x86_64-unknown-linux-gnu:
       TARGET: x86_64-unknown-linux-gnu
-      HOST_IMAGE: ubuntu-16.04
+      VM_IMAGE: ubuntu-16.04
       CHANNEL: stable
 steps:
   - bash: |
       set -x
-      curl https://sh.rustup.rs -sSf | sh -s -- -y --default-host $TARGET --default-toolchain $CHANNEL
-      export PATH=$PATH:~/.cargo/bin
-      echo "##vso[task.setvariable variable=PATH;]$PATH"
-    condition: and(succeeded(), eq(variables['Agent.OS'],'Darwin'))
-    displayName: Install rustup and toolchain [OSX]
+      curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain none
+      echo "##vso[task.prependpath]$HOME/.cargo/bin"
+    displayName: Enusure rustup is installed
   - bash: |
       set -x
       rustup toolchain install --no-self-update $CHANNEL-$TARGET
       rustup default $CHANNEL-$TARGET
     displayName: Select toolchain
-  - script: |
+  - bash: |
       set -x
       rustup toolchain list
       rustc -V
       cargo -V
     displayName: Check rustc and cargo versions
-  - script: |
+  - bash: |
       cargo install cargo2junit
     displayName: Install cargo2junit
-  - script: |
+  - bash: |
       cargo build
     displayName: build
-  - script: |
-      cargo test -- -Z unstable-options --format json > test_results.json
-      type test_results.json
-    condition: and(succeeded(), eq(variables['Agent.OS'],'Windows_NT'))
-    displayName: run cargo test [Windows]
-  - script: |
+  - bash: |
       cargo test -- -Z unstable-options --format json | tee test_results.json
-    condition: and(succeeded(), ne(variables['Agent.OS'],'Windows_NT'))
-    displayName: run cargo test [Linux & OSX]
-  - script: |
-      type test_results.json | cargo2junit > test_results_lkg.xml
-    condition: and(succeededOrFailed(), eq(variables['Agent.OS'],'Windows_NT'))
-    displayName: convert to junit [Windows]
-  - script: |
+    displayName: run cargo test
+  - bash: |
       cat test_results.json | cargo2junit > test_results_lkg.xml
-    condition: and(succeededOrFailed(), ne(variables['Agent.OS'],'Windows_NT'))
-    displayName: convert to junit [Linux & OSX]
+    displayName: convert to junit using LKG cargo2junit
   - task: PublishTestResults@2
     inputs: 
       testResultsFormat: 'JUnit'
@@ -69,14 +56,9 @@ steps:
       testRunTitle: LKG_$(System.JobDisplayName)
       buildPlatform: LKG_$(System.JobDisplayName)
     condition: succeededOrFailed()
-  - script: |
-      type test_results.json | .\target\debug\cargo2junit.exe > test_results.xml
-    condition: and(succeededOrFailed(), eq(variables['Agent.OS'],'Windows_NT'))
-    displayName: convert to junit [Windows]
-  - script: |
+  - bash: |
       cat test_results.json | ./target/debug/cargo2junit > test_results.xml
-    condition: and(succeededOrFailed(), ne(variables['Agent.OS'],'Windows_NT'))
-    displayName: convert to junit [Linux & OSX]
+    displayName: convert to junit using just-built cargo2junit
   - task: PublishTestResults@2
     inputs: 
       testResultsFormat: 'JUnit'
