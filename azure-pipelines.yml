@@ -24,7 +24,7 @@ steps:
   - bash: |
       set -x
       curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain none
-      echo "##vso[task.setvariable variable=PATH;]$PATH"
+      echo "##vso[task.prependpath]$HOME/.cargo/bin"
     displayName: Enusure rustup is installed
   - bash: |
       set -x
