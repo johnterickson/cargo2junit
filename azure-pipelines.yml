@@ -1,5 +1,7 @@
 # Recommened editor for this file: https://github.com/Microsoft/azure-pipelines-vscode
 name: cargo
+variables:
+  CHANNEL: stable
 pool:
   vmImage:  $(VM_IMAGE)
 strategy:
@@ -7,19 +9,24 @@ strategy:
     x86_64-pc-windows-gnu:
       TARGET: x86_64-pc-windows-gnu
       VM_IMAGE: vs2017-win2016
-      CHANNEL: stable
     x86_64-pc-windows-msvc:
       TARGET: x86_64-pc-windows-msvc
       VM_IMAGE: vs2017-win2016
-      CHANNEL: stable
-    x86_64-apple-darwin:
+    vs2015:
+      TARGET: x86_64-pc-windows-msvc
+      VM_IMAGE: vs2015-win2012r2
+    vs2019:
+      TARGET: x86_64-pc-windows-msvc
+      VM_IMAGE: windows-2019
+    osx-10.13-x86_64-apple-darwin:
       TARGET: x86_64-apple-darwin
       VM_IMAGE: macos-10.13
-      CHANNEL: stable
+    osx-10.14-x86_64-apple-darwin:
+      TARGET: x86_64-apple-darwin
+      VM_IMAGE: macos-10.14
     x86_64-unknown-linux-gnu:
       TARGET: x86_64-unknown-linux-gnu
       VM_IMAGE: ubuntu-16.04
-      CHANNEL: stable
 steps:
   - bash: |
       set -x
