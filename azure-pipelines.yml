@@ -30,11 +30,16 @@ strategy:
 steps:
   - bash: |
       set -x
+      ls $HOME/.cargo/bin
+      ls $RUSTUP_HOME
+      ls /usr/local/rustup
+      ls $CARGO_HOME
+      ls /usr/local/cargo
       rustup toolchain list
       rustc -V
       cargo -V
-      ls
     displayName: Check rustc and cargo versions (before rustup install)
+    condition: and(succeededOrFailed(), ne(variables['Agent.OS'],'Linux'))
   - bash: |
       set -x
       curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain none
