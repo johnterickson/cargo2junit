@@ -23,6 +23,13 @@ strategy:
 steps:
   - bash: |
       set -x
+      rustup toolchain list
+      rustc -V
+      cargo -V
+      ls
+    displayName: Check rustc and cargo versions (before rustup install)
+  - bash: |
+      set -x
       curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain none
       echo "##vso[task.prependpath]$HOME/.cargo/bin"
     displayName: Enusure rustup is installed
@@ -36,6 +43,7 @@ steps:
       rustup toolchain list
       rustc -V
       cargo -V
+      ls
     displayName: Check rustc and cargo versions
   - bash: |
       cargo install cargo2junit
