@@ -1,0 +1,1032 @@
+{ "type": "suite", "event": "started", "test_count": 192 }
+{ "type": "test", "event": "started", "name": "bindings::blob::tests::it_converts_from_json" }
+{ "type": "test", "event": "started", "name": "bindings::blob::tests::it_converts_from_str" }
+{ "type": "test", "name": "bindings::blob::tests::it_converts_from_str", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::blob::tests::it_converts_from_string" }
+{ "type": "test", "name": "bindings::blob::tests::it_converts_from_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::blob::tests::it_converts_from_typed_data" }
+{ "type": "test", "name": "bindings::blob::tests::it_converts_from_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::blob::tests::it_converts_from_u8_slice" }
+{ "type": "test", "name": "bindings::blob::tests::it_converts_from_u8_slice", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::blob::tests::it_converts_from_u8_vec" }
+{ "type": "test", "name": "bindings::blob::tests::it_converts_from_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::blob::tests::it_converts_to_body" }
+{ "type": "test", "name": "bindings::blob::tests::it_converts_from_u8_vec", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::blob::tests::it_converts_to_bytes" }
+{ "type": "test", "name": "bindings::blob::tests::it_converts_to_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::blob::tests::it_converts_to_json" }
+{ "type": "test", "name": "bindings::blob::tests::it_converts_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::blob::tests::it_converts_to_string" }
+{ "type": "test", "name": "bindings::blob::tests::it_converts_to_bytes", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::blob::tests::it_converts_to_typed_data" }
+{ "type": "test", "name": "bindings::blob::tests::it_converts_to_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::blob::tests::it_displays_as_a_string" }
+{ "type": "test", "name": "bindings::blob::tests::it_converts_to_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::blob::tests::it_has_bytes_content" }
+{ "type": "test", "name": "bindings::blob::tests::it_displays_as_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::blob::tests::it_has_json_content" }
+{ "type": "test", "name": "bindings::blob::tests::it_has_json_content", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::blob::tests::it_has_string_content" }
+{ "type": "test", "name": "bindings::blob::tests::it_has_bytes_content", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::blob_trigger::tests::it_constructs" }
+{ "type": "test", "name": "bindings::blob::tests::it_has_string_content", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::cosmos_db_document::tests::it_constructs_from_an_object_value" }
+{ "type": "test", "name": "bindings::cosmos_db_document::tests::it_constructs_from_an_object_value", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::cosmos_db_document::tests::it_converts_from_str" }
+{ "type": "test", "name": "bindings::blob_trigger::tests::it_constructs", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::cosmos_db_document::tests::it_converts_from_string" }
+{ "type": "test", "name": "bindings::cosmos_db_document::tests::it_converts_from_str", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::cosmos_db_document::tests::it_converts_from_typed_data" }
+{ "type": "test", "name": "bindings::cosmos_db_document::tests::it_converts_from_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::cosmos_db_document::tests::it_converts_from_value" }
+{ "type": "test", "name": "bindings::cosmos_db_document::tests::it_converts_from_value", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::cosmos_db_document::tests::it_converts_to_body" }
+{ "type": "test", "name": "bindings::cosmos_db_document::tests::it_converts_from_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::cosmos_db_document::tests::it_converts_to_string" }
+{ "type": "test", "name": "bindings::cosmos_db_document::tests::it_converts_to_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::cosmos_db_document::tests::it_converts_to_typed_data" }
+{ "type": "test", "name": "bindings::cosmos_db_document::tests::it_converts_to_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::cosmos_db_document::tests::it_converts_to_value" }
+{ "type": "test", "name": "bindings::cosmos_db_document::tests::it_converts_to_value", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::cosmos_db_document::tests::it_displays_as_json" }
+{ "type": "test", "name": "bindings::cosmos_db_document::tests::it_displays_as_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::cosmos_db_document::tests::it_panics_if_constructed_without_an_object_or_array" }
+{ "type": "test", "name": "bindings::cosmos_db_document::tests::it_converts_to_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::cosmos_db_trigger::tests::it_constructs" }
+{ "type": "test", "name": "bindings::cosmos_db_trigger::tests::it_constructs", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_grid_event::tests::it_constructs" }
+{ "type": "test", "name": "bindings::cosmos_db_document::tests::it_panics_if_constructed_without_an_object_or_array", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_hub_message::tests::it_converts_from_json" }
+{ "type": "test", "name": "bindings::event_hub_message::tests::it_converts_from_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_hub_message::tests::it_converts_from_str" }
+{ "type": "test", "name": "bindings::event_grid_event::tests::it_constructs", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_hub_message::tests::it_converts_from_string" }
+{ "type": "test", "name": "bindings::event_hub_message::tests::it_converts_from_str", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_hub_message::tests::it_converts_from_u8_slice" }
+{ "type": "test", "name": "bindings::event_hub_message::tests::it_converts_from_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_hub_message::tests::it_converts_from_u8_vec" }
+{ "type": "test", "name": "bindings::event_hub_message::tests::it_converts_from_u8_slice", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_hub_message::tests::it_converts_to_body" }
+{ "type": "test", "name": "bindings::event_hub_message::tests::it_converts_to_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_hub_message::tests::it_converts_to_bytes" }
+{ "type": "test", "name": "bindings::event_hub_message::tests::it_converts_from_u8_vec", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_hub_message::tests::it_converts_to_json" }
+{ "type": "test", "name": "bindings::event_hub_message::tests::it_converts_to_bytes", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_hub_message::tests::it_converts_to_string" }
+{ "type": "test", "name": "bindings::event_hub_message::tests::it_converts_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_hub_message::tests::it_converts_to_typed_data" }
+{ "type": "test", "name": "bindings::event_hub_message::tests::it_converts_to_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_hub_message::tests::it_displays_as_a_string" }
+{ "type": "test", "name": "bindings::event_hub_message::tests::it_converts_to_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_hub_message::tests::it_has_bytes_content" }
+{ "type": "test", "name": "bindings::event_hub_message::tests::it_displays_as_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_hub_message::tests::it_has_json_content" }
+{ "type": "test", "name": "bindings::event_hub_message::tests::it_has_bytes_content", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_hub_message::tests::it_has_string_content" }
+{ "type": "test", "name": "bindings::event_hub_message::tests::it_has_json_content", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::event_hub_trigger::tests::it_constructs" }
+{ "type": "test", "name": "bindings::event_hub_message::tests::it_has_string_content", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::generic_input::tests::it_converts_from_typed_data" }
+{ "type": "test", "name": "bindings::generic_input::tests::it_converts_from_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::generic_output::tests::it_converts_from_bytes" }
+{ "type": "test", "name": "bindings::event_hub_trigger::tests::it_constructs", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::generic_output::tests::it_converts_from_double" }
+{ "type": "test", "name": "bindings::generic_output::tests::it_converts_from_double", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::generic_output::tests::it_converts_from_integer" }
+{ "type": "test", "name": "bindings::generic_output::tests::it_converts_from_bytes", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::generic_output::tests::it_converts_from_str" }
+{ "type": "test", "name": "bindings::generic_output::tests::it_converts_from_integer", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::generic_output::tests::it_converts_from_string" }
+{ "type": "test", "name": "bindings::generic_output::tests::it_converts_from_str", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::generic_output::tests::it_converts_from_value" }
+{ "type": "test", "name": "bindings::generic_output::tests::it_converts_from_value", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::generic_output::tests::it_converts_to_typed_data" }
+{ "type": "test", "name": "bindings::generic_output::tests::it_converts_from_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::generic_trigger::tests::it_constructs" }
+{ "type": "test", "name": "bindings::generic_output::tests::it_converts_to_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_request::tests::it_has_a_bytes_body" }
+{ "type": "test", "name": "bindings::generic_trigger::tests::it_constructs", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_request::tests::it_has_a_header" }
+{ "type": "test", "name": "bindings::http_request::tests::it_has_a_header", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_request::tests::it_has_a_json_body" }
+{ "type": "test", "name": "bindings::http_request::tests::it_has_a_bytes_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_request::tests::it_has_a_query_parameter" }
+{ "type": "test", "name": "bindings::http_request::tests::it_has_a_json_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_request::tests::it_has_a_route_parameter" }
+{ "type": "test", "name": "bindings::http_request::tests::it_has_a_query_parameter", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_request::tests::it_has_a_stream_body" }
+{ "type": "test", "name": "bindings::http_request::tests::it_has_a_stream_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_request::tests::it_has_a_string_body" }
+{ "type": "test", "name": "bindings::http_request::tests::it_has_a_route_parameter", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_request::tests::it_has_an_empty_body" }
+{ "type": "test", "name": "bindings::http_request::tests::it_has_a_string_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_request::tests::it_has_the_method" }
+{ "type": "test", "name": "bindings::http_request::tests::it_has_an_empty_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_request::tests::it_has_the_url" }
+{ "type": "test", "name": "bindings::http_request::tests::it_has_the_url", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_response::tests::it_builds_with_a_bytes_body" }
+{ "type": "test", "name": "bindings::http_request::tests::it_has_the_method", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_response::tests::it_builds_with_a_json_body" }
+{ "type": "test", "name": "bindings::http_response::tests::it_builds_with_a_bytes_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_response::tests::it_builds_with_a_status" }
+{ "type": "test", "name": "bindings::http_response::tests::it_builds_with_a_json_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_response::tests::it_builds_with_a_string_body" }
+{ "type": "test", "name": "bindings::http_response::tests::it_builds_with_a_status", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_response::tests::it_builds_with_headers" }
+{ "type": "test", "name": "bindings::http_response::tests::it_builds_with_a_string_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_response::tests::it_converts_to_typed_data" }
+{ "type": "test", "name": "bindings::http_response::tests::it_builds_with_headers", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_response::tests::it_is_empty_by_default" }
+{ "type": "test", "name": "bindings::http_response::tests::it_converts_to_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::http_response::tests::it_is_empty_from_a_builder" }
+{ "type": "test", "name": "bindings::http_response::tests::it_is_empty_by_default", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::queue_message::tests::it_converts_from_json" }
+{ "type": "test", "name": "bindings::queue_message::tests::it_converts_from_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::queue_message::tests::it_converts_from_str" }
+{ "type": "test", "name": "bindings::http_response::tests::it_is_empty_from_a_builder", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::queue_message::tests::it_converts_from_string" }
+{ "type": "test", "name": "bindings::queue_message::tests::it_converts_from_str", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::queue_message::tests::it_converts_from_u8_slice" }
+{ "type": "test", "name": "bindings::queue_message::tests::it_converts_from_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::queue_message::tests::it_converts_from_u8_vec" }
+{ "type": "test", "name": "bindings::queue_message::tests::it_converts_from_u8_slice", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::queue_message::tests::it_converts_to_body" }
+{ "type": "test", "name": "bindings::queue_message::tests::it_converts_from_u8_vec", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::queue_message::tests::it_converts_to_bytes" }
+{ "type": "test", "name": "bindings::queue_message::tests::it_converts_to_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::queue_message::tests::it_converts_to_json" }
+{ "type": "test", "name": "bindings::queue_message::tests::it_converts_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::queue_message::tests::it_converts_to_string" }
+{ "type": "test", "name": "bindings::queue_message::tests::it_converts_to_bytes", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::queue_message::tests::it_converts_to_typed_data" }
+{ "type": "test", "name": "bindings::queue_message::tests::it_converts_to_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::queue_message::tests::it_displays_as_a_string" }
+{ "type": "test", "name": "bindings::queue_message::tests::it_converts_to_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::queue_message::tests::it_has_bytes_content" }
+{ "type": "test", "name": "bindings::queue_message::tests::it_has_bytes_content", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::queue_message::tests::it_has_json_content" }
+{ "type": "test", "name": "bindings::queue_message::tests::it_displays_as_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::queue_message::tests::it_has_string_content" }
+{ "type": "test", "name": "bindings::queue_message::tests::it_has_json_content", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::queue_trigger::tests::it_constructs" }
+{ "type": "test", "name": "bindings::queue_trigger::tests::it_constructs", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::send_grid_message::tests::it_converts_to_typed_data" }
+{ "type": "test", "name": "bindings::queue_message::tests::it_has_string_content", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::send_grid_message::tests::it_serializes_to_json" }
+{ "type": "test", "name": "bindings::send_grid_message::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::service_bus_message::tests::it_converts_from_json" }
+{ "type": "test", "name": "bindings::send_grid_message::tests::it_converts_to_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::service_bus_message::tests::it_converts_from_str" }
+{ "type": "test", "name": "bindings::service_bus_message::tests::it_converts_from_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::service_bus_message::tests::it_converts_from_string" }
+{ "type": "test", "name": "bindings::service_bus_message::tests::it_converts_from_str", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::service_bus_message::tests::it_converts_from_u8_slice" }
+{ "type": "test", "name": "bindings::service_bus_message::tests::it_converts_from_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::service_bus_message::tests::it_converts_from_u8_vec" }
+{ "type": "test", "name": "bindings::service_bus_message::tests::it_converts_from_u8_vec", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::service_bus_message::tests::it_converts_to_body" }
+{ "type": "test", "name": "bindings::service_bus_message::tests::it_converts_from_u8_slice", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::service_bus_message::tests::it_converts_to_bytes" }
+{ "type": "test", "name": "bindings::service_bus_message::tests::it_converts_to_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::service_bus_message::tests::it_converts_to_json" }
+{ "type": "test", "name": "bindings::service_bus_message::tests::it_converts_to_bytes", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::service_bus_message::tests::it_converts_to_string" }
+{ "type": "test", "name": "bindings::service_bus_message::tests::it_converts_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::service_bus_message::tests::it_converts_to_typed_data" }
+{ "type": "test", "name": "bindings::service_bus_message::tests::it_converts_to_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::service_bus_message::tests::it_displays_as_a_string" }
+{ "type": "test", "name": "bindings::service_bus_message::tests::it_converts_to_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::service_bus_message::tests::it_has_bytes_content" }
+{ "type": "test", "name": "bindings::service_bus_message::tests::it_has_bytes_content", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::service_bus_message::tests::it_has_json_content" }
+{ "type": "test", "name": "bindings::service_bus_message::tests::it_displays_as_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::service_bus_message::tests::it_has_string_content" }
+{ "type": "test", "name": "bindings::service_bus_message::tests::it_has_json_content", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::service_bus_trigger::tests::it_constructs" }
+{ "type": "test", "name": "bindings::service_bus_trigger::tests::it_constructs", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::signalr_connection_info::tests::it_converts_from_typed_data" }
+{ "type": "test", "name": "bindings::service_bus_message::tests::it_has_string_content", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::signalr_connection_info::tests::it_converts_to_body" }
+{ "type": "test", "name": "bindings::signalr_connection_info::tests::it_converts_from_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::signalr_connection_info::tests::it_serializes_to_json" }
+{ "type": "test", "name": "bindings::signalr_connection_info::tests::it_converts_to_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::signalr_group_action::tests::it_converts_to_typed_data" }
+{ "type": "test", "name": "bindings::signalr_group_action::tests::it_converts_to_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::signalr_group_action::tests::it_serializes_to_json" }
+{ "type": "test", "name": "bindings::signalr_connection_info::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::signalr_message::tests::it_converts_to_typed_data" }
+{ "type": "test", "name": "bindings::signalr_group_action::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::signalr_message::tests::it_serializes_to_json" }
+{ "type": "test", "name": "bindings::signalr_message::tests::it_converts_to_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::table::tests::it_adds_row_value" }
+{ "type": "test", "name": "bindings::signalr_message::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::table::tests::it_casts_to_value_reference" }
+{ "type": "test", "name": "bindings::table::tests::it_casts_to_value_reference", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::table::tests::it_constructs_an_empty_table" }
+{ "type": "test", "name": "bindings::table::tests::it_adds_row_value", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::table::tests::it_converts_from_typed_data" }
+{ "type": "test", "name": "bindings::table::tests::it_constructs_an_empty_table", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::table::tests::it_converts_to_body" }
+{ "type": "test", "name": "bindings::table::tests::it_converts_from_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::table::tests::it_converts_to_json" }
+{ "type": "test", "name": "bindings::table::tests::it_converts_to_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::table::tests::it_converts_to_typed_data" }
+{ "type": "test", "name": "bindings::table::tests::it_converts_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::table::tests::it_displays_as_a_string" }
+{ "type": "test", "name": "bindings::table::tests::it_displays_as_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::table::tests::it_has_a_length_equal_to_number_of_rows" }
+{ "type": "test", "name": "bindings::table::tests::it_converts_to_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::table::tests::it_is_not_empty_when_rows_are_present" }
+{ "type": "test", "name": "bindings::table::tests::it_has_a_length_equal_to_number_of_rows", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::table::tests::it_iterates_rows" }
+{ "type": "test", "name": "bindings::table::tests::it_is_not_empty_when_rows_are_present", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::timer_info::tests::it_has_json_data" }
+{ "type": "test", "name": "bindings::timer_info::tests::it_has_json_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::twilio_sms_message::tests::it_converts_to_typed_data" }
+{ "type": "test", "name": "bindings::table::tests::it_iterates_rows", "event": "ok" }
+{ "type": "test", "event": "started", "name": "bindings::twilio_sms_message::tests::it_serializes_to_json" }
+{ "type": "test", "name": "bindings::twilio_sms_message::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "blob::properties::tests::it_deserializes_from_json" }
+{ "type": "test", "name": "bindings::twilio_sms_message::tests::it_converts_to_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "context::tests::it_returns_current_context" }
+{ "type": "test", "name": "context::tests::it_returns_current_context", "event": "ok" }
+{ "type": "test", "event": "started", "name": "context::tests::it_returns_none_without_context" }
+{ "type": "test", "name": "blob::properties::tests::it_deserializes_from_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "event_hub::partition_context::tests::it_deserializes_from_json" }
+{ "type": "test", "name": "event_hub::partition_context::tests::it_deserializes_from_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "event_hub::runtime_information::tests::it_deserializes_from_json" }
+{ "type": "test", "name": "context::tests::it_returns_none_without_context", "event": "ok" }
+{ "type": "test", "event": "started", "name": "event_hub::system_properties::tests::it_deserializes_from_json" }
+{ "type": "test", "name": "event_hub::system_properties::tests::it_deserializes_from_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "generic::tests::it_converts_from_bytes_typed_data" }
+{ "type": "test", "name": "event_hub::runtime_information::tests::it_deserializes_from_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "generic::tests::it_converts_from_double_typed_data" }
+{ "type": "test", "name": "generic::tests::it_converts_from_bytes_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "generic::tests::it_converts_from_integer_typed_data" }
+{ "type": "test", "name": "generic::tests::it_converts_from_double_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "generic::tests::it_converts_from_json_typed_data" }
+{ "type": "test", "name": "generic::tests::it_converts_from_integer_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "generic::tests::it_converts_from_no_typed_data" }
+{ "type": "test", "name": "generic::tests::it_converts_from_json_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "generic::tests::it_converts_from_stream_typed_data" }
+{ "type": "test", "name": "generic::tests::it_converts_from_no_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "generic::tests::it_converts_from_string_typed_data" }
+{ "type": "test", "name": "generic::tests::it_converts_from_stream_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "generic::tests::it_converts_to_bytes_typed_data" }
+{ "type": "test", "name": "generic::tests::it_converts_from_string_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "generic::tests::it_converts_to_double_typed_data" }
+{ "type": "test", "name": "generic::tests::it_converts_to_bytes_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "generic::tests::it_converts_to_integer_typed_data" }
+{ "type": "test", "name": "generic::tests::it_converts_to_double_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "generic::tests::it_converts_to_json_typed_data" }
+{ "type": "test", "name": "generic::tests::it_converts_to_json_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "generic::tests::it_converts_to_no_typed_data" }
+{ "type": "test", "name": "generic::tests::it_converts_to_integer_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "generic::tests::it_converts_to_string_typed_data" }
+{ "type": "test", "name": "generic::tests::it_converts_to_no_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::body::tests::it_converts_from_json" }
+{ "type": "test", "name": "http::body::tests::it_converts_from_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::body::tests::it_converts_from_str" }
+{ "type": "test", "name": "generic::tests::it_converts_to_string_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::body::tests::it_converts_from_string" }
+{ "type": "test", "name": "http::body::tests::it_converts_from_str", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::body::tests::it_converts_from_typed_data" }
+{ "type": "test", "name": "http::body::tests::it_converts_from_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::body::tests::it_converts_from_u8_slice" }
+{ "type": "test", "name": "http::body::tests::it_converts_from_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::body::tests::it_converts_from_u8_vec" }
+{ "type": "test", "name": "http::body::tests::it_converts_from_u8_vec", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::body::tests::it_converts_to_typed_data" }
+{ "type": "test", "name": "http::body::tests::it_converts_from_u8_slice", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::body::tests::it_displays_as_a_string" }
+{ "type": "test", "name": "http::body::tests::it_converts_to_typed_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::body::tests::it_has_a_bytes_body" }
+{ "type": "test", "name": "http::body::tests::it_has_a_bytes_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::body::tests::it_has_a_default_content_type" }
+{ "type": "test", "name": "http::body::tests::it_displays_as_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::body::tests::it_has_a_json_body" }
+{ "type": "test", "name": "http::body::tests::it_has_a_default_content_type", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::body::tests::it_has_a_string_body" }
+{ "type": "test", "name": "http::body::tests::it_has_a_json_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::response_builder::tests::it_creates_an_empty_response" }
+{ "type": "test", "name": "http::body::tests::it_has_a_string_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::response_builder::tests::it_sets_a_body" }
+{ "type": "test", "name": "http::response_builder::tests::it_creates_an_empty_response", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::response_builder::tests::it_sets_a_header" }
+{ "type": "test", "name": "http::response_builder::tests::it_sets_a_body", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::response_builder::tests::it_sets_a_status" }
+{ "type": "test", "name": "http::response_builder::tests::it_sets_a_header", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::status::tests::it_converts_from_code" }
+{ "type": "test", "name": "http::status::tests::it_converts_from_code", "event": "ok" }
+{ "type": "test", "event": "started", "name": "http::status::tests::it_converts_to_string" }
+{ "type": "test", "name": "http::response_builder::tests::it_sets_a_status", "event": "ok" }
+{ "type": "test", "event": "started", "name": "registry::tests::it_builds_an_empty_extensions_map" }
+{ "type": "test", "name": "http::status::tests::it_converts_to_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "registry::tests::it_builds_an_extensions_map" }
+{ "type": "test", "name": "registry::tests::it_builds_an_empty_extensions_map", "event": "ok" }
+{ "type": "test", "event": "started", "name": "registry::tests::it_creates_a_registry_from_a_list_of_functions" }
+{ "type": "test", "name": "registry::tests::it_builds_an_extensions_map", "event": "ok" }
+{ "type": "test", "event": "started", "name": "registry::tests::it_creates_an_emptry_registry_from_an_empty_slice" }
+{ "type": "test", "name": "registry::tests::it_creates_a_registry_from_a_list_of_functions", "event": "ok" }
+{ "type": "test", "event": "started", "name": "registry::tests::it_registers_a_function" }
+{ "type": "test", "name": "registry::tests::it_creates_an_emptry_registry_from_an_empty_slice", "event": "ok" }
+{ "type": "test", "event": "started", "name": "registry::tests::it_returns_false_if_function_is_not_present" }
+{ "type": "test", "name": "registry::tests::it_registers_a_function", "event": "ok" }
+{ "type": "test", "event": "started", "name": "registry::tests::it_uses_the_latest_extension_version" }
+{ "type": "test", "name": "registry::tests::it_uses_the_latest_extension_version", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::attachment::tests::it_serializes_to_json" }
+{ "type": "test", "name": "registry::tests::it_returns_false_if_function_is_not_present", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::bcc_settings::tests::it_serializes_to_json" }
+{ "type": "test", "name": "send_grid::bcc_settings::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::bypass_list_management::tests::it_serializes_to_json" }
+{ "type": "test", "name": "send_grid::attachment::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::click_tracking::tests::it_serializes_to_json" }
+{ "type": "test", "name": "send_grid::bypass_list_management::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::content::tests::it_serializes_to_json" }
+{ "type": "test", "name": "send_grid::click_tracking::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::email_address::tests::it_converts_from_string" }
+{ "type": "test", "name": "send_grid::content::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::email_address::tests::it_serializes_to_json" }
+{ "type": "test", "name": "send_grid::email_address::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::footer_settings::tests::it_serializes_to_json" }
+{ "type": "test", "name": "send_grid::email_address::tests::it_converts_from_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::google_analytics::tests::it_serializes_to_json" }
+{ "type": "test", "name": "send_grid::footer_settings::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::mail_settings::tests::it_serializes_to_json" }
+{ "type": "test", "name": "send_grid::google_analytics::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::open_tracking::tests::it_serializes_to_json" }
+{ "type": "test", "name": "send_grid::mail_settings::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::personalization::tests::it_serializes_to_json" }
+{ "type": "test", "name": "send_grid::open_tracking::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::sandbox_mode::tests::it_serializes_to_json" }
+{ "type": "test", "name": "send_grid::sandbox_mode::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::spam_check::tests::it_serializes_to_json" }
+{ "type": "test", "name": "send_grid::personalization::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::subscription_tracking::tests::it_serializes_to_json" }
+{ "type": "test", "name": "send_grid::subscription_tracking::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::tracking_settings::tests::it_serializes_to_json" }
+{ "type": "test", "name": "send_grid::spam_check::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "send_grid::unsubscribe_group::tests::it_serializes_to_json" }
+{ "type": "test", "name": "send_grid::tracking_settings::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "timer::schedule_status::tests::it_deserializes_from_json" }
+{ "type": "test", "name": "timer::schedule_status::tests::it_deserializes_from_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "util::tests::it_converts_from_bytes_data" }
+{ "type": "test", "name": "send_grid::unsubscribe_group::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "util::tests::it_converts_from_double_data" }
+{ "type": "test", "name": "util::tests::it_converts_from_double_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "util::tests::it_converts_from_int_data" }
+{ "type": "test", "name": "util::tests::it_converts_from_bytes_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "util::tests::it_converts_from_json_data" }
+{ "type": "test", "name": "util::tests::it_converts_from_int_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "util::tests::it_converts_from_stream_data" }
+{ "type": "test", "name": "util::tests::it_converts_from_json_data", "event": "ok" }
+{ "type": "test", "event": "started", "name": "util::tests::it_converts_from_string_data" }
+{ "type": "test", "name": "util::tests::it_converts_from_stream_data", "event": "ok" }
+{ "type": "test", "name": "util::tests::it_converts_from_string_data", "event": "ok" }
+{ "type": "suite", "event": "ok", "passed": 192, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 205 }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob::tests::it_converts_to_tokens" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::blob::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob::tests::it_requires_the_connection_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::blob::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::blob::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::blob::tests::it_requires_the_connection_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob::tests::it_requires_the_path_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::blob::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob::tests::it_requires_the_path_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::blob::tests::it_requires_the_path_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::blob::tests::it_requires_the_path_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob_trigger::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::blob::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob_trigger::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::blob_trigger::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob_trigger::tests::it_requires_the_connection_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::blob_trigger::tests::it_requires_the_connection_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob_trigger::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::blob_trigger::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob_trigger::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::blob_trigger::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob_trigger::tests::it_requires_the_path_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::blob_trigger::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob_trigger::tests::it_requires_the_path_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::blob_trigger::tests::it_requires_the_path_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::blob_trigger::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::blob_trigger::tests::it_requires_the_path_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::blob_trigger::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_collection_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_collection_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_collection_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_collection_throughput_attribute_be_an_integer" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_collection_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_connection_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_collection_throughput_attribute_be_an_integer", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_connection_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_connection_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_create_collection_attribute_be_a_bool" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_connection_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_database_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_create_collection_attribute_be_a_bool", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_database_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_database_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_id_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_database_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_id_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_partition_key_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_sql_query_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_partition_key_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_requires_the_sql_query_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_checkpoint_frequency_attribute_be_an_integer" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_checkpoint_frequency_attribute_be_an_integer", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_collection_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_collection_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_collection_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_connection_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_collection_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_connection_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_connection_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_create_lease_collection_attribute_be_a_boolean" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_connection_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_database_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_create_lease_collection_attribute_be_a_boolean", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_database_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_database_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_feed_poll_delay_attribute_be_an_integer" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_feed_poll_delay_attribute_be_an_integer", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_lease_acquire_interval_attribute_be_an_integer" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_database_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_lease_collection_prefix_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_lease_collection_prefix_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_lease_collection_throughput_attribute_be_an_integer" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_lease_acquire_interval_attribute_be_an_integer", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_lease_connection_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_lease_collection_throughput_attribute_be_an_integer", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_lease_expiration_interval_attribute_be_an_integer" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_lease_connection_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_lease_renew_interval_attribute_be_an_integer" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_lease_renew_interval_attribute_be_an_integer", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_max_items_per_invocation_attribute_be_an_integer" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_lease_expiration_interval_attribute_be_an_integer", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_max_items_per_invocation_attribute_be_an_integer", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_start_from_beginning_attribute_be_a_boolean" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::cosmos_db_trigger::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_grid_trigger::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::cosmos_db_trigger::tests::it_requires_the_start_from_beginning_attribute_be_a_boolean", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_grid_trigger::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::event_grid_trigger::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_grid_trigger::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::event_grid_trigger::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_grid_trigger::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::event_grid_trigger::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_grid_trigger::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::event_grid_trigger::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::event_grid_trigger::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::event_hub::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub::tests::it_requires_the_connection_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::event_hub::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub::tests::it_requires_the_connection_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::event_hub::tests::it_requires_the_connection_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub::tests::it_requires_the_event_hub_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::event_hub::tests::it_requires_the_connection_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::event_hub::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::event_hub::tests::it_requires_the_event_hub_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::event_hub::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub_trigger::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::event_hub::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub_trigger::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::event_hub_trigger::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub_trigger::tests::it_requires_the_connection_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::event_hub_trigger::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub_trigger::tests::it_requires_the_connection_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::event_hub_trigger::tests::it_requires_the_connection_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub_trigger::tests::it_requires_the_consumer_group_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::event_hub_trigger::tests::it_requires_the_consumer_group_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub_trigger::tests::it_requires_the_event_hub_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::event_hub_trigger::tests::it_requires_the_connection_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub_trigger::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::event_hub_trigger::tests::it_requires_the_event_hub_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub_trigger::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::event_hub_trigger::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::event_hub_trigger::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::event_hub_trigger::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::generic::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::event_hub_trigger::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::generic::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::generic::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::generic::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::generic::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::generic::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::generic::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::generic::tests::it_requires_the_type_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::generic::tests::it_requires_the_type_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::generic::tests::it_requires_the_type_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::generic::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::generic::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::generic::tests::it_requires_the_type_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::http::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::generic::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::http::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::http::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::http::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http_trigger::tests::it_accepts_valid_auth_levels" }
+{ "type": "test", "name": "codegen::bindings::http::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http_trigger::tests::it_accepts_valid_methods" }
+{ "type": "test", "name": "codegen::bindings::http_trigger::tests::it_accepts_valid_methods", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http_trigger::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::http_trigger::tests::it_accepts_valid_auth_levels", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http_trigger::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::http_trigger::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http_trigger::tests::it_rejects_invalid_auth_levels" }
+{ "type": "test", "name": "codegen::bindings::http_trigger::tests::it_rejects_invalid_auth_levels", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http_trigger::tests::it_rejects_invalid_methods" }
+{ "type": "test", "name": "codegen::bindings::http_trigger::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http_trigger::tests::it_requires_the_auth_level_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::http_trigger::tests::it_requires_the_auth_level_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http_trigger::tests::it_requires_the_methods_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::http_trigger::tests::it_rejects_invalid_methods", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http_trigger::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::http_trigger::tests::it_requires_the_methods_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http_trigger::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::http_trigger::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http_trigger::tests::it_requires_the_route_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::http_trigger::tests::it_requires_the_route_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::http_trigger::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::http_trigger::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::queue::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::http_trigger::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue::tests::it_requires_the_connection_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::queue::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::queue::tests::it_requires_the_connection_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::queue::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue::tests::it_requires_the_queue_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::queue::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue::tests::it_requires_the_queue_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::queue::tests::it_requires_the_queue_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::queue::tests::it_requires_the_queue_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue_trigger::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::queue_trigger::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue_trigger::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::queue::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue_trigger::tests::it_requires_the_connection_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::queue_trigger::tests::it_requires_the_connection_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue_trigger::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::queue_trigger::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue_trigger::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::queue_trigger::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue_trigger::tests::it_requires_the_queue_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::queue_trigger::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue_trigger::tests::it_requires_the_queue_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::queue_trigger::tests::it_requires_the_queue_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::queue_trigger::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::queue_trigger::tests::it_requires_the_queue_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::send_grid::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::queue_trigger::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::send_grid::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::send_grid::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::send_grid::tests::it_requires_the_api_key_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::send_grid::tests::it_requires_the_api_key_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::send_grid::tests::it_requires_the_from_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::send_grid::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::send_grid::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::send_grid::tests::it_requires_the_from_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::send_grid::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::send_grid::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::send_grid::tests::it_requires_the_subject_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::send_grid::tests::it_requires_the_subject_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::send_grid::tests::it_requires_the_text_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::send_grid::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::send_grid::tests::it_requires_the_to_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::send_grid::tests::it_requires_the_text_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::send_grid::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::send_grid::tests::it_requires_the_to_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::send_grid::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::service_bus::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus::tests::it_requires_queue_name_or_topic_subscription" }
+{ "type": "test", "name": "codegen::bindings::service_bus::tests::it_requires_queue_name_or_topic_subscription", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus::tests::it_requires_the_connection_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::service_bus::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::service_bus::tests::it_requires_the_connection_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::service_bus::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus::tests::it_requires_the_queue_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::service_bus::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus::tests::it_requires_the_subscription_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::service_bus::tests::it_requires_the_queue_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus::tests::it_requires_the_topic_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::service_bus::tests::it_requires_the_topic_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::service_bus::tests::it_requires_the_subscription_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus_trigger::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::service_bus::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus_trigger::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::service_bus_trigger::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus_trigger::tests::it_requires_queue_name_or_topic_subscription" }
+{ "type": "test", "name": "codegen::bindings::service_bus_trigger::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus_trigger::tests::it_requires_the_connection_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::service_bus_trigger::tests::it_requires_queue_name_or_topic_subscription", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus_trigger::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::service_bus_trigger::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus_trigger::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::service_bus_trigger::tests::it_requires_the_connection_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus_trigger::tests::it_requires_the_queue_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::service_bus_trigger::tests::it_requires_the_queue_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus_trigger::tests::it_requires_the_subscription_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::service_bus_trigger::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus_trigger::tests::it_requires_the_topic_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::service_bus_trigger::tests::it_requires_the_topic_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::service_bus_trigger::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::service_bus_trigger::tests::it_requires_the_subscription_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::service_bus_trigger::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::signalr::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr::tests::it_requires_the_connection_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::signalr::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr::tests::it_requires_the_hub_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::signalr::tests::it_requires_the_connection_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::signalr::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::signalr::tests::it_requires_the_hub_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr::tests::it_requires_the_queue_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::signalr::tests::it_requires_the_queue_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::signalr::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr_connection_info::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::signalr::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr_connection_info::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::signalr_connection_info::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr_connection_info::tests::it_requires_the_connection_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::signalr_connection_info::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr_connection_info::tests::it_requires_the_hub_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::signalr_connection_info::tests::it_requires_the_connection_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr_connection_info::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::signalr_connection_info::tests::it_requires_the_hub_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr_connection_info::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::signalr_connection_info::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr_connection_info::tests::it_requires_the_queue_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::signalr_connection_info::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr_connection_info::tests::it_requires_the_user_id_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::signalr_connection_info::tests::it_requires_the_queue_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::signalr_connection_info::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::signalr_connection_info::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::table::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::signalr_connection_info::tests::it_requires_the_user_id_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::table::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::table::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::table::tests::it_requires_the_connection_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::table::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::table::tests::it_requires_the_filter_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::table::tests::it_requires_the_connection_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::table::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::table::tests::it_requires_the_filter_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::table::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::table::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::table::tests::it_requires_the_partition_key_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::table::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::table::tests::it_requires_the_row_key_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::table::tests::it_requires_the_row_key_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::table::tests::it_requires_the_table_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::table::tests::it_requires_the_partition_key_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::table::tests::it_requires_the_table_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::table::tests::it_requires_the_table_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::table::tests::it_requires_the_take_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::table::tests::it_requires_the_table_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::table::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::table::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::timer_trigger::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::table::tests::it_requires_the_take_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::timer_trigger::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::timer_trigger::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::timer_trigger::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::timer_trigger::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::timer_trigger::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::timer_trigger::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::timer_trigger::tests::it_requires_the_run_on_startup_attribute_be_a_bool" }
+{ "type": "test", "name": "codegen::bindings::timer_trigger::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::timer_trigger::tests::it_requires_the_schedule_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::timer_trigger::tests::it_requires_the_run_on_startup_attribute_be_a_bool", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::timer_trigger::tests::it_requires_the_schedule_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::timer_trigger::tests::it_requires_the_schedule_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::timer_trigger::tests::it_requires_the_use_monitor_attribute_be_a_bool" }
+{ "type": "test", "name": "codegen::bindings::timer_trigger::tests::it_requires_the_schedule_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::timer_trigger::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::timer_trigger::tests::it_requires_the_use_monitor_attribute_be_a_bool", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::twilio_sms::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::timer_trigger::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::twilio_sms::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::bindings::twilio_sms::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::twilio_sms::tests::it_requires_the_account_sid_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::twilio_sms::tests::it_requires_the_account_sid_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::twilio_sms::tests::it_requires_the_auth_token_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::twilio_sms::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::twilio_sms::tests::it_requires_the_body_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::twilio_sms::tests::it_requires_the_body_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::twilio_sms::tests::it_requires_the_from_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::twilio_sms::tests::it_requires_the_auth_token_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::twilio_sms::tests::it_requires_the_name_attribute_argument" }
+{ "type": "test", "name": "codegen::bindings::twilio_sms::tests::it_requires_the_from_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::twilio_sms::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::bindings::twilio_sms::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::bindings::twilio_sms::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::bindings::twilio_sms::tests::it_requires_the_name_attribute_argument", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::function::tests::it_converts_to_tokens" }
+{ "type": "test", "name": "codegen::bindings::twilio_sms::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::function::tests::it_parses_attribute_arguments" }
+{ "type": "test", "name": "codegen::function::tests::it_parses_attribute_arguments", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::function::tests::it_requires_an_identifier_for_name" }
+{ "type": "test", "name": "codegen::function::tests::it_converts_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::function::tests::it_requires_the_disabled_attribute_be_a_boolean" }
+{ "type": "test", "name": "codegen::function::tests::it_requires_an_identifier_for_name", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::function::tests::it_requires_the_name_attribute_be_a_string" }
+{ "type": "test", "name": "codegen::function::tests::it_requires_the_disabled_attribute_be_a_boolean", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::function::tests::it_serializes_to_json" }
+{ "type": "test", "name": "codegen::function::tests::it_serializes_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::value::tests::it_converts_boolean_to_tokens" }
+{ "type": "test", "name": "codegen::function::tests::it_requires_the_name_attribute_be_a_string", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::value::tests::it_converts_integer_to_tokens" }
+{ "type": "test", "name": "codegen::value::tests::it_converts_boolean_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::value::tests::it_converts_string_to_tokens" }
+{ "type": "test", "name": "codegen::value::tests::it_converts_integer_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::value::tests::it_serializes_boolean_to_json" }
+{ "type": "test", "name": "codegen::value::tests::it_serializes_boolean_to_json", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::value::tests::it_serializes_integer_to_json" }
+{ "type": "test", "name": "codegen::value::tests::it_converts_string_to_tokens", "event": "ok" }
+{ "type": "test", "event": "started", "name": "codegen::value::tests::it_serializes_string_to_json" }
+{ "type": "test", "name": "codegen::value::tests::it_serializes_string_to_json", "event": "ok" }
+{ "type": "test", "name": "codegen::value::tests::it_serializes_integer_to_json", "event": "ok" }
+{ "type": "suite", "event": "ok", "passed": 205, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 1 }
+{ "type": "test", "event": "started", "name": "src\lib.rs - func (line 47)" }
+{ "type": "test", "name": "src\lib.rs - func (line 47)", "event": "ignored" }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 1, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 95 }
+{ "type": "test", "event": "started", "name": "src\bindings\blob.rs - bindings::blob::Blob (line 26)" }
+{ "type": "test", "event": "started", "name": "src\bindings\blob.rs - bindings::blob::Blob (line 39)" }
+{ "type": "test", "name": "src\bindings\blob.rs - bindings::blob::Blob (line 39)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\blob.rs - bindings::blob::Blob (line 53)" }
+{ "type": "test", "name": "src\bindings\blob.rs - bindings::blob::Blob (line 26)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\blob_trigger.rs - bindings::blob_trigger::BlobTrigger (line 29)" }
+{ "type": "test", "name": "src\bindings\blob.rs - bindings::blob::Blob (line 53)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\cosmos_db_document.rs - bindings::cosmos_db_document::CosmosDbDocument (line 31)" }
+{ "type": "test", "name": "src\bindings\blob_trigger.rs - bindings::blob_trigger::BlobTrigger (line 29)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\cosmos_db_document.rs - bindings::cosmos_db_document::CosmosDbDocument (line 52)" }
+{ "type": "test", "name": "src\bindings\cosmos_db_document.rs - bindings::cosmos_db_document::CosmosDbDocument (line 52)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\cosmos_db_document.rs - bindings::cosmos_db_document::CosmosDbDocument (line 74)" }
+{ "type": "test", "name": "src\bindings\cosmos_db_document.rs - bindings::cosmos_db_document::CosmosDbDocument (line 31)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\cosmos_db_trigger.rs - bindings::cosmos_db_trigger::CosmosDbTrigger (line 32)" }
+{ "type": "test", "name": "src\bindings\cosmos_db_trigger.rs - bindings::cosmos_db_trigger::CosmosDbTrigger (line 32)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\event_grid_event.rs - bindings::event_grid_event::EventGridEvent (line 20)" }
+{ "type": "test", "name": "src\bindings\cosmos_db_document.rs - bindings::cosmos_db_document::CosmosDbDocument (line 74)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\event_hub_message.rs - bindings::event_hub_message::EventHubMessage (line 27)" }
+{ "type": "test", "name": "src\bindings\event_grid_event.rs - bindings::event_grid_event::EventGridEvent (line 20)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\event_hub_message.rs - bindings::event_hub_message::EventHubMessage (line 40)" }
+{ "type": "test", "name": "src\bindings\event_hub_message.rs - bindings::event_hub_message::EventHubMessage (line 27)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\event_hub_message.rs - bindings::event_hub_message::EventHubMessage (line 54)" }
+{ "type": "test", "name": "src\bindings\event_hub_message.rs - bindings::event_hub_message::EventHubMessage (line 40)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\event_hub_trigger.rs - bindings::event_hub_trigger::EventHubTrigger (line 31)" }
+{ "type": "test", "name": "src\bindings\event_hub_message.rs - bindings::event_hub_message::EventHubMessage (line 54)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\generic_input.rs - bindings::generic_input::GenericInput (line 17)" }
+{ "type": "test", "name": "src\bindings\event_hub_trigger.rs - bindings::event_hub_trigger::EventHubTrigger (line 31)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\generic_output.rs - bindings::generic_output::GenericOutput (line 20)" }
+{ "type": "test", "name": "src\bindings\generic_input.rs - bindings::generic_input::GenericInput (line 17)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\generic_trigger.rs - bindings::generic_trigger::GenericTrigger (line 18)" }
+{ "type": "test", "name": "src\bindings\generic_output.rs - bindings::generic_output::GenericOutput (line 20)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\http_request.rs - bindings::http_request::HttpRequest (line 22)" }
+{ "type": "test", "name": "src\bindings\generic_trigger.rs - bindings::generic_trigger::GenericTrigger (line 18)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\http_request.rs - bindings::http_request::HttpRequest::query_params (line 99)" }
+{ "type": "test", "name": "src\bindings\http_request.rs - bindings::http_request::HttpRequest::query_params (line 99)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\http_request.rs - bindings::http_request::HttpRequest::route_params (line 73)" }
+{ "type": "test", "name": "src\bindings\http_request.rs - bindings::http_request::HttpRequest (line 22)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse (line 21)" }
+{ "type": "test", "name": "src\bindings\http_request.rs - bindings::http_request::HttpRequest::route_params (line 73)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse (line 33)" }
+{ "type": "test", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse (line 21)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse (line 46)" }
+{ "type": "test", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse (line 46)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse (line 58)" }
+{ "type": "test", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse (line 33)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse::body (line 120)" }
+{ "type": "test", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse (line 58)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse::build (line 90)" }
+{ "type": "test", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse::body (line 120)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse::headers (line 138)" }
+{ "type": "test", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse::build (line 90)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse::status (line 105)" }
+{ "type": "test", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse::headers (line 138)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\queue_message.rs - bindings::queue_message::QueueMessage (line 27)" }
+{ "type": "test", "name": "src\bindings\http_response.rs - bindings::http_response::HttpResponse::status (line 105)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\queue_message.rs - bindings::queue_message::QueueMessage (line 40)" }
+{ "type": "test", "name": "src\bindings\queue_message.rs - bindings::queue_message::QueueMessage (line 27)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\queue_message.rs - bindings::queue_message::QueueMessage (line 54)" }
+{ "type": "test", "name": "src\bindings\queue_message.rs - bindings::queue_message::QueueMessage (line 40)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\queue_trigger.rs - bindings::queue_trigger::QueueTrigger (line 30)" }
+{ "type": "test", "name": "src\bindings\queue_message.rs - bindings::queue_message::QueueMessage (line 54)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\send_grid_message.rs - bindings::send_grid_message::SendGridMessage (line 26)" }
+{ "type": "test", "name": "src\bindings\queue_trigger.rs - bindings::queue_trigger::QueueTrigger (line 30)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\send_grid_message.rs - bindings::send_grid_message::SendGridMessage::build (line 107)" }
+{ "type": "test", "name": "src\bindings\send_grid_message.rs - bindings::send_grid_message::SendGridMessage (line 26)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\service_bus_message.rs - bindings::service_bus_message::ServiceBusMessage (line 29)" }
+{ "type": "test", "name": "src\bindings\send_grid_message.rs - bindings::send_grid_message::SendGridMessage::build (line 107)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\service_bus_message.rs - bindings::service_bus_message::ServiceBusMessage (line 48)" }
+{ "type": "test", "name": "src\bindings\service_bus_message.rs - bindings::service_bus_message::ServiceBusMessage (line 29)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\service_bus_trigger.rs - bindings::service_bus_trigger::ServiceBusTrigger (line 39)" }
+{ "type": "test", "name": "src\bindings\service_bus_message.rs - bindings::service_bus_message::ServiceBusMessage (line 48)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\service_bus_trigger.rs - bindings::service_bus_trigger::ServiceBusTrigger (line 54)" }
+{ "type": "test", "name": "src\bindings\service_bus_trigger.rs - bindings::service_bus_trigger::ServiceBusTrigger (line 39)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\signalr_connection_info.rs - bindings::signalr_connection_info::SignalRConnectionInfo (line 24)" }
+{ "type": "test", "name": "src\bindings\service_bus_trigger.rs - bindings::service_bus_trigger::ServiceBusTrigger (line 54)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\signalr_group_action.rs - bindings::signalr_group_action::SignalRGroupAction (line 23)" }
+{ "type": "test", "name": "src\bindings\signalr_connection_info.rs - bindings::signalr_connection_info::SignalRConnectionInfo (line 24)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\signalr_message.rs - bindings::signalr_message::SignalRMessage (line 22)" }
+{ "type": "test", "name": "src\bindings\signalr_group_action.rs - bindings::signalr_group_action::SignalRGroupAction (line 23)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\table.rs - bindings::table::Table (line 26)" }
+{ "type": "test", "name": "src\bindings\signalr_message.rs - bindings::signalr_message::SignalRMessage (line 22)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\table.rs - bindings::table::Table (line 40)" }
+{ "type": "test", "name": "src\bindings\table.rs - bindings::table::Table (line 26)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\timer_info.rs - bindings::timer_info::TimerInfo (line 24)" }
+{ "type": "test", "name": "src\bindings\table.rs - bindings::table::Table (line 40)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\bindings\twilio_sms_message.rs - bindings::twilio_sms_message::TwilioSmsMessage (line 24)" }
+{ "type": "test", "name": "src\bindings\timer_info.rs - bindings::timer_info::TimerInfo (line 24)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\http\body.rs - http::body::Body::as_bytes (line 73)" }
+{ "type": "test", "name": "src\bindings\twilio_sms_message.rs - bindings::twilio_sms_message::TwilioSmsMessage (line 24)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\http\body.rs - http::body::Body::as_json (line 93)" }
+{ "type": "test", "name": "src\http\body.rs - http::body::Body::as_bytes (line 73)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\http\body.rs - http::body::Body::as_str (line 53)" }
+{ "type": "test", "name": "src\http\body.rs - http::body::Body::as_json (line 93)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\http\body.rs - http::body::Body::default_content_type (line 32)" }
+{ "type": "test", "name": "src\http\body.rs - http::body::Body::as_str (line 53)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\http\response_builder.rs - http::response_builder::ResponseBuilder::body (line 65)" }
+{ "type": "test", "name": "src\http\body.rs - http::body::Body::default_content_type (line 32)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\http\response_builder.rs - http::response_builder::ResponseBuilder::header (line 37)" }
+{ "type": "test", "name": "src\http\response_builder.rs - http::response_builder::ResponseBuilder::body (line 65)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\http\response_builder.rs - http::response_builder::ResponseBuilder::status (line 18)" }
+{ "type": "test", "name": "src\http\response_builder.rs - http::response_builder::ResponseBuilder::header (line 37)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\http\status.rs - http::status::Status::from_code (line 21)" }
+{ "type": "test", "name": "src\http\response_builder.rs - http::response_builder::ResponseBuilder::status (line 18)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\lib.rs -  (line 64)" }
+{ "type": "test", "name": "src\lib.rs -  (line 64)", "event": "ignored" }
+{ "type": "test", "event": "started", "name": "src\lib.rs - worker_main (line 136)" }
+{ "type": "test", "name": "src\lib.rs - worker_main (line 136)", "event": "ignored" }
+{ "type": "test", "event": "started", "name": "src\lib.rs - worker_main_with_extensions (line 151)" }
+{ "type": "test", "name": "src\lib.rs - worker_main_with_extensions (line 151)", "event": "ignored" }
+{ "type": "test", "event": "started", "name": "src\send_grid\email_address.rs - send_grid::email_address::EmailAddress::new (line 18)" }
+{ "type": "test", "name": "src\http\status.rs - http::status::Status::from_code (line 21)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\email_address.rs - send_grid::email_address::EmailAddress::new_with_name (line 38)" }
+{ "type": "test", "name": "src\send_grid\email_address.rs - send_grid::email_address::EmailAddress::new (line 18)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::attachment (line 580)" }
+{ "type": "test", "name": "src\send_grid\email_address.rs - send_grid::email_address::EmailAddress::new_with_name (line 38)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::attachments (line 652)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::attachment (line 580)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::batch_id (line 895)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::attachments (line 652)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::bcc (line 160)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::batch_id (line 895)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::bcc_with_name (line 180)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::bcc (line 160)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::bccs (line 201)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::bcc_with_name (line 180)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::categories (line 762)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::bccs (line 201)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::category (line 743)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::categories (line 762)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::cc (line 91)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::category (line 743)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::cc_with_name (line 111)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::cc (line 91)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::ccs (line 132)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::cc_with_name (line 111)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::content (line 502)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::ccs (line 132)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::content_with_type (line 526)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::content (line 502)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::contents (line 551)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::content_with_type (line 526)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::custom_arg (line 372)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::contents (line 551)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::custom_args (line 395)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::custom_arg (line 372)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::from (line 441)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::custom_args (line 395)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::from_with_name (line 461)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::from (line 441)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::global_custom_arg (line 828)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::from_with_name (line 461)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::global_custom_args (line 849)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::global_custom_arg (line 828)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::global_header (line 783)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::global_custom_args (line 849)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::global_headers (line 803)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::global_header (line 783)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::global_send_at (line 878)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::global_headers (line 803)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::global_subject (line 483)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::global_send_at (line 878)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::header (line 249)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::global_subject (line 483)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::headers (line 272)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::header (line 249)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::inline_attachment (line 611)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::headers (line 272)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::section (line 698)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::inline_attachment (line 611)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::sections (line 718)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::section (line 698)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::send_at (line 424)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::sections (line 718)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::subject (line 229)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::send_at (line 424)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::substitution (line 298)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::subject (line 229)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::substitutions (line 321)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::substitution (line 298)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::template_data (line 349)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::substitutions (line 321)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::template_id (line 678)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::template_data (line 349)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::to (line 21)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::template_id (line 678)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::to_with_name (line 41)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::to (line 21)", "event": "ok" }
+{ "type": "test", "event": "started", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::tos (line 63)" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::to_with_name (line 41)", "event": "ok" }
+{ "type": "test", "name": "src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder::tos (line 63)", "event": "ok" }
+{ "type": "suite", "event": "ok", "passed": 92, "failed": 0, "allowed_fail": 0, "ignored": 3, "measured": 0, "filtered_out": 0 }
+{ "type": "suite", "event": "started", "test_count": 1 }
+{ "type": "test", "event": "started", "name": "src\lib.rs - generated_mod (line 89)" }
+{ "type": "test", "name": "src\lib.rs - generated_mod (line 89)", "event": "ignored" }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "allowed_fail": 0, "ignored": 1, "measured": 0, "filtered_out": 0 }
