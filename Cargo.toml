@@ -1,7 +1,7 @@
 [package]
 name = "cargo2junit"
 description = "Converts cargo's json output (from stdin) to JUnit XML (to stdout)"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["John Erickson <john.t.erickson@gmail.com>"]
 edition = "2018"
 repository = "https://github.com/johnterickson/cargo2junit"
@@ -15,6 +15,6 @@ license = "MIT"
 maintenance = { status = "experimental" }
 
 [dependencies]
-junit-report = { git = "https://github.com/johnterickson/junit-report-rs" }
+junit-report = "0.1.2"
 serde_json = "1.0.38"
 serde = { version = "1.0", features = ["derive"] }
