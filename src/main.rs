@@ -77,12 +77,21 @@ fn parse<T: BufRead>(
         }
 
         // println!("'{}'", &line);
-        let e: Event = serde_json::from_str(&line).map_err(|e| {
-            Error::new(
-                ErrorKind::Other,
-                format!("Error parsing '{}': {}", &line, e),
-            )
-        })?;
+        let e: Event = match serde_json::from_str(&line) {
+            Ok(event) => Ok(event),
+            Err(orig_err) => {
+                // cargo test doesn't escape backslashes to do it ourselves and retry
+                let line = line.replace("\\","\\\\");
+                match serde_json::from_str(&line) {
+                    Ok(event) => Ok(event),
+                    Err(_) => Err(Error::new(
+                                    ErrorKind::Other,
+                                    format!("Error parsing '{}': {}", &line, orig_err),
+                                ))
+                }
+            }
+        }?;
+
         // println!("{:?}", e);
         match e {
             Event::Suite { event } => match event {
@@ -191,6 +200,12 @@ mod tests {
     #[test]
     fn cargo_project_failure() {
         let _report = parse_bytes(include_bytes!("test_inputs/cargo_failure.json"))
+            .expect("Could not parse test input");
+    }
+
+    #[test]
+    fn az_func_regression() {
+        let _report = parse_bytes(include_bytes!("test_inputs/azfunc.json"))
             .expect("Could not parse test input");
     }
 }
