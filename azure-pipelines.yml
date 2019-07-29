@@ -2,14 +2,15 @@
 name: cargo
 variables:
   CHANNEL: stable
-  KEY_SALT: 0
-  RUSTCACHE_ROOT: $(Pipeline.Workspace)/rustcache
-  CARGO_HOME: $(RUSTCACHE_ROOT)/.cargo
-  RUSTUP_HOME: $(RUSTCACHE_ROOT)/.rustup
-  SCCACHE_DIR: $(RUSTCACHE_ROOT)/sccache
+  KEY_SALT: 1
+  RUSTCACHE_ROOT: $(Build.SourcesDirectory)/target
+  CARGO_HOME: $(RUSTCACHE_ROOT)/rustcache/.cargo
+  RUSTUP_HOME: $(RUSTCACHE_ROOT)/rustcache/.rustup
+  SCCACHE_DIR: $(RUSTCACHE_ROOT)/rustcache/sccache
   SCCACHE_CACHE_SIZE: 1G
   CACHE_KEY_BASE: KEY_SALT=$(KEY_SALT)-$(VM_IMAGE)-$(CHANNEL)-$(TARGET) 
   TOOLS_TARGET: $(TARGET)
+  system.debug: true
 pool:
   vmImage: $(VM_IMAGE)
 strategy:
@@ -63,6 +64,12 @@ steps:
       if [ -f "executable.txt" ]; then cat executable.txt | xargs chmod +x; fi
     condition: and(succeeded(), ne(variables['CACHE_RESTORED'], 'false'))
     displayName: 'set executable bit'
+  - bash: |
+      echo REMOVE ME ONCE THIS IS FIXED https://github.com/microsoft/azure-pipelines-tasks/issues/10841
+      if [ -d "target/debug/cargo2junit.dSYM" ]; then rm -Rf target/debug/cargo2junit.dSYM; fi
+      if [ -d "target/release/cargo2junit.dSYM" ]; then rm -Rf target/release/cargo2junit.dSYM; fi
+    condition: and(succeeded(), ne(variables['CACHE_RESTORED'], 'false'))
+    displayName: 'delete link bit'
   - bash: |
       curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain none
       which rustup && rustup -V
@@ -179,9 +186,13 @@ steps:
     displayName: set up .artifactignore to keep .git folders
   - bash: |
       echo REMOVE ME ONCE THIS IS FIXED https://github.com/microsoft/azure-pipelines-tasks/issues/10841
+      ls -l target/debug/cargo2junit.dSYM
+      ls -l target/release/cargo2junit.dSYM
+      rm -Rf target/debug/cargo2junit.dSYM
+      rm -Rf target/release/cargo2junit.dSYM
       cd "$RUSTCACHE_ROOT"
       rm executable.txt
       find . -perm +111 >> executable.txt
       find . -executable >> executable.txt
-      cat executable.txt
+      ls executable.txt
     displayName: Save list of files with executable bit set
