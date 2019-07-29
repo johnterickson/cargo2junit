@@ -9,22 +9,23 @@ variables:
   SCCACHE_DIR: $(RUSTCACHE_ROOT)/sccache
   SCCACHE_CACHE_SIZE: 1G
   CACHE_KEY_BASE: KEY_SALT=$(KEY_SALT)-$(VM_IMAGE)-$(CHANNEL)-$(TARGET) 
+  TOOLS_TARGET: $(TARGET)
 pool:
   vmImage: $(VM_IMAGE)
 strategy:
   matrix:
-
-    # # sccache fails to compile
-    # vs2015-gnu:
-    #   TARGET: x86_64-pc-windows-gnu
-    #   VM_IMAGE: vs2015-win2012r2
-    # vs2017-gnu:
-    #   TARGET: x86_64-pc-windows-gnu
-    #   VM_IMAGE: vs2017-win2016
-    # vs2019-gnu:
-    #   TARGET: x86_64-pc-windows-gnu
-    #   VM_IMAGE: windows-2019
-
+    vs2015-gnu:
+      TARGET: x86_64-pc-windows-gnu
+      TOOLS_TARGET: x86_64-pc-windows-msvc
+      VM_IMAGE: vs2015-win2012r2
+    vs2017-gnu:
+      TARGET: x86_64-pc-windows-gnu
+      TOOLS_TARGET: x86_64-pc-windows-msvc
+      VM_IMAGE: vs2017-win2016
+    vs2019-gnu:
+      TARGET: x86_64-pc-windows-gnu
+      TOOLS_TARGET: x86_64-pc-windows-msvc
+      VM_IMAGE: windows-2019
     vs2015-msvc:
       TARGET: x86_64-pc-windows-msvc
       VM_IMAGE: vs2015-win2012r2
@@ -66,15 +67,14 @@ steps:
       curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain none
       which rustup && rustup -V
     displayName: Enusure rustup is installed
-  - bash: |
-      rustup toolchain install $(CHANNEL)-$(TARGET)
-      rustup default $(CHANNEL)-$(TARGET)
-      rustup component list
-      rustup update $(CHANNEL)-$(TARGET)
-      which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
-    displayName: Select toolchain
 
   # install tools
+  - bash: |
+      rustup toolchain install stable-$(TOOLS_TARGET)
+      rustup default stable-$(TOOLS_TARGET)
+      rustup update stable-$(TOOLS_TARGET)
+      which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
+    displayName: Select toolchain for tools
   - bash: |
       cargo install sccache
       echo '##vso[task.setvariable variable=RUSTC_WRAPPER]sccache'
@@ -88,11 +88,16 @@ steps:
       cargo install cargo-cache
       cargo cache
     displayName: Install cargo-cache
-    condition: and(succeeded(), ne(variables['TARGET'], 'x86_64-pc-windows-gnu'))
   - bash: |
       cargo install cargo-update
       cargo install-update -a
     displayName: Ensure cargo2junit and others are up-to-date
+  - bash: |
+      rustup toolchain install $(CHANNEL)-$(TARGET)
+      rustup default $(CHANNEL)-$(TARGET)
+      rustup update $(CHANNEL)-$(TARGET)
+      which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
+    displayName: Select toolchain for build
 
   # build and test
   - bash: |
@@ -160,7 +165,6 @@ steps:
       cargo cache --autoclean
       cargo cache
     displayName: run cargo cache --autoclean
-    condition: and(succeeded(), ne(variables['TARGET'], 'x86_64-pc-windows-gnu'))
   - bash: |
       set -x
       cd "$RUSTCACHE_ROOT"
