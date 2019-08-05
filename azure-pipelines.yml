@@ -1,4 +1,12 @@
 # Recommened editor for this file: https://github.com/Microsoft/azure-pipelines-vscode
+
+resources:
+  repositories:
+  - repository: caching-templates
+    type: github
+    name: willsmythe/caching-templates
+    endpoint: github
+
 name: cargo
 variables:
   CHANNEL: stable
@@ -11,6 +19,9 @@ variables:
   CACHE_KEY_BASE: KEY_SALT=$(KEY_SALT)-$(VM_IMAGE)-$(CHANNEL)-$(TARGET) 
   TOOLS_TARGET: $(TARGET)
   system.debug: true
+  CACHE_PACK: true
+  CACHE_PATH: $(RUSTCACHE_ROOT)
+  CACHE_KEY: $(CACHE_KEY_BASE)
 pool:
   vmImage: $(VM_IMAGE)
 strategy:
@@ -51,25 +62,44 @@ steps:
       rm -Rf "$RUSTCACHE_ROOT"
       echo "##vso[task.prependpath]$(CARGO_HOME)/bin"
     displayName: clean state on private agents
+
+  ###############################################################
+  # pre-restore (run just before the cache step
+  - template: pack/pre-restore-steps.yml@caching-templates
+  ###############################################################
+
   - task: CacheBeta@0
     inputs:
+      key: $(CACHE_KEY)
+      path: $(CACHE_PATH)
       cacheHitVar: CACHE_RESTORED
-      path: $(RUSTCACHE_ROOT)
-      key: '"$(CACHE_KEY_BASE)" | $(Build.SourceVersion)'
-      restoreKeys: |
-        "$(CACHE_KEY_BASE)"
-  - bash: |
-      echo REMOVE ME ONCE THIS IS FIXED https://github.com/microsoft/azure-pipelines-tasks/issues/10841
-      cd "$RUSTCACHE_ROOT"
-      if [ -f "executable.txt" ]; then cat executable.txt | xargs chmod +x; fi
-    condition: and(succeeded(), ne(variables['CACHE_RESTORED'], 'false'))
-    displayName: 'set executable bit'
-  - bash: |
-      echo REMOVE ME ONCE THIS IS FIXED https://github.com/microsoft/azure-pipelines-tasks/issues/10841
-      if [ -d "target/debug/cargo2junit.dSYM" ]; then rm -Rf target/debug/cargo2junit.dSYM; fi
-      if [ -d "target/release/cargo2junit.dSYM" ]; then rm -Rf target/release/cargo2junit.dSYM; fi
-    condition: and(succeeded(), ne(variables['CACHE_RESTORED'], 'false'))
-    displayName: 'delete link bit'
+
+  ###############################################################
+  # post restore (run just after the cache step)
+  - template: pack/post-restore-steps.yml@caching-templates
+  ###############################################################
+
+  # - task: CacheBeta@0
+  #   inputs:
+  #     cacheHitVar: CACHE_RESTORED
+  #     path: $(RUSTCACHE_ROOT)
+  #     key: '"$(CACHE_KEY_BASE)" | $(Build.SourceVersion)'
+  #     restoreKeys: |
+  #       "$(CACHE_KEY_BASE)"
+
+  # - bash: |
+  #     echo REMOVE ME ONCE THIS IS FIXED https://github.com/microsoft/azure-pipelines-tasks/issues/10841
+  #     cd "$RUSTCACHE_ROOT"
+  #     if [ -f "executable.txt" ]; then cat executable.txt | xargs chmod +x; fi
+  #   condition: and(succeeded(), ne(variables['CACHE_RESTORED'], 'false'))
+  #   displayName: 'set executable bit'
+  # - bash: |
+  #     echo REMOVE ME ONCE THIS IS FIXED https://github.com/microsoft/azure-pipelines-tasks/issues/10841
+  #     if [ -d "target/debug/cargo2junit.dSYM" ]; then rm -Rf target/debug/cargo2junit.dSYM; fi
+  #     if [ -d "target/release/cargo2junit.dSYM" ]; then rm -Rf target/release/cargo2junit.dSYM; fi
+  #   condition: and(succeeded(), ne(variables['CACHE_RESTORED'], 'false'))
+  #   displayName: 'delete link bit'
+
   - bash: |
       curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain none
       which rustup && rustup -V
@@ -172,27 +202,32 @@ steps:
       cargo cache --autoclean
       cargo cache
     displayName: run cargo cache --autoclean
-  - bash: |
-      set -x
-      cd "$RUSTCACHE_ROOT"
-      rm .artifactignore
-      echo \# Include .git folders>.artifactignore
-      for i in $(find . -name .git)
-      do
-        i=${i:2}
-        echo \!$i>>.artifactignore
-      done
-      cat .artifactignore
-    displayName: set up .artifactignore to keep .git folders
-  - bash: |
-      echo REMOVE ME ONCE THIS IS FIXED https://github.com/microsoft/azure-pipelines-tasks/issues/10841
-      ls -l target/debug/cargo2junit.dSYM
-      ls -l target/release/cargo2junit.dSYM
-      rm -Rf target/debug/cargo2junit.dSYM
-      rm -Rf target/release/cargo2junit.dSYM
-      cd "$RUSTCACHE_ROOT"
-      rm executable.txt
-      find . -perm +111 >> executable.txt
-      find . -executable >> executable.txt
-      ls executable.txt
-    displayName: Save list of files with executable bit set
+  # - bash: |
+  #     set -x
+  #     cd "$RUSTCACHE_ROOT"
+  #     rm .artifactignore
+  #     echo \# Include .git folders>.artifactignore
+  #     for i in $(find . -name .git)
+  #     do
+  #       i=${i:2}
+  #       echo \!$i>>.artifactignore
+  #     done
+  #     cat .artifactignore
+  #   displayName: set up .artifactignore to keep .git folders
+  # - bash: |
+  #     echo REMOVE ME ONCE THIS IS FIXED https://github.com/microsoft/azure-pipelines-tasks/issues/10841
+  #     ls -l target/debug/cargo2junit.dSYM
+  #     ls -l target/release/cargo2junit.dSYM
+  #     rm -Rf target/debug/cargo2junit.dSYM
+  #     rm -Rf target/release/cargo2junit.dSYM
+  #     cd "$RUSTCACHE_ROOT"
+  #     rm executable.txt
+  #     find . -perm +111 >> executable.txt
+  #     find . -executable >> executable.txt
+  #     ls executable.txt
+  #   displayName: Save list of files with executable bit set
+
+  ###############################################################
+  # pre-save (run at the end of the job)
+  - template: pack/pre-save-steps.yml@caching-templates
+  ###############################################################
