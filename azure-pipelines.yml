@@ -16,7 +16,7 @@ variables:
   RUSTUP_HOME: $(RUSTCACHE_ROOT)/rustcache/.rustup
   SCCACHE_DIR: $(RUSTCACHE_ROOT)/rustcache/sccache
   SCCACHE_CACHE_SIZE: 1G
-  CACHE_KEY_BASE: KEY_SALT=$(KEY_SALT)-$(VM_IMAGE)-$(CHANNEL)-$(TARGET) 
+  CACHE_KEY_BASE: '"KEY_SALT=$(KEY_SALT)-$(VM_IMAGE)-$(CHANNEL)-$(TARGET)"'
   TOOLS_TARGET: $(TARGET)
   system.debug: true
   CACHE_PACK: true
