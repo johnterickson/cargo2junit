@@ -5,7 +5,7 @@ resources:
   - repository: caching-templates
     type: github
     name: willsmythe/caching-templates
-    endpoint: github
+    endpoint: johnterickson
 
 name: cargo
 variables:
