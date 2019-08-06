@@ -26,10 +26,10 @@ pool:
   vmImage: $(VM_IMAGE)
 strategy:
   matrix:
-    vs2015-gnu:
-      TARGET: x86_64-pc-windows-gnu
-      TOOLS_TARGET: x86_64-pc-windows-msvc
-      VM_IMAGE: vs2015-win2012r2
+    # vs2015-gnu:
+    #   TARGET: x86_64-pc-windows-gnu
+    #   TOOLS_TARGET: x86_64-pc-windows-msvc
+    #   VM_IMAGE: vs2015-win2012r2
     vs2017-gnu:
       TARGET: x86_64-pc-windows-gnu
       TOOLS_TARGET: x86_64-pc-windows-msvc
@@ -38,9 +38,9 @@ strategy:
       TARGET: x86_64-pc-windows-gnu
       TOOLS_TARGET: x86_64-pc-windows-msvc
       VM_IMAGE: windows-2019
-    vs2015-msvc:
-      TARGET: x86_64-pc-windows-msvc
-      VM_IMAGE: vs2015-win2012r2
+    # vs2015-msvc:
+    #   TARGET: x86_64-pc-windows-msvc
+    #   VM_IMAGE: vs2015-win2012r2
     vs2017-msvc:
       TARGET: x86_64-pc-windows-msvc
       VM_IMAGE: vs2017-win2016
