@@ -15,6 +15,6 @@ license = "MIT"
 maintenance = { status = "experimental" }
 
 [dependencies]
-junit-report = "0.1.2"
+junit-report = "0.2.0"
 serde_json = "1.0.38"
 serde = { version = "1.0", features = ["derive"] }

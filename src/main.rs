@@ -56,6 +56,7 @@ enum Event {
         #[serde(flatten)]
         event: TestEvent,
         duration: Option<f64>,
+        exec_time: Option<String>,
     },
 }
 
@@ -111,12 +112,22 @@ fn parse<T: BufRead>(
                     current_suite = None;
                 }
             },
-            Event::Test { event, duration } => {
+            Event::Test { event, duration, exec_time } => {
                 let current_suite = current_suite
                     .as_mut()
                     .expect("Test event found outside of suite!");
-                let duration_ms = duration.unwrap_or(0.0);
-                let duration = Duration::nanoseconds((duration_ms * 1_000_000.0) as i64);
+                let duration_ns = match (duration,exec_time) {
+                    (_,Some(s)) => {
+                        assert_eq!(s.chars().last(), Some('s'));
+                        let seconds_chars = &(s[0..(s.len()-1)]);
+                        let seconds = seconds_chars.parse::<f64>().unwrap();
+                        (seconds * 1_000_000_000.0) as i64
+                    },
+                    (Some(ms),None) => (ms * 1_000_000.0) as i64,
+                    (None,None) => 0,
+                };
+
+                let duration = Duration::nanoseconds(duration_ns);
 
                 match event {
                     TestEvent::Started { name } => {
@@ -177,6 +188,26 @@ mod tests {
     #[test]
     fn error_on_garbage() {
         assert!(parse_string("{garbage}").is_err());
+    }
+
+    #[test]
+    fn success_self() {
+        let report = parse_bytes(include_bytes!("test_inputs/self.json"))
+            .expect("Could not parse test input");
+        let suite = &report.testsuites()[0];
+        let test_cases = suite.testcases();
+        assert_eq!(test_cases[0].name(), "tests::error_on_garbage");
+        assert_eq!(test_cases[0].time(), &Duration::nanoseconds(213_100));
+    }
+
+    #[test]
+    fn success_self_exec_time() {
+        let report = parse_bytes(include_bytes!("test_inputs/self_exec_time.json"))
+            .expect("Could not parse test input");
+        let suite = &report.testsuites()[0];
+        let test_cases = suite.testcases();
+        assert_eq!(test_cases[4].name(), "tests::az_func_regression");
+        assert_eq!(test_cases[4].time(), &Duration::milliseconds(72));
     }
 
     #[test]
