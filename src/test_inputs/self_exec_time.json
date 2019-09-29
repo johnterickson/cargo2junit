@@ -1,0 +1,14 @@
+{ "type": "suite", "event": "started", "test_count": 6 }
+{ "type": "test", "event": "started", "name": "tests::az_func_regression" }
+{ "type": "test", "event": "started", "name": "tests::cargo_project_failure" }
+{ "type": "test", "event": "started", "name": "tests::error_on_garbage" }
+{ "type": "test", "event": "started", "name": "tests::failded_single_suite" }
+{ "type": "test", "event": "started", "name": "tests::multi_suite_success" }
+{ "type": "test", "event": "started", "name": "tests::success_single_suite" }
+{ "type": "test", "name": "tests::error_on_garbage", "event": "ok", "exec_time": "0.000s" }
+{ "type": "test", "name": "tests::failded_single_suite", "event": "ok", "exec_time": "0.001s" }
+{ "type": "test", "name": "tests::success_single_suite", "event": "ok", "exec_time": "0.001s" }
+{ "type": "test", "name": "tests::multi_suite_success", "event": "ok", "exec_time": "0.003s" }
+{ "type": "test", "name": "tests::az_func_regression", "event": "ok", "exec_time": "0.072s" }
+{ "type": "test", "name": "tests::cargo_project_failure", "event": "ok", "exec_time": "0.120s" }
+{ "type": "suite", "event": "ok", "passed": 6, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
