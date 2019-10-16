@@ -10,7 +10,6 @@ variables:
   SCCACHE_CACHE_SIZE: 1G
   CACHE_KEY_BASE: '"CACHE_SALT=$(CACHE_SALT)-$(Agent.JobName)-$(Agent.OS)-$(CHANNEL)-$(TARGET)"'
   TOOLS_TARGET: $(TARGET)
-  system.debug: true
   POOL_NAME: ''
   VM_IMAGE: ''
 
