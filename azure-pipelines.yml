@@ -356,6 +356,8 @@ jobs:
           sccache --show-stats
           sccache --stop-server
         displayName: shutdown sccache
+        condition: eq(variables['ENABLE_SCCACHE'], '1')
+        continueOnError: true
       - bash: |
           cargo cache
           cargo cache --autoclean
