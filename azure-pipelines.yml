@@ -2,16 +2,17 @@
 
 variables:
   CHANNEL: stable
-  CACHE_SALT: 3
+  CACHE_SALT: 0
   RUSTCACHE_ROOT: $(Build.SourcesDirectory)/target
   CARGO_HOME: $(RUSTCACHE_ROOT)/rustcache/.cargo
   RUSTUP_HOME: $(RUSTCACHE_ROOT)/rustcache/.rustup
   SCCACHE_DIR: $(RUSTCACHE_ROOT)/rustcache/sccache
   SCCACHE_CACHE_SIZE: 1G
-  CACHE_KEY_BASE: '"CACHE_SALT=$(CACHE_SALT)-$(Agent.JobName)-$(Agent.OS)-$(CHANNEL)-$(TARGET)"'
+  CACHE_KEY_BASE: '"CACHE_SALT=$(CACHE_SALT)-$(Agent.JobName)-$(Agent.OS)-$(CHANNEL)-$(TARGET)-ENABLE_SCCACHE=$(ENABLE_SCCACHE)"'
   TOOLS_TARGET: $(TARGET)
   POOL_NAME: ''
   VM_IMAGE: ''
+  ENABLE_SCCACHE: 0
 
 jobs:
   - job: uncached
@@ -54,26 +55,7 @@ jobs:
           VM_IMAGE: ubuntu-16.04
     steps:
 
-      # # set up environment and restore cache
-      # - bash: |
-      #     rm -Rf "$RUSTCACHE_ROOT"
-      #     echo "##vso[task.prependpath]$(CARGO_HOME)/bin"
-      #   displayName: clean state on private agents
-      
-      # # remove once https://github.com/microsoft/azure-pipelines-agent/pull/2400 is deployed
-      # - bash: |
-      #     mkdir "$RUSTCACHE_ROOT"
-      #   displayName: create folder
-      
-      # - task: CacheBeta@0
-      #   inputs:
-      #     key: '$(CACHE_KEY_BASE) | $(Build.SourceVersion)'
-      #     path: $(RUSTCACHE_ROOT)
-      #     restoreKeys: |
-      #       $(CACHE_KEY_BASE)
-
       # install tools
-            # set up environment and restore cache
       - bash: |
           curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain none
           export PATH="$PATH:$(CARGO_HOME)/bin"
@@ -86,23 +68,11 @@ jobs:
           rustup update stable-$(TOOLS_TARGET)
           which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
         displayName: Select toolchain for tools
-      # - bash: |
-      #     cargo install sccache
-      #     echo '##vso[task.setvariable variable=RUSTC_WRAPPER]sccache'
-      #     which sccache && sccache --version && sccache --show-stats
-      #   displayName: Install sccache
       - bash: |
           cargo install cargo2junit
           which cargo2junit
         displayName: Install cargo2junit
-      # - bash: |
-      #     cargo install cargo-cache
-      #     cargo cache
-      #   displayName: Install cargo-cache
-      # - bash: |
-      #     cargo install cargo-update
-      #     cargo install-update -a
-      #   displayName: Ensure cargo-installed tools are up-to-date
+
       - bash: |
           rustup toolchain install $(CHANNEL)-$(TARGET)
           rustup default $(CHANNEL)-$(TARGET)
@@ -166,16 +136,6 @@ jobs:
           buildPlatform: RELEASE_$(System.JobDisplayName)
         condition: succeededOrFailed()
 
-      # some cleanup before the cache stores
-      # - bash: |
-      #     sccache --show-stats
-      #     sccache --stop-server
-      #   displayName: shutdown sccache
-      # - bash: |
-      #     cargo cache
-      #     cargo cache --autoclean
-      #     cargo cache
-      #   displayName: run cargo cache --autoclean
   - job: cached
     pool:
       name: $(POOL_NAME)
@@ -183,7 +143,7 @@ jobs:
     strategy:
       matrix:
 
-    # # private agent for testing new agent code
+    # private agent for testing new agent code
     #     jerick-z440:
     #       TARGET: x86_64-pc-windows-msvc
     #       POOL_NAME: jerick-z440
@@ -194,7 +154,7 @@ jobs:
         #   AZP_CACHING_TAR: 1
         #   CACHE_KEY_BASE: '"TAR=$(AZP_CACHING_TAR)_CACHE_SALT=$(CACHE_SALT)-$(Agent.JobName)-$(Agent.OS)-$(CHANNEL)-$(TARGET)"'
 
-    # # hosted agents
+    # hosted agents
         vs2015-gnu:
           TARGET: x86_64-pc-windows-gnu
           TOOLS_TARGET: x86_64-pc-windows-msvc
@@ -293,7 +253,7 @@ jobs:
             $(CACHE_KEY_BASE) | $(Build.SourceVersion)
             $(CACHE_KEY_BASE)
 
-      # install tools
+      # install tools (these will be cached)
       - bash: |
           curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain none
           which rustup && rustup -V
@@ -309,6 +269,7 @@ jobs:
           echo '##vso[task.setvariable variable=RUSTC_WRAPPER]sccache'
           which sccache && sccache --version && sccache --show-stats
         displayName: Install sccache
+        condition: and(succeeded(), eq(variables['ENABLE_SCCACHE'], '1'))
       - bash: |
           cargo install cargo2junit
           which cargo2junit
