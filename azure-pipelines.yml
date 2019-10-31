@@ -1,5 +1,13 @@
 # Recommened editor for this file: https://github.com/Microsoft/azure-pipelines-vscode
 
+schedules:
+  # run weekly to keep cache fresh
+  - cron: "0 0 * * 0"
+    branches:
+      include: 
+      - master
+    always: true
+
 variables:
   CHANNEL: stable
   CACHE_SALT: 0
