@@ -152,15 +152,12 @@ jobs:
       matrix:
 
     # private agent for testing new agent code
-    #     jerick-z440:
-    #       TARGET: x86_64-pc-windows-msvc
-    #       POOL_NAME: jerick-z440
-        # jerick-z440-wsl:
-        #   TARGET: x86_64-unknown-linux-gnu
-        #   POOL_NAME: jerick-z440-wsl
-        #   AZP_CACHING_CONTENT_FORMAT: SingleTar
-        #   AZP_CACHING_TAR: 1
-        #   CACHE_KEY_BASE: '"TAR=$(AZP_CACHING_TAR)_CACHE_SALT=$(CACHE_SALT)-$(Agent.JobName)-$(Agent.OS)-$(CHANNEL)-$(TARGET)"'
+      # jerick-z440:
+      #   TARGET: x86_64-pc-windows-msvc
+      #   POOL_NAME: jerick-z440
+      # jerick-z440-wsl:
+      #   TARGET: x86_64-unknown-linux-gnu
+      #   POOL_NAME: jerick-z440-wsl
 
     # hosted agents
         vs2015-gnu:
@@ -255,10 +252,10 @@ jobs:
 
       - task: CacheBeta@0
         inputs:
-          key: '$(CACHE_KEY_BASE) | $(Build.SourceVersion) | $(Build.BuildId)'
+          key: '$(CACHE_KEY_BASE) | ./Cargo.lock | $(Build.SourceVersion) | $(Build.BuildId)'
           path: $(RUSTCACHE_ROOT)
           restoreKeys: |
-            $(CACHE_KEY_BASE) | $(Build.SourceVersion)
+            $(CACHE_KEY_BASE) | ./Cargo.lock | $(Build.SourceVersion)
             $(CACHE_KEY_BASE)
 
       # install tools (these will be cached)
