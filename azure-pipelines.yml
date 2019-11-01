@@ -234,7 +234,9 @@ jobs:
     steps:
 
       - bash: |
-          grep checksum ./Cargo.lock > $(CARGO_DEPENDENCIES_FILE)
+          echo "$(CARGO_DEPENDENCIES_FILE)"
+          echo "$CARGO_DEPENDENCIES_FILE"
+          grep checksum ./Cargo.lock > "$CARGO_DEPENDENCIES_FILE"
         displayName: 'extract dependencies from cargo.lock'
 
       - script: |
