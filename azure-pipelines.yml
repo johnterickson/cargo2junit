@@ -17,7 +17,7 @@ variables:
   RUSTUP_HOME: $(RUSTCACHE_ROOT)/rustcache/.rustup
   SCCACHE_DIR: $(RUSTCACHE_ROOT)/rustcache/sccache
   SCCACHE_CACHE_SIZE: 1G
-  CACHE_KEY_BASE: '"CACHE_SALT=$(CACHE_SALT)-$(Agent.JobName)-$(Agent.OS)-$(CHANNEL)-$(TARGET)-ENABLE_SCCACHE=$(ENABLE_SCCACHE)"'
+  CACHE_KEY_BASE: '"CACHE_SALT=$(CACHE_SALT)-$(Agent.JobName)-$(Agent.OS)-$(CHANNEL)-$(TARGET)-ENABLE_SCCACHE=$(ENABLE_SCCACHE)-AZP_CACHING_CONTENT_FORMAT=$(AZP_CACHING_CONTENT_FORMAT)"'
   TOOLS_TARGET: $(TARGET)
   POOL_NAME: ''
   VM_IMAGE: ''
@@ -165,74 +165,71 @@ jobs:
           TARGET: x86_64-pc-windows-gnu
           TOOLS_TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: vs2015-win2012r2
+          AZP_CACHING_CONTENT_FORMAT: Files
         vs2017-gnu:
           TARGET: x86_64-pc-windows-gnu
           TOOLS_TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: vs2017-win2016
+          AZP_CACHING_CONTENT_FORMAT: Files
         vs2019-gnu:
           TARGET: x86_64-pc-windows-gnu
           TOOLS_TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: windows-2019
+          AZP_CACHING_CONTENT_FORMAT: Files
         vs2015-msvc:
           TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: vs2015-win2012r2
+          AZP_CACHING_CONTENT_FORMAT: Files
         vs2017-msvc:
           TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: vs2017-win2016
+          AZP_CACHING_CONTENT_FORMAT: Files
         vs2019-msvc:
           TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: windows-2019
+          AZP_CACHING_CONTENT_FORMAT: Files
 
         vs2015-gnu-tar:
           TARGET: x86_64-pc-windows-gnu
           TOOLS_TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: vs2015-win2012r2
           AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
         vs2017-gnu-tar:
           TARGET: x86_64-pc-windows-gnu
           TOOLS_TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: vs2017-win2016
           AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
         vs2019-gnu-tar:
           TARGET: x86_64-pc-windows-gnu
           TOOLS_TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: windows-2019
           AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
         vs2015-msvc-tar:
           TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: vs2015-win2012r2
           AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
         vs2017-msvc-tar:
           TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: vs2017-win2016
           AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
         vs2019-msvc-tar:
           TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: windows-2019
           AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
         osx-10.13-x86_64-apple-darwin-tar:
           TARGET: x86_64-apple-darwin
           VM_IMAGE: macos-10.13
           AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
         osx-10.14-x86_64-apple-darwin-tar:
           TARGET: x86_64-apple-darwin
           VM_IMAGE: macos-10.14
           AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
         x86_64-unknown-linux-gnu-tar:
           TARGET: x86_64-unknown-linux-gnu
           VM_IMAGE: ubuntu-16.04
           AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
+          
     steps:
-
       - bash: |
           echo "$(CARGO_DEPENDENCIES_FILE)"
           echo "$CARGO_DEPENDENCIES_FILE"
