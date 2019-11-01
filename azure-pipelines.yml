@@ -10,7 +10,7 @@ schedules:
 
 variables:
   CHANNEL: stable
-  CACHE_SALT: 0
+  CACHE_SALT: 1
   RUSTCACHE_ROOT: $(Build.SourcesDirectory)/target
   CARGO_DEPENDENCIES_FILE: $(Pipeline.Workspace)/Cargo.dependencies
   CARGO_HOME: $(RUSTCACHE_ROOT)/rustcache/.cargo
@@ -21,130 +21,131 @@ variables:
   TOOLS_TARGET: $(TARGET)
   POOL_NAME: ''
   VM_IMAGE: ''
+  AZP_CACHING_TAR: 1
   AZP_CACHING_CONTENT_FORMAT: SingleTar
   ENABLE_SCCACHE: 0
 
 jobs:
-  - job: uncached
-    pool:
-      name: $(POOL_NAME)
-      vmImage: $(VM_IMAGE)
-    strategy:
-      matrix:
+  # - job: uncached
+  #   pool:
+  #     name: $(POOL_NAME)
+  #     vmImage: $(VM_IMAGE)
+  #   strategy:
+  #     matrix:
 
-    # hosted agents
-        vs2015-gnu:
-          TARGET: x86_64-pc-windows-gnu
-          TOOLS_TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2015-win2012r2
-        vs2017-gnu:
-          TARGET: x86_64-pc-windows-gnu
-          TOOLS_TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2017-win2016
-        vs2019-gnu:
-          TARGET: x86_64-pc-windows-gnu
-          TOOLS_TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: windows-2019
-        vs2015-msvc:
-          TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2015-win2012r2
-        vs2017-msvc:
-          TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2017-win2016
-        vs2019-msvc:
-          TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: windows-2019
-        osx-10.13-x86_64-apple-darwin:
-          TARGET: x86_64-apple-darwin
-          VM_IMAGE: macos-10.13
-        osx-10.14-x86_64-apple-darwin:
-          TARGET: x86_64-apple-darwin
-          VM_IMAGE: macos-10.14
-        x86_64-unknown-linux-gnu:
-          TARGET: x86_64-unknown-linux-gnu
-          VM_IMAGE: ubuntu-16.04
-    steps:
+  #   # hosted agents
+  #       vs2015-gnu:
+  #         TARGET: x86_64-pc-windows-gnu
+  #         TOOLS_TARGET: x86_64-pc-windows-msvc
+  #         VM_IMAGE: vs2015-win2012r2
+  #       vs2017-gnu:
+  #         TARGET: x86_64-pc-windows-gnu
+  #         TOOLS_TARGET: x86_64-pc-windows-msvc
+  #         VM_IMAGE: vs2017-win2016
+  #       vs2019-gnu:
+  #         TARGET: x86_64-pc-windows-gnu
+  #         TOOLS_TARGET: x86_64-pc-windows-msvc
+  #         VM_IMAGE: windows-2019
+  #       vs2015-msvc:
+  #         TARGET: x86_64-pc-windows-msvc
+  #         VM_IMAGE: vs2015-win2012r2
+  #       vs2017-msvc:
+  #         TARGET: x86_64-pc-windows-msvc
+  #         VM_IMAGE: vs2017-win2016
+  #       vs2019-msvc:
+  #         TARGET: x86_64-pc-windows-msvc
+  #         VM_IMAGE: windows-2019
+  #       osx-10.13-x86_64-apple-darwin:
+  #         TARGET: x86_64-apple-darwin
+  #         VM_IMAGE: macos-10.13
+  #       osx-10.14-x86_64-apple-darwin:
+  #         TARGET: x86_64-apple-darwin
+  #         VM_IMAGE: macos-10.14
+  #       x86_64-unknown-linux-gnu:
+  #         TARGET: x86_64-unknown-linux-gnu
+  #         VM_IMAGE: ubuntu-16.04
+  #   steps:
 
-      # install tools
-      - bash: |
-          curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain none
-          export PATH="$PATH:$(CARGO_HOME)/bin"
-          echo "##vso[task.prependpath]$(CARGO_HOME)/bin"
-          which rustup && rustup -V
-        displayName: Enusure rustup is installed
-      - bash: |
-          rustup toolchain install stable-$(TOOLS_TARGET)
-          rustup default stable-$(TOOLS_TARGET)
-          rustup update stable-$(TOOLS_TARGET)
-          which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
-        displayName: Select toolchain for tools
-      - bash: |
-          cargo install cargo2junit
-          which cargo2junit
-        displayName: Install cargo2junit
+  #     # install tools
+  #     - bash: |
+  #         curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain none
+  #         export PATH="$PATH:$(CARGO_HOME)/bin"
+  #         echo "##vso[task.prependpath]$(CARGO_HOME)/bin"
+  #         which rustup && rustup -V
+  #       displayName: Enusure rustup is installed
+  #     - bash: |
+  #         rustup toolchain install stable-$(TOOLS_TARGET)
+  #         rustup default stable-$(TOOLS_TARGET)
+  #         rustup update stable-$(TOOLS_TARGET)
+  #         which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
+  #       displayName: Select toolchain for tools
+  #     - bash: |
+  #         cargo install cargo2junit
+  #         which cargo2junit
+  #       displayName: Install cargo2junit
 
-      - bash: |
-          rustup toolchain install $(CHANNEL)-$(TARGET)
-          rustup default $(CHANNEL)-$(TARGET)
-          rustup update $(CHANNEL)-$(TARGET)
-          which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
-        displayName: Select toolchain for build
+  #     - bash: |
+  #         rustup toolchain install $(CHANNEL)-$(TARGET)
+  #         rustup default $(CHANNEL)-$(TARGET)
+  #         rustup update $(CHANNEL)-$(TARGET)
+  #         which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
+  #       displayName: Select toolchain for build
 
-      # build and test
-      - bash: |
-          cargo build
-        displayName: cargo build
-      - bash: |
-          cargo test -- -Z unstable-options --format json | tee test_results_debug.json
-        displayName: cargo test
+  #     # build and test
+  #     - bash: |
+  #         cargo build
+  #       displayName: cargo build
+  #     - bash: |
+  #         cargo test -- -Z unstable-options --format json | tee test_results_debug.json
+  #       displayName: cargo test
 
-      - bash: |
-          cargo build --release
-        displayName: cargo build --release
-      - bash: |
-          cargo test --release -- -Z unstable-options --format json | tee test_results_release.json
-        displayName: cargo test --release
+  #     - bash: |
+  #         cargo build --release
+  #       displayName: cargo build --release
+  #     - bash: |
+  #         cargo test --release -- -Z unstable-options --format json | tee test_results_release.json
+  #       displayName: cargo test --release
 
-      # store test results
-      - bash: |
-          cat test_results_debug.json | cargo2junit > test_results_debug_lkg.xml
-          cat test_results_release.json | cargo2junit > test_results_release_lkg.xml
-        displayName: convert to junit using LKG cargo2junit
-        condition: succeededOrFailed()
-      - task: PublishTestResults@2
-        inputs: 
-          testResultsFormat: 'JUnit'
-          testResultsFiles: 'test_results_debug_lkg.xml'
-          testRunTitle: LKG_DEBUG_$(System.JobDisplayName)
-          buildPlatform: LKG_DEBUG_$(System.JobDisplayName)
-        condition: succeededOrFailed()
-      - task: PublishTestResults@2
-        inputs: 
-          testResultsFormat: 'JUnit'
-          testResultsFiles: 'test_results_release_lkg.xml'
-          testRunTitle: LKG_RELEASE_$(System.JobDisplayName)
-          buildPlatform: LKG_RELEASE_$(System.JobDisplayName)
-        condition: succeededOrFailed()
+  #     # store test results
+  #     - bash: |
+  #         cat test_results_debug.json | cargo2junit > test_results_debug_lkg.xml
+  #         cat test_results_release.json | cargo2junit > test_results_release_lkg.xml
+  #       displayName: convert to junit using LKG cargo2junit
+  #       condition: succeededOrFailed()
+  #     - task: PublishTestResults@2
+  #       inputs: 
+  #         testResultsFormat: 'JUnit'
+  #         testResultsFiles: 'test_results_debug_lkg.xml'
+  #         testRunTitle: LKG_DEBUG_$(System.JobDisplayName)
+  #         buildPlatform: LKG_DEBUG_$(System.JobDisplayName)
+  #       condition: succeededOrFailed()
+  #     - task: PublishTestResults@2
+  #       inputs: 
+  #         testResultsFormat: 'JUnit'
+  #         testResultsFiles: 'test_results_release_lkg.xml'
+  #         testRunTitle: LKG_RELEASE_$(System.JobDisplayName)
+  #         buildPlatform: LKG_RELEASE_$(System.JobDisplayName)
+  #       condition: succeededOrFailed()
 
-      # self-host test of cargo2junit: store test results using the cargo2junit that was just built
-      - bash: |
-          cat test_results_debug.json | ./target/debug/cargo2junit > test_results_debug.xml
-          cat test_results_release.json | ./target/debug/cargo2junit > test_results_release.xml
-        displayName: convert to junit using just-built cargo2junit
-      - task: PublishTestResults@2
-        inputs: 
-          testResultsFormat: 'JUnit'
-          testResultsFiles: 'test_results_debug.xml'
-          testRunTitle: DEBUG_$(System.JobDisplayName)
-          buildPlatform: DEBUG_$(System.JobDisplayName)
-        condition: succeededOrFailed()
-      - task: PublishTestResults@2
-        inputs: 
-          testResultsFormat: 'JUnit'
-          testResultsFiles: 'test_results_release.xml'
-          testRunTitle: RELEASE_$(System.JobDisplayName)
-          buildPlatform: RELEASE_$(System.JobDisplayName)
-        condition: succeededOrFailed()
+  #     # self-host test of cargo2junit: store test results using the cargo2junit that was just built
+  #     - bash: |
+  #         cat test_results_debug.json | ./target/debug/cargo2junit > test_results_debug.xml
+  #         cat test_results_release.json | ./target/debug/cargo2junit > test_results_release.xml
+  #       displayName: convert to junit using just-built cargo2junit
+  #     - task: PublishTestResults@2
+  #       inputs: 
+  #         testResultsFormat: 'JUnit'
+  #         testResultsFiles: 'test_results_debug.xml'
+  #         testRunTitle: DEBUG_$(System.JobDisplayName)
+  #         buildPlatform: DEBUG_$(System.JobDisplayName)
+  #       condition: succeededOrFailed()
+  #     - task: PublishTestResults@2
+  #       inputs: 
+  #         testResultsFormat: 'JUnit'
+  #         testResultsFiles: 'test_results_release.xml'
+  #         testRunTitle: RELEASE_$(System.JobDisplayName)
+  #         buildPlatform: RELEASE_$(System.JobDisplayName)
+  #       condition: succeededOrFailed()
 
   - job: cached
     pool:
