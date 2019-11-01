@@ -12,6 +12,7 @@ variables:
   CHANNEL: stable
   CACHE_SALT: 0
   RUSTCACHE_ROOT: $(Build.SourcesDirectory)/target
+  CARGO_DEPENDENCIES_FILE: $(Pipeline.Workspace)/Cargo.dependencies
   CARGO_HOME: $(RUSTCACHE_ROOT)/rustcache/.cargo
   RUSTUP_HOME: $(RUSTCACHE_ROOT)/rustcache/.rustup
   SCCACHE_DIR: $(RUSTCACHE_ROOT)/rustcache/sccache
@@ -232,6 +233,10 @@ jobs:
           AZP_CACHING_TAR: 1
     steps:
 
+      - bash: |
+          grep checksum ./Cargo.lock > $(CARGO_DEPENDENCIES_FILE)
+        displayName: 'extract dependencies from cargo.lock'
+
       - script: |
           @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
           choco install 7zip.portable -y
@@ -252,10 +257,12 @@ jobs:
 
       - task: CacheBeta@0
         inputs:
-          key: '$(CACHE_KEY_BASE) | ./Cargo.lock | $(Build.SourceVersion) | $(Build.BuildId)'
+          key: '$(CACHE_KEY_BASE) | $(CARGO_DEPENDENCIES_FILE) | ./Cargo.lock | ./Cargo.toml | $(Build.SourceVersion)'
           path: $(RUSTCACHE_ROOT)
           restoreKeys: |
-            $(CACHE_KEY_BASE) | ./Cargo.lock | $(Build.SourceVersion)
+            $(CACHE_KEY_BASE) | $(CARGO_DEPENDENCIES_FILE) | ./Cargo.lock | ./Cargo.toml
+            $(CACHE_KEY_BASE) | $(CARGO_DEPENDENCIES_FILE) | ./Cargo.lock
+            $(CACHE_KEY_BASE) | $(CARGO_DEPENDENCIES_FILE)
             $(CACHE_KEY_BASE)
 
       # install tools (these will be cached)
