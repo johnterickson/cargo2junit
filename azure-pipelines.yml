@@ -1,25 +1,166 @@
 # Recommened editor for this file: https://github.com/Microsoft/azure-pipelines-vscode
 
+schedules:
+  # run weekly to keep cache fresh
+  - cron: "0 0 * * 0"
+    branches:
+      include: 
+      - master
+    always: true
+
 variables:
   CHANNEL: stable
-  CACHE_SALT: 3
+  CACHE_SALT: 1
   RUSTCACHE_ROOT: $(Build.SourcesDirectory)/target
+  CARGO_DEPENDENCIES_FILE: $(Pipeline.Workspace)/Cargo.dependencies
   CARGO_HOME: $(RUSTCACHE_ROOT)/rustcache/.cargo
   RUSTUP_HOME: $(RUSTCACHE_ROOT)/rustcache/.rustup
   SCCACHE_DIR: $(RUSTCACHE_ROOT)/rustcache/sccache
   SCCACHE_CACHE_SIZE: 1G
-  CACHE_KEY_BASE: '"CACHE_SALT=$(CACHE_SALT)-$(Agent.JobName)-$(Agent.OS)-$(CHANNEL)-$(TARGET)"'
+  CACHE_KEY_BASE: '"CACHE_SALT=$(CACHE_SALT)-$(VM_IMAGE)-$(CHANNEL)-$(TOOLS_TARGET)-$(TARGET)-ENABLE_SCCACHE=$(ENABLE_SCCACHE)-AZP_CACHING_CONTENT_FORMAT=$(AZP_CACHING_CONTENT_FORMAT)"'
   TOOLS_TARGET: $(TARGET)
   POOL_NAME: ''
   VM_IMAGE: ''
+  AZP_CACHING_TAR: 1
+  AZP_CACHING_CONTENT_FORMAT: SingleTar
+  ENABLE_SCCACHE: 0
 
 jobs:
-  - job: uncached
+  # - job: uncached
+  #   pool:
+  #     name: $(POOL_NAME)
+  #     vmImage: $(VM_IMAGE)
+  #   strategy:
+  #     matrix:
+
+  #   # hosted agents
+  #       vs2015-gnu:
+  #         TARGET: x86_64-pc-windows-gnu
+  #         TOOLS_TARGET: x86_64-pc-windows-msvc
+  #         VM_IMAGE: vs2015-win2012r2
+  #       vs2017-gnu:
+  #         TARGET: x86_64-pc-windows-gnu
+  #         TOOLS_TARGET: x86_64-pc-windows-msvc
+  #         VM_IMAGE: vs2017-win2016
+  #       vs2019-gnu:
+  #         TARGET: x86_64-pc-windows-gnu
+  #         TOOLS_TARGET: x86_64-pc-windows-msvc
+  #         VM_IMAGE: windows-2019
+  #       vs2015-msvc:
+  #         TARGET: x86_64-pc-windows-msvc
+  #         VM_IMAGE: vs2015-win2012r2
+  #       vs2017-msvc:
+  #         TARGET: x86_64-pc-windows-msvc
+  #         VM_IMAGE: vs2017-win2016
+  #       vs2019-msvc:
+  #         TARGET: x86_64-pc-windows-msvc
+  #         VM_IMAGE: windows-2019
+  #       osx-10.13-x86_64-apple-darwin:
+  #         TARGET: x86_64-apple-darwin
+  #         VM_IMAGE: macos-10.13
+  #       osx-10.14-x86_64-apple-darwin:
+  #         TARGET: x86_64-apple-darwin
+  #         VM_IMAGE: macos-10.14
+  #       x86_64-unknown-linux-gnu:
+  #         TARGET: x86_64-unknown-linux-gnu
+  #         VM_IMAGE: ubuntu-16.04
+  #   steps:
+
+  #     # install tools
+  #     - bash: |
+  #         curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain none
+  #         export PATH="$PATH:$(CARGO_HOME)/bin"
+  #         echo "##vso[task.prependpath]$(CARGO_HOME)/bin"
+  #         which rustup && rustup -V
+  #       displayName: Enusure rustup is installed
+  #     - bash: |
+  #         rustup toolchain install stable-$(TOOLS_TARGET)
+  #         rustup default stable-$(TOOLS_TARGET)
+  #         rustup update stable-$(TOOLS_TARGET)
+  #         which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
+  #       displayName: Select toolchain for tools
+  #     - bash: |
+  #         cargo install cargo2junit
+  #         which cargo2junit
+  #       displayName: Install cargo2junit
+
+  #     - bash: |
+  #         rustup toolchain install $(CHANNEL)-$(TARGET)
+  #         rustup default $(CHANNEL)-$(TARGET)
+  #         rustup update $(CHANNEL)-$(TARGET)
+  #         which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
+  #       displayName: Select toolchain for build
+
+  #     # build and test
+  #     - bash: |
+  #         cargo build
+  #       displayName: cargo build
+  #     - bash: |
+  #         cargo test -- -Z unstable-options --format json | tee test_results_debug.json
+  #       displayName: cargo test
+
+  #     - bash: |
+  #         cargo build --release
+  #       displayName: cargo build --release
+  #     - bash: |
+  #         cargo test --release -- -Z unstable-options --format json | tee test_results_release.json
+  #       displayName: cargo test --release
+
+  #     # store test results
+  #     - bash: |
+  #         cat test_results_debug.json | cargo2junit > test_results_debug_lkg.xml
+  #         cat test_results_release.json | cargo2junit > test_results_release_lkg.xml
+  #       displayName: convert to junit using LKG cargo2junit
+  #       condition: succeededOrFailed()
+  #     - task: PublishTestResults@2
+  #       inputs: 
+  #         testResultsFormat: 'JUnit'
+  #         testResultsFiles: 'test_results_debug_lkg.xml'
+  #         testRunTitle: LKG_DEBUG_$(System.JobDisplayName)
+  #         buildPlatform: LKG_DEBUG_$(System.JobDisplayName)
+  #       condition: succeededOrFailed()
+  #     - task: PublishTestResults@2
+  #       inputs: 
+  #         testResultsFormat: 'JUnit'
+  #         testResultsFiles: 'test_results_release_lkg.xml'
+  #         testRunTitle: LKG_RELEASE_$(System.JobDisplayName)
+  #         buildPlatform: LKG_RELEASE_$(System.JobDisplayName)
+  #       condition: succeededOrFailed()
+
+  #     # self-host test of cargo2junit: store test results using the cargo2junit that was just built
+  #     - bash: |
+  #         cat test_results_debug.json | ./target/debug/cargo2junit > test_results_debug.xml
+  #         cat test_results_release.json | ./target/debug/cargo2junit > test_results_release.xml
+  #       displayName: convert to junit using just-built cargo2junit
+  #     - task: PublishTestResults@2
+  #       inputs: 
+  #         testResultsFormat: 'JUnit'
+  #         testResultsFiles: 'test_results_debug.xml'
+  #         testRunTitle: DEBUG_$(System.JobDisplayName)
+  #         buildPlatform: DEBUG_$(System.JobDisplayName)
+  #       condition: succeededOrFailed()
+  #     - task: PublishTestResults@2
+  #       inputs: 
+  #         testResultsFormat: 'JUnit'
+  #         testResultsFiles: 'test_results_release.xml'
+  #         testRunTitle: RELEASE_$(System.JobDisplayName)
+  #         buildPlatform: RELEASE_$(System.JobDisplayName)
+  #       condition: succeededOrFailed()
+
+  - job: cached
     pool:
       name: $(POOL_NAME)
       vmImage: $(VM_IMAGE)
     strategy:
       matrix:
+
+    # private agent for testing new agent code
+      # jerick-z440:
+      #   TARGET: x86_64-pc-windows-msvc
+      #   POOL_NAME: jerick-z440
+      # jerick-z440-wsl:
+      #   TARGET: x86_64-unknown-linux-gnu
+      #   POOL_NAME: jerick-z440-wsl
 
     # hosted agents
         vs2015-gnu:
@@ -52,220 +193,13 @@ jobs:
         x86_64-unknown-linux-gnu:
           TARGET: x86_64-unknown-linux-gnu
           VM_IMAGE: ubuntu-16.04
+
     steps:
-
-      # # set up environment and restore cache
-      # - bash: |
-      #     rm -Rf "$RUSTCACHE_ROOT"
-      #     echo "##vso[task.prependpath]$(CARGO_HOME)/bin"
-      #   displayName: clean state on private agents
-      
-      # # remove once https://github.com/microsoft/azure-pipelines-agent/pull/2400 is deployed
-      # - bash: |
-      #     mkdir "$RUSTCACHE_ROOT"
-      #   displayName: create folder
-      
-      # - task: CacheBeta@0
-      #   inputs:
-      #     key: '$(CACHE_KEY_BASE) | $(Build.SourceVersion)'
-      #     path: $(RUSTCACHE_ROOT)
-      #     restoreKeys: |
-      #       $(CACHE_KEY_BASE)
-
-      # install tools
-            # set up environment and restore cache
       - bash: |
-          curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain none
-          export PATH="$PATH:$(CARGO_HOME)/bin"
-          echo "##vso[task.prependpath]$(CARGO_HOME)/bin"
-          which rustup && rustup -V
-        displayName: Enusure rustup is installed
-      - bash: |
-          rustup toolchain install stable-$(TOOLS_TARGET)
-          rustup default stable-$(TOOLS_TARGET)
-          rustup update stable-$(TOOLS_TARGET)
-          which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
-        displayName: Select toolchain for tools
-      # - bash: |
-      #     cargo install sccache
-      #     echo '##vso[task.setvariable variable=RUSTC_WRAPPER]sccache'
-      #     which sccache && sccache --version && sccache --show-stats
-      #   displayName: Install sccache
-      - bash: |
-          cargo install cargo2junit
-          which cargo2junit
-        displayName: Install cargo2junit
-      # - bash: |
-      #     cargo install cargo-cache
-      #     cargo cache
-      #   displayName: Install cargo-cache
-      # - bash: |
-      #     cargo install cargo-update
-      #     cargo install-update -a
-      #   displayName: Ensure cargo-installed tools are up-to-date
-      - bash: |
-          rustup toolchain install $(CHANNEL)-$(TARGET)
-          rustup default $(CHANNEL)-$(TARGET)
-          rustup update $(CHANNEL)-$(TARGET)
-          which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
-        displayName: Select toolchain for build
-
-      # build and test
-      - bash: |
-          cargo build
-        displayName: cargo build
-      - bash: |
-          cargo test -- -Z unstable-options --format json | tee test_results_debug.json
-        displayName: cargo test
-
-      - bash: |
-          cargo build --release
-        displayName: cargo build --release
-      - bash: |
-          cargo test --release -- -Z unstable-options --format json | tee test_results_release.json
-        displayName: cargo test --release
-
-      # store test results
-      - bash: |
-          cat test_results_debug.json | cargo2junit > test_results_debug_lkg.xml
-          cat test_results_release.json | cargo2junit > test_results_release_lkg.xml
-        displayName: convert to junit using LKG cargo2junit
-        condition: succeededOrFailed()
-      - task: PublishTestResults@2
-        inputs: 
-          testResultsFormat: 'JUnit'
-          testResultsFiles: 'test_results_debug_lkg.xml'
-          testRunTitle: LKG_DEBUG_$(System.JobDisplayName)
-          buildPlatform: LKG_DEBUG_$(System.JobDisplayName)
-        condition: succeededOrFailed()
-      - task: PublishTestResults@2
-        inputs: 
-          testResultsFormat: 'JUnit'
-          testResultsFiles: 'test_results_release_lkg.xml'
-          testRunTitle: LKG_RELEASE_$(System.JobDisplayName)
-          buildPlatform: LKG_RELEASE_$(System.JobDisplayName)
-        condition: succeededOrFailed()
-
-      # self-host test of cargo2junit: store test results using the cargo2junit that was just built
-      - bash: |
-          cat test_results_debug.json | ./target/debug/cargo2junit > test_results_debug.xml
-          cat test_results_release.json | ./target/debug/cargo2junit > test_results_release.xml
-        displayName: convert to junit using just-built cargo2junit
-      - task: PublishTestResults@2
-        inputs: 
-          testResultsFormat: 'JUnit'
-          testResultsFiles: 'test_results_debug.xml'
-          testRunTitle: DEBUG_$(System.JobDisplayName)
-          buildPlatform: DEBUG_$(System.JobDisplayName)
-        condition: succeededOrFailed()
-      - task: PublishTestResults@2
-        inputs: 
-          testResultsFormat: 'JUnit'
-          testResultsFiles: 'test_results_release.xml'
-          testRunTitle: RELEASE_$(System.JobDisplayName)
-          buildPlatform: RELEASE_$(System.JobDisplayName)
-        condition: succeededOrFailed()
-
-      # some cleanup before the cache stores
-      # - bash: |
-      #     sccache --show-stats
-      #     sccache --stop-server
-      #   displayName: shutdown sccache
-      # - bash: |
-      #     cargo cache
-      #     cargo cache --autoclean
-      #     cargo cache
-      #   displayName: run cargo cache --autoclean
-  - job: cached
-    pool:
-      name: $(POOL_NAME)
-      vmImage: $(VM_IMAGE)
-    strategy:
-      matrix:
-
-    # # private agent for testing new agent code
-    #     jerick-z440:
-    #       TARGET: x86_64-pc-windows-msvc
-    #       POOL_NAME: jerick-z440
-        # jerick-z440-wsl:
-        #   TARGET: x86_64-unknown-linux-gnu
-        #   POOL_NAME: jerick-z440-wsl
-        #   AZP_CACHING_CONTENT_FORMAT: SingleTar
-        #   AZP_CACHING_TAR: 1
-        #   CACHE_KEY_BASE: '"TAR=$(AZP_CACHING_TAR)_CACHE_SALT=$(CACHE_SALT)-$(Agent.JobName)-$(Agent.OS)-$(CHANNEL)-$(TARGET)"'
-
-    # # hosted agents
-        vs2015-gnu:
-          TARGET: x86_64-pc-windows-gnu
-          TOOLS_TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2015-win2012r2
-        vs2017-gnu:
-          TARGET: x86_64-pc-windows-gnu
-          TOOLS_TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2017-win2016
-        vs2019-gnu:
-          TARGET: x86_64-pc-windows-gnu
-          TOOLS_TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: windows-2019
-        vs2015-msvc:
-          TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2015-win2012r2
-        vs2017-msvc:
-          TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2017-win2016
-        vs2019-msvc:
-          TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: windows-2019
-
-        vs2015-gnu-tar:
-          TARGET: x86_64-pc-windows-gnu
-          TOOLS_TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2015-win2012r2
-          AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
-        vs2017-gnu-tar:
-          TARGET: x86_64-pc-windows-gnu
-          TOOLS_TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2017-win2016
-          AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
-        vs2019-gnu-tar:
-          TARGET: x86_64-pc-windows-gnu
-          TOOLS_TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: windows-2019
-          AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
-        vs2015-msvc-tar:
-          TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2015-win2012r2
-          AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
-        vs2017-msvc-tar:
-          TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2017-win2016
-          AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
-        vs2019-msvc-tar:
-          TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: windows-2019
-          AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
-        osx-10.13-x86_64-apple-darwin-tar:
-          TARGET: x86_64-apple-darwin
-          VM_IMAGE: macos-10.13
-          AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
-        osx-10.14-x86_64-apple-darwin-tar:
-          TARGET: x86_64-apple-darwin
-          VM_IMAGE: macos-10.14
-          AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
-        x86_64-unknown-linux-gnu-tar:
-          TARGET: x86_64-unknown-linux-gnu
-          VM_IMAGE: ubuntu-16.04
-          AZP_CACHING_CONTENT_FORMAT: SingleTar
-          AZP_CACHING_TAR: 1
-    steps:
+          echo "$(CARGO_DEPENDENCIES_FILE)"
+          echo "$CARGO_DEPENDENCIES_FILE"
+          grep checksum ./Cargo.lock > "$CARGO_DEPENDENCIES_FILE"
+        displayName: 'extract dependencies from cargo.lock'
 
       - script: |
           @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
@@ -287,13 +221,15 @@ jobs:
 
       - task: CacheBeta@0
         inputs:
-          key: '$(CACHE_KEY_BASE) | $(Build.SourceVersion) | $(Build.BuildId)'
+          key: '$(CACHE_KEY_BASE) | $(CARGO_DEPENDENCIES_FILE) | ./Cargo.lock | ./Cargo.toml | $(Build.SourceVersion)'
           path: $(RUSTCACHE_ROOT)
           restoreKeys: |
-            $(CACHE_KEY_BASE) | $(Build.SourceVersion)
+            $(CACHE_KEY_BASE) | $(CARGO_DEPENDENCIES_FILE) | ./Cargo.lock | ./Cargo.toml
+            $(CACHE_KEY_BASE) | $(CARGO_DEPENDENCIES_FILE) | ./Cargo.lock
+            $(CACHE_KEY_BASE) | $(CARGO_DEPENDENCIES_FILE)
             $(CACHE_KEY_BASE)
 
-      # install tools
+      # install tools (these will be cached)
       - bash: |
           curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain none
           which rustup && rustup -V
@@ -309,6 +245,7 @@ jobs:
           echo '##vso[task.setvariable variable=RUSTC_WRAPPER]sccache'
           which sccache && sccache --version && sccache --show-stats
         displayName: Install sccache
+        condition: and(succeeded(), eq(variables['ENABLE_SCCACHE'], '1'))
       - bash: |
           cargo install cargo2junit
           which cargo2junit
@@ -390,6 +327,8 @@ jobs:
           sccache --show-stats
           sccache --stop-server
         displayName: shutdown sccache
+        condition: eq(variables['ENABLE_SCCACHE'], '1')
+        continueOnError: true
       - bash: |
           cargo cache
           cargo cache --autoclean
