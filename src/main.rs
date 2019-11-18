@@ -41,6 +41,8 @@ enum TestEvent {
     Failed { name: String, stdout: String },
     #[serde(rename = "ignored")]
     Ignored { name: String },
+    #[serde(rename = "timeout")]
+    Timeout { name: String },
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
@@ -149,6 +151,14 @@ fn parse<T: BufRead>(
                     TestEvent::Ignored { name } => {
                         assert!(tests.remove(&name));
                     }
+                    TestEvent::Timeout { name: _ } => {
+                        // An informative timeout event is emitted after a test has been running for
+                        // 60 seconds. The test is not stopped, but continues running and will
+                        // return its result at a later point in time.
+                        // This event should be safe to ignore for now, but might require further
+                        // action if hard timeouts that cancel and fail the test should be specified
+                        // during or before stabilization of the JSON format.
+                    }
                 }
             }
         }
@@ -214,6 +224,17 @@ mod tests {
     fn success_single_suite() {
         let _report = parse_bytes(include_bytes!("test_inputs/success.json"))
             .expect("Could not parse test input");
+    }
+
+    #[test]
+    fn success_timeout() {
+        let report = parse_bytes(include_bytes!("test_inputs/timeout.json"))
+            .expect("Could not parse test input");
+
+        let suite = &report.testsuites()[0];
+        let test_cases = suite.testcases();
+        assert_eq!(test_cases[0].name(), "tests::long_execution_time");
+        assert!(test_cases[0].is_success());
     }
 
     #[test]
