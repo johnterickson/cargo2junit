@@ -1,0 +1,31 @@
+name: Rust
+
+on: [push]
+env:
+  CHANNEL: stable
+  CACHE_SALT: 1
+  RUSTCACHE_ROOT: $(GITHUB_WORKSPACE)/target
+  CARGO_DEPENDENCIES_FILE: $(GITHUB_WORKSPACE)/Cargo.dependencies
+  CARGO_HOME: $(GITHUB_WORKSPACE)/rustcache/.cargo
+  RUSTUP_HOME: $(GITHUB_WORKSPACE)/rustcache/.rustup
+  CACHE_KEY_BASE: '"CACHE_SALT=$(CACHE_SALT)-$(VM_IMAGE)-$(CHANNEL)-$(TOOLS_TARGET)-$(TARGET)"'
+  TOOLS_TARGET: $(TARGET)
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Cache
+      uses: actions/cache@v1.0.2
+      with:
+        # A directory to store and save the cache
+        path: $(RUSTCACHE_ROOT)
+        # An explicit key for restoring and saving the cache
+        key: $(CACHE_KEY_BASE)
+    - name: Build
+      run: cargo build --verbose
+    - name: Run tests
+      run: cargo test --verbose
