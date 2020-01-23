@@ -17,12 +17,10 @@ variables:
   RUSTUP_HOME: $(RUSTCACHE_ROOT)/rustcache/.rustup
   SCCACHE_DIR: $(RUSTCACHE_ROOT)/rustcache/sccache
   SCCACHE_CACHE_SIZE: 1G
-  CACHE_KEY_BASE: '"CACHE_SALT=$(CACHE_SALT)-$(VM_IMAGE)-$(CHANNEL)-$(TOOLS_TARGET)-$(TARGET)-ENABLE_SCCACHE=$(ENABLE_SCCACHE)-AZP_CACHING_CONTENT_FORMAT=$(AZP_CACHING_CONTENT_FORMAT)"'
+  CACHE_KEY_BASE: '"CACHE_SALT=$(CACHE_SALT)-$(VM_IMAGE)-$(CHANNEL)-$(TOOLS_TARGET)-$(TARGET)-ENABLE_SCCACHE=$(ENABLE_SCCACHE)"'
   TOOLS_TARGET: $(TARGET)
   POOL_NAME: ''
   VM_IMAGE: ''
-  AZP_CACHING_TAR: 1
-  AZP_CACHING_CONTENT_FORMAT: SingleTar
   ENABLE_SCCACHE: 0
 
 jobs:
@@ -53,6 +51,10 @@ jobs:
         vs2019-msvc:
           TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: windows-2019
+        vs2019-msvc-sccache:
+          TARGET: x86_64-pc-windows-msvc
+          VM_IMAGE: windows-2019
+          ENABLE_SCCACHE: 1
         osx-10.13-x86_64-apple-darwin:
           TARGET: x86_64-apple-darwin
           VM_IMAGE: macos-10.13
@@ -83,11 +85,6 @@ jobs:
           echo "##vso[task.prependpath]$(CARGO_HOME)/bin"
         displayName: clean state on private agents
       
-      # remove once https://github.com/microsoft/azure-pipelines-agent/pull/2400 is deployed
-      - bash: |
-          mkdir "$RUSTCACHE_ROOT"
-        displayName: create folder
-
       - task: Cache@2
         inputs:
           key: '$(CACHE_KEY_BASE) | $(CARGO_DEPENDENCIES_FILE) | ./Cargo.lock | ./Cargo.toml | $(Build.SourceVersion)'
