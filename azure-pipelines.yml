@@ -78,13 +78,13 @@ jobs:
       
       - task: Cache@2
         inputs:
-          key: '$(CACHE_KEY_BASE) | $(CARGO_DEPENDENCIES_FILE) | ./Cargo.lock | ./Cargo.toml | $(Build.SourceVersion)'
+          key: '$(CACHE_KEY_BASE) | ./Cargo.toml | ./Cargo.lock | $(CARGO_DEPENDENCIES_FILE) | $(Build.SourceVersion)'
           path: $(RUSTCACHE_ROOT)
           cacheHitVar: CACHE_LOOKUP_RESULT
           restoreKeys: |
-            $(CACHE_KEY_BASE) | $(CARGO_DEPENDENCIES_FILE) | ./Cargo.lock | ./Cargo.toml
-            $(CACHE_KEY_BASE) | $(CARGO_DEPENDENCIES_FILE) | ./Cargo.lock
-            $(CACHE_KEY_BASE) | $(CARGO_DEPENDENCIES_FILE)
+            $(CACHE_KEY_BASE) | ./Cargo.toml | ./Cargo.lock | $(CARGO_DEPENDENCIES_FILE)
+            $(CACHE_KEY_BASE) | ./Cargo.toml | ./Cargo.lock
+            $(CACHE_KEY_BASE) | ./Cargo.toml
             $(CACHE_KEY_BASE)
 
       # install tools (these will be cached)
@@ -99,7 +99,8 @@ jobs:
           which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
         displayName: Select toolchain for tools
       - bash: |
-          cargo install sccache
+          echo cargo install seems to always want to update sccache
+          which sccache || cargo install sccache
           echo '##vso[task.setvariable variable=RUSTC_WRAPPER]sccache'
           which sccache && sccache --version && sccache --show-stats
         displayName: Install sccache
