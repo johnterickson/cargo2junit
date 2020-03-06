@@ -99,8 +99,8 @@ jobs:
           which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
         displayName: Select toolchain for tools
       - bash: |
-          which sccache && sccache --version && sccache --show-stats
-          cargo install sccache
+          echo cargo install seems to always want to update sccache
+          which sccache || cargo install sccache
           echo '##vso[task.setvariable variable=RUSTC_WRAPPER]sccache'
           which sccache && sccache --version && sccache --show-stats
         displayName: Install sccache
