@@ -202,4 +202,6 @@ jobs:
         continueOnError: true
       - bash: |
           cargo cache
-        displayName: run cargo cache
+          cargo cache --autoclean
+          cargo cache
+        displayName: run cargo cache --autoclean
