@@ -30,10 +30,6 @@ jobs:
       vmImage: $(VM_IMAGE)
     strategy:
       matrix:
-        vs2015-gnu:
-          TARGET: x86_64-pc-windows-gnu
-          TOOLS_TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2015-win2012r2
         vs2017-gnu:
           TARGET: x86_64-pc-windows-gnu
           TOOLS_TARGET: x86_64-pc-windows-msvc
@@ -42,9 +38,6 @@ jobs:
           TARGET: x86_64-pc-windows-gnu
           TOOLS_TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: windows-2019
-        vs2015-msvc:
-          TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2015-win2012r2
         vs2017-msvc:
           TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: vs2017-win2016
@@ -55,9 +48,6 @@ jobs:
           TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: windows-2019
           ENABLE_SCCACHE: 1
-        osx-10.13-x86_64-apple-darwin:
-          TARGET: x86_64-apple-darwin
-          VM_IMAGE: macos-10.13
         osx-10.14-x86_64-apple-darwin:
           TARGET: x86_64-apple-darwin
           VM_IMAGE: macos-10.14
@@ -79,13 +69,6 @@ jobs:
           echo "$CARGO_DEPENDENCIES_FILE"
           grep checksum ./Cargo.lock > "$CARGO_DEPENDENCIES_FILE"
         displayName: 'extract dependencies from cargo.lock'
-
-      - script: |
-          @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
-          choco install 7zip.portable -y
-          xcopy /y /e c:\ProgramData\chocolatey\lib\7zip.portable\tools\* c:\windows\system32\
-        condition: and(succeeded(), eq(variables['VM_IMAGE'], 'vs2015-win2012r2')) 
-        displayName: install 7-zip on VS2015
 
       # set up environment and restore cache
       - bash: |
