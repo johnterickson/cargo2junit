@@ -118,7 +118,7 @@ jobs:
           cargo install cargo-cache
           cargo cache
         displayName: Install cargo-cache
-       bash: |
+      - bash: |
           cargo install cargo-update
         displayName: Install cargo-update
       - bash: |
