@@ -194,8 +194,8 @@ jobs:
         displayName: shutdown sccache
         condition: eq(variables['ENABLE_SCCACHE'], '1')
         continueOnError: true
-      - bash: |
-          cargo cache
-          cargo cache --autoclean
-          cargo cache
-        displayName: run cargo cache --autoclean
+      # - bash: |
+      #     cargo cache
+      #     cargo cache --autoclean
+      #     cargo cache
+      #   displayName: run cargo cache --autoclean
