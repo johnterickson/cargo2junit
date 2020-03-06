@@ -38,6 +38,11 @@ jobs:
           TARGET: x86_64-pc-windows-gnu
           TOOLS_TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: windows-2019
+        vs2019-gnu-sccache:
+          TARGET: x86_64-pc-windows-gnu
+          TOOLS_TARGET: x86_64-pc-windows-msvc
+          VM_IMAGE: windows-2019
+          ENABLE_SCCACHE: 1
         vs2017-msvc:
           TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: vs2017-win2016
