@@ -38,6 +38,11 @@ jobs:
           TARGET: x86_64-pc-windows-gnu
           TOOLS_TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: windows-2019
+        vs2019-gnu-sccache:
+          TARGET: x86_64-pc-windows-gnu
+          TOOLS_TARGET: x86_64-pc-windows-msvc
+          VM_IMAGE: windows-2019
+          ENABLE_SCCACHE: 1
         vs2017-msvc:
           TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: vs2017-win2016
@@ -114,10 +119,16 @@ jobs:
           cargo cache
         displayName: Install cargo-cache
       - bash: |
-          export RUSTC_WRAPPER=
           cargo install cargo-update
+        displayName: Install cargo-update
+      - bash: |
+          export RUSTC_WRAPPER=
+          cargo install-update sccache
+        displayName: Ensure sccache is up-to-date (if updating the cache anyway)
+        condition: and(succeeded(), and(eq(variables['ENABLE_SCCACHE'], '1'), ne(variables['CACHE_LOOKUP_RESULT'], 'true')))
+      - bash: |
           cargo install-update -a
-        displayName: Ensure cargo-installed tools are up-to-date (if updating the cache anyway)
+        displayName: Ensure all cargo-installed tools are up-to-date (if updating the cache anyway)
         condition: and(succeeded(), ne(variables['CACHE_LOOKUP_RESULT'], 'true')) 
       - bash: |
           rustup toolchain install $(CHANNEL)-$(TARGET)
