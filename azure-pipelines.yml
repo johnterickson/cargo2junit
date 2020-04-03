@@ -97,45 +97,41 @@ jobs:
           curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path --default-toolchain none
           which rustup && rustup -V
         displayName: Enusure rustup is installed
+        condition: and(succeeded(), ne(variables['CACHE_LOOKUP_RESULT'], 'true')) 
       - bash: |
           rustup toolchain install stable-$(TOOLS_TARGET)
           rustup default stable-$(TOOLS_TARGET)
           rustup update stable-$(TOOLS_TARGET)
           which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
-        displayName: Select toolchain for tools
+        displayName: Select toolchain for tools (if updating the cache anyway)
+        condition: and(succeeded(), ne(variables['CACHE_LOOKUP_RESULT'], 'true'))
       - bash: |
-          echo cargo install seems to always want to update sccache
-          which sccache || cargo install sccache
+          cargo install sccache
           echo '##vso[task.setvariable variable=RUSTC_WRAPPER]sccache'
           which sccache && sccache --version && sccache --show-stats
-        displayName: Install sccache
-        condition: and(succeeded(), eq(variables['ENABLE_SCCACHE'], '1'))
+        displayName: Install sccache (if updating the cache anyway)
+        condition: and(succeeded(), and(eq(variables['ENABLE_SCCACHE'], '1'),ne(variables['CACHE_LOOKUP_RESULT'], 'true')))
       - bash: |
           cargo install cargo2junit
-          which cargo2junit
-        displayName: Install cargo2junit
+        displayName: Install cargo2junit (if updating the cache anyway)
+        condition: and(succeeded(), ne(variables['CACHE_LOOKUP_RESULT'], 'true'))
       - bash: |
           cargo install cargo-cache
           cargo cache
-        displayName: Install cargo-cache
-      - bash: |
-          cargo install cargo-update
-        displayName: Install cargo-update
+        displayName: Install cargo-cache (if updating the cache anyway)
+        condition: and(succeeded(), ne(variables['CACHE_LOOKUP_RESULT'], 'true'))
       - bash: |
           export RUSTC_WRAPPER=
           cargo install-update sccache
         displayName: Ensure sccache is up-to-date (if updating the cache anyway)
         condition: and(succeeded(), and(eq(variables['ENABLE_SCCACHE'], '1'), ne(variables['CACHE_LOOKUP_RESULT'], 'true')))
       - bash: |
-          cargo install-update -a
-        displayName: Ensure all cargo-installed tools are up-to-date (if updating the cache anyway)
-        condition: and(succeeded(), ne(variables['CACHE_LOOKUP_RESULT'], 'true')) 
-      - bash: |
           rustup toolchain install $(CHANNEL)-$(TARGET)
           rustup default $(CHANNEL)-$(TARGET)
           rustup update $(CHANNEL)-$(TARGET)
           which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
         displayName: Select toolchain for build
+        condition: and(succeeded(), ne(variables['CACHE_LOOKUP_RESULT'], 'true'))
 
       # build and test
       - bash: |
