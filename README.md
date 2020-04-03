@@ -1,4 +1,4 @@
-[![Build Status](https://dev.azure.com/johnterickson/rust-lang/_apis/build/status/cargo2junit?branchName=master)](https://dev.azure.com/johnterickson/rust-lang/_build/latest?definitionId=17&branchName=master)
+[![Build Status](https://dev.azure.com/johnterickson/rust-lang/_apis/build/status/johnterickson.cargo2junit?branchName=master)](https://dev.azure.com/johnterickson/rust-lang/_build/latest?definitionId=32&branchName=master)
 
 # cargo2junit
 [WORK IN PROGRESS] Converts cargo's json output (from stdin) to JUnit XML (to stdout).
