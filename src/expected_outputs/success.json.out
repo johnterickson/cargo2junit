@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
   <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="1" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:07.005942200+00:00" time="0">
-    <testcase name="tests::success" time="0" />
-    <system-out />
-    <system-err />
+    <testcase name="success" classname="tests" time="0" />
   </testsuite>
-  <testsuite id="1" name="cargo test #1" package="testsuite/cargo test #1" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:07.005942200+00:00" time="0">
-    <system-out />
-    <system-err />
-  </testsuite>
+  <testsuite id="1" name="cargo test #1" package="testsuite/cargo test #1" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:07.005942200+00:00" time="0" />
 </testsuites>
