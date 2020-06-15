@@ -186,13 +186,27 @@ mod tests {
     use crate::parse;
     use junit_report::*;
     use std::io::*;
+    use regex::Regex;
 
     fn parse_bytes(bytes: &[u8]) -> Result<Report> {
-        parse(BufReader::new(bytes), "test", Utc::now())
+        parse(BufReader::new(bytes), "cargo test", Utc::now())
     }
 
     fn parse_string(input: &str) -> Result<Report> {
         parse_bytes(input.as_bytes())
+    }
+
+    fn normalize(input: &str) -> String {
+        let date_regex = Regex::new(r"(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})\.(\d+)\+00:00").unwrap();
+        date_regex.replace_all(input, "TIMESTAMP").replace("\r\n","\n")
+    }
+
+    fn assert_output(report: &Report, expected: &[u8]) {
+        let mut output = Vec::new();
+        report.write_xml(&mut output).unwrap();
+        let output = normalize(std::str::from_utf8(&output).unwrap());
+        let expected = normalize(std::str::from_utf8(expected).unwrap());
+        assert_eq!(output, expected);
     }
 
     #[test]
@@ -208,6 +222,8 @@ mod tests {
         let test_cases = suite.testcases();
         assert_eq!(test_cases[0].name(), "tests::error_on_garbage");
         assert_eq!(test_cases[0].time(), &Duration::nanoseconds(213_100));
+
+        assert_output(&report, include_bytes!("expected_outputs/self.json.out"));
     }
 
     #[test]
@@ -218,12 +234,15 @@ mod tests {
         let test_cases = suite.testcases();
         assert_eq!(test_cases[4].name(), "tests::az_func_regression");
         assert_eq!(test_cases[4].time(), &Duration::milliseconds(72));
+        assert_output(&report, include_bytes!("expected_outputs/self_exec_time.json.out"));
+
     }
 
     #[test]
     fn success_single_suite() {
-        let _report = parse_bytes(include_bytes!("test_inputs/success.json"))
+        let report = parse_bytes(include_bytes!("test_inputs/success.json"))
             .expect("Could not parse test input");
+        assert_output(&report, include_bytes!("expected_outputs/success.json.out"));
     }
 
     #[test]
@@ -235,29 +254,35 @@ mod tests {
         let test_cases = suite.testcases();
         assert_eq!(test_cases[0].name(), "tests::long_execution_time");
         assert!(test_cases[0].is_success());
+        assert_output(&report, include_bytes!("expected_outputs/timeout.json.out"));
     }
 
     #[test]
     fn failded_single_suite() {
-        let _report = parse_bytes(include_bytes!("test_inputs/failed.json"))
+        let report = parse_bytes(include_bytes!("test_inputs/failed.json"))
             .expect("Could not parse test input");
+        assert_output(&report, include_bytes!("expected_outputs/failed.json.out"));
     }
 
     #[test]
     fn multi_suite_success() {
-        let _report = parse_bytes(include_bytes!("test_inputs/multi_suite_success.json"))
+        let report = parse_bytes(include_bytes!("test_inputs/multi_suite_success.json"))
             .expect("Could not parse test input");
+        assert_output(&report, include_bytes!("expected_outputs/multi_suite_success.json.out"));
     }
 
     #[test]
     fn cargo_project_failure() {
-        let _report = parse_bytes(include_bytes!("test_inputs/cargo_failure.json"))
+        let report = parse_bytes(include_bytes!("test_inputs/cargo_failure.json"))
             .expect("Could not parse test input");
+        assert_output(&report, include_bytes!("expected_outputs/cargo_failure.json.out"));
+        
     }
 
     #[test]
     fn az_func_regression() {
-        let _report = parse_bytes(include_bytes!("test_inputs/azfunc.json"))
+        let report = parse_bytes(include_bytes!("test_inputs/azfunc.json"))
             .expect("Could not parse test input");
+        assert_output(&report, include_bytes!("expected_outputs/azfunc.json.out"));
     }
 }

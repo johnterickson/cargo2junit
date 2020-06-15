@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="5" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:06.568821800+00:00" time="0">
+    <testcase name="sharedkey::create_signature" time="0" />
+    <testcase name="client::list_tables" time="0" />
+    <testcase name="client::delete_tables" time="0" />
+    <testcase name="table::create_and_delete_table" time="0" />
+    <testcase name="blob::create_and_delete_container" time="0" />
+    <system-out />
+    <system-err />
+  </testsuite>
+  <testsuite id="1" name="cargo test #1" package="testsuite/cargo test #1" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:06.568821800+00:00" time="0">
+    <system-out />
+    <system-err />
+  </testsuite>
+  <testsuite id="2" name="cargo test #2" package="testsuite/cargo test #2" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:06.568821800+00:00" time="0">
+    <system-out />
+    <system-err />
+  </testsuite>
+  <testsuite id="3" name="cargo test #3" package="testsuite/cargo test #3" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:06.568821800+00:00" time="0">
+    <system-out />
+    <system-err />
+  </testsuite>
+  <testsuite id="4" name="cargo test #4" package="testsuite/cargo test #4" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:06.568821800+00:00" time="0">
+    <system-out />
+    <system-err />
+  </testsuite>
+  <testsuite id="5" name="cargo test #5" package="testsuite/cargo test #5" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:06.568821800+00:00" time="0">
+    <system-out />
+    <system-err />
+  </testsuite>
+  <testsuite id="6" name="cargo test #6" package="testsuite/cargo test #6" tests="3" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:06.568821800+00:00" time="0">
+    <testcase name="types::blob_deserialize" time="0" />
+    <testcase name="types::drop_deserialize" time="0" />
+    <testcase name="types::manifest_deserialize" time="0" />
+    <system-out />
+    <system-err />
+  </testsuite>
+  <testsuite id="7" name="cargo test #7" package="testsuite/cargo test #7" tests="5" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:06.568821800+00:00" time="0">
+    <testcase name="chunker::real_rolling_hash" time="0" />
+    <testcase name="chunker::simple_rolling_hash" time="0" />
+    <testcase name="chunker::chunk_bytes" time="0" />
+    <testcase name="blockhash::block_hashes" time="0" />
+    <testcase name="blobhash::blob_hashes" time="0" />
+    <system-out />
+    <system-err />
+  </testsuite>
+  <testsuite id="8" name="cargo test #8" package="testsuite/cargo test #8" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:06.568821800+00:00" time="0">
+    <system-out />
+    <system-err />
+  </testsuite>
+  <testsuite id="9" name="cargo test #9" package="testsuite/cargo test #9" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:06.568821800+00:00" time="0">
+    <system-out />
+    <system-err />
+  </testsuite>
+  <testsuite id="10" name="cargo test #10" package="testsuite/cargo test #10" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:06.568821800+00:00" time="0">
+    <system-out />
+    <system-err />
+  </testsuite>
+  <testsuite id="11" name="cargo test #11" package="testsuite/cargo test #11" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:06.568821800+00:00" time="0">
+    <system-out />
+    <system-err />
+  </testsuite>
+  <testsuite id="12" name="cargo test #12" package="testsuite/cargo test #12" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:06.568821800+00:00" time="0">
+    <system-out />
+    <system-err />
+  </testsuite>
+</testsuites>
