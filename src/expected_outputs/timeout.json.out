@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
   <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="1" errors="0" failures="0" hostname="localhost" timestamp="2020-06-15T20:58:07.146949500+00:00" time="0">
-    <testcase name="tests::long_execution_time" time="0" />
-    <system-out />
-    <system-err />
+    <testcase name="long_execution_time" classname="tests" time="0" />
   </testsuite>
 </testsuites>

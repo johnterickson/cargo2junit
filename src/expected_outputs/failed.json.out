@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
   <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="2" errors="0" failures="1" hostname="localhost" timestamp="2020-06-15T20:58:06.406283700+00:00" time="0">
-    <testcase name="tests::fails" time="0">
+    <testcase name="fails" classname="tests" time="0">
       <failure type="cargo test" message="thread &apos;tests::fails&apos; panicked at &apos;assertion failed: `(left == right)`&#xA;  left: `4`,&#xA; right: `3`&apos;, src/lib.rs:10:9&#xA;note: Run with `RUST_BACKTRACE=1` for a backtrace.&#xA;" />
     </testcase>
-    <testcase name="tests::success" time="0" />
-    <system-out />
-    <system-err />
+    <testcase name="success" classname="tests" time="0" />
   </testsuite>
 </testsuites>
