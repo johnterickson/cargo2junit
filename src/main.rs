@@ -126,10 +126,10 @@ fn parse<T: BufRead>(
                 duration,
                 exec_time,
             } => {
-                let current_test_suite = current_suite
-                    .as_ref()
-                    .expect("Test event found outside of suite!")
-                    .clone();
+                let current_suite = current_suite
+                    .as_mut()
+                    .expect("Test event found outside of suite!");
+
                 let duration_ns = match (duration, exec_time) {
                     (_, Some(s)) => {
                         assert_eq!(s.chars().last(), Some('s'));
@@ -150,18 +150,16 @@ fn parse<T: BufRead>(
                     TestEvent::Ok { name } => {
                         assert!(tests.remove(&name));
                         let (name, module_path) = split_name(&name);
-                        current_suite = Some(current_test_suite.add_testcase(
+                        *current_suite = current_suite.clone().add_testcase(
                             TestCase::success(&name, duration).set_classname(module_path.as_str()),
-                        ));
+                        );
                     }
                     TestEvent::Failed { name, stdout } => {
                         assert!(tests.remove(&name));
                         let (name, module_path) = split_name(&name);
-                        current_suite = Some(
-                            current_test_suite.add_testcase(
-                                TestCase::failure(&name, duration, "cargo test", &stdout)
-                                    .set_classname(module_path.as_str()),
-                            ),
+                        *current_suite = current_suite.clone().add_testcase(
+                            TestCase::failure(&name, duration, "cargo test", &stdout)
+                                .set_classname(module_path.as_str()),
                         );
                     }
                     TestEvent::Ignored { name } => {
