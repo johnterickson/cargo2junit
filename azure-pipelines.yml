@@ -121,11 +121,6 @@ jobs:
         displayName: Install cargo-cache (if updating the cache anyway)
         condition: and(succeeded(), ne(variables['CACHE_LOOKUP_RESULT'], 'true'))
       - bash: |
-          export RUSTC_WRAPPER=
-          cargo install-update sccache
-        displayName: Ensure sccache is up-to-date (if updating the cache anyway)
-        condition: and(succeeded(), and(eq(variables['ENABLE_SCCACHE'], '1'), ne(variables['CACHE_LOOKUP_RESULT'], 'true')))
-      - bash: |
           rustup toolchain install $(CHANNEL)-$(TARGET)
           rustup default $(CHANNEL)-$(TARGET)
           rustup update $(CHANNEL)-$(TARGET)
