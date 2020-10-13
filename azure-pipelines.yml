@@ -184,6 +184,16 @@ jobs:
           buildPlatform: RELEASE_$(System.JobDisplayName)
         condition: succeededOrFailed()
 
+      # publish bits
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: '$(RUSTCACHE_ROOT)/debug'
+          artifactName: '$(System.JobDisplayName)_debug'
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: '$(RUSTCACHE_ROOT)/release'
+          artifactName: '$(System.JobDisplayName)_release'
+
       # some cleanup before the cache stores
       - bash: |
           sccache --show-stats
