@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
-  <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="25" errors="0" failures="0" hostname="localhost" timestamp="2020-12-09T17:15:27.317824988+00:00" time="0">
+  <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="25" errors="0" failures="0" hostname="localhost" timestamp="2020-12-09T21:03:41.628941095+00:00" time="0">
     <testcase name="bad_parsing" classname="core::package_id_spec::tests" time="0" />
     <testcase name="good_parsing" classname="core::package_id_spec::tests" time="0" />
     <testcase name="invalid_version_handled_nicely" classname="core::package_id::tests" time="0" />
@@ -27,10 +27,10 @@
     <testcase name="with_retry_finds_nested_spurious_errors" classname="util::network" time="0" />
     <testcase name="test_lev_distance" classname="util::lev_distance" time="0" />
   </testsuite>
-  <testsuite id="1" name="cargo test #1" package="testsuite/cargo test #1" tests="1503" errors="0" failures="2" hostname="localhost" timestamp="2020-12-09T17:15:27.317824988+00:00" time="0">
+  <testsuite id="1" name="cargo test #1" package="testsuite/cargo test #1" tests="1503" errors="0" failures="2" hostname="localhost" timestamp="2020-12-09T21:03:41.628941095+00:00" time="0">
     <testcase name="bad_registry_name" classname="alt_registry" time="0" />
     <testcase name="aaa_trigger_cross_compile_disabled_check" classname="" time="0">
-      <system-out><![CDATA[thread 'aaa_trigger_cross_compile_disabled_check' panicked at 'Cannot cross compile to i686-pc-windows-msvc.
+      <failure type="cargo test" message="failed ::aaa_trigger_cross_compile_disabled_check"><![CDATA[thread 'aaa_trigger_cross_compile_disabled_check' panicked at 'Cannot cross compile to i686-pc-windows-msvc.
 
 This failure can be safely ignored. If you would prefer to not see this
 failure, you can set the environment variable CFG_DISABLE_CROSS_TESTS to "1".
@@ -40,8 +40,7 @@ Alternatively, you can install the necessary libraries for cross-compilation wit
     rustup target add i686-pc-windows-msvc
 ', tests\testsuite\support\cross_compile.rs:92:5
 note: Run with `RUST_BACKTRACE=1` for a backtrace.
-]]></system-out>
-      <failure type="cargo test" message="failed " />
+]]></failure>
     </testcase>
     <testcase name="alt_reg_metadata" classname="alt_registry" time="0" />
     <testcase name="cannot_publish_to_crates_io_with_registry_dependency" classname="alt_registry" time="0" />
@@ -343,7 +342,7 @@ note: Run with `RUST_BACKTRACE=1` for a backtrace.
     <testcase name="ssh_something_happens" classname="build_auth" time="0" />
     <testcase name="build_with_no_lib" classname="build_lib" time="0" />
     <testcase name="http_auth_offered" classname="build_auth" time="0">
-      <system-out><![CDATA[running `C:\src\rust-lang\cargo\target\debug\cargo.exe build -v`
+      <failure type="cargo test" message="failed build_auth::http_auth_offered"><![CDATA[running `C:\src\rust-lang\cargo\target\debug\cargo.exe build -v`
 running `C:\src\rust-lang\cargo\target\debug\cargo.exe build`
 thread 'build_auth::http_auth_offered' panicked at '
 Expected: execs
@@ -381,8 +380,7 @@ attempted to find username/password via git's `credential.helper` support, but f
 Caused by:
   failed to acquire username/password from local configuration
 ', tests\testsuite\support\mod.rs:794:13
-]]></system-out>
-      <failure type="cargo test" message="failed build_auth" />
+]]></failure>
     </testcase>
     <testcase name="build_lib_only" classname="build_lib" time="0" />
     <testcase name="https_something_happens" classname="build_auth" time="0" />

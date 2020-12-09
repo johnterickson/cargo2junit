@@ -158,9 +158,14 @@ fn parse<T: BufRead>(
                         assert!(tests.remove(&name));
                         let (name, module_path) = split_name(&name);
                         *current_suite = current_suite.clone().add_testcase(
-                            TestCase::failure(&name, duration, "cargo test", &format!("failed {}", module_path.as_str()))
-                                .set_classname(module_path.as_str())
-                                .set_system_out(&stdout),
+                            TestCase::failure(
+                                &name,
+                                duration,
+                                "cargo test",
+                                &format!("failed {}::{}", module_path.as_str(), &name),
+                            )
+                            .set_classname(module_path.as_str())
+                            .set_system_out(&stdout),
                         );
                     }
                     TestEvent::Ignored { name } => {
@@ -281,7 +286,7 @@ mod tests {
     }
 
     #[test]
-    fn failded_single_suite() {
+    fn single_suite_failed() {
         let report = parse_bytes(include_bytes!("test_inputs/failed.json"))
             .expect("Could not parse test input");
         assert_output(&report, include_bytes!("expected_outputs/failed.json.out"));
