@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
-  <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="25" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:16:58.513211709+00:00" time="0">
+  <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="25" errors="0" failures="0" hostname="localhost" timestamp="2020-12-09T17:15:27.317824988+00:00" time="0">
     <testcase name="bad_parsing" classname="core::package_id_spec::tests" time="0" />
     <testcase name="good_parsing" classname="core::package_id_spec::tests" time="0" />
     <testcase name="invalid_version_handled_nicely" classname="core::package_id::tests" time="0" />
@@ -27,10 +27,21 @@
     <testcase name="with_retry_finds_nested_spurious_errors" classname="util::network" time="0" />
     <testcase name="test_lev_distance" classname="util::lev_distance" time="0" />
   </testsuite>
-  <testsuite id="1" name="cargo test #1" package="testsuite/cargo test #1" tests="1503" errors="0" failures="2" hostname="localhost" timestamp="2020-06-16T06:16:58.513211709+00:00" time="0">
+  <testsuite id="1" name="cargo test #1" package="testsuite/cargo test #1" tests="1503" errors="0" failures="2" hostname="localhost" timestamp="2020-12-09T17:15:27.317824988+00:00" time="0">
     <testcase name="bad_registry_name" classname="alt_registry" time="0" />
     <testcase name="aaa_trigger_cross_compile_disabled_check" classname="" time="0">
-      <failure type="cargo test" message="thread &apos;aaa_trigger_cross_compile_disabled_check&apos; panicked at &apos;Cannot cross compile to i686-pc-windows-msvc.&#xA;&#xA;This failure can be safely ignored. If you would prefer to not see this&#xA;failure, you can set the environment variable CFG_DISABLE_CROSS_TESTS to &quot;1&quot;.&#xA;&#xA;Alternatively, you can install the necessary libraries for cross-compilation with&#xA;&#xA;    rustup target add i686-pc-windows-msvc&#xA;&apos;, tests\testsuite\support\cross_compile.rs:92:5&#xA;note: Run with `RUST_BACKTRACE=1` for a backtrace.&#xA;" />
+      <system-out><![CDATA[thread 'aaa_trigger_cross_compile_disabled_check' panicked at 'Cannot cross compile to i686-pc-windows-msvc.
+
+This failure can be safely ignored. If you would prefer to not see this
+failure, you can set the environment variable CFG_DISABLE_CROSS_TESTS to "1".
+
+Alternatively, you can install the necessary libraries for cross-compilation with
+
+    rustup target add i686-pc-windows-msvc
+', tests\testsuite\support\cross_compile.rs:92:5
+note: Run with `RUST_BACKTRACE=1` for a backtrace.
+]]></system-out>
+      <failure type="cargo test" message="failed " />
     </testcase>
     <testcase name="alt_reg_metadata" classname="alt_registry" time="0" />
     <testcase name="cannot_publish_to_crates_io_with_registry_dependency" classname="alt_registry" time="0" />
@@ -332,7 +343,46 @@
     <testcase name="ssh_something_happens" classname="build_auth" time="0" />
     <testcase name="build_with_no_lib" classname="build_lib" time="0" />
     <testcase name="http_auth_offered" classname="build_auth" time="0">
-      <failure type="cargo test" message="running `C:\src\rust-lang\cargo\target\debug\cargo.exe build -v`&#xA;running `C:\src\rust-lang\cargo\target\debug\cargo.exe build`&#xA;thread &apos;build_auth::http_auth_offered&apos; panicked at &apos;&#xA;Expected: execs&#xA;    but: expected to find:&#xA;[UPDATING] git repository `http://127.0.0.1:33960/foo/bar`&#xA;[ERROR] failed to load source for a dependency on `bar`&#xA;&#xA;Caused by:&#xA;  Unable to update http://127.0.0.1:33960/foo/bar&#xA;&#xA;Caused by:&#xA;  failed to clone into: [..]&#xA;&#xA;Caused by:&#xA;  failed to authenticate when downloading repository&#xA;attempted to find username/password via `credential.helper`, but [..]&#xA;&#xA;Caused by:&#xA;&#xA;&#xA;did not find in output:&#xA;    Updating git repository `http://127.0.0.1:33960/foo/bar`&#xA;error: failed to load source for a dependency on `bar`&#xA;&#xA;Caused by:&#xA;  Unable to update http://127.0.0.1:33960/foo/bar&#xA;&#xA;Caused by:&#xA;  failed to clone into: C:\src\rust-lang\cargo\target\cit\t263\home\.cargo\git\db\bar-8cbd35f4772f62e3&#xA;&#xA;Caused by:&#xA;  failed to authenticate when downloading repository&#xA;attempted to find username/password via git&apos;s `credential.helper` support, but failed&#xA;&#xA;Caused by:&#xA;  failed to acquire username/password from local configuration&#xA;&apos;, tests\testsuite\support\mod.rs:794:13&#xA;" />
+      <system-out><![CDATA[running `C:\src\rust-lang\cargo\target\debug\cargo.exe build -v`
+running `C:\src\rust-lang\cargo\target\debug\cargo.exe build`
+thread 'build_auth::http_auth_offered' panicked at '
+Expected: execs
+    but: expected to find:
+[UPDATING] git repository `http://127.0.0.1:33960/foo/bar`
+[ERROR] failed to load source for a dependency on `bar`
+
+Caused by:
+  Unable to update http://127.0.0.1:33960/foo/bar
+
+Caused by:
+  failed to clone into: [..]
+
+Caused by:
+  failed to authenticate when downloading repository
+attempted to find username/password via `credential.helper`, but [..]
+
+Caused by:
+
+
+did not find in output:
+    Updating git repository `http://127.0.0.1:33960/foo/bar`
+error: failed to load source for a dependency on `bar`
+
+Caused by:
+  Unable to update http://127.0.0.1:33960/foo/bar
+
+Caused by:
+  failed to clone into: C:\src\rust-lang\cargo\target\cit\t263\home\.cargo\git\db\bar-8cbd35f4772f62e3
+
+Caused by:
+  failed to authenticate when downloading repository
+attempted to find username/password via git's `credential.helper` support, but failed
+
+Caused by:
+  failed to acquire username/password from local configuration
+', tests\testsuite\support\mod.rs:794:13
+]]></system-out>
+      <failure type="cargo test" message="failed build_auth" />
     </testcase>
     <testcase name="build_lib_only" classname="build_lib" time="0" />
     <testcase name="https_something_happens" classname="build_auth" time="0" />

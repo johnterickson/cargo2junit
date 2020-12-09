@@ -158,8 +158,9 @@ fn parse<T: BufRead>(
                         assert!(tests.remove(&name));
                         let (name, module_path) = split_name(&name);
                         *current_suite = current_suite.clone().add_testcase(
-                            TestCase::failure(&name, duration, "cargo test", &stdout)
-                                .set_classname(module_path.as_str()),
+                            TestCase::failure(&name, duration, "cargo test", &format!("failed {}", module_path.as_str()))
+                                .set_classname(module_path.as_str())
+                                .set_system_out(&stdout),
                         );
                     }
                     TestEvent::Ignored { name } => {
