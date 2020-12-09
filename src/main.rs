@@ -3,7 +3,6 @@ extern crate serde;
 
 use junit_report::*;
 use serde::{Deserialize, Serialize};
-use std;
 use std::collections::BTreeSet;
 use std::io::*;
 
