@@ -18,6 +18,7 @@ maintenance = { status = "experimental" }
 junit-report = { git = "https://github.com/sasa-tomic/junit-report-rs" }
 serde_json = "1.0.38"
 serde = { version = "1.0", features = ["derive"] }
+strip-ansi-escapes = "0.1.0"
 
 [dev-dependencies]
 regex = "1"

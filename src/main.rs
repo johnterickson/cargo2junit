@@ -156,6 +156,8 @@ fn parse<T: BufRead>(
                     TestEvent::Failed { name, stdout } => {
                         assert!(tests.remove(&name));
                         let (name, module_path) = split_name(&name);
+                        let stdout_data = strip_ansi_escapes::strip(stdout)?;
+                        let stdout = String::from_utf8_lossy(&stdout_data);
                         *current_suite = current_suite.clone().add_testcase(
                             TestCase::failure(
                                 &name,
