@@ -65,7 +65,7 @@ fn split_name(full_name: &str) -> (&str, String) {
     let mut parts: Vec<&str> = full_name.split("::").collect();
     let name = parts.pop().unwrap_or("");
     let module_path = parts.join("::");
-    return (name, module_path);
+    (name, module_path)
 }
 
 fn parse<T: BufRead>(
@@ -81,7 +81,7 @@ fn parse<T: BufRead>(
     for line in input.lines() {
         let line = line?;
 
-        if line.chars().filter(|c| !c.is_whitespace()).next() != Some('{') {
+        if line.chars().find(|c| !c.is_whitespace()) != Some('{') {
             continue;
         }
 
