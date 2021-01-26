@@ -4,6 +4,7 @@ extern crate serde;
 use junit_report::*;
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeSet;
+use std::env;
 use std::io::*;
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
@@ -72,6 +73,7 @@ fn parse<T: BufRead>(
     input: T,
     suite_name_prefix: &str,
     timestamp: DateTime<Utc>,
+    max_stdout_len: usize,
 ) -> Result<Report> {
     let mut r = Report::new();
     let mut suite_index = 0;
@@ -158,6 +160,16 @@ fn parse<T: BufRead>(
                         let (name, module_path) = split_name(&name);
                         let stdout_data = strip_ansi_escapes::strip(stdout)?;
                         let stdout = String::from_utf8_lossy(&stdout_data);
+                        let stdout = if stdout.len() > max_stdout_len {
+                            format!(
+                                "{}\n[...stripped...]\n{}",
+                                stdout.split_at(max_stdout_len / 2).0,
+                                stdout.split_at(stdout.len() - (max_stdout_len / 2)).1
+                            )
+                        } else {
+                            stdout.to_string()
+                        };
+
                         *current_suite = current_suite.clone().add_testcase(
                             TestCase::failure(
                                 &name,
@@ -192,7 +204,15 @@ fn main() -> Result<()> {
     let timestamp = Utc::now();
     let stdin = std::io::stdin();
     let stdin = stdin.lock();
-    let report = parse(stdin, "cargo test", timestamp)?;
+
+    // GitLab fails to parse the Junit XML if stdout is too long.
+    let max_stdout_len = match env::var("TEST_STDOUT_MAX_LEN") {
+        Ok(val) => val
+            .parse::<usize>()
+            .expect("Failed to parse TEST_STDOUT_MAX_LEN as a natural number"),
+        Err(_) => 64 * 1024,
+    };
+    let report = parse(stdin, "cargo test", timestamp, max_stdout_len)?;
 
     let stdout = std::io::stdout();
     let stdout = stdout.lock();
@@ -209,12 +229,17 @@ mod tests {
     use regex::Regex;
     use std::io::*;
 
-    fn parse_bytes(bytes: &[u8]) -> Result<Report> {
-        parse(BufReader::new(bytes), "cargo test", Utc::now())
+    fn parse_bytes(bytes: &[u8], max_stdout_len: usize) -> Result<Report> {
+        parse(
+            BufReader::new(bytes),
+            "cargo test",
+            Utc::now(),
+            max_stdout_len,
+        )
     }
 
-    fn parse_string(input: &str) -> Result<Report> {
-        parse_bytes(input.as_bytes())
+    fn parse_string(input: &str, max_stdout_len: usize) -> Result<Report> {
+        parse_bytes(input.as_bytes(), max_stdout_len)
     }
 
     fn normalize(input: &str) -> String {
@@ -229,18 +254,19 @@ mod tests {
         let mut output = Vec::new();
         report.write_xml(&mut output).unwrap();
         let output = normalize(std::str::from_utf8(&output).unwrap());
+        println!("yyoutput {}", std::str::from_utf8(expected).unwrap());
         let expected = normalize(std::str::from_utf8(expected).unwrap());
         assert_eq!(output, expected);
     }
 
     #[test]
     fn error_on_garbage() {
-        assert!(parse_string("{garbage}").is_err());
+        assert!(parse_string("{garbage}", 65536).is_err());
     }
 
     #[test]
     fn success_self() {
-        let report = parse_bytes(include_bytes!("test_inputs/self.json"))
+        let report = parse_bytes(include_bytes!("test_inputs/self.json"), 65536)
             .expect("Could not parse test input");
         let suite = &report.testsuites()[0];
         let test_cases = suite.testcases();
@@ -253,7 +279,7 @@ mod tests {
 
     #[test]
     fn success_self_exec_time() {
-        let report = parse_bytes(include_bytes!("test_inputs/self_exec_time.json"))
+        let report = parse_bytes(include_bytes!("test_inputs/self_exec_time.json"), 65536)
             .expect("Could not parse test input");
         let suite = &report.testsuites()[0];
         let test_cases = suite.testcases();
@@ -268,14 +294,14 @@ mod tests {
 
     #[test]
     fn success_single_suite() {
-        let report = parse_bytes(include_bytes!("test_inputs/success.json"))
+        let report = parse_bytes(include_bytes!("test_inputs/success.json"), 65536)
             .expect("Could not parse test input");
         assert_output(&report, include_bytes!("expected_outputs/success.json.out"));
     }
 
     #[test]
     fn success_timeout() {
-        let report = parse_bytes(include_bytes!("test_inputs/timeout.json"))
+        let report = parse_bytes(include_bytes!("test_inputs/timeout.json"), 65536)
             .expect("Could not parse test input");
 
         let suite = &report.testsuites()[0];
@@ -288,15 +314,18 @@ mod tests {
 
     #[test]
     fn single_suite_failed() {
-        let report = parse_bytes(include_bytes!("test_inputs/failed.json"))
+        let report = parse_bytes(include_bytes!("test_inputs/failed.json"), 65536)
             .expect("Could not parse test input");
         assert_output(&report, include_bytes!("expected_outputs/failed.json.out"));
     }
 
     #[test]
     fn multi_suite_success() {
-        let report = parse_bytes(include_bytes!("test_inputs/multi_suite_success.json"))
-            .expect("Could not parse test input");
+        let report = parse_bytes(
+            include_bytes!("test_inputs/multi_suite_success.json"),
+            65536,
+        )
+        .expect("Could not parse test input");
         assert_output(
             &report,
             include_bytes!("expected_outputs/multi_suite_success.json.out"),
@@ -305,7 +334,7 @@ mod tests {
 
     #[test]
     fn cargo_project_failure() {
-        let report = parse_bytes(include_bytes!("test_inputs/cargo_failure.json"))
+        let report = parse_bytes(include_bytes!("test_inputs/cargo_failure.json"), 65536)
             .expect("Could not parse test input");
         assert_output(
             &report,
@@ -314,8 +343,18 @@ mod tests {
     }
 
     #[test]
+    fn cargo_project_failure_shortened() {
+        let report = parse_bytes(include_bytes!("test_inputs/cargo_failure.json"), 256)
+            .expect("Could not parse test input");
+        assert_output(
+            &report,
+            include_bytes!("expected_outputs/cargo_failure_shortened.json.out"),
+        );
+    }
+
+    #[test]
     fn az_func_regression() {
-        let report = parse_bytes(include_bytes!("test_inputs/azfunc.json"))
+        let report = parse_bytes(include_bytes!("test_inputs/azfunc.json"), 65536)
             .expect("Could not parse test input");
         assert_output(&report, include_bytes!("expected_outputs/azfunc.json.out"));
     }
