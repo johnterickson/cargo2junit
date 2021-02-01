@@ -38,7 +38,11 @@ enum TestEvent {
     #[serde(rename = "ok")]
     Ok { name: String },
     #[serde(rename = "failed")]
-    Failed { name: String, stdout: String },
+    Failed {
+        name: String,
+        stdout: Option<String>,
+        stderr: Option<String>,
+    },
     #[serde(rename = "ignored")]
     Ignored { name: String },
     #[serde(rename = "timeout")]
@@ -155,19 +159,49 @@ fn parse<T: BufRead>(
                             TestCase::success(&name, duration).set_classname(module_path.as_str()),
                         );
                     }
-                    TestEvent::Failed { name, stdout } => {
+                    TestEvent::Failed {
+                        name,
+                        stdout,
+                        stderr,
+                    } => {
                         assert!(tests.remove(&name));
                         let (name, module_path) = split_name(&name);
-                        let stdout_data = strip_ansi_escapes::strip(stdout)?;
-                        let stdout = String::from_utf8_lossy(&stdout_data);
-                        let stdout = if stdout.len() > max_stdout_len {
+                        let stdout = match stdout {
+                            Some(stdout) => {
+                                let s_data = strip_ansi_escapes::strip(stdout)?;
+                                String::from_utf8_lossy(&s_data).to_string()
+                            }
+                            None => String::new(),
+                        };
+                        let stderr = match stderr {
+                            Some(stderr) => {
+                                let s_data = strip_ansi_escapes::strip(stderr)?;
+                                String::from_utf8_lossy(&s_data).to_string()
+                            }
+                            None => String::new(),
+                        };
+
+                        let system_out = if stderr.is_empty() {
+                            // no stderr ==> return just the stdout
+                            stdout
+                        } else if stdout.is_empty() {
+                            // stderr but no stdout => return just the stderr
+                            stderr
+                        } else {
+                            // both stdout and stderr => return both joined with a newline
+                            format!("{}\n{}", stdout, stderr)
+                        };
+
+                        let system_out = if system_out.len() > max_stdout_len {
                             format!(
-                                "{}\n[...stripped...]\n{}",
-                                stdout.split_at(max_stdout_len / 2).0,
-                                stdout.split_at(stdout.len() - (max_stdout_len / 2)).1
+                                "{}\n[...TRUNCATED...]\n{}",
+                                system_out.split_at(max_stdout_len / 2).0,
+                                system_out
+                                    .split_at(system_out.len() - (max_stdout_len / 2))
+                                    .1
                             )
                         } else {
-                            stdout.to_string()
+                            system_out
                         };
 
                         *current_suite = current_suite.clone().add_testcase(
@@ -178,7 +212,7 @@ fn parse<T: BufRead>(
                                 &format!("failed {}::{}", module_path.as_str(), &name),
                             )
                             .set_classname(module_path.as_str())
-                            .set_system_out(&stdout),
+                            .set_system_out(&system_out),
                         );
                     }
                     TestEvent::Ignored { name } => {
@@ -254,7 +288,6 @@ mod tests {
         let mut output = Vec::new();
         report.write_xml(&mut output).unwrap();
         let output = normalize(std::str::from_utf8(&output).unwrap());
-        println!("yyoutput {}", std::str::from_utf8(expected).unwrap());
         let expected = normalize(std::str::from_utf8(expected).unwrap());
         assert_eq!(output, expected);
     }
@@ -317,6 +350,16 @@ mod tests {
         let report = parse_bytes(include_bytes!("test_inputs/failed.json"), 65536)
             .expect("Could not parse test input");
         assert_output(&report, include_bytes!("expected_outputs/failed.json.out"));
+    }
+
+    #[test]
+    fn single_suite_failed_stderr_only() {
+        let report = parse_bytes(include_bytes!("test_inputs/failed_stderr.json"), 65536)
+            .expect("Could not parse test input");
+        assert_output(
+            &report,
+            include_bytes!("expected_outputs/failed_stderr.json.out"),
+        );
     }
 
     #[test]
