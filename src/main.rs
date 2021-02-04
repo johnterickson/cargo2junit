@@ -7,6 +7,8 @@ use std::collections::BTreeSet;
 use std::env;
 use std::io::*;
 
+const SYSTEM_OUT_MAX_LEN: usize = 65536;
+
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
 struct SuiteResults {
     passed: usize,
@@ -244,7 +246,7 @@ fn main() -> Result<()> {
         Ok(val) => val
             .parse::<usize>()
             .expect("Failed to parse TEST_STDOUT_MAX_LEN as a natural number"),
-        Err(_) => 64 * 1024,
+        Err(_) => SYSTEM_OUT_MAX_LEN,
     };
     let report = parse(stdin, "cargo test", timestamp, max_stdout_len)?;
 
@@ -258,6 +260,7 @@ fn main() -> Result<()> {
 
 #[cfg(test)]
 mod tests {
+    use super::SYSTEM_OUT_MAX_LEN;
     use crate::parse;
     use junit_report::*;
     use regex::Regex;
@@ -294,12 +297,12 @@ mod tests {
 
     #[test]
     fn error_on_garbage() {
-        assert!(parse_string("{garbage}", 65536).is_err());
+        assert!(parse_string("{garbage}", SYSTEM_OUT_MAX_LEN).is_err());
     }
 
     #[test]
     fn success_self() {
-        let report = parse_bytes(include_bytes!("test_inputs/self.json"), 65536)
+        let report = parse_bytes(include_bytes!("test_inputs/self.json"), SYSTEM_OUT_MAX_LEN)
             .expect("Could not parse test input");
         let suite = &report.testsuites()[0];
         let test_cases = suite.testcases();
@@ -312,8 +315,11 @@ mod tests {
 
     #[test]
     fn success_self_exec_time() {
-        let report = parse_bytes(include_bytes!("test_inputs/self_exec_time.json"), 65536)
-            .expect("Could not parse test input");
+        let report = parse_bytes(
+            include_bytes!("test_inputs/self_exec_time.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
         let suite = &report.testsuites()[0];
         let test_cases = suite.testcases();
         assert_eq!(test_cases[4].name(), "az_func_regression");
@@ -327,15 +333,21 @@ mod tests {
 
     #[test]
     fn success_single_suite() {
-        let report = parse_bytes(include_bytes!("test_inputs/success.json"), 65536)
-            .expect("Could not parse test input");
+        let report = parse_bytes(
+            include_bytes!("test_inputs/success.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
         assert_output(&report, include_bytes!("expected_outputs/success.json.out"));
     }
 
     #[test]
     fn success_timeout() {
-        let report = parse_bytes(include_bytes!("test_inputs/timeout.json"), 65536)
-            .expect("Could not parse test input");
+        let report = parse_bytes(
+            include_bytes!("test_inputs/timeout.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
 
         let suite = &report.testsuites()[0];
         let test_cases = suite.testcases();
@@ -347,15 +359,21 @@ mod tests {
 
     #[test]
     fn single_suite_failed() {
-        let report = parse_bytes(include_bytes!("test_inputs/failed.json"), 65536)
-            .expect("Could not parse test input");
+        let report = parse_bytes(
+            include_bytes!("test_inputs/failed.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
         assert_output(&report, include_bytes!("expected_outputs/failed.json.out"));
     }
 
     #[test]
     fn single_suite_failed_stderr_only() {
-        let report = parse_bytes(include_bytes!("test_inputs/failed_stderr.json"), 65536)
-            .expect("Could not parse test input");
+        let report = parse_bytes(
+            include_bytes!("test_inputs/failed_stderr.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
         assert_output(
             &report,
             include_bytes!("expected_outputs/failed_stderr.json.out"),
@@ -366,7 +384,7 @@ mod tests {
     fn multi_suite_success() {
         let report = parse_bytes(
             include_bytes!("test_inputs/multi_suite_success.json"),
-            65536,
+            SYSTEM_OUT_MAX_LEN,
         )
         .expect("Could not parse test input");
         assert_output(
@@ -377,8 +395,11 @@ mod tests {
 
     #[test]
     fn cargo_project_failure() {
-        let report = parse_bytes(include_bytes!("test_inputs/cargo_failure.json"), 65536)
-            .expect("Could not parse test input");
+        let report = parse_bytes(
+            include_bytes!("test_inputs/cargo_failure.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
         assert_output(
             &report,
             include_bytes!("expected_outputs/cargo_failure.json.out"),
@@ -397,8 +418,11 @@ mod tests {
 
     #[test]
     fn az_func_regression() {
-        let report = parse_bytes(include_bytes!("test_inputs/azfunc.json"), 65536)
-            .expect("Could not parse test input");
+        let report = parse_bytes(
+            include_bytes!("test_inputs/azfunc.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
         assert_output(&report, include_bytes!("expected_outputs/azfunc.json.out"));
     }
 }
