@@ -46,7 +46,7 @@ enum TestEvent {
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
-#[serde(tag = "type")]
+#[serde(untagged)]
 enum Event {
     #[serde(rename = "suite")]
     Suite {
@@ -54,12 +54,60 @@ enum Event {
         event: SuiteEvent,
     },
     #[serde(rename = "test")]
-    Test {
+    TestStringTime {
         #[serde(flatten)]
         event: TestEvent,
         duration: Option<f64>,
         exec_time: Option<String>,
     },
+    #[serde(rename = "test")]
+    TestFloatTime {
+        #[serde(flatten)]
+        event: TestEvent,
+        duration: Option<f64>,
+        exec_time: Option<f64>,
+    },
+}
+
+impl Event {
+    fn get_duration(&self) -> Duration {
+        match &self {
+            Event::Suite { event: _ } => panic!(),
+            Event::TestStringTime {
+                event: _,
+                duration,
+                exec_time,
+            } => {
+                let duration_ns = match (duration, exec_time) {
+                    (_, Some(s)) => {
+                        assert_eq!(s.chars().last(), Some('s'));
+                        let seconds_chars = &(s[0..(s.len() - 1)]);
+                        let seconds = seconds_chars.parse::<f64>().unwrap();
+                        (seconds * 1_000_000_000.0) as i64
+                    }
+                    (Some(ms), None) => (ms * 1_000_000.0) as i64,
+                    (None, None) => 0,
+                };
+
+                Duration::nanoseconds(duration_ns)
+            },
+            Event::TestFloatTime {
+                event: _,
+                duration,
+                exec_time,
+            } => {
+                let duration_ns = match (duration, exec_time) {
+                    (_, Some(seconds)) => {
+                        (seconds * 1_000_000_000.0) as i64
+                    }
+                    (Some(ms), None) => (ms * 1_000_000.0) as i64,
+                    (None, None) => 0,
+                };
+
+                Duration::nanoseconds(duration_ns)
+            }
+        }
+    }
 }
 
 fn split_name(full_name: &str) -> (&str, String) {
@@ -103,7 +151,7 @@ fn parse<T: BufRead>(
         }?;
 
         // println!("{:?}", e);
-        match e {
+        match &e {
             Event::Suite { event } => match event {
                 SuiteEvent::Started { test_count: _ } => {
                     assert!(current_suite.is_none());
@@ -121,41 +169,35 @@ fn parse<T: BufRead>(
                     current_suite = None;
                 }
             },
-            Event::Test {
+            Event::TestStringTime {
                 event,
-                duration,
-                exec_time,
+                duration: _,
+                exec_time: _,
+            } |
+            Event::TestFloatTime {
+                event,
+                duration: _,
+                exec_time: _,
             } => {
                 let current_suite = current_suite
                     .as_mut()
                     .expect("Test event found outside of suite!");
-
-                let duration_ns = match (duration, exec_time) {
-                    (_, Some(s)) => {
-                        assert_eq!(s.chars().last(), Some('s'));
-                        let seconds_chars = &(s[0..(s.len() - 1)]);
-                        let seconds = seconds_chars.parse::<f64>().unwrap();
-                        (seconds * 1_000_000_000.0) as i64
-                    }
-                    (Some(ms), None) => (ms * 1_000_000.0) as i64,
-                    (None, None) => 0,
-                };
-
-                let duration = Duration::nanoseconds(duration_ns);
-
+                
+                let duration = e.get_duration();
+                
                 match event {
                     TestEvent::Started { name } => {
-                        assert!(tests.insert(name));
+                        assert!(tests.insert(name.clone()));
                     }
                     TestEvent::Ok { name } => {
-                        assert!(tests.remove(&name));
+                        assert!(tests.remove(name));
                         let (name, module_path) = split_name(&name);
                         *current_suite = current_suite.clone().add_testcase(
                             TestCase::success(&name, duration).set_classname(module_path.as_str()),
                         );
                     }
                     TestEvent::Failed { name, stdout } => {
-                        assert!(tests.remove(&name));
+                        assert!(tests.remove(name));
                         let (name, module_path) = split_name(&name);
                         *current_suite = current_suite.clone().add_testcase(
                             TestCase::failure(&name, duration, "cargo test", &stdout)
@@ -163,7 +205,7 @@ fn parse<T: BufRead>(
                         );
                     }
                     TestEvent::Ignored { name } => {
-                        assert!(tests.remove(&name));
+                        assert!(tests.remove(name));
                     }
                     TestEvent::Timeout { name: _ } => {
                         // An informative timeout event is emitted after a test has been running for
@@ -311,5 +353,11 @@ mod tests {
         let report = parse_bytes(include_bytes!("test_inputs/azfunc.json"))
             .expect("Could not parse test input");
         assert_output(&report, include_bytes!("expected_outputs/azfunc.json.out"));
+    }
+
+    #[test]
+    fn float_time() {
+        parse_bytes(include_bytes!("test_inputs/float_time.json"))
+            .expect("Could not parse test input");
     }
 }
