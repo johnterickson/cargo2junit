@@ -1,0 +1,4 @@
+{ "type": "suite", "event": "started", "test_count": 1 }
+{ "type": "test", "event": "started", "name": "test_something" }
+{ "type": "test", "name": "test_something", "event": "ok", "exec_time": 0.001401918 }
+{ "type": "suite", "event": "ok", "passed": 1, "failed": 0, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 0 }
