@@ -1,0 +1,4 @@
+{ "type": "suite", "event": "started", "test_count": 1 }
+{ "type": "test", "event": "started", "name": "tests::long_execution_time" }
+{ "type": "test", "name": "tests::long_execution_time", "event": "failed", "exec_time": 1.0120183, "reason": "time limit exceeded" }
+{ "type": "suite", "event": "failed", "passed": 0, "failed": 1, "allowed_fail": 0, "ignored": 0, "measured": 0, "filtered_out": 10, "exec_time": 1.0151028 }

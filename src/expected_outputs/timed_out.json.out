@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="1" errors="0" failures="1" hostname="localhost" timestamp="2021-03-06T23:56:08.701117400+00:00" time="1.0120183">
+    <testcase name="long_execution_time" classname="tests" time="1.0120183">
+      <failure type="cargo test" message="time limit exceeded" />
+    </testcase>
+  </testsuite>
+</testsuites>

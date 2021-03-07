@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
-  <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="2" errors="0" failures="1" hostname="localhost" timestamp="2020-06-15T20:58:06.406283700+00:00" time="0">
+  <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="2" errors="0" failures="1" hostname="localhost" timestamp="2021-03-07T00:01:47.350619400+00:00" time="0">
     <testcase name="fails" classname="tests" time="0">
-      <failure type="cargo test" message="thread &apos;tests::fails&apos; panicked at &apos;assertion failed: `(left == right)`&#xA;  left: `4`,&#xA; right: `3`&apos;, src/lib.rs:10:9&#xA;note: Run with `RUST_BACKTRACE=1` for a backtrace.&#xA;" />
+      <failure type="cargo test" message="failed"><![CDATA[thread 'tests::fails' panicked at 'assertion failed: `(left == right)`
+  left: `4`,
+ right: `3`', src/lib.rs:10:9
+note: Run with `RUST_BACKTRACE=1` for a backtrace.
+]]></failure>
     </testcase>
     <testcase name="success" classname="tests" time="0" />
   </testsuite>

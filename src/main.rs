@@ -36,9 +36,16 @@ enum TestEvent {
     #[serde(rename = "started")]
     Started { name: String },
     #[serde(rename = "ok")]
-    Ok { name: String },
+    Ok {
+        name: String,
+        stdout: Option<String>,
+    },
     #[serde(rename = "failed")]
-    Failed { name: String, stdout: String },
+    Failed {
+        name: String,
+        stdout: Option<String>,
+        reason: Option<String>,
+    },
     #[serde(rename = "ignored")]
     Ignored { name: String },
     #[serde(rename = "timeout")]
@@ -90,16 +97,14 @@ impl Event {
                 };
 
                 Duration::nanoseconds(duration_ns)
-            },
+            }
             Event::TestFloatTime {
                 event: _,
                 duration,
                 exec_time,
             } => {
                 let duration_ns = match (duration, exec_time) {
-                    (_, Some(seconds)) => {
-                        (seconds * 1_000_000_000.0) as i64
-                    }
+                    (_, Some(seconds)) => (seconds * 1_000_000_000.0) as i64,
                     (Some(ms), None) => (ms * 1_000_000.0) as i64,
                     (None, None) => 0,
                 };
@@ -173,39 +178,51 @@ fn parse<T: BufRead>(
                 event,
                 duration: _,
                 exec_time: _,
-            } |
-            Event::TestFloatTime {
+            }
+            | Event::TestFloatTime {
                 event,
                 duration: _,
                 exec_time: _,
             } => {
-                let current_suite = current_suite
-                    .as_mut()
-                    .expect("Test event found outside of suite!");
-                
                 let duration = e.get_duration();
-                
-                match event {
+
+                let case = match event {
                     TestEvent::Started { name } => {
                         assert!(tests.insert(name.clone()));
+                        None
                     }
-                    TestEvent::Ok { name } => {
+                    TestEvent::Ok { name, stdout } => {
                         assert!(tests.remove(name));
                         let (name, module_path) = split_name(&name);
-                        *current_suite = current_suite.clone().add_testcase(
-                            TestCase::success(&name, duration).set_classname(module_path.as_str()),
-                        );
+                        let mut case =
+                            TestCase::success(&name, duration).set_classname(module_path.as_str());
+                        if let Some(stdout) = stdout {
+                            case = case.set_system_out(stdout);
+                        }
+                        Some(case)
                     }
-                    TestEvent::Failed { name, stdout } => {
+                    TestEvent::Failed {
+                        name,
+                        stdout,
+                        reason,
+                    } => {
                         assert!(tests.remove(name));
                         let (name, module_path) = split_name(&name);
-                        *current_suite = current_suite.clone().add_testcase(
-                            TestCase::failure(&name, duration, "cargo test", &stdout)
-                                .set_classname(module_path.as_str()),
-                        );
+                        let mut case = TestCase::failure(
+                            &name,
+                            duration,
+                            "cargo test",
+                            reason.as_ref().map(String::as_str).unwrap_or("failed"),
+                        )
+                        .set_classname(module_path.as_str());
+                        if let Some(stdout) = stdout {
+                            case = case.set_system_out(stdout);
+                        }
+                        Some(case)
                     }
                     TestEvent::Ignored { name } => {
                         assert!(tests.remove(name));
+                        None
                     }
                     TestEvent::Timeout { name: _ } => {
                         // An informative timeout event is emitted after a test has been running for
@@ -214,7 +231,17 @@ fn parse<T: BufRead>(
                         // This event should be safe to ignore for now, but might require further
                         // action if hard timeouts that cancel and fail the test should be specified
                         // during or before stabilization of the JSON format.
+                        None
                     }
+                };
+
+                if let Some(case) = case {
+                    current_suite = Some(
+                        current_suite
+                            .take()
+                            .expect("Test event found outside of suite!")
+                            .add_testcase(case),
+                    );
                 }
             }
         }
@@ -359,5 +386,15 @@ mod tests {
     fn float_time() {
         parse_bytes(include_bytes!("test_inputs/float_time.json"))
             .expect("Could not parse test input");
+    }
+
+    #[test]
+    fn failed_timed_out() {
+        let report = parse_bytes(include_bytes!("test_inputs/timed_out.json"))
+            .expect("Could not parse test input");
+        assert_output(
+            &report,
+            include_bytes!("expected_outputs/timed_out.json.out"),
+        );
     }
 }
