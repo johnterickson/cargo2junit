@@ -1,7 +1,7 @@
 [![Build Status](https://dev.azure.com/cargo2junit/cargo2junit/_apis/build/status/johnterickson.cargo2junit?branchName=master)](https://dev.azure.com/cargo2junit/cargo2junit/_build/latest?definitionId=1&branchName=master)
 
 # cargo2junit
-[WORK IN PROGRESS] Converts cargo's json output (from stdin) to JUnit XML (to stdout).
+Converts cargo's json output (from stdin) to JUnit XML (to stdout).
 
 To use, first install:
 ```
