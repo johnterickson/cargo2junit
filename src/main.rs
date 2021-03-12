@@ -96,16 +96,14 @@ impl Event {
                 };
 
                 Duration::nanoseconds(duration_ns)
-            },
+            }
             Event::TestFloatTime {
                 event: _,
                 duration,
                 exec_time,
             } => {
                 let duration_ns = match (duration, exec_time) {
-                    (_, Some(seconds)) => {
-                        (seconds * 1_000_000_000.0) as i64
-                    }
+                    (_, Some(seconds)) => (seconds * 1_000_000_000.0) as i64,
                     (Some(ms), None) => (ms * 1_000_000.0) as i64,
                     (None, None) => 0,
                 };
@@ -180,8 +178,8 @@ fn parse<T: BufRead>(
                 event,
                 duration: _,
                 exec_time: _,
-            } |
-            Event::TestFloatTime {
+            }
+            | Event::TestFloatTime {
                 event,
                 duration: _,
                 exec_time: _,
@@ -189,9 +187,9 @@ fn parse<T: BufRead>(
                 let current_suite = current_suite
                     .as_mut()
                     .expect("Test event found outside of suite!");
-                
+
                 let duration = e.get_duration();
-                
+
                 match event {
                     TestEvent::Started { name } => {
                         assert!(tests.insert(name.clone()));
@@ -208,7 +206,7 @@ fn parse<T: BufRead>(
                         stdout,
                         stderr,
                     } => {
-                        assert!(tests.remove(&name));
+                        assert!(tests.remove(name));
                         let (name, module_path) = split_name(&name);
                         let stdout = match stdout {
                             Some(stdout) => {
@@ -470,7 +468,10 @@ mod tests {
 
     #[test]
     fn float_time() {
-        parse_bytes(include_bytes!("test_inputs/float_time.json"))
-            .expect("Could not parse test input");
+        parse_bytes(
+            include_bytes!("test_inputs/float_time.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
     }
 }
