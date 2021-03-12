@@ -15,7 +15,7 @@ license = "MIT"
 maintenance = { status = "experimental" }
 
 [dependencies]
-junit-report = { git = "https://github.com/sasa-tomic/junit-report-rs" }
+junit-report = "0.4.1"
 serde_json = "1.0.38"
 serde = { version = "1.0", features = ["derive"] }
 strip-ansi-escapes = "0.1.0"

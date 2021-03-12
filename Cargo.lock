@@ -39,9 +39,9 @@ dependencies = [
 
 [[package]]
 name = "derive-getters"
-version = "0.1.0"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cf5e3757f36260ee98609aa4360701bad80d1319c6d90641797b0d8acf097631"
+checksum = "0c5905670fd9c320154f3a4a01c9e609733cd7b753f3c58777ab7d5ce26686b3"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -56,11 +56,13 @@ checksum = "b8b7a7c0c47db5545ed3fef7468ee7bb5b74691498139e4b3f6a20685dc6dd8e"
 
 [[package]]
 name = "junit-report"
-version = "0.4.0"
-source = "git+https://github.com/sasa-tomic/junit-report-rs#15d600fd1a88b7a88c4e1c43e727b20f65a7dff1"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f5723045bee9fb2189ffe40361fb4bf3046bb50486c45fd079fef810af075f2e"
 dependencies = [
  "chrono",
  "derive-getters",
+ "strip-ansi-escapes",
  "thiserror",
  "xml-rs",
 ]
