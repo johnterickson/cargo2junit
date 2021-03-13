@@ -3,7 +3,7 @@ extern crate serde;
 
 use junit_report::*;
 use serde::{Deserialize, Serialize};
-use std::collections::BTreeSet;
+use std::{borrow::Cow, collections::BTreeSet};
 use std::env;
 use std::io::*;
 
@@ -125,11 +125,11 @@ fn parse<T: BufRead>(
     input: T,
     suite_name_prefix: &str,
     timestamp: DateTime<Utc>,
-    max_stdout_len: usize,
+    max_out_len: usize,
 ) -> Result<Report> {
     let mut r = Report::new();
     let mut suite_index = 0;
-    let mut current_suite: Option<TestSuite> = None;
+    let mut current_suite_maybe: Option<TestSuite> = None;
     let mut tests: BTreeSet<String> = BTreeSet::new();
 
     for line in input.lines() {
@@ -159,19 +159,19 @@ fn parse<T: BufRead>(
         match &e {
             Event::Suite { event } => match event {
                 SuiteEvent::Started { test_count: _ } => {
-                    assert!(current_suite.is_none());
+                    assert!(current_suite_maybe.is_none());
                     assert!(tests.is_empty());
                     let ts = TestSuite::new(&format!("{} #{}", suite_name_prefix, suite_index))
                         .set_timestamp(timestamp);
-                    current_suite = Some(ts);
+                    current_suite_maybe = Some(ts);
                     suite_index += 1;
                 }
                 SuiteEvent::Ok { results: _ } | SuiteEvent::Failed { results: _ } => {
                     assert_eq!(None, tests.iter().next());
                     r = r.add_testsuite(
-                        current_suite.expect("Suite complete event found outside of suite!"),
+                        current_suite_maybe.expect("Suite complete event found outside of suite!"),
                     );
-                    current_suite = None;
+                    current_suite_maybe = None;
                 }
             },
             Event::TestStringTime {
@@ -184,8 +184,8 @@ fn parse<T: BufRead>(
                 duration: _,
                 exec_time: _,
             } => {
-                let current_suite = current_suite
-                    .as_mut()
+                let mut current_suite = current_suite_maybe
+                    .take()
                     .expect("Test event found outside of suite!");
 
                 let duration = e.get_duration();
@@ -197,7 +197,7 @@ fn parse<T: BufRead>(
                     TestEvent::Ok { name } => {
                         assert!(tests.remove(name));
                         let (name, module_path) = split_name(&name);
-                        *current_suite = current_suite.clone().add_testcase(
+                        current_suite = current_suite.add_testcase(
                             TestCase::success(&name, duration).set_classname(module_path.as_str()),
                         );
                     }
@@ -208,54 +208,37 @@ fn parse<T: BufRead>(
                     } => {
                         assert!(tests.remove(name));
                         let (name, module_path) = split_name(&name);
-                        let stdout = match stdout {
-                            Some(stdout) => {
-                                let s_data = strip_ansi_escapes::strip(stdout)?;
-                                String::from_utf8_lossy(&s_data).to_string()
+
+                        let mut failure = TestCase::failure(
+                            &name,
+                            duration,
+                            "cargo test",
+                            &format!("failed {}::{}", module_path.as_str(), &name),
+                        )
+                        .set_classname(module_path.as_str());
+
+                        fn truncate<'a>(s: &'a String, max_len: usize) -> Cow<'a, String> {
+                            if s.len() > max_len {
+                                let half_max_len = max_len / 2;
+                                Cow::Owned(format!(
+                                    "{}\n[...TRUNCATED...]\n{}",
+                                    s.split_at(half_max_len).0,
+                                    s.split_at(s.len() - half_max_len).1
+                                ))
+                            } else {
+                                Cow::Borrowed(s)
                             }
-                            None => String::new(),
-                        };
-                        let stderr = match stderr {
-                            Some(stderr) => {
-                                let s_data = strip_ansi_escapes::strip(stderr)?;
-                                String::from_utf8_lossy(&s_data).to_string()
-                            }
-                            None => String::new(),
                         };
 
-                        let system_out = if stderr.is_empty() {
-                            // no stderr ==> return just the stdout
-                            stdout
-                        } else if stdout.is_empty() {
-                            // stderr but no stdout => return just the stderr
-                            stderr
-                        } else {
-                            // both stdout and stderr => return both joined with a newline
-                            format!("{}\n{}", stdout, stderr)
-                        };
+                        if let Some(stdout) = stdout {
+                            failure = failure.set_system_out(&truncate(stdout, max_out_len));
+                        }
 
-                        let system_out = if system_out.len() > max_stdout_len {
-                            format!(
-                                "{}\n[...TRUNCATED...]\n{}",
-                                system_out.split_at(max_stdout_len / 2).0,
-                                system_out
-                                    .split_at(system_out.len() - (max_stdout_len / 2))
-                                    .1
-                            )
-                        } else {
-                            system_out
-                        };
+                        if let Some(stderr) = stderr {
+                            failure = failure.set_system_err(&truncate(stderr, max_out_len));
+                        }
 
-                        *current_suite = current_suite.clone().add_testcase(
-                            TestCase::failure(
-                                &name,
-                                duration,
-                                "cargo test",
-                                &format!("failed {}::{}", module_path.as_str(), &name),
-                            )
-                            .set_classname(module_path.as_str())
-                            .set_system_out(&system_out),
-                        );
+                        current_suite = current_suite.add_testcase(failure);
                     }
                     TestEvent::Ignored { name } => {
                         assert!(tests.remove(name));
@@ -269,6 +252,8 @@ fn parse<T: BufRead>(
                         // during or before stabilization of the JSON format.
                     }
                 }
+
+                current_suite_maybe = Some(current_suite);
             }
         }
     }
@@ -282,13 +267,13 @@ fn main() -> Result<()> {
     let stdin = stdin.lock();
 
     // GitLab fails to parse the Junit XML if stdout is too long.
-    let max_stdout_len = match env::var("TEST_STDOUT_MAX_LEN") {
+    let max_out_len = match env::var("TEST_STDOUT_STDERR_MAX_LEN") {
         Ok(val) => val
             .parse::<usize>()
-            .expect("Failed to parse TEST_STDOUT_MAX_LEN as a natural number"),
+            .expect("Failed to parse TEST_STDOUT_STDERR_MAX_LEN as a natural number"),
         Err(_) => SYSTEM_OUT_MAX_LEN,
     };
-    let report = parse(stdin, "cargo test", timestamp, max_stdout_len)?;
+    let report = parse(stdin, "cargo test", timestamp, max_out_len)?;
 
     let stdout = std::io::stdout();
     let stdout = stdout.lock();
