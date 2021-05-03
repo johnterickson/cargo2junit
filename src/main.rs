@@ -219,10 +219,12 @@ fn parse<T: BufRead>(
 
                         fn truncate<'a>(s: &'a String, max_len: usize) -> Cow<'a, String> {
                             if s.len() > max_len {
-                                let half_max_len = max_len / 2;
+                                let truncated_msg = "[...TRUNCATED...]";
+                                let half_max_len = (max_len - truncated_msg.len()) / 2;
                                 Cow::Owned(format!(
-                                    "{}\n[...TRUNCATED...]\n{}",
+                                    "{}\n{}\n{}",
                                     s.split_at(half_max_len).0,
+                                    truncated_msg,
                                     s.split_at(s.len() - half_max_len).1
                                 ))
                             } else {
