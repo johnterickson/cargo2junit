@@ -228,7 +228,7 @@ fn parse<T: BufRead>(
                             } else {
                                 Cow::Borrowed(s)
                             }
-                        };
+                        }
 
                         if let Some(stdout) = stdout {
                             failure = failure.set_system_out(&truncate(stdout, max_out_len));
