@@ -133,14 +133,14 @@ jobs:
           cargo build
         displayName: cargo build
       - bash: |
-          cargo test -- -Z unstable-options --format json | tee test_results_debug.json
+          cargo test -- -Z unstable-options --format json --report-time | tee test_results_debug.json
         displayName: cargo test
 
       - bash: |
           cargo build --release
         displayName: cargo build --release
       - bash: |
-          cargo test --release -- -Z unstable-options --format json | tee test_results_release.json
+          cargo test --release -- -Z unstable-options --format json --report-time | tee test_results_release.json
         displayName: cargo test --release
 
       # store test results
