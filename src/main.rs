@@ -3,9 +3,9 @@ extern crate serde;
 
 use junit_report::*;
 use serde::{Deserialize, Serialize};
-use std::{borrow::Cow, collections::BTreeSet};
 use std::env;
 use std::io::*;
+use std::{borrow::Cow, collections::BTreeSet};
 
 const SYSTEM_OUT_MAX_LEN: usize = 65536;
 
@@ -337,7 +337,7 @@ mod tests {
         assert_eq!(*test_cases[0].classname(), Some("tests".to_string()));
         assert_eq!(test_cases[0].time(), &Duration::nanoseconds(213_100));
 
-        assert_output(&report, include_bytes!("expected_outputs/self.json.out"));
+        assert_output(&report, include_bytes!("expected_outputs/self.out"));
     }
 
     #[test]
@@ -354,7 +354,7 @@ mod tests {
         assert_eq!(test_cases[4].time(), &Duration::milliseconds(72));
         assert_output(
             &report,
-            include_bytes!("expected_outputs/self_exec_time.json.out"),
+            include_bytes!("expected_outputs/self_exec_time.out"),
         );
     }
 
@@ -365,13 +365,13 @@ mod tests {
             SYSTEM_OUT_MAX_LEN,
         )
         .expect("Could not parse test input");
-        assert_output(&report, include_bytes!("expected_outputs/success.json.out"));
+        assert_output(&report, include_bytes!("expected_outputs/success.out"));
     }
 
     #[test]
-    fn success_timeout() {
+    fn timedout_event() {
         let report = parse_bytes(
-            include_bytes!("test_inputs/timeout.json"),
+            include_bytes!("test_inputs/timed_out_event.json"),
             SYSTEM_OUT_MAX_LEN,
         )
         .expect("Could not parse test input");
@@ -381,7 +381,10 @@ mod tests {
         assert_eq!(test_cases[0].name(), "long_execution_time");
         assert_eq!(*test_cases[0].classname(), Some("tests".to_string()));
         assert!(test_cases[0].is_success());
-        assert_output(&report, include_bytes!("expected_outputs/timeout.json.out"));
+        assert_output(
+            &report,
+            include_bytes!("expected_outputs/timed_out_event.out"),
+        );
     }
 
     #[test]
@@ -391,7 +394,7 @@ mod tests {
             SYSTEM_OUT_MAX_LEN,
         )
         .expect("Could not parse test input");
-        assert_output(&report, include_bytes!("expected_outputs/failed.json.out"));
+        assert_output(&report, include_bytes!("expected_outputs/failed.out"));
     }
 
     #[test]
@@ -403,7 +406,7 @@ mod tests {
         .expect("Could not parse test input");
         assert_output(
             &report,
-            include_bytes!("expected_outputs/failed_stderr.json.out"),
+            include_bytes!("expected_outputs/failed_stderr.out"),
         );
     }
 
@@ -416,7 +419,7 @@ mod tests {
         .expect("Could not parse test input");
         assert_output(
             &report,
-            include_bytes!("expected_outputs/multi_suite_success.json.out"),
+            include_bytes!("expected_outputs/multi_suite_success.out"),
         );
     }
 
@@ -429,7 +432,7 @@ mod tests {
         .expect("Could not parse test input");
         assert_output(
             &report,
-            include_bytes!("expected_outputs/cargo_failure.json.out"),
+            include_bytes!("expected_outputs/cargo_failure.out"),
         );
     }
 
@@ -439,7 +442,7 @@ mod tests {
             .expect("Could not parse test input");
         assert_output(
             &report,
-            include_bytes!("expected_outputs/cargo_failure_shortened.json.out"),
+            include_bytes!("expected_outputs/cargo_failure_shortened.out"),
         );
     }
 
@@ -450,7 +453,7 @@ mod tests {
             SYSTEM_OUT_MAX_LEN,
         )
         .expect("Could not parse test input");
-        assert_output(&report, include_bytes!("expected_outputs/azfunc.json.out"));
+        assert_output(&report, include_bytes!("expected_outputs/azfunc.out"));
     }
 
     #[test]
