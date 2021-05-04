@@ -10,12 +10,12 @@ cargo install cargo2junit
 
 Then, run cargo test and convert:
 ```
-cargo test -- -Z unstable-options --format json | cargo2junit > results.xml
+cargo test -- -Z unstable-options --format json --report-time | cargo2junit > results.xml
 ```
 
 Or, use tee for streaming output to console as the tests run:
 ```
-cargo test -- -Z unstable-options --format json | tee results.json
+cargo test -- -Z unstable-options --format json --report-time | tee results.json
 cat results.json | cargo2junit > results.xml
 ```
 
