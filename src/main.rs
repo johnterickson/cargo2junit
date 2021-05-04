@@ -217,7 +217,7 @@ fn parse<T: BufRead>(
                         )
                         .set_classname(module_path.as_str());
 
-                        fn truncate<'a>(s: &'a String, max_len: usize) -> Cow<'a, String> {
+                        fn truncate(s: &str, max_len: usize) -> Cow<'_, str> {
                             if s.len() > max_len {
                                 let truncated_msg = "[...TRUNCATED...]";
                                 let half_max_len = (max_len - truncated_msg.len()) / 2;
