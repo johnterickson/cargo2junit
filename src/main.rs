@@ -3,9 +3,11 @@ extern crate serde;
 
 use junit_report::*;
 use serde::{Deserialize, Serialize};
-use std;
-use std::collections::BTreeSet;
+use std::env;
 use std::io::*;
+use std::{borrow::Cow, collections::BTreeSet};
+
+const SYSTEM_OUT_MAX_LEN: usize = 65536;
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
 struct SuiteResults {
@@ -38,7 +40,11 @@ enum TestEvent {
     #[serde(rename = "ok")]
     Ok { name: String },
     #[serde(rename = "failed")]
-    Failed { name: String, stdout: String },
+    Failed {
+        name: String,
+        stdout: Option<String>,
+        stderr: Option<String>,
+    },
     #[serde(rename = "ignored")]
     Ignored { name: String },
     #[serde(rename = "timeout")]
@@ -90,16 +96,14 @@ impl Event {
                 };
 
                 Duration::nanoseconds(duration_ns)
-            },
+            }
             Event::TestFloatTime {
                 event: _,
                 duration,
                 exec_time,
             } => {
                 let duration_ns = match (duration, exec_time) {
-                    (_, Some(seconds)) => {
-                        (seconds * 1_000_000_000.0) as i64
-                    }
+                    (_, Some(seconds)) => (seconds * 1_000_000_000.0) as i64,
                     (Some(ms), None) => (ms * 1_000_000.0) as i64,
                     (None, None) => 0,
                 };
@@ -114,23 +118,24 @@ fn split_name(full_name: &str) -> (&str, String) {
     let mut parts: Vec<&str> = full_name.split("::").collect();
     let name = parts.pop().unwrap_or("");
     let module_path = parts.join("::");
-    return (name, module_path);
+    (name, module_path)
 }
 
 fn parse<T: BufRead>(
     input: T,
     suite_name_prefix: &str,
     timestamp: DateTime<Utc>,
+    max_out_len: usize,
 ) -> Result<Report> {
     let mut r = Report::new();
     let mut suite_index = 0;
-    let mut current_suite: Option<TestSuite> = None;
+    let mut current_suite_maybe: Option<TestSuite> = None;
     let mut tests: BTreeSet<String> = BTreeSet::new();
 
     for line in input.lines() {
         let line = line?;
 
-        if line.chars().filter(|c| !c.is_whitespace()).next() != Some('{') {
+        if line.chars().find(|c| !c.is_whitespace()) != Some('{') {
             continue;
         }
 
@@ -154,37 +159,37 @@ fn parse<T: BufRead>(
         match &e {
             Event::Suite { event } => match event {
                 SuiteEvent::Started { test_count: _ } => {
-                    assert!(current_suite.is_none());
+                    assert!(current_suite_maybe.is_none());
                     assert!(tests.is_empty());
                     let ts = TestSuite::new(&format!("{} #{}", suite_name_prefix, suite_index))
                         .set_timestamp(timestamp);
-                    current_suite = Some(ts);
+                    current_suite_maybe = Some(ts);
                     suite_index += 1;
                 }
                 SuiteEvent::Ok { results: _ } | SuiteEvent::Failed { results: _ } => {
                     assert_eq!(None, tests.iter().next());
                     r = r.add_testsuite(
-                        current_suite.expect("Suite complete event found outside of suite!"),
+                        current_suite_maybe.expect("Suite complete event found outside of suite!"),
                     );
-                    current_suite = None;
+                    current_suite_maybe = None;
                 }
             },
             Event::TestStringTime {
                 event,
                 duration: _,
                 exec_time: _,
-            } |
-            Event::TestFloatTime {
+            }
+            | Event::TestFloatTime {
                 event,
                 duration: _,
                 exec_time: _,
             } => {
-                let current_suite = current_suite
-                    .as_mut()
+                let mut current_suite = current_suite_maybe
+                    .take()
                     .expect("Test event found outside of suite!");
-                
+
                 let duration = e.get_duration();
-                
+
                 match event {
                     TestEvent::Started { name } => {
                         assert!(tests.insert(name.clone()));
@@ -192,17 +197,50 @@ fn parse<T: BufRead>(
                     TestEvent::Ok { name } => {
                         assert!(tests.remove(name));
                         let (name, module_path) = split_name(&name);
-                        *current_suite = current_suite.clone().add_testcase(
+                        current_suite = current_suite.add_testcase(
                             TestCase::success(&name, duration).set_classname(module_path.as_str()),
                         );
                     }
-                    TestEvent::Failed { name, stdout } => {
+                    TestEvent::Failed {
+                        name,
+                        stdout,
+                        stderr,
+                    } => {
                         assert!(tests.remove(name));
                         let (name, module_path) = split_name(&name);
-                        *current_suite = current_suite.clone().add_testcase(
-                            TestCase::failure(&name, duration, "cargo test", &stdout)
-                                .set_classname(module_path.as_str()),
-                        );
+
+                        let mut failure = TestCase::failure(
+                            &name,
+                            duration,
+                            "cargo test",
+                            &format!("failed {}::{}", module_path.as_str(), &name),
+                        )
+                        .set_classname(module_path.as_str());
+
+                        fn truncate(s: &str, max_len: usize) -> Cow<'_, str> {
+                            if s.len() > max_len {
+                                let truncated_msg = "[...TRUNCATED...]";
+                                let half_max_len = (max_len - truncated_msg.len()) / 2;
+                                Cow::Owned(format!(
+                                    "{}\n{}\n{}",
+                                    s.split_at(half_max_len).0,
+                                    truncated_msg,
+                                    s.split_at(s.len() - half_max_len).1
+                                ))
+                            } else {
+                                Cow::Borrowed(s)
+                            }
+                        }
+
+                        if let Some(stdout) = stdout {
+                            failure = failure.set_system_out(&truncate(stdout, max_out_len));
+                        }
+
+                        if let Some(stderr) = stderr {
+                            failure = failure.set_system_err(&truncate(stderr, max_out_len));
+                        }
+
+                        current_suite = current_suite.add_testcase(failure);
                     }
                     TestEvent::Ignored { name } => {
                         assert!(tests.remove(name));
@@ -216,6 +254,8 @@ fn parse<T: BufRead>(
                         // during or before stabilization of the JSON format.
                     }
                 }
+
+                current_suite_maybe = Some(current_suite);
             }
         }
     }
@@ -227,7 +267,15 @@ fn main() -> Result<()> {
     let timestamp = Utc::now();
     let stdin = std::io::stdin();
     let stdin = stdin.lock();
-    let report = parse(stdin, "cargo test", timestamp)?;
+
+    // GitLab fails to parse the Junit XML if stdout is too long.
+    let max_out_len = match env::var("TEST_STDOUT_STDERR_MAX_LEN") {
+        Ok(val) => val
+            .parse::<usize>()
+            .expect("Failed to parse TEST_STDOUT_STDERR_MAX_LEN as a natural number"),
+        Err(_) => SYSTEM_OUT_MAX_LEN,
+    };
+    let report = parse(stdin, "cargo test", timestamp, max_out_len)?;
 
     let stdout = std::io::stdout();
     let stdout = stdout.lock();
@@ -239,17 +287,23 @@ fn main() -> Result<()> {
 
 #[cfg(test)]
 mod tests {
+    use super::SYSTEM_OUT_MAX_LEN;
     use crate::parse;
     use junit_report::*;
     use regex::Regex;
     use std::io::*;
 
-    fn parse_bytes(bytes: &[u8]) -> Result<Report> {
-        parse(BufReader::new(bytes), "cargo test", Utc::now())
+    fn parse_bytes(bytes: &[u8], max_stdout_len: usize) -> Result<Report> {
+        parse(
+            BufReader::new(bytes),
+            "cargo test",
+            Utc::now(),
+            max_stdout_len,
+        )
     }
 
-    fn parse_string(input: &str) -> Result<Report> {
-        parse_bytes(input.as_bytes())
+    fn parse_string(input: &str, max_stdout_len: usize) -> Result<Report> {
+        parse_bytes(input.as_bytes(), max_stdout_len)
     }
 
     fn normalize(input: &str) -> String {
@@ -270,12 +324,12 @@ mod tests {
 
     #[test]
     fn error_on_garbage() {
-        assert!(parse_string("{garbage}").is_err());
+        assert!(parse_string("{garbage}", SYSTEM_OUT_MAX_LEN).is_err());
     }
 
     #[test]
     fn success_self() {
-        let report = parse_bytes(include_bytes!("test_inputs/self.json"))
+        let report = parse_bytes(include_bytes!("test_inputs/self.json"), SYSTEM_OUT_MAX_LEN)
             .expect("Could not parse test input");
         let suite = &report.testsuites()[0];
         let test_cases = suite.testcases();
@@ -283,13 +337,16 @@ mod tests {
         assert_eq!(*test_cases[0].classname(), Some("tests".to_string()));
         assert_eq!(test_cases[0].time(), &Duration::nanoseconds(213_100));
 
-        assert_output(&report, include_bytes!("expected_outputs/self.json.out"));
+        assert_output(&report, include_bytes!("expected_outputs/self.out"));
     }
 
     #[test]
     fn success_self_exec_time() {
-        let report = parse_bytes(include_bytes!("test_inputs/self_exec_time.json"))
-            .expect("Could not parse test input");
+        let report = parse_bytes(
+            include_bytes!("test_inputs/self_exec_time.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
         let suite = &report.testsuites()[0];
         let test_cases = suite.testcases();
         assert_eq!(test_cases[4].name(), "az_func_regression");
@@ -297,67 +354,114 @@ mod tests {
         assert_eq!(test_cases[4].time(), &Duration::milliseconds(72));
         assert_output(
             &report,
-            include_bytes!("expected_outputs/self_exec_time.json.out"),
+            include_bytes!("expected_outputs/self_exec_time.out"),
         );
     }
 
     #[test]
     fn success_single_suite() {
-        let report = parse_bytes(include_bytes!("test_inputs/success.json"))
-            .expect("Could not parse test input");
-        assert_output(&report, include_bytes!("expected_outputs/success.json.out"));
+        let report = parse_bytes(
+            include_bytes!("test_inputs/success.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
+        assert_output(&report, include_bytes!("expected_outputs/success.out"));
     }
 
     #[test]
-    fn success_timeout() {
-        let report = parse_bytes(include_bytes!("test_inputs/timeout.json"))
-            .expect("Could not parse test input");
+    fn timedout_event() {
+        let report = parse_bytes(
+            include_bytes!("test_inputs/timed_out_event.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
 
         let suite = &report.testsuites()[0];
         let test_cases = suite.testcases();
         assert_eq!(test_cases[0].name(), "long_execution_time");
         assert_eq!(*test_cases[0].classname(), Some("tests".to_string()));
         assert!(test_cases[0].is_success());
-        assert_output(&report, include_bytes!("expected_outputs/timeout.json.out"));
+        assert_output(
+            &report,
+            include_bytes!("expected_outputs/timed_out_event.out"),
+        );
     }
 
     #[test]
-    fn failded_single_suite() {
-        let report = parse_bytes(include_bytes!("test_inputs/failed.json"))
-            .expect("Could not parse test input");
-        assert_output(&report, include_bytes!("expected_outputs/failed.json.out"));
+    fn single_suite_failed() {
+        let report = parse_bytes(
+            include_bytes!("test_inputs/failed.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
+        assert_output(&report, include_bytes!("expected_outputs/failed.out"));
+    }
+
+    #[test]
+    fn single_suite_failed_stderr_only() {
+        let report = parse_bytes(
+            include_bytes!("test_inputs/failed_stderr.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
+        assert_output(
+            &report,
+            include_bytes!("expected_outputs/failed_stderr.out"),
+        );
     }
 
     #[test]
     fn multi_suite_success() {
-        let report = parse_bytes(include_bytes!("test_inputs/multi_suite_success.json"))
-            .expect("Could not parse test input");
+        let report = parse_bytes(
+            include_bytes!("test_inputs/multi_suite_success.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
         assert_output(
             &report,
-            include_bytes!("expected_outputs/multi_suite_success.json.out"),
+            include_bytes!("expected_outputs/multi_suite_success.out"),
         );
     }
 
     #[test]
     fn cargo_project_failure() {
-        let report = parse_bytes(include_bytes!("test_inputs/cargo_failure.json"))
+        let report = parse_bytes(
+            include_bytes!("test_inputs/cargo_failure.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
+        assert_output(
+            &report,
+            include_bytes!("expected_outputs/cargo_failure.out"),
+        );
+    }
+
+    #[test]
+    fn cargo_project_failure_shortened() {
+        let report = parse_bytes(include_bytes!("test_inputs/cargo_failure.json"), 256)
             .expect("Could not parse test input");
         assert_output(
             &report,
-            include_bytes!("expected_outputs/cargo_failure.json.out"),
+            include_bytes!("expected_outputs/cargo_failure_shortened.out"),
         );
     }
 
     #[test]
     fn az_func_regression() {
-        let report = parse_bytes(include_bytes!("test_inputs/azfunc.json"))
-            .expect("Could not parse test input");
-        assert_output(&report, include_bytes!("expected_outputs/azfunc.json.out"));
+        let report = parse_bytes(
+            include_bytes!("test_inputs/azfunc.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
+        assert_output(&report, include_bytes!("expected_outputs/azfunc.out"));
     }
 
     #[test]
     fn float_time() {
-        parse_bytes(include_bytes!("test_inputs/float_time.json"))
-            .expect("Could not parse test input");
+        parse_bytes(
+            include_bytes!("test_inputs/float_time.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
     }
 }
