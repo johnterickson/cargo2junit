@@ -244,6 +244,7 @@ fn parse<T: BufRead>(
                     }
                     TestEvent::Ignored { name } => {
                         assert!(tests.remove(name));
+                        current_suite = current_suite.add_testcase(TestCase::skipped(name));
                     }
                     TestEvent::Timeout { name: _ } => {
                         // An informative timeout event is emitted after a test has been running for

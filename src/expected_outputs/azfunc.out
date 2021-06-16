@@ -417,9 +417,13 @@
   <testsuite id="15" name="cargo test #15" package="testsuite/cargo test #15" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
   <testsuite id="16" name="cargo test #16" package="testsuite/cargo test #16" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
   <testsuite id="17" name="cargo test #17" package="testsuite/cargo test #17" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="18" name="cargo test #18" package="testsuite/cargo test #18" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
+  <testsuite id="18" name="cargo test #18" package="testsuite/cargo test #18" tests="1" errors="0" failures="0" hostname="localhost" timestamp="TIMESTAMP" time="0">
+    <testcase name="src\lib.rs - func (line 47)" time="0">
+      <skipped />
+    </testcase>
+  </testsuite>
   <testsuite id="19" name="cargo test #19" package="testsuite/cargo test #19" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="20" name="cargo test #20" package="testsuite/cargo test #20" tests="92" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0">
+  <testsuite id="20" name="cargo test #20" package="testsuite/cargo test #20" tests="95" errors="0" failures="0" hostname="localhost" timestamp="TIMESTAMP" time="0">
     <testcase name="Blob (line 39)" classname="srcindingslob.rs - bindings::blob" time="0" />
     <testcase name="Blob (line 26)" classname="srcindingslob.rs - bindings::blob" time="0" />
     <testcase name="Blob (line 53)" classname="srcindingslob.rs - bindings::blob" time="0" />
@@ -471,6 +475,15 @@
     <testcase name="body (line 65)" classname="src\http\response_builder.rs - http::response_builder::ResponseBuilder" time="0" />
     <testcase name="header (line 37)" classname="src\http\response_builder.rs - http::response_builder::ResponseBuilder" time="0" />
     <testcase name="status (line 18)" classname="src\http\response_builder.rs - http::response_builder::ResponseBuilder" time="0" />
+    <testcase name="src\lib.rs -  (line 64)" time="0">
+      <skipped />
+    </testcase>
+    <testcase name="src\lib.rs - worker_main (line 136)" time="0">
+      <skipped />
+    </testcase>
+    <testcase name="src\lib.rs - worker_main_with_extensions (line 151)" time="0">
+      <skipped />
+    </testcase>
     <testcase name="from_code (line 21)" classname="src\http\status.rs - http::status::Status" time="0" />
     <testcase name="new (line 18)" classname="src\send_grid\email_address.rs - send_grid::email_address::EmailAddress" time="0" />
     <testcase name="new_with_name (line 38)" classname="src\send_grid\email_address.rs - send_grid::email_address::EmailAddress" time="0" />
@@ -513,5 +526,9 @@
     <testcase name="to_with_name (line 41)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
     <testcase name="tos (line 63)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
   </testsuite>
-  <testsuite id="21" name="cargo test #21" package="testsuite/cargo test #21" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
+  <testsuite id="21" name="cargo test #21" package="testsuite/cargo test #21" tests="1" errors="0" failures="0" hostname="localhost" timestamp="TIMESTAMP" time="0">
+    <testcase name="src\lib.rs - generated_mod (line 89)" time="0">
+      <skipped />
+    </testcase>
+  </testsuite>
 </testsuites>

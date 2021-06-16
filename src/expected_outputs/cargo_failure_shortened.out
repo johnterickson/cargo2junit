@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
-  <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="25" errors="0" failures="0" hostname="localhost" timestamp="TIMESTAMP" time="0">
+  <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="25" errors="0" failures="0" hostname="localhost" timestamp="2021-06-11T05:45:53.141454+00:00" time="0">
     <testcase name="bad_parsing" classname="core::package_id_spec::tests" time="0" />
     <testcase name="good_parsing" classname="core::package_id_spec::tests" time="0" />
     <testcase name="invalid_version_handled_nicely" classname="core::package_id::tests" time="0" />
@@ -27,7 +27,7 @@
     <testcase name="with_retry_finds_nested_spurious_errors" classname="util::network" time="0" />
     <testcase name="test_lev_distance" classname="util::lev_distance" time="0" />
   </testsuite>
-  <testsuite id="1" name="cargo test #1" package="testsuite/cargo test #1" tests="1503" errors="0" failures="2" hostname="localhost" timestamp="TIMESTAMP" time="0">
+  <testsuite id="1" name="cargo test #1" package="testsuite/cargo test #1" tests="1507" errors="0" failures="2" hostname="localhost" timestamp="2021-06-11T05:45:53.141454+00:00" time="0">
     <testcase name="bad_registry_name" classname="alt_registry" time="0" />
     <testcase name="aaa_trigger_cross_compile_disabled_check" classname="" time="0">
       <failure type="cargo test" message="failed ::aaa_trigger_cross_compile_disabled_check"><![CDATA[thread 'aaa_trigger_cross_compile_disabled_check' panicked at 'Cannot cross compile to i686-pc-windows-msvc.
@@ -502,6 +502,9 @@ Caused by:
     <testcase name="clean_doc" classname="clean" time="0" />
     <testcase name="collision_export" classname="collisions" time="0" />
     <testcase name="concurrent_installs" classname="concurrent" time="0" />
+    <testcase name="concurrent::killing_cargo_releases_the_lock" time="0">
+      <skipped />
+    </testcase>
     <testcase name="debug_release_ok" classname="concurrent" time="0" />
     <testcase name="multiple_installs" classname="concurrent" time="0" />
     <testcase name="git_same_repo_different_tags" classname="concurrent" time="0" />
@@ -749,6 +752,9 @@ Caused by:
     <testcase name="fetch_downloads" classname="git" time="0" />
     <testcase name="dep_with_changed_submodule" classname="git" time="0" />
     <testcase name="git_name_not_always_needed" classname="git" time="0" />
+    <testcase name="git::include_overrides_gitignore" time="0">
+      <skipped />
+    </testcase>
     <testcase name="invalid_git_dependency_manifest" classname="git" time="0" />
     <testcase name="git_build_cmd_freshness" classname="git" time="0" />
     <testcase name="git_dep_build_cmd" classname="git" time="0" />
@@ -1372,6 +1378,9 @@ Caused by:
     <testcase name="replace_default" classname="search" time="0" />
     <testcase name="two_matching_in_config" classname="rustflags" time="0" />
     <testcase name="simple" classname="search" time="0" />
+    <testcase name="small_fd_limits::avoid_using_git" time="0">
+      <skipped />
+    </testcase>
     <testcase name="simple_with_index_and_host" classname="search" time="0" />
     <testcase name="lines_match_works" classname="support" time="0" />
     <testcase name="meta_test_deep_pretty_print_registry" classname="support::resolver" time="0" />
@@ -1491,6 +1500,9 @@ Caused by:
     <testcase name="cargo_verify_project_path_to_cargo_toml_relative" classname="verify_project" time="0" />
     <testcase name="version_works_with_bad_config" classname="version" time="0" />
     <testcase name="version_works_with_bad_target_dir" classname="version" time="0" />
+    <testcase name="version::version_works_without_rustc" time="0">
+      <skipped />
+    </testcase>
     <testcase name="simple" classname="version" time="0" />
     <testcase name="update_via_new_dep" classname="update" time="0" />
     <testcase name="update_via_new_member" classname="update" time="0" />
