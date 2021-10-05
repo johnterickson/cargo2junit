@@ -10,7 +10,7 @@ schedules:
 
 variables:
   CHANNEL: stable
-  CACHE_SALT: 1
+  CACHE_SALT: 2
   RUSTCACHE_ROOT: $(Build.SourcesDirectory)/target
   CARGO_DEPENDENCIES_FILE: $(Pipeline.Workspace)/Cargo.dependencies
   CARGO_HOME: $(RUSTCACHE_ROOT)/rustcache/.cargo
@@ -62,10 +62,10 @@ jobs:
           ENABLE_SCCACHE: 1
         x86_64-unknown-linux-gnu:
           TARGET: x86_64-unknown-linux-gnu
-          VM_IMAGE: ubuntu-16.04
+          VM_IMAGE: ubuntu-20.04
         x86_64-unknown-linux-gnu-sccache:
           TARGET: x86_64-unknown-linux-gnu
-          VM_IMAGE: ubuntu-16.04
+          VM_IMAGE: ubuntu-20.04
           ENABLE_SCCACHE: 1
 
     steps:
