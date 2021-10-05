@@ -1,7 +1,7 @@
 [package]
 name = "cargo2junit"
 description = "Converts cargo's json output (from stdin) to JUnit XML (to stdout)"
-version = "0.1.8"
+version = "0.1.9"
 authors = ["John Erickson <john.t.erickson@gmail.com>"]
 edition = "2018"
 repository = "https://github.com/johnterickson/cargo2junit"
