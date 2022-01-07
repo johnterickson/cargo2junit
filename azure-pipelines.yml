@@ -10,18 +10,15 @@ schedules:
 
 variables:
   CHANNEL: stable
-  CACHE_SALT: 2
+  CACHE_SALT: 3
   RUSTCACHE_ROOT: $(Build.SourcesDirectory)/target
   CARGO_DEPENDENCIES_FILE: $(Pipeline.Workspace)/Cargo.dependencies
   CARGO_HOME: $(RUSTCACHE_ROOT)/rustcache/.cargo
   RUSTUP_HOME: $(RUSTCACHE_ROOT)/rustcache/.rustup
-  SCCACHE_DIR: $(RUSTCACHE_ROOT)/rustcache/sccache
-  SCCACHE_CACHE_SIZE: 1G
-  CACHE_KEY_BASE: '"CACHE_SALT=$(CACHE_SALT)-$(VM_IMAGE)-$(CHANNEL)-$(TOOLS_TARGET)-$(TARGET)-ENABLE_SCCACHE=$(ENABLE_SCCACHE)"'
+  CACHE_KEY_BASE: '"CACHE_SALT=$(CACHE_SALT)-$(VM_IMAGE)-$(CHANNEL)-$(TOOLS_TARGET)-$(TARGET)"'
   TOOLS_TARGET: $(TARGET)
   POOL_NAME: ''
   VM_IMAGE: ''
-  ENABLE_SCCACHE: 0
 
 jobs:
   - job: cached
@@ -33,34 +30,16 @@ jobs:
         vs2019-gnu:
           TARGET: x86_64-pc-windows-gnu
           TOOLS_TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: windows-2019
-        vs2019-gnu-sccache:
-          TARGET: x86_64-pc-windows-gnu
-          TOOLS_TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: windows-2019
-          ENABLE_SCCACHE: 1
+          VM_IMAGE: windows-latest
         vs2019-msvc:
           TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: windows-2019
-        vs2019-msvc-sccache:
-          TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: windows-2019
-          ENABLE_SCCACHE: 1
+          VM_IMAGE: windows-latest
         osx-10.14-x86_64-apple-darwin:
           TARGET: x86_64-apple-darwin
-          VM_IMAGE: macos-10.14
-        osx-10.14-x86_64-apple-darwin-sccache:
-          TARGET: x86_64-apple-darwin
-          VM_IMAGE: macos-10.14
-          ENABLE_SCCACHE: 1
+          VM_IMAGE: macos-latest
         x86_64-unknown-linux-gnu:
           TARGET: x86_64-unknown-linux-gnu
-          VM_IMAGE: ubuntu-20.04
-        x86_64-unknown-linux-gnu-sccache:
-          TARGET: x86_64-unknown-linux-gnu
-          VM_IMAGE: ubuntu-20.04
-          ENABLE_SCCACHE: 1
-
+          VM_IMAGE: ubuntu-latest
     steps:
       - bash: |
           echo "$(CARGO_DEPENDENCIES_FILE)"
@@ -98,12 +77,6 @@ jobs:
           which rustup && rustup -V && which cargo && cargo -V && which rustc && rustc -V
         displayName: Select toolchain for tools (if updating the cache anyway)
         condition: and(succeeded(), ne(variables['CACHE_LOOKUP_RESULT'], 'true'))
-      - bash: |
-          cargo install sccache
-          echo '##vso[task.setvariable variable=RUSTC_WRAPPER]sccache'
-          which sccache && sccache --version && sccache --show-stats
-        displayName: Install sccache (if updating the cache anyway)
-        condition: and(succeeded(), and(eq(variables['ENABLE_SCCACHE'], '1'),ne(variables['CACHE_LOOKUP_RESULT'], 'true')))
       - bash: |
           cargo install cargo2junit
         displayName: Install cargo2junit (if updating the cache anyway)
@@ -188,12 +161,6 @@ jobs:
           artifactName: '$(System.JobDisplayName)_release'
 
       # some cleanup before the cache stores
-      - bash: |
-          sccache --show-stats
-          sccache --stop-server
-        displayName: shutdown sccache
-        condition: eq(variables['ENABLE_SCCACHE'], '1')
-        continueOnError: true
       - bash: |
           cargo cache
           cargo cache --autoclean
