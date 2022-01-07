@@ -30,10 +30,6 @@ jobs:
       vmImage: $(VM_IMAGE)
     strategy:
       matrix:
-        vs2017-gnu:
-          TARGET: x86_64-pc-windows-gnu
-          TOOLS_TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2017-win2016
         vs2019-gnu:
           TARGET: x86_64-pc-windows-gnu
           TOOLS_TARGET: x86_64-pc-windows-msvc
@@ -43,9 +39,6 @@ jobs:
           TOOLS_TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: windows-2019
           ENABLE_SCCACHE: 1
-        vs2017-msvc:
-          TARGET: x86_64-pc-windows-msvc
-          VM_IMAGE: vs2017-win2016
         vs2019-msvc:
           TARGET: x86_64-pc-windows-msvc
           VM_IMAGE: windows-2019
