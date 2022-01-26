@@ -279,10 +279,11 @@ fn main() -> Result<()> {
     let report = parse(stdin, "cargo test", timestamp, max_out_len)?;
 
     let stdout = std::io::stdout();
-    let stdout = stdout.lock();
+    let mut stdout = stdout.lock();
     report
-        .write_xml(stdout)
+        .write_xml(&mut stdout)
         .map_err(|e| Error::new(ErrorKind::Other, format!("{}", e)))?;
+    writeln!(stdout)?;
     Ok(())
 }
 
