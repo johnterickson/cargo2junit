@@ -10,7 +10,7 @@ schedules:
 
 variables:
   CHANNEL: stable
-  CACHE_SALT: 3
+  CACHE_SALT: 4
   RUSTCACHE_ROOT: $(Build.SourcesDirectory)/target
   CARGO_DEPENDENCIES_FILE: $(Pipeline.Workspace)/Cargo.dependencies
   CARGO_HOME: $(RUSTCACHE_ROOT)/rustcache/.cargo
