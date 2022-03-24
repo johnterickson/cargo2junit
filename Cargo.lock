@@ -19,7 +19,7 @@ checksum = "23b62fc65de8e4e7f52534fb52b0f3ed04746ae267519eef2a83941e8085068b"
 
 [[package]]
 name = "cargo2junit"
-version = "0.1.10"
+version = "0.1.11"
 dependencies = [
  "junit-report",
  "regex",
