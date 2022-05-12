@@ -3,9 +3,10 @@ extern crate serde;
 
 use junit_report::*;
 use serde::{Deserialize, Serialize};
+use std::borrow::Cow;
+use std::collections::BTreeSet;
 use std::env;
 use std::io::*;
-use std::{borrow::Cow, collections::BTreeSet};
 
 const SYSTEM_OUT_MAX_LEN: usize = 65536;
 
@@ -124,7 +125,7 @@ fn split_name(full_name: &str) -> (&str, String) {
 fn parse<T: BufRead>(
     input: T,
     suite_name_prefix: &str,
-    timestamp: DateTime<Utc>,
+    timestamp: OffsetDateTime,
     max_out_len: usize,
 ) -> Result<Report> {
     let mut r = Report::new();
@@ -144,7 +145,7 @@ fn parse<T: BufRead>(
             Ok(event) => Ok(event),
             Err(orig_err) => {
                 // cargo test doesn't escape backslashes to do it ourselves and retry
-                let line = line.replace("\\", "\\\\");
+                let line = line.replace('\\', "\\\\");
                 match serde_json::from_str(&line) {
                     Ok(event) => Ok(event),
                     Err(_) => Err(Error::new(
@@ -161,14 +162,14 @@ fn parse<T: BufRead>(
                 SuiteEvent::Started { test_count: _ } => {
                     assert!(current_suite_maybe.is_none());
                     assert!(tests.is_empty());
-                    let ts = TestSuite::new(&format!("{} #{}", suite_name_prefix, suite_index))
-                        .set_timestamp(timestamp);
+                    let mut ts = TestSuite::new(&format!("{} #{}", suite_name_prefix, suite_index));
+                    ts.set_timestamp(timestamp);
                     current_suite_maybe = Some(ts);
                     suite_index += 1;
                 }
                 SuiteEvent::Ok { results: _ } | SuiteEvent::Failed { results: _ } => {
                     assert_eq!(None, tests.iter().next());
-                    r = r.add_testsuite(
+                    r.add_testsuite(
                         current_suite_maybe.expect("Suite complete event found outside of suite!"),
                     );
                     current_suite_maybe = None;
@@ -196,10 +197,10 @@ fn parse<T: BufRead>(
                     }
                     TestEvent::Ok { name } => {
                         assert!(tests.remove(name));
-                        let (name, module_path) = split_name(&name);
-                        current_suite = current_suite.add_testcase(
-                            TestCase::success(&name, duration).set_classname(module_path.as_str()),
-                        );
+                        let (name, module_path) = split_name(name);
+                        let mut tc = TestCase::success(name, duration);
+                        tc.set_classname(module_path.as_str());
+                        current_suite.add_testcase(tc);
                     }
                     TestEvent::Failed {
                         name,
@@ -207,15 +208,15 @@ fn parse<T: BufRead>(
                         stderr,
                     } => {
                         assert!(tests.remove(name));
-                        let (name, module_path) = split_name(&name);
+                        let (name, module_path) = split_name(name);
 
                         let mut failure = TestCase::failure(
-                            &name,
+                            name,
                             duration,
                             "cargo test",
                             &format!("failed {}::{}", module_path.as_str(), &name),
-                        )
-                        .set_classname(module_path.as_str());
+                        );
+                        failure.set_classname(module_path.as_str());
 
                         fn truncate(s: &str, max_len: usize) -> Cow<'_, str> {
                             if s.len() > max_len {
@@ -233,18 +234,18 @@ fn parse<T: BufRead>(
                         }
 
                         if let Some(stdout) = stdout {
-                            failure = failure.set_system_out(&truncate(stdout, max_out_len));
+                            failure.set_system_out(&truncate(stdout, max_out_len));
                         }
 
                         if let Some(stderr) = stderr {
-                            failure = failure.set_system_err(&truncate(stderr, max_out_len));
+                            failure.set_system_err(&truncate(stderr, max_out_len));
                         }
 
-                        current_suite = current_suite.add_testcase(failure);
+                        current_suite.add_testcase(failure);
                     }
                     TestEvent::Ignored { name } => {
                         assert!(tests.remove(name));
-                        current_suite = current_suite.add_testcase(TestCase::skipped(name));
+                        current_suite.add_testcase(TestCase::skipped(name));
                     }
                     TestEvent::Timeout { name: _ } => {
                         // An informative timeout event is emitted after a test has been running for
@@ -265,7 +266,7 @@ fn parse<T: BufRead>(
 }
 
 fn main() -> Result<()> {
-    let timestamp = Utc::now();
+    let timestamp = OffsetDateTime::now_utc();
     let stdin = std::io::stdin();
     let stdin = stdin.lock();
 
@@ -299,7 +300,7 @@ mod tests {
         parse(
             BufReader::new(bytes),
             "cargo test",
-            Utc::now(),
+            OffsetDateTime::now_utc(),
             max_stdout_len,
         )
     }
@@ -310,7 +311,8 @@ mod tests {
 
     fn normalize(input: &str) -> String {
         let date_regex =
-            Regex::new(r"(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})\.(\d+)\+00:00").unwrap();
+            Regex::new(r"(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})\.(\d+)(Z|\+00:00)")
+                .unwrap();
         date_regex
             .replace_all(input, "TIMESTAMP")
             .replace("\r\n", "\n")
