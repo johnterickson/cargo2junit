@@ -285,6 +285,19 @@ fn main() -> Result<()> {
         .write_xml(&mut stdout)
         .map_err(|e| Error::new(ErrorKind::Other, format!("{}", e)))?;
     writeln!(stdout)?;
+
+    if report
+        .testsuites()
+        .iter()
+        .map(|suite| suite.testcases().iter())
+        .flatten()
+        .any(|testcase| testcase.is_error() || testcase.is_failure())
+    {
+        // Return non-zero exit code as cargo-test would do
+        eprintln!("Some tests failed");
+        std::process::exit(1);
+    }
+
     Ok(())
 }
 
