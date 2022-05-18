@@ -265,6 +265,21 @@ fn parse<T: BufRead>(
     Ok(r)
 }
 
+fn determine_exit_code(report: &Report) -> Result<()> {
+    if report.testsuites().is_empty() {
+        Err(Error::new(ErrorKind::NotFound, "No test suite results were found.".to_owned()))
+    } else if report
+        .testsuites()
+        .iter()
+        .flat_map(|suite| suite.testcases().iter())
+        .any(|testcase| testcase.is_error() || testcase.is_failure())
+    {
+        Err(Error::new(ErrorKind::Other, "One or more tests failed.".to_owned()))
+    } else {
+        Ok(())
+    }
+}
+
 fn main() -> Result<()> {
     let timestamp = OffsetDateTime::now_utc();
     let stdin = std::io::stdin();
@@ -285,13 +300,14 @@ fn main() -> Result<()> {
         .write_xml(&mut stdout)
         .map_err(|e| Error::new(ErrorKind::Other, format!("{}", e)))?;
     writeln!(stdout)?;
-    Ok(())
+
+    determine_exit_code(&report)
 }
 
 #[cfg(test)]
 mod tests {
     use super::SYSTEM_OUT_MAX_LEN;
-    use crate::parse;
+    use crate::{parse, determine_exit_code};
     use junit_report::*;
     use regex::Regex;
     use std::io::*;
@@ -467,5 +483,27 @@ mod tests {
             SYSTEM_OUT_MAX_LEN,
         )
         .expect("Could not parse test input");
+    }
+
+    #[test]
+    fn compile_fail() {
+        let report = parse_bytes(
+            include_bytes!("test_inputs/compile_fail.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
+
+        assert!(determine_exit_code(&report).is_err());
+    }
+
+    #[test]
+    fn one_suite_no_tests() {
+        let report = parse_bytes(
+            include_bytes!("test_inputs/one_suite_no_tests.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
+        
+        assert!(determine_exit_code(&report).is_ok());
     }
 }
