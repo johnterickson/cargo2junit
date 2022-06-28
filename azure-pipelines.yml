@@ -150,6 +150,20 @@ jobs:
           buildPlatform: RELEASE_$(System.JobDisplayName)
         condition: succeededOrFailed()
 
+      - bash: |
+          set -e
+          [[ $AGENT_OS.$AGENT_OSARCHITECTURE == "Linux.X64" ]] && export SBOM_EXECUTABLE=sbom-tool-linux-x64
+          [[ $AGENT_OS.$AGENT_OSARCHITECTURE == "Darwin.X64" ]] && export SBOM_EXECUTABLE=sbom-tool-osx-x64
+          [[ $AGENT_OS.$AGENT_OSARCHITECTURE == "Windows_NT.X64" ]] && export SBOM_EXECUTABLE=sbom-tool-win-x64.exe
+          [[ $SBOM_EXECUTABLE != "" ]]
+          curl -L -o $SBOM_EXECUTABLE $(curl -s https://api.github.com/repos/microsoft/sbom-tool/releases/latest | grep -Eo https.*$SBOM_EXECUTABLE)
+          [[ $AGENT_OS == "Windows_NT" ]] || chmod +x $SBOM_EXECUTABLE
+          echo "##vso[task.setvariable variable=SBOM_EXECUTABLE;]$SBOM_EXECUTABLE"
+        displayName: "download sbomtool"
+      
+      - bash: |
+          ./$SBOM_EXECUTABLE generate -b ./target/release -bc . -pn cargo2junit -pv $(cat Cargo.toml | grep '^version =' | grep -Eo [0-9]+\.[0-9]+\.[0-9]) -nsb https://sbom.johnterickson -V Verbose
+
       # publish bits
       - task: PublishPipelineArtifact@1
         inputs:
