@@ -162,6 +162,8 @@ jobs:
         displayName: "download sbomtool"
       
       - bash: |
+          set -e
+          rm -Rf ./target/release/_manifest
           ./$SBOM_EXECUTABLE generate -b ./target/release -bc . -pn cargo2junit -pv $(cat Cargo.toml | grep '^version =' | grep -Eo [0-9]+\.[0-9]+\.[0-9]) -nsb https://sbom.johnterickson -V Verbose
 
       # publish bits
