@@ -330,7 +330,7 @@ mod tests {
             Regex::new(r"(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})\.(\d+)(Z|\+00:00)")
                 .unwrap();
         date_regex
-            .replace_all(input, "TIMESTAMP")
+            .replace_all(input.trim(), "TIMESTAMP")
             .replace("\r\n", "\n")
     }
 
