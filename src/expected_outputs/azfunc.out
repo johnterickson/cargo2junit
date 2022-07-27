@@ -1,480 +1,480 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
-  <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="192" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0">
-    <testcase name="it_converts_from_str" classname="bindings::blob::tests" time="0" />
-    <testcase name="it_converts_from_json" classname="bindings::blob::tests" time="0" />
-    <testcase name="it_converts_from_string" classname="bindings::blob::tests" time="0" />
-    <testcase name="it_converts_from_u8_slice" classname="bindings::blob::tests" time="0" />
-    <testcase name="it_converts_from_typed_data" classname="bindings::blob::tests" time="0" />
-    <testcase name="it_converts_from_u8_vec" classname="bindings::blob::tests" time="0" />
-    <testcase name="it_converts_to_body" classname="bindings::blob::tests" time="0" />
-    <testcase name="it_converts_to_json" classname="bindings::blob::tests" time="0" />
-    <testcase name="it_converts_to_bytes" classname="bindings::blob::tests" time="0" />
-    <testcase name="it_converts_to_string" classname="bindings::blob::tests" time="0" />
-    <testcase name="it_converts_to_typed_data" classname="bindings::blob::tests" time="0" />
-    <testcase name="it_displays_as_a_string" classname="bindings::blob::tests" time="0" />
-    <testcase name="it_has_json_content" classname="bindings::blob::tests" time="0" />
-    <testcase name="it_has_bytes_content" classname="bindings::blob::tests" time="0" />
-    <testcase name="it_has_string_content" classname="bindings::blob::tests" time="0" />
-    <testcase name="it_constructs_from_an_object_value" classname="bindings::cosmos_db_document::tests" time="0" />
-    <testcase name="it_constructs" classname="bindings::blob_trigger::tests" time="0" />
-    <testcase name="it_converts_from_str" classname="bindings::cosmos_db_document::tests" time="0" />
-    <testcase name="it_converts_from_string" classname="bindings::cosmos_db_document::tests" time="0" />
-    <testcase name="it_converts_from_value" classname="bindings::cosmos_db_document::tests" time="0" />
-    <testcase name="it_converts_from_typed_data" classname="bindings::cosmos_db_document::tests" time="0" />
-    <testcase name="it_converts_to_body" classname="bindings::cosmos_db_document::tests" time="0" />
-    <testcase name="it_converts_to_string" classname="bindings::cosmos_db_document::tests" time="0" />
-    <testcase name="it_converts_to_value" classname="bindings::cosmos_db_document::tests" time="0" />
-    <testcase name="it_displays_as_json" classname="bindings::cosmos_db_document::tests" time="0" />
-    <testcase name="it_converts_to_typed_data" classname="bindings::cosmos_db_document::tests" time="0" />
-    <testcase name="it_constructs" classname="bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_panics_if_constructed_without_an_object_or_array" classname="bindings::cosmos_db_document::tests" time="0" />
-    <testcase name="it_converts_from_json" classname="bindings::event_hub_message::tests" time="0" />
-    <testcase name="it_constructs" classname="bindings::event_grid_event::tests" time="0" />
-    <testcase name="it_converts_from_str" classname="bindings::event_hub_message::tests" time="0" />
-    <testcase name="it_converts_from_string" classname="bindings::event_hub_message::tests" time="0" />
-    <testcase name="it_converts_from_u8_slice" classname="bindings::event_hub_message::tests" time="0" />
-    <testcase name="it_converts_to_body" classname="bindings::event_hub_message::tests" time="0" />
-    <testcase name="it_converts_from_u8_vec" classname="bindings::event_hub_message::tests" time="0" />
-    <testcase name="it_converts_to_bytes" classname="bindings::event_hub_message::tests" time="0" />
-    <testcase name="it_converts_to_json" classname="bindings::event_hub_message::tests" time="0" />
-    <testcase name="it_converts_to_string" classname="bindings::event_hub_message::tests" time="0" />
-    <testcase name="it_converts_to_typed_data" classname="bindings::event_hub_message::tests" time="0" />
-    <testcase name="it_displays_as_a_string" classname="bindings::event_hub_message::tests" time="0" />
-    <testcase name="it_has_bytes_content" classname="bindings::event_hub_message::tests" time="0" />
-    <testcase name="it_has_json_content" classname="bindings::event_hub_message::tests" time="0" />
-    <testcase name="it_has_string_content" classname="bindings::event_hub_message::tests" time="0" />
-    <testcase name="it_converts_from_typed_data" classname="bindings::generic_input::tests" time="0" />
-    <testcase name="it_constructs" classname="bindings::event_hub_trigger::tests" time="0" />
-    <testcase name="it_converts_from_double" classname="bindings::generic_output::tests" time="0" />
-    <testcase name="it_converts_from_bytes" classname="bindings::generic_output::tests" time="0" />
-    <testcase name="it_converts_from_integer" classname="bindings::generic_output::tests" time="0" />
-    <testcase name="it_converts_from_str" classname="bindings::generic_output::tests" time="0" />
-    <testcase name="it_converts_from_value" classname="bindings::generic_output::tests" time="0" />
-    <testcase name="it_converts_from_string" classname="bindings::generic_output::tests" time="0" />
-    <testcase name="it_converts_to_typed_data" classname="bindings::generic_output::tests" time="0" />
-    <testcase name="it_constructs" classname="bindings::generic_trigger::tests" time="0" />
-    <testcase name="it_has_a_header" classname="bindings::http_request::tests" time="0" />
-    <testcase name="it_has_a_bytes_body" classname="bindings::http_request::tests" time="0" />
-    <testcase name="it_has_a_json_body" classname="bindings::http_request::tests" time="0" />
-    <testcase name="it_has_a_query_parameter" classname="bindings::http_request::tests" time="0" />
-    <testcase name="it_has_a_stream_body" classname="bindings::http_request::tests" time="0" />
-    <testcase name="it_has_a_route_parameter" classname="bindings::http_request::tests" time="0" />
-    <testcase name="it_has_a_string_body" classname="bindings::http_request::tests" time="0" />
-    <testcase name="it_has_an_empty_body" classname="bindings::http_request::tests" time="0" />
-    <testcase name="it_has_the_url" classname="bindings::http_request::tests" time="0" />
-    <testcase name="it_has_the_method" classname="bindings::http_request::tests" time="0" />
-    <testcase name="it_builds_with_a_bytes_body" classname="bindings::http_response::tests" time="0" />
-    <testcase name="it_builds_with_a_json_body" classname="bindings::http_response::tests" time="0" />
-    <testcase name="it_builds_with_a_status" classname="bindings::http_response::tests" time="0" />
-    <testcase name="it_builds_with_a_string_body" classname="bindings::http_response::tests" time="0" />
-    <testcase name="it_builds_with_headers" classname="bindings::http_response::tests" time="0" />
-    <testcase name="it_converts_to_typed_data" classname="bindings::http_response::tests" time="0" />
-    <testcase name="it_is_empty_by_default" classname="bindings::http_response::tests" time="0" />
-    <testcase name="it_converts_from_json" classname="bindings::queue_message::tests" time="0" />
-    <testcase name="it_is_empty_from_a_builder" classname="bindings::http_response::tests" time="0" />
-    <testcase name="it_converts_from_str" classname="bindings::queue_message::tests" time="0" />
-    <testcase name="it_converts_from_string" classname="bindings::queue_message::tests" time="0" />
-    <testcase name="it_converts_from_u8_slice" classname="bindings::queue_message::tests" time="0" />
-    <testcase name="it_converts_from_u8_vec" classname="bindings::queue_message::tests" time="0" />
-    <testcase name="it_converts_to_body" classname="bindings::queue_message::tests" time="0" />
-    <testcase name="it_converts_to_json" classname="bindings::queue_message::tests" time="0" />
-    <testcase name="it_converts_to_bytes" classname="bindings::queue_message::tests" time="0" />
-    <testcase name="it_converts_to_string" classname="bindings::queue_message::tests" time="0" />
-    <testcase name="it_converts_to_typed_data" classname="bindings::queue_message::tests" time="0" />
-    <testcase name="it_has_bytes_content" classname="bindings::queue_message::tests" time="0" />
-    <testcase name="it_displays_as_a_string" classname="bindings::queue_message::tests" time="0" />
-    <testcase name="it_has_json_content" classname="bindings::queue_message::tests" time="0" />
-    <testcase name="it_constructs" classname="bindings::queue_trigger::tests" time="0" />
-    <testcase name="it_has_string_content" classname="bindings::queue_message::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="bindings::send_grid_message::tests" time="0" />
-    <testcase name="it_converts_to_typed_data" classname="bindings::send_grid_message::tests" time="0" />
-    <testcase name="it_converts_from_json" classname="bindings::service_bus_message::tests" time="0" />
-    <testcase name="it_converts_from_str" classname="bindings::service_bus_message::tests" time="0" />
-    <testcase name="it_converts_from_string" classname="bindings::service_bus_message::tests" time="0" />
-    <testcase name="it_converts_from_u8_vec" classname="bindings::service_bus_message::tests" time="0" />
-    <testcase name="it_converts_from_u8_slice" classname="bindings::service_bus_message::tests" time="0" />
-    <testcase name="it_converts_to_body" classname="bindings::service_bus_message::tests" time="0" />
-    <testcase name="it_converts_to_bytes" classname="bindings::service_bus_message::tests" time="0" />
-    <testcase name="it_converts_to_json" classname="bindings::service_bus_message::tests" time="0" />
-    <testcase name="it_converts_to_string" classname="bindings::service_bus_message::tests" time="0" />
-    <testcase name="it_converts_to_typed_data" classname="bindings::service_bus_message::tests" time="0" />
-    <testcase name="it_has_bytes_content" classname="bindings::service_bus_message::tests" time="0" />
-    <testcase name="it_displays_as_a_string" classname="bindings::service_bus_message::tests" time="0" />
-    <testcase name="it_has_json_content" classname="bindings::service_bus_message::tests" time="0" />
-    <testcase name="it_constructs" classname="bindings::service_bus_trigger::tests" time="0" />
-    <testcase name="it_has_string_content" classname="bindings::service_bus_message::tests" time="0" />
-    <testcase name="it_converts_from_typed_data" classname="bindings::signalr_connection_info::tests" time="0" />
-    <testcase name="it_converts_to_body" classname="bindings::signalr_connection_info::tests" time="0" />
-    <testcase name="it_converts_to_typed_data" classname="bindings::signalr_group_action::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="bindings::signalr_connection_info::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="bindings::signalr_group_action::tests" time="0" />
-    <testcase name="it_converts_to_typed_data" classname="bindings::signalr_message::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="bindings::signalr_message::tests" time="0" />
-    <testcase name="it_casts_to_value_reference" classname="bindings::table::tests" time="0" />
-    <testcase name="it_adds_row_value" classname="bindings::table::tests" time="0" />
-    <testcase name="it_constructs_an_empty_table" classname="bindings::table::tests" time="0" />
-    <testcase name="it_converts_from_typed_data" classname="bindings::table::tests" time="0" />
-    <testcase name="it_converts_to_body" classname="bindings::table::tests" time="0" />
-    <testcase name="it_converts_to_json" classname="bindings::table::tests" time="0" />
-    <testcase name="it_displays_as_a_string" classname="bindings::table::tests" time="0" />
-    <testcase name="it_converts_to_typed_data" classname="bindings::table::tests" time="0" />
-    <testcase name="it_has_a_length_equal_to_number_of_rows" classname="bindings::table::tests" time="0" />
-    <testcase name="it_is_not_empty_when_rows_are_present" classname="bindings::table::tests" time="0" />
-    <testcase name="it_has_json_data" classname="bindings::timer_info::tests" time="0" />
-    <testcase name="it_iterates_rows" classname="bindings::table::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="bindings::twilio_sms_message::tests" time="0" />
-    <testcase name="it_converts_to_typed_data" classname="bindings::twilio_sms_message::tests" time="0" />
-    <testcase name="it_returns_current_context" classname="context::tests" time="0" />
-    <testcase name="it_deserializes_from_json" classname="blob::properties::tests" time="0" />
-    <testcase name="it_deserializes_from_json" classname="event_hub::partition_context::tests" time="0" />
-    <testcase name="it_returns_none_without_context" classname="context::tests" time="0" />
-    <testcase name="it_deserializes_from_json" classname="event_hub::system_properties::tests" time="0" />
-    <testcase name="it_deserializes_from_json" classname="event_hub::runtime_information::tests" time="0" />
-    <testcase name="it_converts_from_bytes_typed_data" classname="generic::tests" time="0" />
-    <testcase name="it_converts_from_double_typed_data" classname="generic::tests" time="0" />
-    <testcase name="it_converts_from_integer_typed_data" classname="generic::tests" time="0" />
-    <testcase name="it_converts_from_json_typed_data" classname="generic::tests" time="0" />
-    <testcase name="it_converts_from_no_typed_data" classname="generic::tests" time="0" />
-    <testcase name="it_converts_from_stream_typed_data" classname="generic::tests" time="0" />
-    <testcase name="it_converts_from_string_typed_data" classname="generic::tests" time="0" />
-    <testcase name="it_converts_to_bytes_typed_data" classname="generic::tests" time="0" />
-    <testcase name="it_converts_to_double_typed_data" classname="generic::tests" time="0" />
-    <testcase name="it_converts_to_json_typed_data" classname="generic::tests" time="0" />
-    <testcase name="it_converts_to_integer_typed_data" classname="generic::tests" time="0" />
-    <testcase name="it_converts_to_no_typed_data" classname="generic::tests" time="0" />
-    <testcase name="it_converts_from_json" classname="http::body::tests" time="0" />
-    <testcase name="it_converts_to_string_typed_data" classname="generic::tests" time="0" />
-    <testcase name="it_converts_from_str" classname="http::body::tests" time="0" />
-    <testcase name="it_converts_from_string" classname="http::body::tests" time="0" />
-    <testcase name="it_converts_from_typed_data" classname="http::body::tests" time="0" />
-    <testcase name="it_converts_from_u8_vec" classname="http::body::tests" time="0" />
-    <testcase name="it_converts_from_u8_slice" classname="http::body::tests" time="0" />
-    <testcase name="it_converts_to_typed_data" classname="http::body::tests" time="0" />
-    <testcase name="it_has_a_bytes_body" classname="http::body::tests" time="0" />
-    <testcase name="it_displays_as_a_string" classname="http::body::tests" time="0" />
-    <testcase name="it_has_a_default_content_type" classname="http::body::tests" time="0" />
-    <testcase name="it_has_a_json_body" classname="http::body::tests" time="0" />
-    <testcase name="it_has_a_string_body" classname="http::body::tests" time="0" />
-    <testcase name="it_creates_an_empty_response" classname="http::response_builder::tests" time="0" />
-    <testcase name="it_sets_a_body" classname="http::response_builder::tests" time="0" />
-    <testcase name="it_sets_a_header" classname="http::response_builder::tests" time="0" />
-    <testcase name="it_converts_from_code" classname="http::status::tests" time="0" />
-    <testcase name="it_sets_a_status" classname="http::response_builder::tests" time="0" />
-    <testcase name="it_converts_to_string" classname="http::status::tests" time="0" />
-    <testcase name="it_builds_an_empty_extensions_map" classname="registry::tests" time="0" />
-    <testcase name="it_builds_an_extensions_map" classname="registry::tests" time="0" />
-    <testcase name="it_creates_a_registry_from_a_list_of_functions" classname="registry::tests" time="0" />
-    <testcase name="it_creates_an_emptry_registry_from_an_empty_slice" classname="registry::tests" time="0" />
-    <testcase name="it_registers_a_function" classname="registry::tests" time="0" />
-    <testcase name="it_uses_the_latest_extension_version" classname="registry::tests" time="0" />
-    <testcase name="it_returns_false_if_function_is_not_present" classname="registry::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::bcc_settings::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::attachment::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::bypass_list_management::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::click_tracking::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::content::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::email_address::tests" time="0" />
-    <testcase name="it_converts_from_string" classname="send_grid::email_address::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::footer_settings::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::google_analytics::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::mail_settings::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::open_tracking::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::sandbox_mode::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::personalization::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::subscription_tracking::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::spam_check::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::tracking_settings::tests" time="0" />
-    <testcase name="it_deserializes_from_json" classname="timer::schedule_status::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="send_grid::unsubscribe_group::tests" time="0" />
-    <testcase name="it_converts_from_double_data" classname="util::tests" time="0" />
-    <testcase name="it_converts_from_bytes_data" classname="util::tests" time="0" />
-    <testcase name="it_converts_from_int_data" classname="util::tests" time="0" />
-    <testcase name="it_converts_from_json_data" classname="util::tests" time="0" />
-    <testcase name="it_converts_from_stream_data" classname="util::tests" time="0" />
-    <testcase name="it_converts_from_string_data" classname="util::tests" time="0" />
+  <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="192" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0">
+    <testcase name="it_converts_from_str" time="0" classname="bindings::blob::tests" />
+    <testcase name="it_converts_from_json" time="0" classname="bindings::blob::tests" />
+    <testcase name="it_converts_from_string" time="0" classname="bindings::blob::tests" />
+    <testcase name="it_converts_from_u8_slice" time="0" classname="bindings::blob::tests" />
+    <testcase name="it_converts_from_typed_data" time="0" classname="bindings::blob::tests" />
+    <testcase name="it_converts_from_u8_vec" time="0" classname="bindings::blob::tests" />
+    <testcase name="it_converts_to_body" time="0" classname="bindings::blob::tests" />
+    <testcase name="it_converts_to_json" time="0" classname="bindings::blob::tests" />
+    <testcase name="it_converts_to_bytes" time="0" classname="bindings::blob::tests" />
+    <testcase name="it_converts_to_string" time="0" classname="bindings::blob::tests" />
+    <testcase name="it_converts_to_typed_data" time="0" classname="bindings::blob::tests" />
+    <testcase name="it_displays_as_a_string" time="0" classname="bindings::blob::tests" />
+    <testcase name="it_has_json_content" time="0" classname="bindings::blob::tests" />
+    <testcase name="it_has_bytes_content" time="0" classname="bindings::blob::tests" />
+    <testcase name="it_has_string_content" time="0" classname="bindings::blob::tests" />
+    <testcase name="it_constructs_from_an_object_value" time="0" classname="bindings::cosmos_db_document::tests" />
+    <testcase name="it_constructs" time="0" classname="bindings::blob_trigger::tests" />
+    <testcase name="it_converts_from_str" time="0" classname="bindings::cosmos_db_document::tests" />
+    <testcase name="it_converts_from_string" time="0" classname="bindings::cosmos_db_document::tests" />
+    <testcase name="it_converts_from_value" time="0" classname="bindings::cosmos_db_document::tests" />
+    <testcase name="it_converts_from_typed_data" time="0" classname="bindings::cosmos_db_document::tests" />
+    <testcase name="it_converts_to_body" time="0" classname="bindings::cosmos_db_document::tests" />
+    <testcase name="it_converts_to_string" time="0" classname="bindings::cosmos_db_document::tests" />
+    <testcase name="it_converts_to_value" time="0" classname="bindings::cosmos_db_document::tests" />
+    <testcase name="it_displays_as_json" time="0" classname="bindings::cosmos_db_document::tests" />
+    <testcase name="it_converts_to_typed_data" time="0" classname="bindings::cosmos_db_document::tests" />
+    <testcase name="it_constructs" time="0" classname="bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_panics_if_constructed_without_an_object_or_array" time="0" classname="bindings::cosmos_db_document::tests" />
+    <testcase name="it_converts_from_json" time="0" classname="bindings::event_hub_message::tests" />
+    <testcase name="it_constructs" time="0" classname="bindings::event_grid_event::tests" />
+    <testcase name="it_converts_from_str" time="0" classname="bindings::event_hub_message::tests" />
+    <testcase name="it_converts_from_string" time="0" classname="bindings::event_hub_message::tests" />
+    <testcase name="it_converts_from_u8_slice" time="0" classname="bindings::event_hub_message::tests" />
+    <testcase name="it_converts_to_body" time="0" classname="bindings::event_hub_message::tests" />
+    <testcase name="it_converts_from_u8_vec" time="0" classname="bindings::event_hub_message::tests" />
+    <testcase name="it_converts_to_bytes" time="0" classname="bindings::event_hub_message::tests" />
+    <testcase name="it_converts_to_json" time="0" classname="bindings::event_hub_message::tests" />
+    <testcase name="it_converts_to_string" time="0" classname="bindings::event_hub_message::tests" />
+    <testcase name="it_converts_to_typed_data" time="0" classname="bindings::event_hub_message::tests" />
+    <testcase name="it_displays_as_a_string" time="0" classname="bindings::event_hub_message::tests" />
+    <testcase name="it_has_bytes_content" time="0" classname="bindings::event_hub_message::tests" />
+    <testcase name="it_has_json_content" time="0" classname="bindings::event_hub_message::tests" />
+    <testcase name="it_has_string_content" time="0" classname="bindings::event_hub_message::tests" />
+    <testcase name="it_converts_from_typed_data" time="0" classname="bindings::generic_input::tests" />
+    <testcase name="it_constructs" time="0" classname="bindings::event_hub_trigger::tests" />
+    <testcase name="it_converts_from_double" time="0" classname="bindings::generic_output::tests" />
+    <testcase name="it_converts_from_bytes" time="0" classname="bindings::generic_output::tests" />
+    <testcase name="it_converts_from_integer" time="0" classname="bindings::generic_output::tests" />
+    <testcase name="it_converts_from_str" time="0" classname="bindings::generic_output::tests" />
+    <testcase name="it_converts_from_value" time="0" classname="bindings::generic_output::tests" />
+    <testcase name="it_converts_from_string" time="0" classname="bindings::generic_output::tests" />
+    <testcase name="it_converts_to_typed_data" time="0" classname="bindings::generic_output::tests" />
+    <testcase name="it_constructs" time="0" classname="bindings::generic_trigger::tests" />
+    <testcase name="it_has_a_header" time="0" classname="bindings::http_request::tests" />
+    <testcase name="it_has_a_bytes_body" time="0" classname="bindings::http_request::tests" />
+    <testcase name="it_has_a_json_body" time="0" classname="bindings::http_request::tests" />
+    <testcase name="it_has_a_query_parameter" time="0" classname="bindings::http_request::tests" />
+    <testcase name="it_has_a_stream_body" time="0" classname="bindings::http_request::tests" />
+    <testcase name="it_has_a_route_parameter" time="0" classname="bindings::http_request::tests" />
+    <testcase name="it_has_a_string_body" time="0" classname="bindings::http_request::tests" />
+    <testcase name="it_has_an_empty_body" time="0" classname="bindings::http_request::tests" />
+    <testcase name="it_has_the_url" time="0" classname="bindings::http_request::tests" />
+    <testcase name="it_has_the_method" time="0" classname="bindings::http_request::tests" />
+    <testcase name="it_builds_with_a_bytes_body" time="0" classname="bindings::http_response::tests" />
+    <testcase name="it_builds_with_a_json_body" time="0" classname="bindings::http_response::tests" />
+    <testcase name="it_builds_with_a_status" time="0" classname="bindings::http_response::tests" />
+    <testcase name="it_builds_with_a_string_body" time="0" classname="bindings::http_response::tests" />
+    <testcase name="it_builds_with_headers" time="0" classname="bindings::http_response::tests" />
+    <testcase name="it_converts_to_typed_data" time="0" classname="bindings::http_response::tests" />
+    <testcase name="it_is_empty_by_default" time="0" classname="bindings::http_response::tests" />
+    <testcase name="it_converts_from_json" time="0" classname="bindings::queue_message::tests" />
+    <testcase name="it_is_empty_from_a_builder" time="0" classname="bindings::http_response::tests" />
+    <testcase name="it_converts_from_str" time="0" classname="bindings::queue_message::tests" />
+    <testcase name="it_converts_from_string" time="0" classname="bindings::queue_message::tests" />
+    <testcase name="it_converts_from_u8_slice" time="0" classname="bindings::queue_message::tests" />
+    <testcase name="it_converts_from_u8_vec" time="0" classname="bindings::queue_message::tests" />
+    <testcase name="it_converts_to_body" time="0" classname="bindings::queue_message::tests" />
+    <testcase name="it_converts_to_json" time="0" classname="bindings::queue_message::tests" />
+    <testcase name="it_converts_to_bytes" time="0" classname="bindings::queue_message::tests" />
+    <testcase name="it_converts_to_string" time="0" classname="bindings::queue_message::tests" />
+    <testcase name="it_converts_to_typed_data" time="0" classname="bindings::queue_message::tests" />
+    <testcase name="it_has_bytes_content" time="0" classname="bindings::queue_message::tests" />
+    <testcase name="it_displays_as_a_string" time="0" classname="bindings::queue_message::tests" />
+    <testcase name="it_has_json_content" time="0" classname="bindings::queue_message::tests" />
+    <testcase name="it_constructs" time="0" classname="bindings::queue_trigger::tests" />
+    <testcase name="it_has_string_content" time="0" classname="bindings::queue_message::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="bindings::send_grid_message::tests" />
+    <testcase name="it_converts_to_typed_data" time="0" classname="bindings::send_grid_message::tests" />
+    <testcase name="it_converts_from_json" time="0" classname="bindings::service_bus_message::tests" />
+    <testcase name="it_converts_from_str" time="0" classname="bindings::service_bus_message::tests" />
+    <testcase name="it_converts_from_string" time="0" classname="bindings::service_bus_message::tests" />
+    <testcase name="it_converts_from_u8_vec" time="0" classname="bindings::service_bus_message::tests" />
+    <testcase name="it_converts_from_u8_slice" time="0" classname="bindings::service_bus_message::tests" />
+    <testcase name="it_converts_to_body" time="0" classname="bindings::service_bus_message::tests" />
+    <testcase name="it_converts_to_bytes" time="0" classname="bindings::service_bus_message::tests" />
+    <testcase name="it_converts_to_json" time="0" classname="bindings::service_bus_message::tests" />
+    <testcase name="it_converts_to_string" time="0" classname="bindings::service_bus_message::tests" />
+    <testcase name="it_converts_to_typed_data" time="0" classname="bindings::service_bus_message::tests" />
+    <testcase name="it_has_bytes_content" time="0" classname="bindings::service_bus_message::tests" />
+    <testcase name="it_displays_as_a_string" time="0" classname="bindings::service_bus_message::tests" />
+    <testcase name="it_has_json_content" time="0" classname="bindings::service_bus_message::tests" />
+    <testcase name="it_constructs" time="0" classname="bindings::service_bus_trigger::tests" />
+    <testcase name="it_has_string_content" time="0" classname="bindings::service_bus_message::tests" />
+    <testcase name="it_converts_from_typed_data" time="0" classname="bindings::signalr_connection_info::tests" />
+    <testcase name="it_converts_to_body" time="0" classname="bindings::signalr_connection_info::tests" />
+    <testcase name="it_converts_to_typed_data" time="0" classname="bindings::signalr_group_action::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="bindings::signalr_connection_info::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="bindings::signalr_group_action::tests" />
+    <testcase name="it_converts_to_typed_data" time="0" classname="bindings::signalr_message::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="bindings::signalr_message::tests" />
+    <testcase name="it_casts_to_value_reference" time="0" classname="bindings::table::tests" />
+    <testcase name="it_adds_row_value" time="0" classname="bindings::table::tests" />
+    <testcase name="it_constructs_an_empty_table" time="0" classname="bindings::table::tests" />
+    <testcase name="it_converts_from_typed_data" time="0" classname="bindings::table::tests" />
+    <testcase name="it_converts_to_body" time="0" classname="bindings::table::tests" />
+    <testcase name="it_converts_to_json" time="0" classname="bindings::table::tests" />
+    <testcase name="it_displays_as_a_string" time="0" classname="bindings::table::tests" />
+    <testcase name="it_converts_to_typed_data" time="0" classname="bindings::table::tests" />
+    <testcase name="it_has_a_length_equal_to_number_of_rows" time="0" classname="bindings::table::tests" />
+    <testcase name="it_is_not_empty_when_rows_are_present" time="0" classname="bindings::table::tests" />
+    <testcase name="it_has_json_data" time="0" classname="bindings::timer_info::tests" />
+    <testcase name="it_iterates_rows" time="0" classname="bindings::table::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="bindings::twilio_sms_message::tests" />
+    <testcase name="it_converts_to_typed_data" time="0" classname="bindings::twilio_sms_message::tests" />
+    <testcase name="it_returns_current_context" time="0" classname="context::tests" />
+    <testcase name="it_deserializes_from_json" time="0" classname="blob::properties::tests" />
+    <testcase name="it_deserializes_from_json" time="0" classname="event_hub::partition_context::tests" />
+    <testcase name="it_returns_none_without_context" time="0" classname="context::tests" />
+    <testcase name="it_deserializes_from_json" time="0" classname="event_hub::system_properties::tests" />
+    <testcase name="it_deserializes_from_json" time="0" classname="event_hub::runtime_information::tests" />
+    <testcase name="it_converts_from_bytes_typed_data" time="0" classname="generic::tests" />
+    <testcase name="it_converts_from_double_typed_data" time="0" classname="generic::tests" />
+    <testcase name="it_converts_from_integer_typed_data" time="0" classname="generic::tests" />
+    <testcase name="it_converts_from_json_typed_data" time="0" classname="generic::tests" />
+    <testcase name="it_converts_from_no_typed_data" time="0" classname="generic::tests" />
+    <testcase name="it_converts_from_stream_typed_data" time="0" classname="generic::tests" />
+    <testcase name="it_converts_from_string_typed_data" time="0" classname="generic::tests" />
+    <testcase name="it_converts_to_bytes_typed_data" time="0" classname="generic::tests" />
+    <testcase name="it_converts_to_double_typed_data" time="0" classname="generic::tests" />
+    <testcase name="it_converts_to_json_typed_data" time="0" classname="generic::tests" />
+    <testcase name="it_converts_to_integer_typed_data" time="0" classname="generic::tests" />
+    <testcase name="it_converts_to_no_typed_data" time="0" classname="generic::tests" />
+    <testcase name="it_converts_from_json" time="0" classname="http::body::tests" />
+    <testcase name="it_converts_to_string_typed_data" time="0" classname="generic::tests" />
+    <testcase name="it_converts_from_str" time="0" classname="http::body::tests" />
+    <testcase name="it_converts_from_string" time="0" classname="http::body::tests" />
+    <testcase name="it_converts_from_typed_data" time="0" classname="http::body::tests" />
+    <testcase name="it_converts_from_u8_vec" time="0" classname="http::body::tests" />
+    <testcase name="it_converts_from_u8_slice" time="0" classname="http::body::tests" />
+    <testcase name="it_converts_to_typed_data" time="0" classname="http::body::tests" />
+    <testcase name="it_has_a_bytes_body" time="0" classname="http::body::tests" />
+    <testcase name="it_displays_as_a_string" time="0" classname="http::body::tests" />
+    <testcase name="it_has_a_default_content_type" time="0" classname="http::body::tests" />
+    <testcase name="it_has_a_json_body" time="0" classname="http::body::tests" />
+    <testcase name="it_has_a_string_body" time="0" classname="http::body::tests" />
+    <testcase name="it_creates_an_empty_response" time="0" classname="http::response_builder::tests" />
+    <testcase name="it_sets_a_body" time="0" classname="http::response_builder::tests" />
+    <testcase name="it_sets_a_header" time="0" classname="http::response_builder::tests" />
+    <testcase name="it_converts_from_code" time="0" classname="http::status::tests" />
+    <testcase name="it_sets_a_status" time="0" classname="http::response_builder::tests" />
+    <testcase name="it_converts_to_string" time="0" classname="http::status::tests" />
+    <testcase name="it_builds_an_empty_extensions_map" time="0" classname="registry::tests" />
+    <testcase name="it_builds_an_extensions_map" time="0" classname="registry::tests" />
+    <testcase name="it_creates_a_registry_from_a_list_of_functions" time="0" classname="registry::tests" />
+    <testcase name="it_creates_an_emptry_registry_from_an_empty_slice" time="0" classname="registry::tests" />
+    <testcase name="it_registers_a_function" time="0" classname="registry::tests" />
+    <testcase name="it_uses_the_latest_extension_version" time="0" classname="registry::tests" />
+    <testcase name="it_returns_false_if_function_is_not_present" time="0" classname="registry::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::bcc_settings::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::attachment::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::bypass_list_management::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::click_tracking::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::content::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::email_address::tests" />
+    <testcase name="it_converts_from_string" time="0" classname="send_grid::email_address::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::footer_settings::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::google_analytics::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::mail_settings::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::open_tracking::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::sandbox_mode::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::personalization::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::subscription_tracking::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::spam_check::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::tracking_settings::tests" />
+    <testcase name="it_deserializes_from_json" time="0" classname="timer::schedule_status::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="send_grid::unsubscribe_group::tests" />
+    <testcase name="it_converts_from_double_data" time="0" classname="util::tests" />
+    <testcase name="it_converts_from_bytes_data" time="0" classname="util::tests" />
+    <testcase name="it_converts_from_int_data" time="0" classname="util::tests" />
+    <testcase name="it_converts_from_json_data" time="0" classname="util::tests" />
+    <testcase name="it_converts_from_stream_data" time="0" classname="util::tests" />
+    <testcase name="it_converts_from_string_data" time="0" classname="util::tests" />
   </testsuite>
-  <testsuite id="1" name="cargo test #1" package="testsuite/cargo test #1" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="2" name="cargo test #2" package="testsuite/cargo test #2" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="3" name="cargo test #3" package="testsuite/cargo test #3" tests="205" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0">
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::blob::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::blob::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::blob::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_be_a_string" classname="codegen::bindings::blob::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::blob::tests" time="0" />
-    <testcase name="it_requires_the_path_attribute_argument" classname="codegen::bindings::blob::tests" time="0" />
-    <testcase name="it_requires_the_path_attribute_be_a_string" classname="codegen::bindings::blob::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::blob::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::blob_trigger::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_be_a_string" classname="codegen::bindings::blob_trigger::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::blob_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::blob_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::blob_trigger::tests" time="0" />
-    <testcase name="it_requires_the_path_attribute_argument" classname="codegen::bindings::blob_trigger::tests" time="0" />
-    <testcase name="it_requires_the_path_attribute_be_a_string" classname="codegen::bindings::blob_trigger::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::blob_trigger::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_requires_the_collection_name_attribute_argument" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_requires_the_collection_name_attribute_be_a_string" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_requires_the_collection_throughput_attribute_be_an_integer" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_be_a_string" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_argument" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_requires_the_create_collection_attribute_be_a_bool" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_requires_the_database_name_attribute_argument" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_requires_the_database_name_attribute_be_a_string" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_requires_the_id_attribute_be_a_string" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_requires_the_partition_key_attribute_be_a_string" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_requires_the_sql_query_attribute_be_a_string" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::cosmos_db::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_checkpoint_frequency_attribute_be_an_integer" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_collection_name_attribute_be_a_string" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_collection_name_attribute_argument" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_argument" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_be_a_string" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_create_lease_collection_attribute_be_a_boolean" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_database_name_attribute_argument" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_feed_poll_delay_attribute_be_an_integer" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_database_name_attribute_be_a_string" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_lease_collection_prefix_attribute_be_a_string" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_lease_acquire_interval_attribute_be_an_integer" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_lease_collection_throughput_attribute_be_an_integer" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_lease_connection_attribute_be_a_string" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_lease_renew_interval_attribute_be_an_integer" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_lease_expiration_interval_attribute_be_an_integer" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_max_items_per_invocation_attribute_be_an_integer" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_requires_the_start_from_beginning_attribute_be_a_boolean" classname="codegen::bindings::cosmos_db_trigger::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::event_grid_trigger::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::event_grid_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::event_grid_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::event_grid_trigger::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::event_grid_trigger::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::event_hub::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::event_hub::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_argument" classname="codegen::bindings::event_hub::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_be_a_string" classname="codegen::bindings::event_hub::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::event_hub::tests" time="0" />
-    <testcase name="it_requires_the_event_hub_name_attribute_be_a_string" classname="codegen::bindings::event_hub::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::event_hub::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::event_hub::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::event_hub_trigger::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::event_hub_trigger::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_argument" classname="codegen::bindings::event_hub_trigger::tests" time="0" />
-    <testcase name="it_requires_the_consumer_group_attribute_be_a_string" classname="codegen::bindings::event_hub_trigger::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_be_a_string" classname="codegen::bindings::event_hub_trigger::tests" time="0" />
-    <testcase name="it_requires_the_event_hub_name_attribute_be_a_string" classname="codegen::bindings::event_hub_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::event_hub_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::event_hub_trigger::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::event_hub_trigger::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::generic::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::generic::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::generic::tests" time="0" />
-    <testcase name="it_requires_the_type_attribute_argument" classname="codegen::bindings::generic::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::generic::tests" time="0" />
-    <testcase name="it_requires_the_type_attribute_be_a_string" classname="codegen::bindings::generic::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::http::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::generic::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::http::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::http::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::http::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::http::tests" time="0" />
-    <testcase name="it_accepts_valid_methods" classname="codegen::bindings::http_trigger::tests" time="0" />
-    <testcase name="it_accepts_valid_auth_levels" classname="codegen::bindings::http_trigger::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::http_trigger::tests" time="0" />
-    <testcase name="it_rejects_invalid_auth_levels" classname="codegen::bindings::http_trigger::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::http_trigger::tests" time="0" />
-    <testcase name="it_requires_the_auth_level_attribute_be_a_string" classname="codegen::bindings::http_trigger::tests" time="0" />
-    <testcase name="it_rejects_invalid_methods" classname="codegen::bindings::http_trigger::tests" time="0" />
-    <testcase name="it_requires_the_methods_attribute_be_a_string" classname="codegen::bindings::http_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::http_trigger::tests" time="0" />
-    <testcase name="it_requires_the_route_attribute_be_a_string" classname="codegen::bindings::http_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::http_trigger::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::queue::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::http_trigger::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::queue::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_be_a_string" classname="codegen::bindings::queue::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::queue::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::queue::tests" time="0" />
-    <testcase name="it_requires_the_queue_name_attribute_be_a_string" classname="codegen::bindings::queue::tests" time="0" />
-    <testcase name="it_requires_the_queue_name_attribute_argument" classname="codegen::bindings::queue::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::queue_trigger::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::queue::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_be_a_string" classname="codegen::bindings::queue_trigger::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::queue_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::queue_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::queue_trigger::tests" time="0" />
-    <testcase name="it_requires_the_queue_name_attribute_be_a_string" classname="codegen::bindings::queue_trigger::tests" time="0" />
-    <testcase name="it_requires_the_queue_name_attribute_argument" classname="codegen::bindings::queue_trigger::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::queue_trigger::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::send_grid::tests" time="0" />
-    <testcase name="it_requires_the_api_key_attribute_be_a_string" classname="codegen::bindings::send_grid::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::send_grid::tests" time="0" />
-    <testcase name="it_requires_the_from_attribute_be_a_string" classname="codegen::bindings::send_grid::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::send_grid::tests" time="0" />
-    <testcase name="it_requires_the_subject_attribute_be_a_string" classname="codegen::bindings::send_grid::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::send_grid::tests" time="0" />
-    <testcase name="it_requires_the_text_attribute_be_a_string" classname="codegen::bindings::send_grid::tests" time="0" />
-    <testcase name="it_requires_the_to_attribute_be_a_string" classname="codegen::bindings::send_grid::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::send_grid::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::service_bus::tests" time="0" />
-    <testcase name="it_requires_queue_name_or_topic_subscription" classname="codegen::bindings::service_bus::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::service_bus::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_be_a_string" classname="codegen::bindings::service_bus::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::service_bus::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::service_bus::tests" time="0" />
-    <testcase name="it_requires_the_queue_name_attribute_be_a_string" classname="codegen::bindings::service_bus::tests" time="0" />
-    <testcase name="it_requires_the_topic_name_attribute_be_a_string" classname="codegen::bindings::service_bus::tests" time="0" />
-    <testcase name="it_requires_the_subscription_name_attribute_be_a_string" classname="codegen::bindings::service_bus::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::service_bus::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::service_bus_trigger::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::service_bus_trigger::tests" time="0" />
-    <testcase name="it_requires_queue_name_or_topic_subscription" classname="codegen::bindings::service_bus_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::service_bus_trigger::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_be_a_string" classname="codegen::bindings::service_bus_trigger::tests" time="0" />
-    <testcase name="it_requires_the_queue_name_attribute_be_a_string" classname="codegen::bindings::service_bus_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::service_bus_trigger::tests" time="0" />
-    <testcase name="it_requires_the_topic_name_attribute_be_a_string" classname="codegen::bindings::service_bus_trigger::tests" time="0" />
-    <testcase name="it_requires_the_subscription_name_attribute_be_a_string" classname="codegen::bindings::service_bus_trigger::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::service_bus_trigger::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::signalr::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::signalr::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_be_a_string" classname="codegen::bindings::signalr::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::signalr::tests" time="0" />
-    <testcase name="it_requires_the_hub_name_attribute_argument" classname="codegen::bindings::signalr::tests" time="0" />
-    <testcase name="it_requires_the_queue_name_attribute_be_a_string" classname="codegen::bindings::signalr::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::signalr::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::signalr::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::signalr_connection_info::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::signalr_connection_info::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_be_a_string" classname="codegen::bindings::signalr_connection_info::tests" time="0" />
-    <testcase name="it_requires_the_hub_name_attribute_argument" classname="codegen::bindings::signalr_connection_info::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::signalr_connection_info::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::signalr_connection_info::tests" time="0" />
-    <testcase name="it_requires_the_queue_name_attribute_be_a_string" classname="codegen::bindings::signalr_connection_info::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::signalr_connection_info::tests" time="0" />
-    <testcase name="it_requires_the_user_id_attribute_be_a_string" classname="codegen::bindings::signalr_connection_info::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::table::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::table::tests" time="0" />
-    <testcase name="it_requires_the_connection_attribute_be_a_string" classname="codegen::bindings::table::tests" time="0" />
-    <testcase name="it_requires_the_filter_be_a_string" classname="codegen::bindings::table::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::table::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::table::tests" time="0" />
-    <testcase name="it_requires_the_row_key_attribute_be_a_string" classname="codegen::bindings::table::tests" time="0" />
-    <testcase name="it_requires_the_partition_key_attribute_be_a_string" classname="codegen::bindings::table::tests" time="0" />
-    <testcase name="it_requires_the_table_name_attribute_be_a_string" classname="codegen::bindings::table::tests" time="0" />
-    <testcase name="it_requires_the_table_name_attribute_argument" classname="codegen::bindings::table::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::table::tests" time="0" />
-    <testcase name="it_requires_the_take_attribute_be_a_string" classname="codegen::bindings::table::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::timer_trigger::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::timer_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::timer_trigger::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::timer_trigger::tests" time="0" />
-    <testcase name="it_requires_the_run_on_startup_attribute_be_a_bool" classname="codegen::bindings::timer_trigger::tests" time="0" />
-    <testcase name="it_requires_the_schedule_attribute_argument" classname="codegen::bindings::timer_trigger::tests" time="0" />
-    <testcase name="it_requires_the_schedule_attribute_be_a_string" classname="codegen::bindings::timer_trigger::tests" time="0" />
-    <testcase name="it_requires_the_use_monitor_attribute_be_a_bool" classname="codegen::bindings::timer_trigger::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::timer_trigger::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::bindings::twilio_sms::tests" time="0" />
-    <testcase name="it_requires_the_account_sid_attribute_be_a_string" classname="codegen::bindings::twilio_sms::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::bindings::twilio_sms::tests" time="0" />
-    <testcase name="it_requires_the_body_attribute_be_a_string" classname="codegen::bindings::twilio_sms::tests" time="0" />
-    <testcase name="it_requires_the_auth_token_attribute_be_a_string" classname="codegen::bindings::twilio_sms::tests" time="0" />
-    <testcase name="it_requires_the_from_attribute_be_a_string" classname="codegen::bindings::twilio_sms::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::bindings::twilio_sms::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_argument" classname="codegen::bindings::twilio_sms::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::bindings::twilio_sms::tests" time="0" />
-    <testcase name="it_parses_attribute_arguments" classname="codegen::function::tests" time="0" />
-    <testcase name="it_converts_to_tokens" classname="codegen::function::tests" time="0" />
-    <testcase name="it_requires_an_identifier_for_name" classname="codegen::function::tests" time="0" />
-    <testcase name="it_requires_the_disabled_attribute_be_a_boolean" classname="codegen::function::tests" time="0" />
-    <testcase name="it_serializes_to_json" classname="codegen::function::tests" time="0" />
-    <testcase name="it_requires_the_name_attribute_be_a_string" classname="codegen::function::tests" time="0" />
-    <testcase name="it_converts_boolean_to_tokens" classname="codegen::value::tests" time="0" />
-    <testcase name="it_converts_integer_to_tokens" classname="codegen::value::tests" time="0" />
-    <testcase name="it_serializes_boolean_to_json" classname="codegen::value::tests" time="0" />
-    <testcase name="it_converts_string_to_tokens" classname="codegen::value::tests" time="0" />
-    <testcase name="it_serializes_string_to_json" classname="codegen::value::tests" time="0" />
-    <testcase name="it_serializes_integer_to_json" classname="codegen::value::tests" time="0" />
+  <testsuite id="1" name="cargo test #1" package="testsuite/cargo test #1" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="2" name="cargo test #2" package="testsuite/cargo test #2" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="3" name="cargo test #3" package="testsuite/cargo test #3" tests="205" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0">
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::blob::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::blob::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::blob::tests" />
+    <testcase name="it_requires_the_connection_attribute_be_a_string" time="0" classname="codegen::bindings::blob::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::blob::tests" />
+    <testcase name="it_requires_the_path_attribute_argument" time="0" classname="codegen::bindings::blob::tests" />
+    <testcase name="it_requires_the_path_attribute_be_a_string" time="0" classname="codegen::bindings::blob::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::blob::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::blob_trigger::tests" />
+    <testcase name="it_requires_the_connection_attribute_be_a_string" time="0" classname="codegen::bindings::blob_trigger::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::blob_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::blob_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::blob_trigger::tests" />
+    <testcase name="it_requires_the_path_attribute_argument" time="0" classname="codegen::bindings::blob_trigger::tests" />
+    <testcase name="it_requires_the_path_attribute_be_a_string" time="0" classname="codegen::bindings::blob_trigger::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::blob_trigger::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_requires_the_collection_name_attribute_argument" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_requires_the_collection_name_attribute_be_a_string" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_requires_the_collection_throughput_attribute_be_an_integer" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_requires_the_connection_attribute_be_a_string" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_requires_the_connection_attribute_argument" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_requires_the_create_collection_attribute_be_a_bool" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_requires_the_database_name_attribute_argument" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_requires_the_database_name_attribute_be_a_string" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_requires_the_id_attribute_be_a_string" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_requires_the_partition_key_attribute_be_a_string" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_requires_the_sql_query_attribute_be_a_string" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::cosmos_db::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_checkpoint_frequency_attribute_be_an_integer" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_collection_name_attribute_be_a_string" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_collection_name_attribute_argument" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_connection_attribute_argument" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_connection_attribute_be_a_string" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_create_lease_collection_attribute_be_a_boolean" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_database_name_attribute_argument" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_feed_poll_delay_attribute_be_an_integer" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_database_name_attribute_be_a_string" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_lease_collection_prefix_attribute_be_a_string" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_lease_acquire_interval_attribute_be_an_integer" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_lease_collection_throughput_attribute_be_an_integer" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_lease_connection_attribute_be_a_string" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_lease_renew_interval_attribute_be_an_integer" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_lease_expiration_interval_attribute_be_an_integer" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_max_items_per_invocation_attribute_be_an_integer" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_requires_the_start_from_beginning_attribute_be_a_boolean" time="0" classname="codegen::bindings::cosmos_db_trigger::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::event_grid_trigger::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::event_grid_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::event_grid_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::event_grid_trigger::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::event_grid_trigger::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::event_hub::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::event_hub::tests" />
+    <testcase name="it_requires_the_connection_attribute_argument" time="0" classname="codegen::bindings::event_hub::tests" />
+    <testcase name="it_requires_the_connection_attribute_be_a_string" time="0" classname="codegen::bindings::event_hub::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::event_hub::tests" />
+    <testcase name="it_requires_the_event_hub_name_attribute_be_a_string" time="0" classname="codegen::bindings::event_hub::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::event_hub::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::event_hub::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::event_hub_trigger::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::event_hub_trigger::tests" />
+    <testcase name="it_requires_the_connection_attribute_argument" time="0" classname="codegen::bindings::event_hub_trigger::tests" />
+    <testcase name="it_requires_the_consumer_group_attribute_be_a_string" time="0" classname="codegen::bindings::event_hub_trigger::tests" />
+    <testcase name="it_requires_the_connection_attribute_be_a_string" time="0" classname="codegen::bindings::event_hub_trigger::tests" />
+    <testcase name="it_requires_the_event_hub_name_attribute_be_a_string" time="0" classname="codegen::bindings::event_hub_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::event_hub_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::event_hub_trigger::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::event_hub_trigger::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::generic::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::generic::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::generic::tests" />
+    <testcase name="it_requires_the_type_attribute_argument" time="0" classname="codegen::bindings::generic::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::generic::tests" />
+    <testcase name="it_requires_the_type_attribute_be_a_string" time="0" classname="codegen::bindings::generic::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::http::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::generic::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::http::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::http::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::http::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::http::tests" />
+    <testcase name="it_accepts_valid_methods" time="0" classname="codegen::bindings::http_trigger::tests" />
+    <testcase name="it_accepts_valid_auth_levels" time="0" classname="codegen::bindings::http_trigger::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::http_trigger::tests" />
+    <testcase name="it_rejects_invalid_auth_levels" time="0" classname="codegen::bindings::http_trigger::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::http_trigger::tests" />
+    <testcase name="it_requires_the_auth_level_attribute_be_a_string" time="0" classname="codegen::bindings::http_trigger::tests" />
+    <testcase name="it_rejects_invalid_methods" time="0" classname="codegen::bindings::http_trigger::tests" />
+    <testcase name="it_requires_the_methods_attribute_be_a_string" time="0" classname="codegen::bindings::http_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::http_trigger::tests" />
+    <testcase name="it_requires_the_route_attribute_be_a_string" time="0" classname="codegen::bindings::http_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::http_trigger::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::queue::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::http_trigger::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::queue::tests" />
+    <testcase name="it_requires_the_connection_attribute_be_a_string" time="0" classname="codegen::bindings::queue::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::queue::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::queue::tests" />
+    <testcase name="it_requires_the_queue_name_attribute_be_a_string" time="0" classname="codegen::bindings::queue::tests" />
+    <testcase name="it_requires_the_queue_name_attribute_argument" time="0" classname="codegen::bindings::queue::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::queue_trigger::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::queue::tests" />
+    <testcase name="it_requires_the_connection_attribute_be_a_string" time="0" classname="codegen::bindings::queue_trigger::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::queue_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::queue_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::queue_trigger::tests" />
+    <testcase name="it_requires_the_queue_name_attribute_be_a_string" time="0" classname="codegen::bindings::queue_trigger::tests" />
+    <testcase name="it_requires_the_queue_name_attribute_argument" time="0" classname="codegen::bindings::queue_trigger::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::queue_trigger::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::send_grid::tests" />
+    <testcase name="it_requires_the_api_key_attribute_be_a_string" time="0" classname="codegen::bindings::send_grid::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::send_grid::tests" />
+    <testcase name="it_requires_the_from_attribute_be_a_string" time="0" classname="codegen::bindings::send_grid::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::send_grid::tests" />
+    <testcase name="it_requires_the_subject_attribute_be_a_string" time="0" classname="codegen::bindings::send_grid::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::send_grid::tests" />
+    <testcase name="it_requires_the_text_attribute_be_a_string" time="0" classname="codegen::bindings::send_grid::tests" />
+    <testcase name="it_requires_the_to_attribute_be_a_string" time="0" classname="codegen::bindings::send_grid::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::send_grid::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::service_bus::tests" />
+    <testcase name="it_requires_queue_name_or_topic_subscription" time="0" classname="codegen::bindings::service_bus::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::service_bus::tests" />
+    <testcase name="it_requires_the_connection_attribute_be_a_string" time="0" classname="codegen::bindings::service_bus::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::service_bus::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::service_bus::tests" />
+    <testcase name="it_requires_the_queue_name_attribute_be_a_string" time="0" classname="codegen::bindings::service_bus::tests" />
+    <testcase name="it_requires_the_topic_name_attribute_be_a_string" time="0" classname="codegen::bindings::service_bus::tests" />
+    <testcase name="it_requires_the_subscription_name_attribute_be_a_string" time="0" classname="codegen::bindings::service_bus::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::service_bus::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::service_bus_trigger::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::service_bus_trigger::tests" />
+    <testcase name="it_requires_queue_name_or_topic_subscription" time="0" classname="codegen::bindings::service_bus_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::service_bus_trigger::tests" />
+    <testcase name="it_requires_the_connection_attribute_be_a_string" time="0" classname="codegen::bindings::service_bus_trigger::tests" />
+    <testcase name="it_requires_the_queue_name_attribute_be_a_string" time="0" classname="codegen::bindings::service_bus_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::service_bus_trigger::tests" />
+    <testcase name="it_requires_the_topic_name_attribute_be_a_string" time="0" classname="codegen::bindings::service_bus_trigger::tests" />
+    <testcase name="it_requires_the_subscription_name_attribute_be_a_string" time="0" classname="codegen::bindings::service_bus_trigger::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::service_bus_trigger::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::signalr::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::signalr::tests" />
+    <testcase name="it_requires_the_connection_attribute_be_a_string" time="0" classname="codegen::bindings::signalr::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::signalr::tests" />
+    <testcase name="it_requires_the_hub_name_attribute_argument" time="0" classname="codegen::bindings::signalr::tests" />
+    <testcase name="it_requires_the_queue_name_attribute_be_a_string" time="0" classname="codegen::bindings::signalr::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::signalr::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::signalr::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::signalr_connection_info::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::signalr_connection_info::tests" />
+    <testcase name="it_requires_the_connection_attribute_be_a_string" time="0" classname="codegen::bindings::signalr_connection_info::tests" />
+    <testcase name="it_requires_the_hub_name_attribute_argument" time="0" classname="codegen::bindings::signalr_connection_info::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::signalr_connection_info::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::signalr_connection_info::tests" />
+    <testcase name="it_requires_the_queue_name_attribute_be_a_string" time="0" classname="codegen::bindings::signalr_connection_info::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::signalr_connection_info::tests" />
+    <testcase name="it_requires_the_user_id_attribute_be_a_string" time="0" classname="codegen::bindings::signalr_connection_info::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::table::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::table::tests" />
+    <testcase name="it_requires_the_connection_attribute_be_a_string" time="0" classname="codegen::bindings::table::tests" />
+    <testcase name="it_requires_the_filter_be_a_string" time="0" classname="codegen::bindings::table::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::table::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::table::tests" />
+    <testcase name="it_requires_the_row_key_attribute_be_a_string" time="0" classname="codegen::bindings::table::tests" />
+    <testcase name="it_requires_the_partition_key_attribute_be_a_string" time="0" classname="codegen::bindings::table::tests" />
+    <testcase name="it_requires_the_table_name_attribute_be_a_string" time="0" classname="codegen::bindings::table::tests" />
+    <testcase name="it_requires_the_table_name_attribute_argument" time="0" classname="codegen::bindings::table::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::table::tests" />
+    <testcase name="it_requires_the_take_attribute_be_a_string" time="0" classname="codegen::bindings::table::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::timer_trigger::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::timer_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::timer_trigger::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::timer_trigger::tests" />
+    <testcase name="it_requires_the_run_on_startup_attribute_be_a_bool" time="0" classname="codegen::bindings::timer_trigger::tests" />
+    <testcase name="it_requires_the_schedule_attribute_argument" time="0" classname="codegen::bindings::timer_trigger::tests" />
+    <testcase name="it_requires_the_schedule_attribute_be_a_string" time="0" classname="codegen::bindings::timer_trigger::tests" />
+    <testcase name="it_requires_the_use_monitor_attribute_be_a_bool" time="0" classname="codegen::bindings::timer_trigger::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::timer_trigger::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::bindings::twilio_sms::tests" />
+    <testcase name="it_requires_the_account_sid_attribute_be_a_string" time="0" classname="codegen::bindings::twilio_sms::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::bindings::twilio_sms::tests" />
+    <testcase name="it_requires_the_body_attribute_be_a_string" time="0" classname="codegen::bindings::twilio_sms::tests" />
+    <testcase name="it_requires_the_auth_token_attribute_be_a_string" time="0" classname="codegen::bindings::twilio_sms::tests" />
+    <testcase name="it_requires_the_from_attribute_be_a_string" time="0" classname="codegen::bindings::twilio_sms::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::bindings::twilio_sms::tests" />
+    <testcase name="it_requires_the_name_attribute_argument" time="0" classname="codegen::bindings::twilio_sms::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::bindings::twilio_sms::tests" />
+    <testcase name="it_parses_attribute_arguments" time="0" classname="codegen::function::tests" />
+    <testcase name="it_converts_to_tokens" time="0" classname="codegen::function::tests" />
+    <testcase name="it_requires_an_identifier_for_name" time="0" classname="codegen::function::tests" />
+    <testcase name="it_requires_the_disabled_attribute_be_a_boolean" time="0" classname="codegen::function::tests" />
+    <testcase name="it_serializes_to_json" time="0" classname="codegen::function::tests" />
+    <testcase name="it_requires_the_name_attribute_be_a_string" time="0" classname="codegen::function::tests" />
+    <testcase name="it_converts_boolean_to_tokens" time="0" classname="codegen::value::tests" />
+    <testcase name="it_converts_integer_to_tokens" time="0" classname="codegen::value::tests" />
+    <testcase name="it_serializes_boolean_to_json" time="0" classname="codegen::value::tests" />
+    <testcase name="it_converts_string_to_tokens" time="0" classname="codegen::value::tests" />
+    <testcase name="it_serializes_string_to_json" time="0" classname="codegen::value::tests" />
+    <testcase name="it_serializes_integer_to_json" time="0" classname="codegen::value::tests" />
   </testsuite>
-  <testsuite id="4" name="cargo test #4" package="testsuite/cargo test #4" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="5" name="cargo test #5" package="testsuite/cargo test #5" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="6" name="cargo test #6" package="testsuite/cargo test #6" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="7" name="cargo test #7" package="testsuite/cargo test #7" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="8" name="cargo test #8" package="testsuite/cargo test #8" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="9" name="cargo test #9" package="testsuite/cargo test #9" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="10" name="cargo test #10" package="testsuite/cargo test #10" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="11" name="cargo test #11" package="testsuite/cargo test #11" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="12" name="cargo test #12" package="testsuite/cargo test #12" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="13" name="cargo test #13" package="testsuite/cargo test #13" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="14" name="cargo test #14" package="testsuite/cargo test #14" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="15" name="cargo test #15" package="testsuite/cargo test #15" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="16" name="cargo test #16" package="testsuite/cargo test #16" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="17" name="cargo test #17" package="testsuite/cargo test #17" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="18" name="cargo test #18" package="testsuite/cargo test #18" tests="1" errors="0" failures="0" hostname="localhost" timestamp="TIMESTAMP" time="0">
+  <testsuite id="4" name="cargo test #4" package="testsuite/cargo test #4" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="5" name="cargo test #5" package="testsuite/cargo test #5" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="6" name="cargo test #6" package="testsuite/cargo test #6" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="7" name="cargo test #7" package="testsuite/cargo test #7" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="8" name="cargo test #8" package="testsuite/cargo test #8" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="9" name="cargo test #9" package="testsuite/cargo test #9" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="10" name="cargo test #10" package="testsuite/cargo test #10" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="11" name="cargo test #11" package="testsuite/cargo test #11" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="12" name="cargo test #12" package="testsuite/cargo test #12" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="13" name="cargo test #13" package="testsuite/cargo test #13" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="14" name="cargo test #14" package="testsuite/cargo test #14" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="15" name="cargo test #15" package="testsuite/cargo test #15" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="16" name="cargo test #16" package="testsuite/cargo test #16" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="17" name="cargo test #17" package="testsuite/cargo test #17" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="18" name="cargo test #18" package="testsuite/cargo test #18" tests="1" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0">
     <testcase name="src\lib.rs - func (line 47)" time="0">
       <skipped />
     </testcase>
   </testsuite>
-  <testsuite id="19" name="cargo test #19" package="testsuite/cargo test #19" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2020-06-16T06:10:32.081394059+00:00" time="0" />
-  <testsuite id="20" name="cargo test #20" package="testsuite/cargo test #20" tests="95" errors="0" failures="0" hostname="localhost" timestamp="TIMESTAMP" time="0">
-    <testcase name="Blob (line 39)" classname="srcindingslob.rs - bindings::blob" time="0" />
-    <testcase name="Blob (line 26)" classname="srcindingslob.rs - bindings::blob" time="0" />
-    <testcase name="Blob (line 53)" classname="srcindingslob.rs - bindings::blob" time="0" />
-    <testcase name="BlobTrigger (line 29)" classname="srcindingslob_trigger.rs - bindings::blob_trigger" time="0" />
-    <testcase name="CosmosDbDocument (line 52)" classname="src\bindings\cosmos_db_document.rs - bindings::cosmos_db_document" time="0" />
-    <testcase name="CosmosDbDocument (line 31)" classname="src\bindings\cosmos_db_document.rs - bindings::cosmos_db_document" time="0" />
-    <testcase name="CosmosDbTrigger (line 32)" classname="src\bindings\cosmos_db_trigger.rs - bindings::cosmos_db_trigger" time="0" />
-    <testcase name="CosmosDbDocument (line 74)" classname="src\bindings\cosmos_db_document.rs - bindings::cosmos_db_document" time="0" />
-    <testcase name="EventGridEvent (line 20)" classname="src\bindings\event_grid_event.rs - bindings::event_grid_event" time="0" />
-    <testcase name="EventHubMessage (line 27)" classname="src\bindings\event_hub_message.rs - bindings::event_hub_message" time="0" />
-    <testcase name="EventHubMessage (line 40)" classname="src\bindings\event_hub_message.rs - bindings::event_hub_message" time="0" />
-    <testcase name="EventHubMessage (line 54)" classname="src\bindings\event_hub_message.rs - bindings::event_hub_message" time="0" />
-    <testcase name="EventHubTrigger (line 31)" classname="src\bindings\event_hub_trigger.rs - bindings::event_hub_trigger" time="0" />
-    <testcase name="GenericInput (line 17)" classname="src\bindings\generic_input.rs - bindings::generic_input" time="0" />
-    <testcase name="GenericOutput (line 20)" classname="src\bindings\generic_output.rs - bindings::generic_output" time="0" />
-    <testcase name="GenericTrigger (line 18)" classname="src\bindings\generic_trigger.rs - bindings::generic_trigger" time="0" />
-    <testcase name="query_params (line 99)" classname="src\bindings\http_request.rs - bindings::http_request::HttpRequest" time="0" />
-    <testcase name="HttpRequest (line 22)" classname="src\bindings\http_request.rs - bindings::http_request" time="0" />
-    <testcase name="route_params (line 73)" classname="src\bindings\http_request.rs - bindings::http_request::HttpRequest" time="0" />
-    <testcase name="HttpResponse (line 21)" classname="src\bindings\http_response.rs - bindings::http_response" time="0" />
-    <testcase name="HttpResponse (line 46)" classname="src\bindings\http_response.rs - bindings::http_response" time="0" />
-    <testcase name="HttpResponse (line 33)" classname="src\bindings\http_response.rs - bindings::http_response" time="0" />
-    <testcase name="HttpResponse (line 58)" classname="src\bindings\http_response.rs - bindings::http_response" time="0" />
-    <testcase name="body (line 120)" classname="src\bindings\http_response.rs - bindings::http_response::HttpResponse" time="0" />
-    <testcase name="build (line 90)" classname="src\bindings\http_response.rs - bindings::http_response::HttpResponse" time="0" />
-    <testcase name="headers (line 138)" classname="src\bindings\http_response.rs - bindings::http_response::HttpResponse" time="0" />
-    <testcase name="status (line 105)" classname="src\bindings\http_response.rs - bindings::http_response::HttpResponse" time="0" />
-    <testcase name="QueueMessage (line 27)" classname="src\bindings\queue_message.rs - bindings::queue_message" time="0" />
-    <testcase name="QueueMessage (line 40)" classname="src\bindings\queue_message.rs - bindings::queue_message" time="0" />
-    <testcase name="QueueMessage (line 54)" classname="src\bindings\queue_message.rs - bindings::queue_message" time="0" />
-    <testcase name="QueueTrigger (line 30)" classname="src\bindings\queue_trigger.rs - bindings::queue_trigger" time="0" />
-    <testcase name="SendGridMessage (line 26)" classname="src\bindings\send_grid_message.rs - bindings::send_grid_message" time="0" />
-    <testcase name="build (line 107)" classname="src\bindings\send_grid_message.rs - bindings::send_grid_message::SendGridMessage" time="0" />
-    <testcase name="ServiceBusMessage (line 29)" classname="src\bindings\service_bus_message.rs - bindings::service_bus_message" time="0" />
-    <testcase name="ServiceBusMessage (line 48)" classname="src\bindings\service_bus_message.rs - bindings::service_bus_message" time="0" />
-    <testcase name="ServiceBusTrigger (line 39)" classname="src\bindings\service_bus_trigger.rs - bindings::service_bus_trigger" time="0" />
-    <testcase name="ServiceBusTrigger (line 54)" classname="src\bindings\service_bus_trigger.rs - bindings::service_bus_trigger" time="0" />
-    <testcase name="SignalRConnectionInfo (line 24)" classname="src\bindings\signalr_connection_info.rs - bindings::signalr_connection_info" time="0" />
-    <testcase name="SignalRGroupAction (line 23)" classname="src\bindings\signalr_group_action.rs - bindings::signalr_group_action" time="0" />
-    <testcase name="SignalRMessage (line 22)" classname="src\bindings\signalr_message.rs - bindings::signalr_message" time="0" />
-    <testcase name="Table (line 26)" classname="srcindings	able.rs - bindings::table" time="0" />
-    <testcase name="Table (line 40)" classname="srcindings	able.rs - bindings::table" time="0" />
-    <testcase name="TimerInfo (line 24)" classname="srcindings	imer_info.rs - bindings::timer_info" time="0" />
-    <testcase name="TwilioSmsMessage (line 24)" classname="srcindings	wilio_sms_message.rs - bindings::twilio_sms_message" time="0" />
-    <testcase name="as_bytes (line 73)" classname="src\http\body.rs - http::body::Body" time="0" />
-    <testcase name="as_json (line 93)" classname="src\http\body.rs - http::body::Body" time="0" />
-    <testcase name="as_str (line 53)" classname="src\http\body.rs - http::body::Body" time="0" />
-    <testcase name="default_content_type (line 32)" classname="src\http\body.rs - http::body::Body" time="0" />
-    <testcase name="body (line 65)" classname="src\http\response_builder.rs - http::response_builder::ResponseBuilder" time="0" />
-    <testcase name="header (line 37)" classname="src\http\response_builder.rs - http::response_builder::ResponseBuilder" time="0" />
-    <testcase name="status (line 18)" classname="src\http\response_builder.rs - http::response_builder::ResponseBuilder" time="0" />
+  <testsuite id="19" name="cargo test #19" package="testsuite/cargo test #19" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0" />
+  <testsuite id="20" name="cargo test #20" package="testsuite/cargo test #20" tests="95" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0">
+    <testcase name="Blob (line 39)" time="0" classname="srcindingslob.rs - bindings::blob" />
+    <testcase name="Blob (line 26)" time="0" classname="srcindingslob.rs - bindings::blob" />
+    <testcase name="Blob (line 53)" time="0" classname="srcindingslob.rs - bindings::blob" />
+    <testcase name="BlobTrigger (line 29)" time="0" classname="srcindingslob_trigger.rs - bindings::blob_trigger" />
+    <testcase name="CosmosDbDocument (line 52)" time="0" classname="src\bindings\cosmos_db_document.rs - bindings::cosmos_db_document" />
+    <testcase name="CosmosDbDocument (line 31)" time="0" classname="src\bindings\cosmos_db_document.rs - bindings::cosmos_db_document" />
+    <testcase name="CosmosDbTrigger (line 32)" time="0" classname="src\bindings\cosmos_db_trigger.rs - bindings::cosmos_db_trigger" />
+    <testcase name="CosmosDbDocument (line 74)" time="0" classname="src\bindings\cosmos_db_document.rs - bindings::cosmos_db_document" />
+    <testcase name="EventGridEvent (line 20)" time="0" classname="src\bindings\event_grid_event.rs - bindings::event_grid_event" />
+    <testcase name="EventHubMessage (line 27)" time="0" classname="src\bindings\event_hub_message.rs - bindings::event_hub_message" />
+    <testcase name="EventHubMessage (line 40)" time="0" classname="src\bindings\event_hub_message.rs - bindings::event_hub_message" />
+    <testcase name="EventHubMessage (line 54)" time="0" classname="src\bindings\event_hub_message.rs - bindings::event_hub_message" />
+    <testcase name="EventHubTrigger (line 31)" time="0" classname="src\bindings\event_hub_trigger.rs - bindings::event_hub_trigger" />
+    <testcase name="GenericInput (line 17)" time="0" classname="src\bindings\generic_input.rs - bindings::generic_input" />
+    <testcase name="GenericOutput (line 20)" time="0" classname="src\bindings\generic_output.rs - bindings::generic_output" />
+    <testcase name="GenericTrigger (line 18)" time="0" classname="src\bindings\generic_trigger.rs - bindings::generic_trigger" />
+    <testcase name="query_params (line 99)" time="0" classname="src\bindings\http_request.rs - bindings::http_request::HttpRequest" />
+    <testcase name="HttpRequest (line 22)" time="0" classname="src\bindings\http_request.rs - bindings::http_request" />
+    <testcase name="route_params (line 73)" time="0" classname="src\bindings\http_request.rs - bindings::http_request::HttpRequest" />
+    <testcase name="HttpResponse (line 21)" time="0" classname="src\bindings\http_response.rs - bindings::http_response" />
+    <testcase name="HttpResponse (line 46)" time="0" classname="src\bindings\http_response.rs - bindings::http_response" />
+    <testcase name="HttpResponse (line 33)" time="0" classname="src\bindings\http_response.rs - bindings::http_response" />
+    <testcase name="HttpResponse (line 58)" time="0" classname="src\bindings\http_response.rs - bindings::http_response" />
+    <testcase name="body (line 120)" time="0" classname="src\bindings\http_response.rs - bindings::http_response::HttpResponse" />
+    <testcase name="build (line 90)" time="0" classname="src\bindings\http_response.rs - bindings::http_response::HttpResponse" />
+    <testcase name="headers (line 138)" time="0" classname="src\bindings\http_response.rs - bindings::http_response::HttpResponse" />
+    <testcase name="status (line 105)" time="0" classname="src\bindings\http_response.rs - bindings::http_response::HttpResponse" />
+    <testcase name="QueueMessage (line 27)" time="0" classname="src\bindings\queue_message.rs - bindings::queue_message" />
+    <testcase name="QueueMessage (line 40)" time="0" classname="src\bindings\queue_message.rs - bindings::queue_message" />
+    <testcase name="QueueMessage (line 54)" time="0" classname="src\bindings\queue_message.rs - bindings::queue_message" />
+    <testcase name="QueueTrigger (line 30)" time="0" classname="src\bindings\queue_trigger.rs - bindings::queue_trigger" />
+    <testcase name="SendGridMessage (line 26)" time="0" classname="src\bindings\send_grid_message.rs - bindings::send_grid_message" />
+    <testcase name="build (line 107)" time="0" classname="src\bindings\send_grid_message.rs - bindings::send_grid_message::SendGridMessage" />
+    <testcase name="ServiceBusMessage (line 29)" time="0" classname="src\bindings\service_bus_message.rs - bindings::service_bus_message" />
+    <testcase name="ServiceBusMessage (line 48)" time="0" classname="src\bindings\service_bus_message.rs - bindings::service_bus_message" />
+    <testcase name="ServiceBusTrigger (line 39)" time="0" classname="src\bindings\service_bus_trigger.rs - bindings::service_bus_trigger" />
+    <testcase name="ServiceBusTrigger (line 54)" time="0" classname="src\bindings\service_bus_trigger.rs - bindings::service_bus_trigger" />
+    <testcase name="SignalRConnectionInfo (line 24)" time="0" classname="src\bindings\signalr_connection_info.rs - bindings::signalr_connection_info" />
+    <testcase name="SignalRGroupAction (line 23)" time="0" classname="src\bindings\signalr_group_action.rs - bindings::signalr_group_action" />
+    <testcase name="SignalRMessage (line 22)" time="0" classname="src\bindings\signalr_message.rs - bindings::signalr_message" />
+    <testcase name="Table (line 26)" time="0" classname="srcindings	able.rs - bindings::table" />
+    <testcase name="Table (line 40)" time="0" classname="srcindings	able.rs - bindings::table" />
+    <testcase name="TimerInfo (line 24)" time="0" classname="srcindings	imer_info.rs - bindings::timer_info" />
+    <testcase name="TwilioSmsMessage (line 24)" time="0" classname="srcindings	wilio_sms_message.rs - bindings::twilio_sms_message" />
+    <testcase name="as_bytes (line 73)" time="0" classname="src\http\body.rs - http::body::Body" />
+    <testcase name="as_json (line 93)" time="0" classname="src\http\body.rs - http::body::Body" />
+    <testcase name="as_str (line 53)" time="0" classname="src\http\body.rs - http::body::Body" />
+    <testcase name="default_content_type (line 32)" time="0" classname="src\http\body.rs - http::body::Body" />
+    <testcase name="body (line 65)" time="0" classname="src\http\response_builder.rs - http::response_builder::ResponseBuilder" />
+    <testcase name="header (line 37)" time="0" classname="src\http\response_builder.rs - http::response_builder::ResponseBuilder" />
+    <testcase name="status (line 18)" time="0" classname="src\http\response_builder.rs - http::response_builder::ResponseBuilder" />
     <testcase name="src\lib.rs -  (line 64)" time="0">
       <skipped />
     </testcase>
@@ -484,49 +484,49 @@
     <testcase name="src\lib.rs - worker_main_with_extensions (line 151)" time="0">
       <skipped />
     </testcase>
-    <testcase name="from_code (line 21)" classname="src\http\status.rs - http::status::Status" time="0" />
-    <testcase name="new (line 18)" classname="src\send_grid\email_address.rs - send_grid::email_address::EmailAddress" time="0" />
-    <testcase name="new_with_name (line 38)" classname="src\send_grid\email_address.rs - send_grid::email_address::EmailAddress" time="0" />
-    <testcase name="attachment (line 580)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="attachments (line 652)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="batch_id (line 895)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="bcc (line 160)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="bcc_with_name (line 180)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="bccs (line 201)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="categories (line 762)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="category (line 743)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="cc (line 91)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="cc_with_name (line 111)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="ccs (line 132)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="content (line 502)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="content_with_type (line 526)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="contents (line 551)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="custom_arg (line 372)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="custom_args (line 395)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="from (line 441)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="from_with_name (line 461)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="global_custom_arg (line 828)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="global_custom_args (line 849)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="global_header (line 783)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="global_headers (line 803)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="global_send_at (line 878)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="global_subject (line 483)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="header (line 249)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="headers (line 272)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="inline_attachment (line 611)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="section (line 698)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="sections (line 718)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="send_at (line 424)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="subject (line 229)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="substitution (line 298)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="substitutions (line 321)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="template_data (line 349)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="template_id (line 678)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="to (line 21)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="to_with_name (line 41)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
-    <testcase name="tos (line 63)" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" time="0" />
+    <testcase name="from_code (line 21)" time="0" classname="src\http\status.rs - http::status::Status" />
+    <testcase name="new (line 18)" time="0" classname="src\send_grid\email_address.rs - send_grid::email_address::EmailAddress" />
+    <testcase name="new_with_name (line 38)" time="0" classname="src\send_grid\email_address.rs - send_grid::email_address::EmailAddress" />
+    <testcase name="attachment (line 580)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="attachments (line 652)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="batch_id (line 895)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="bcc (line 160)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="bcc_with_name (line 180)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="bccs (line 201)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="categories (line 762)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="category (line 743)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="cc (line 91)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="cc_with_name (line 111)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="ccs (line 132)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="content (line 502)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="content_with_type (line 526)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="contents (line 551)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="custom_arg (line 372)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="custom_args (line 395)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="from (line 441)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="from_with_name (line 461)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="global_custom_arg (line 828)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="global_custom_args (line 849)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="global_header (line 783)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="global_headers (line 803)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="global_send_at (line 878)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="global_subject (line 483)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="header (line 249)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="headers (line 272)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="inline_attachment (line 611)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="section (line 698)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="sections (line 718)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="send_at (line 424)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="subject (line 229)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="substitution (line 298)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="substitutions (line 321)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="template_data (line 349)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="template_id (line 678)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="to (line 21)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="to_with_name (line 41)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
+    <testcase name="tos (line 63)" time="0" classname="src\send_grid\message_builder.rs - send_grid::message_builder::MessageBuilder" />
   </testsuite>
-  <testsuite id="21" name="cargo test #21" package="testsuite/cargo test #21" tests="1" errors="0" failures="0" hostname="localhost" timestamp="TIMESTAMP" time="0">
+  <testsuite id="21" name="cargo test #21" package="testsuite/cargo test #21" tests="1" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:56.624379013Z" time="0">
     <testcase name="src\lib.rs - generated_mod (line 89)" time="0">
       <skipped />
     </testcase>
