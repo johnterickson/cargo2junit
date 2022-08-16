@@ -142,19 +142,20 @@ fn parse<T: BufRead>(
 
         // println!("'{}'", &line);
         let e: Event = match serde_json::from_str(&line) {
-            Ok(event) => Ok(event),
-            Err(orig_err) => {
+            Ok(event) => event,
+            Err(_) => {
                 // cargo test doesn't escape backslashes to do it ourselves and retry
                 let line = line.replace('\\', "\\\\");
                 match serde_json::from_str(&line) {
-                    Ok(event) => Ok(event),
-                    Err(_) => Err(Error::new(
-                        ErrorKind::Other,
-                        format!("Error parsing '{}': {}", &line, orig_err),
-                    )),
+                    Ok(event) => event,
+                    Err(_) => {
+                        // Assume this line isn't part of the test result output. The test itself may
+                        // have printed e.g. a log starting with '{'
+                        continue;
+                    }
                 }
             }
-        }?;
+        };
 
         // println!("{:?}", e);
         match &e {
@@ -503,7 +504,7 @@ mod tests {
             SYSTEM_OUT_MAX_LEN,
         )
         .expect("Could not parse test input");
-        
+
         assert!(determine_exit_code(&report).is_ok());
     }
 }
