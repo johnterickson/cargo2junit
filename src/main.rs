@@ -344,8 +344,8 @@ mod tests {
     }
 
     #[test]
-    fn error_on_garbage() {
-        assert!(parse_string("{garbage}", SYSTEM_OUT_MAX_LEN).is_err());
+    fn no_error_on_garbage() {
+        assert!(parse_string("{garbage}", SYSTEM_OUT_MAX_LEN).is_ok());
     }
 
     #[test]
