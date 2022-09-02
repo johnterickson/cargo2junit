@@ -26,56 +26,54 @@ jobs:
     strategy:
       matrix:
         include:
-        - name: Linux x86_64 stable Normal
+        - name: Linux x86_64 stable
           os: ubuntu-latest
+          rust: stable
+          CARGO_CMD: cargo
+        - name: Windows x86_64 stable
+          os: windows-latest
+          rust: stable
+          CARGO_CMD: cargo
+        - name: Mac x86_64 stable
+          os: macos-latest
           rust: stable
           CARGO_CMD: cargo
         - name: Linux x86_64 stable AnyBuild
           os: ubuntu-latest
           CARGO_CMD: build/cargo
+          ANYBUILD: 1
         - name: Linux x86_64 stable AnyBuildx4
           os: ubuntu-latest
           CARGO_CMD: build/cargo
           CARGO_BUILD_JOBS: 4
-        - name: Linux x86_64 stable AnyBuildx8
-          os: ubuntu-latest
-          CARGO_CMD: build/cargo
-          CARGO_BUILD_JOBS: 8
+          ANYBUILD: 1
 
     steps:
     - uses: actions/checkout@v3
     - name: Install AnyBuild Client for Linux
+      if: ${{ matrix.ANYBUILD }}
       run: |
         set -euo pipefail
         wget -O- https://anybuild.azureedge.net/clientreleases/bootstrapper.sh | bash
+        echo "AB_SECRET=$AB_SECRET" >> $GITHUB_ENV
+      env:
+          AB_SECRET: ${{ secrets.AB_SECRET }}
 
     - name: Dump Environment
       run: env
 
     - name: Install (LKG) cargo2junit
       run: ${{ matrix.CARGO_CMD }} install --locked cargo2junit
-      env:
-          AB_SECRET: ${{ secrets.AB_SECRET }}
 
     - name: Build
       run: ${{ matrix.CARGO_CMD }} build
-      env:
-          AB_SECRET: ${{ secrets.AB_SECRET }}
-
     - name: Test
       run: ${{ matrix.CARGO_CMD }} test -- -Z unstable-options --format json --report-time | tee test_results_debug.json
-      env:
-          AB_SECRET: ${{ secrets.AB_SECRET }}
 
     - name: Build release
       run: ${{ matrix.CARGO_CMD }} build --release
-      env:
-          AB_SECRET: ${{ secrets.AB_SECRET }}
-      
     - name: Test release
       run: ${{ matrix.CARGO_CMD }} test --release -- -Z unstable-options --format json --report-time | tee test_results_release.json
-      env:
-          AB_SECRET: ${{ secrets.AB_SECRET }}
 
     - name: convert to junit using LKG cargo2junit
       run: |
