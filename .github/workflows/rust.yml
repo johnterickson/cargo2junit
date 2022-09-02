@@ -40,11 +40,11 @@ jobs:
           CARGO_CMD: cargo
         - name: Linux x86_64 stable AnyBuild
           os: ubuntu-latest
-          CARGO_CMD: build/cargo
+          CARGO_CMD: $GITHUB_WORKSPACE/build/cargo
           ANYBUILD: 1
         - name: Linux x86_64 stable AnyBuildx4
           os: ubuntu-latest
-          CARGO_CMD: build/cargo
+          CARGO_CMD: $GITHUB_WORKSPACE/build/cargo
           CARGO_BUILD_JOBS: 4
           ANYBUILD: 1
 
