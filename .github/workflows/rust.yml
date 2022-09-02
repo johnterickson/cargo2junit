@@ -53,7 +53,7 @@ jobs:
       run: env
 
     - name: Install (LKG) cargo2junit
-      run: ${{ matrix.CARGO_CMD }} install cargo2junit
+      run: ${{ matrix.CARGO_CMD }} install --locked cargo2junit
       env:
           AB_SECRET: ${{ secrets.AB_SECRET }}
 
