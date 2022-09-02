@@ -1,0 +1,26 @@
+#!/bin/bash
+set -eu
+
+_FILE_="$(realpath ${BASH_SOURCE[0]})"
+_DIR_="$( cd "$( dirname "${_FILE_}" )" && pwd )"
+_ROOT_="$( cd "$_DIR_" && cd .. && pwd )"
+
+if [ ! -f "$_DIR_/cargo_path" ]
+then
+    which cargo > "$_DIR_/cargo_path"
+fi
+
+CARGO_PATH=$(cat "$_DIR_/cargo_path")
+
+if [[ -z "AB_SECRET" ]]
+then
+    "$CARGO_PATH" "$@"
+else
+    echo Running via AnyBuild!
+    "$HOME/.local/share/Microsoft/AnyBuild/AnyBuild.sh" \
+        --RemoteExecServiceUri $AB_ClusterUri \
+        --ClientApplicationId $AB_ClientApplicationId \
+        --ClientSecretEnvironmentVariable AB_SECRET \
+        -- \
+        "$CARGO_PATH" "$@"
+fi

@@ -21,7 +21,17 @@ env:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+        - name: Linux x86_64 stable Normal
+          os: ubuntu-latest
+          rust: stable
+          CARGO_CMD: cargo
+        - name: Linux x86_64 stable AnyBuild
+          os: ubuntu-latest
+          CARGO_CMD: build/cargo
 
     steps:
     - uses: actions/checkout@v3
@@ -33,22 +43,10 @@ jobs:
     - name: Dump Environment
       run: env
     - name: Build
-      run: >
-        "$HOME/.local/share/Microsoft/AnyBuild/AnyBuild.sh"
-        --RemoteExecServiceUri $AB_ClusterUri
-        --ClientApplicationId $AB_ClientApplicationId
-        --ClientSecretEnvironmentVariable AB_SECRET
-        --
-        cargo build --verbose
+      run: ${{ matrix.CARGO_CMD }} build --verbose
       env:
           AB_SECRET: ${{ secrets.AB_SECRET }}
     - name: Test
-      run: >
-        "$HOME/.local/share/Microsoft/AnyBuild/AnyBuild.sh"
-        --RemoteExecServiceUri $AB_ClusterUri
-        --ClientApplicationId $AB_ClientApplicationId
-        --ClientSecretEnvironmentVariable AB_SECRET
-        --
-        cargo test --verbose
+      run: ${{ matrix.CARGO_CMD }} test --verbose
       env:
           AB_SECRET: ${{ secrets.AB_SECRET }}
