@@ -52,33 +52,21 @@ jobs:
       run: ${{ matrix.CARGO_CMD }} build
       env:
           AB_SECRET: ${{ secrets.AB_SECRET }}
-    - name: dump log
-      if: always()
-      run: cat AnyBuildLogs/$(cat AnyBuildLogs/latest.txt)/AnyBuild.log
 
     - name: Test
       run: ${{ matrix.CARGO_CMD }} test -- -Z unstable-options --format json --report-time | tee test_results_debug.json
       env:
           AB_SECRET: ${{ secrets.AB_SECRET }}
-    - name: dump log
-      if: always()
-      run: cat AnyBuildLogs/$(cat AnyBuildLogs/latest.txt)/AnyBuild.log
 
     - name: Build release
       run: ${{ matrix.CARGO_CMD }} build --release
       env:
           AB_SECRET: ${{ secrets.AB_SECRET }}
-    - name: dump log
-      if: always()
-      run: cat AnyBuildLogs/$(cat AnyBuildLogs/latest.txt)/AnyBuild.log
       
     - name: Test release
       run: ${{ matrix.CARGO_CMD }} test --release -- -Z unstable-options --format json --report-time | tee test_results_debug.json
       env:
           AB_SECRET: ${{ secrets.AB_SECRET }}
-    - name: dump log
-      if: always()
-      run: cat AnyBuildLogs/$(cat AnyBuildLogs/latest.txt)/AnyBuild.log
 
     - name: convert to junit using LKG cargo2junit
       run: |
