@@ -85,10 +85,38 @@ jobs:
         cat test_results_debug.json | cargo2junit > test_results_debug_lkg.xml
         cat test_results_release.json | cargo2junit > test_results_release_lkg.xml
 
+    - name: Publish Test Report Debug LKG
+      uses: mikepenz/action-junit-report@v3
+      if: always() # always run even if the previous step fails
+      with:
+        report_paths: 'test_results_debug_lkg.xml'
+        test_files_prefix: 'debug_lkg'
+
+    - name: Publish Test Report Release LKG
+      uses: mikepenz/action-junit-report@v3
+      if: always() # always run even if the previous step fails
+      with:
+        report_paths: 'test_results_release_lkg.xml'
+        test_files_prefix: 'release_lkg'
+
     - name: convert to junit using just-built cargo2junit
       run: |
-        cat test_results_debug.json | ./target/debug/cargo2junit > test_results_debug_lkg.xml
-        cat test_results_release.json | ./target/debug/cargo2junit > test_results_release_lkg.xml
+        cat test_results_debug.json | ./target/debug/cargo2junit > test_results_debug.xml
+        cat test_results_release.json | ./target/debug/cargo2junit > test_results_release.xml
+
+    - name: Publish Test Report Debug
+      uses: mikepenz/action-junit-report@v3
+      if: always() # always run even if the previous step fails
+      with:
+        report_paths: 'test_results_debug.xml'
+        test_files_prefix: 'debug'
+
+    - name: Publish Test Report Release
+      uses: mikepenz/action-junit-report@v3
+      if: always() # always run even if the previous step fails
+      with:
+        report_paths: 'test_results_release.xml'
+        test_files_prefix: 'release'
 
     - uses: philips-software/sbom-tool-installer-action@v1.0.0
     - run: |
