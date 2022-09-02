@@ -1,0 +1,128 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+defaults:
+  run:
+    shell: bash
+
+permissions:
+  id-token: write
+  checks: write
+
+env:
+  AB_ClusterUri: https://westus2.anybuild-test.microsoft.com/clusters/992d6b3f-0a13-496e-900a-88f78089abc5
+  AB_ClientApplicationId: 18653f49-2ded-4b7a-baeb-aa14099278ca
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+        - name: Linux x86_64 stable Normal
+          os: ubuntu-latest
+          rust: stable
+          CARGO_CMD: cargo
+        - name: Linux x86_64 stable AnyBuild
+          os: ubuntu-latest
+          CARGO_CMD: build/cargo
+        - name: Linux x86_64 stable AnyBuildx4
+          os: ubuntu-latest
+          CARGO_CMD: build/cargo
+          CARGO_BUILD_JOBS: 4
+        - name: Linux x86_64 stable AnyBuildx8
+          os: ubuntu-latest
+          CARGO_CMD: build/cargo
+          CARGO_BUILD_JOBS: 8
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install AnyBuild Client for Linux
+      run: |
+        set -euo pipefail
+        wget -O- https://anybuild.azureedge.net/clientreleases/bootstrapper.sh | bash
+
+    - name: Dump Environment
+      run: env
+
+    - name: Install (LKG) cargo2junit
+      run: ${{ matrix.CARGO_CMD }} install --locked cargo2junit
+      env:
+          AB_SECRET: ${{ secrets.AB_SECRET }}
+
+    - name: Build
+      run: ${{ matrix.CARGO_CMD }} build
+      env:
+          AB_SECRET: ${{ secrets.AB_SECRET }}
+
+    - name: Test
+      run: ${{ matrix.CARGO_CMD }} test -- -Z unstable-options --format json --report-time | tee test_results_debug.json
+      env:
+          AB_SECRET: ${{ secrets.AB_SECRET }}
+
+    - name: Build release
+      run: ${{ matrix.CARGO_CMD }} build --release
+      env:
+          AB_SECRET: ${{ secrets.AB_SECRET }}
+      
+    - name: Test release
+      run: ${{ matrix.CARGO_CMD }} test --release -- -Z unstable-options --format json --report-time | tee test_results_release.json
+      env:
+          AB_SECRET: ${{ secrets.AB_SECRET }}
+
+    - name: convert to junit using LKG cargo2junit
+      run: |
+        cat test_results_debug.json | cargo2junit > test_results_debug_lkg.xml
+        cat test_results_release.json | cargo2junit > test_results_release_lkg.xml
+
+    - name: Publish Test Report Debug LKG
+      uses: mikepenz/action-junit-report@v3
+      if: always() # always run even if the previous step fails
+      with:
+        report_paths: 'test_results_debug_lkg.xml'
+        check_title_template: ${{ matrix.name }} debug_lkg
+
+    - name: Publish Test Report Release LKG
+      uses: mikepenz/action-junit-report@v3
+      if: always() # always run even if the previous step fails
+      with:
+        report_paths: 'test_results_release_lkg.xml'
+        check_title_template: ${{ matrix.name }} release_lkg
+
+    - name: convert to junit using just-built cargo2junit
+      run: |
+        cat test_results_debug.json | ./target/debug/cargo2junit > test_results_debug.xml
+        cat test_results_release.json | ./target/debug/cargo2junit > test_results_release.xml
+
+    - name: Publish Test Report Debug
+      uses: mikepenz/action-junit-report@v3
+      if: always() # always run even if the previous step fails
+      with:
+        report_paths: 'test_results_debug.xml'
+        check_title_template: ${{ matrix.name }} debug
+
+    - name: Publish Test Report Release
+      uses: mikepenz/action-junit-report@v3
+      if: always() # always run even if the previous step fails
+      with:
+        report_paths: 'test_results_release.xml'
+        check_title_template: ${{ matrix.name }} release
+
+    - uses: philips-software/sbom-tool-installer-action@v1.0.0
+    - run: >
+        sbom-tool generate
+        -b ./target/release
+        -bc .
+        -pn cargo2junit
+        -pv $(cat Cargo.toml | grep '^version =' | grep -Eo [0-9]+\.[0-9]+\.[0-9])
+        -ps johnterickson
+        -nsb https://github.com/johnterickson
+        -V Verbose
+      
