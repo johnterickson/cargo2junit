@@ -35,20 +35,20 @@ jobs:
     - name: Build
       run: >
         "$HOME/.local/share/Microsoft/AnyBuild/AnyBuild.sh"
-          --RemoteExecServiceUri $AB_ClusterUri
-          --ClientApplicationId $AB_ClientApplicationId
-          --ClientSecretEnvironmentVariable AB_SECRET
-          --
-          cargo build --verbose
+        --RemoteExecServiceUri $AB_ClusterUri
+        --ClientApplicationId $AB_ClientApplicationId
+        --ClientSecretEnvironmentVariable AB_SECRET
+        --
+        cargo build --verbose
       env:
           AB_SECRET: ${{ secrets.AB_SECRET }}
     - name: Test
       run: >
         "$HOME/.local/share/Microsoft/AnyBuild/AnyBuild.sh"
-          --RemoteExecServiceUri $AB_ClusterUri
-          --ClientApplicationId $AB_ClientApplicationId
-          --ClientSecretEnvironmentVariable AB_SECRET
-          --
-          cargo test --verbose
+        --RemoteExecServiceUri $AB_ClusterUri
+        --ClientApplicationId $AB_ClientApplicationId
+        --ClientSecretEnvironmentVariable AB_SECRET
+        --
+        cargo test --verbose
       env:
           AB_SECRET: ${{ secrets.AB_SECRET }}
