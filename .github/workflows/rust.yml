@@ -6,7 +6,16 @@ on:
   # pull_request:
     # branches: [ "master" ]
 
+defaults:
+  run:
+    shell: bash
+
+permissions:
+  id-token: write
+
 env:
+  AB_ClusterUri: https://westus2.anybuild-test.microsoft.com/clusters/992d6b3f-0a13-496e-900a-88f78089abc5
+  AB_ClientApplicationId: 18653f49-2ded-4b7a-baeb-aa14099278ca
   CARGO_TERM_COLOR: always
 
 jobs:
@@ -16,7 +25,30 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Install AnyBuild Client for Linux
+      run: |
+        set -euo pipefail
+        wget -O- https://anybuild.azureedge.net/clientreleases/bootstrapper.sh | bash
+
+    - name: Dump Environment
+      run: env
     - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --verbose
+      run: >
+        "$HOME/.local/share/Microsoft/AnyBuild/AnyBuild.sh"
+          --RemoteExecServiceUri $AB_ClusterUri
+          --ClientApplicationId $AB_ClientApplicationId
+          --ClientSecretEnvironmentVariable AB_SECRET
+          --
+          cargo build --verbose
+      env:
+          AB_SECRET: ${{ secrets.AB_SECRET }}
+    - name: Test
+      run: >
+        "$HOME/.local/share/Microsoft/AnyBuild/AnyBuild.sh"
+          --RemoteExecServiceUri $AB_ClusterUri
+          --ClientApplicationId $AB_ClientApplicationId
+          --ClientSecretEnvironmentVariable AB_SECRET
+          --
+          cargo test --verbose
+      env:
+          AB_SECRET: ${{ secrets.AB_SECRET }}
