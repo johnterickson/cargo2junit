@@ -63,7 +63,10 @@ jobs:
       run: env
 
     - name: Install (LKG) cargo2junit
-      run: ${{ matrix.CARGO_CMD }} install --locked cargo2junit
+      run: |
+        cd /tmp
+        export TMPDIR=/does_not_exist
+        ${{ matrix.CARGO_CMD }} install --locked cargo2junit
 
     - name: Build
       run: ${{ matrix.CARGO_CMD }} build
