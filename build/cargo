@@ -23,7 +23,7 @@ else
         --ClientSecretEnvironmentVariable AB_SECRET \
         -- \
         "$CARGO_PATH" "$@"
-    exit_code = $?
+    exit_code=$?
     if [ -f "AnyBuildLogs" ] 
     then
         cat AnyBuildLogs/$(cat AnyBuildLogs/latest.txt)/AnyBuild.log
