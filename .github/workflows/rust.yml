@@ -66,7 +66,7 @@ jobs:
     - name: Install (LKG) cargo2junit
       run: |
         if [ -d "$CARGO2JUNIT_LKG_FOLDER" ]; then rm -Rf "$CARGO2JUNIT_LKG_FOLDER"; fi
-        ${{ matrix.CARGO_CMD }} install --locked cargo2junit --target-dir "$CARGO2JUNIT_LKG_FOLDER/target" --root "$CARGO2JUNIT_LKG_FOLDER/root"
+        ${{ matrix.CARGO_CMD }} install --locked cargo2junit --root "$CARGO2JUNIT_LKG_FOLDER/root"
 
     - name: Build
       run: ${{ matrix.CARGO_CMD }} build
