@@ -18,6 +18,7 @@ env:
   AB_ClusterUri: https://westus2.anybuild-test.microsoft.com/clusters/992d6b3f-0a13-496e-900a-88f78089abc5
   AB_ClientApplicationId: 18653f49-2ded-4b7a-baeb-aa14099278ca
   CARGO_TERM_COLOR: always
+  CARGO_TMP_FOLDER: /tmp/cargo_install
 
 jobs:
   build:
@@ -38,10 +39,6 @@ jobs:
           os: macos-latest
           rust: stable
           CARGO_CMD: cargo
-        - name: Linux x86_64 stable AnyBuild
-          os: ubuntu-latest
-          CARGO_CMD: build/cargo
-          ANYBUILD: 1
         - name: Linux x86_64 stable AnyBuildx4
           os: ubuntu-latest
           CARGO_CMD: build/cargo
@@ -62,8 +59,13 @@ jobs:
     - name: Dump Environment
       run: env
 
+    - name: refresh crates.io index
+      run: ${{ matrix.CARGO_CMD }} update --dry-run
+
     - name: Install (LKG) cargo2junit
-      run: ${{ matrix.CARGO_CMD }} install --locked cargo2junit
+      run: |
+        if [ -d "$CARGO_TMP_FOLDER" ]; then rm -Rf "$CARGO_TMP_FOLDER"; fi
+        ${{ matrix.CARGO_CMD }} install --locked cargo2junit --root ~/.cargo --target-dir "$CARGO_TMP_FOLDER"
 
     - name: Build
       run: ${{ matrix.CARGO_CMD }} build
