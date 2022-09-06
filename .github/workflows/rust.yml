@@ -18,8 +18,7 @@ env:
   AB_ClusterUri: https://westus2.anybuild-test.microsoft.com/clusters/992d6b3f-0a13-496e-900a-88f78089abc5
   AB_ClientApplicationId: 18653f49-2ded-4b7a-baeb-aa14099278ca
   CARGO_TERM_COLOR: always
-  CARGO2JUNIT_LKG_FOLDER: /tmp/cargo2junit_lkg
-  CARGO2JUNIT_LKG: /tmp/cargo2junit_lkg/root/bin/cargo2junit
+  CARGO_TMP_FOLDER: /tmp/cargo_install
 
 jobs:
   build:
@@ -65,8 +64,8 @@ jobs:
 
     - name: Install (LKG) cargo2junit
       run: |
-        if [ -d "$CARGO2JUNIT_LKG_FOLDER" ]; then rm -Rf "$CARGO2JUNIT_LKG_FOLDER"; fi
-        ${{ matrix.CARGO_CMD }} install --locked cargo2junit --root "$CARGO2JUNIT_LKG_FOLDER/root"
+        if [ -d "$CARGO_TMP_FOLDER" ]; then rm -Rf "$CARGO_TMP_FOLDER"; fi
+        ${{ matrix.CARGO_CMD }} install --locked cargo2junit --root ~/.cargo --target-dir "$CARGO_TMP_FOLDER"
 
     - name: Build
       run: ${{ matrix.CARGO_CMD }} build
@@ -80,8 +79,8 @@ jobs:
 
     - name: convert to junit using LKG cargo2junit
       run: |
-        cat test_results_debug.json | $CARGO2JUNIT_LKG > test_results_debug_lkg.xml
-        cat test_results_release.json | $CARGO2JUNIT_LKG > test_results_release_lkg.xml
+        cat test_results_debug.json | cargo2junit > test_results_debug_lkg.xml
+        cat test_results_release.json | cargo2junit > test_results_release_lkg.xml
 
     - name: Publish Test Report Debug LKG
       uses: mikepenz/action-junit-report@v3
