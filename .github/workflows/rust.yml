@@ -40,10 +40,6 @@ jobs:
           os: macos-latest
           rust: stable
           CARGO_CMD: cargo
-        - name: Linux x86_64 stable AnyBuild
-          os: ubuntu-latest
-          CARGO_CMD: build/cargo
-          ANYBUILD: 1
         - name: Linux x86_64 stable AnyBuildx4
           os: ubuntu-latest
           CARGO_CMD: build/cargo
@@ -63,6 +59,9 @@ jobs:
 
     - name: Dump Environment
       run: env
+
+    - name: refresh crates.io index
+      run: ${{ matrix.CARGO_CMD }} update --dry-run
 
     - name: Install (LKG) cargo2junit
       run: |
