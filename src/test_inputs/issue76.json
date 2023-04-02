@@ -1,0 +1,5 @@
+{ "type": "suite", "event": "started", "test_count": 1 }
+{ "type": "test", "event": "started", "name": "test::set_up_subscriber" }
+{"timestamp":"2023-04-02T17:20:52.256633Z","level":"INFO","fields":{"message":"Subscriber Initialised"},"target":"repro72::test"}
+{ "type": "test", "name": "test::set_up_subscriber", "event": "ok", "exec_time": 0.0072669 }
+{ "type": "suite", "event": "ok", "passed": 1, "failed": 0, "ignored": 0, "measured": 0, "filtered_out": 0, "exec_time": 0.0079406 }

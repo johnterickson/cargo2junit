@@ -39,7 +39,10 @@ enum TestEvent {
     #[serde(rename = "started")]
     Started { name: String },
     #[serde(rename = "ok")]
-    Ok { name: String },
+    Ok { 
+        name: String,
+
+    },
     #[serde(rename = "failed")]
     Failed {
         name: String,
@@ -52,8 +55,27 @@ enum TestEvent {
     Timeout { name: String },
 }
 
+
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(untagged)]
+enum ExecTime {
+    Number(f64),
+    String(String),
+}
+
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[serde(untagged)]
+enum MaybeTypedEvent {
+    HasKnownTypeField(Event),
+    HasUnknownTypeField{
+        #[serde(rename = "type")]
+        type_field: String
+    },
+    NoTypeField(serde_json::Value)
+}
+
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[serde(tag = "type")]
 enum Event {
     #[serde(rename = "suite")]
     Suite {
@@ -65,7 +87,7 @@ enum Event {
         #[serde(flatten)]
         event: TestEvent,
         duration: Option<f64>,
-        exec_time: Option<String>,
+        exec_time: Option<ExecTime>,
     },
     #[serde(rename = "test")]
     TestFloatTime {
@@ -86,10 +108,18 @@ impl Event {
                 exec_time,
             } => {
                 let duration_ns = match (duration, exec_time) {
-                    (_, Some(s)) => {
-                        assert_eq!(s.chars().last(), Some('s'));
-                        let seconds_chars = &(s[0..(s.len() - 1)]);
-                        let seconds = seconds_chars.parse::<f64>().unwrap();
+                    (_, Some(t)) => {
+                        let seconds = match t {
+                            ExecTime::String(s) => {
+                                assert_eq!(s.chars().last(), Some('s'));
+                                let seconds_chars = &(s[0..(s.len() - 1)]);
+                                seconds_chars.parse::<f64>().unwrap()
+                            },
+                            ExecTime::Number(seconds) => {
+                                *seconds
+                            }
+                        };
+
                         (seconds * 1_000_000_000.0) as i64
                     }
                     (Some(ms), None) => (ms * 1_000_000.0) as i64,
@@ -140,8 +170,7 @@ fn parse<T: BufRead>(
             continue;
         }
 
-        // println!("'{}'", &line);
-        let e: Event = match serde_json::from_str(&line) {
+        let e: MaybeTypedEvent = match serde_json::from_str(&line) {
             Ok(event) => Ok(event),
             Err(orig_err) => {
                 // cargo test doesn't escape backslashes to do it ourselves and retry
@@ -155,6 +184,17 @@ fn parse<T: BufRead>(
                 }
             }
         }?;
+
+        let e = match e {
+            MaybeTypedEvent::HasKnownTypeField(e) => e,
+            MaybeTypedEvent::HasUnknownTypeField { type_field } => {
+                panic!("Unknown event type: '{}'", &type_field);
+            },
+            MaybeTypedEvent::NoTypeField(..) => {
+                // JSON output from something else
+                continue;
+            },
+        };
 
         // println!("{:?}", e);
         match &e {
@@ -371,7 +411,7 @@ mod tests {
         let test_cases = suite.testcases();
         assert_eq!(test_cases[4].name(), "az_func_regression");
         assert_eq!(*test_cases[0].classname(), Some("tests".to_string()));
-        assert_eq!(test_cases[4].time(), &Duration::milliseconds(72));
+        assert_eq!(test_cases[4].time(), &Duration::milliseconds(72), "{:?}", &test_cases[4]);
         assert_output(
             &report,
             include_bytes!("expected_outputs/self_exec_time.out"),
@@ -478,11 +518,31 @@ mod tests {
 
     #[test]
     fn float_time() {
-        parse_bytes(
+        let report = parse_bytes(
             include_bytes!("test_inputs/float_time.json"),
             SYSTEM_OUT_MAX_LEN,
         )
         .expect("Could not parse test input");
+        assert_output(&report, include_bytes!("expected_outputs/float_time.out"));
+    }
+
+    #[test]
+    fn random_json_is_ignored() {
+        let report = parse_bytes(
+            include_bytes!("test_inputs/issue76.json"),
+            SYSTEM_OUT_MAX_LEN,
+        )
+        .expect("Could not parse test input");
+        assert_output(&report, include_bytes!("expected_outputs/issue76.out"));
+    }
+
+    #[test]
+    #[should_panic]
+    fn unknown_type_panics() {
+        parse_bytes(
+            include_bytes!("test_inputs/unknown_type.json"),
+            SYSTEM_OUT_MAX_LEN,
+        ).expect("Could not parse test input");
     }
 
     #[test]
