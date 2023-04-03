@@ -332,7 +332,11 @@ fn main() -> Result<()> {
             .expect("Failed to parse TEST_STDOUT_STDERR_MAX_LEN as a natural number"),
         Err(_) => SYSTEM_OUT_MAX_LEN,
     };
-    let report = parse(stdin, "cargo test", timestamp, max_out_len)?;
+
+    // Lets someone running many tests specify a custom suite name prefix
+    let suite_name_prefix = env::var("TEST_SUITE_NAME_PREFIX").unwrap_or_else(|_| "cargo test".to_owned());
+
+    let report = parse(stdin, &suite_name_prefix, timestamp, max_out_len)?;
 
     let stdout = std::io::stdout();
     let mut stdout = stdout.lock();
