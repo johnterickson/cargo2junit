@@ -71,12 +71,16 @@ jobs:
       run: ${{ matrix.CARGO_CMD }} build
     - name: Test
       run: ${{ matrix.CARGO_CMD }} test -- -Z unstable-options --format json --report-time | tee test_results_debug.json
+      env: # See https://github.com/johnterickson/cargo2junit/issues/79
+        RUSTC_BOOTSTRAP: 1
 
     - name: Build release
       run: ${{ matrix.CARGO_CMD }} build --release
     - name: Test release
       run: ${{ matrix.CARGO_CMD }} test --release -- -Z unstable-options --format json --report-time | tee test_results_release.json
-
+      env: # See https://github.com/johnterickson/cargo2junit/issues/79
+        RUSTC_BOOTSTRAP: 1
+        
     - name: convert to junit using LKG cargo2junit
       run: |
         cat test_results_debug.json | cargo2junit > test_results_debug_lkg.xml
