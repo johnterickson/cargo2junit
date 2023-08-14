@@ -8,14 +8,14 @@ To use, first install:
 cargo install cargo2junit
 ```
 
-Then, run cargo test and convert:
+Then, run cargo test either with `RUSTC_BOOTSTRAP=1` or with `+beta` and convert:
 ```
-cargo test -- -Z unstable-options --format json --report-time | cargo2junit > results.xml
+RUSTC_BOOTSTRAP=1 cargo test -- -Z unstable-options --format json --report-time | cargo2junit > results.xml
 ```
 
 Or, use tee for streaming output to console as the tests run:
 ```
-cargo test -- -Z unstable-options --format json --report-time | tee results.json
+RUSTC_BOOTSTRAP=1 cargo test -- -Z unstable-options --format json --report-time | tee results.json
 cat results.json | cargo2junit > results.xml
 ```
 
