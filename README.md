@@ -1,4 +1,4 @@
-[![Build Status](https://dev.azure.com/cargo2junit/cargo2junit/_apis/build/status/johnterickson.cargo2junit?branchName=master)](https://dev.azure.com/cargo2junit/cargo2junit/_build/latest?definitionId=1&branchName=master)
+[![CI](https://github.com/johnterickson/cargo2junit/actions/workflows/rust.yml/badge.svg)](https://github.com/johnterickson/cargo2junit/actions/workflows/rust.yml)
 
 # cargo2junit
 Converts cargo's json output (from stdin) to JUnit XML (to stdout).

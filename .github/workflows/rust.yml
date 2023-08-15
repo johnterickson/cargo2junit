@@ -15,10 +15,7 @@ permissions:
   checks: write
 
 env:
-  AB_ClusterUri: https://westus2.anybuild-test.microsoft.com/clusters/992d6b3f-0a13-496e-900a-88f78089abc5
-  AB_ClientApplicationId: 18653f49-2ded-4b7a-baeb-aa14099278ca
   CARGO_TERM_COLOR: always
-  CARGO_TMP_FOLDER: /tmp/cargo_install
 
 jobs:
   build:
@@ -30,54 +27,53 @@ jobs:
         - name: Linux x86_64 stable
           os: ubuntu-latest
           rust: stable
-          CARGO_CMD: cargo
         - name: Windows x86_64 stable
           os: windows-latest
           rust: stable
-          CARGO_CMD: cargo
         - name: Mac x86_64 stable
           os: macos-latest
           rust: stable
-          CARGO_CMD: cargo
-        - name: Linux x86_64 stable AnyBuildx4
-          os: ubuntu-latest
-          CARGO_CMD: build/cargo
-          CARGO_BUILD_JOBS: 4
-          ANYBUILD: 1
 
     steps:
     - uses: actions/checkout@v3
-    - name: Install AnyBuild Client for Linux
-      if: ${{ matrix.ANYBUILD }}
-      run: |
-        set -euo pipefail
-        wget -O- https://anybuild.azureedge.net/clientreleases/bootstrapper.sh | bash
-        echo "AB_SECRET=$AB_SECRET" >> $GITHUB_ENV
-      env:
-          AB_SECRET: ${{ secrets.AB_SECRET }}
+
+    - name: determine LKG_VERSION
+      run: echo "LKG_VERSION=$(curl "https://crates.io/api/v1/crates/cargo2junit/versions" | jq .versions[0].num -r)" >> $GITHUB_ENV
 
     - name: Dump Environment
       run: env
 
-    - name: refresh crates.io index
-      run: ${{ matrix.CARGO_CMD }} update --dry-run
+    - uses: actions/cache@v3
+      name: cache Rust dependencies
+      id: cache-cargo
+      with:
+        path: |
+          ~/.cargo/bin/
+          ~/.cargo/registry/index/
+          ~/.cargo/registry/cache/
+          ~/.cargo/git/db/
+        key: ${{ runner.os }}-cargo-build-${{ env.LKG_VERSION }}-${{ hashFiles('**/Cargo.toml') }}
+        restore-keys: |
+          ${{ runner.os }}-cargo-build-${{ env.LKG_VERSION }}
 
-    - name: Install (LKG) cargo2junit
-      run: |
-        if [ -d "$CARGO_TMP_FOLDER" ]; then rm -Rf "$CARGO_TMP_FOLDER"; fi
-        ${{ matrix.CARGO_CMD }} install --locked cargo2junit --root ~/.cargo --target-dir "$CARGO_TMP_FOLDER"
+    - name: refresh crates.io index
+      run: cargo update --dry-run
+
+    - if: ${{ steps.cache-cargo.outputs.cache-hit != 'true' }}
+      name: Install (LKG) cargo2junit
+      run: cargo install --locked cargo2junit
 
     - name: Build
-      run: ${{ matrix.CARGO_CMD }} build
+      run: cargo build
     - name: Test
-      run: ${{ matrix.CARGO_CMD }} test -- -Z unstable-options --format json --report-time | tee test_results_debug.json
+      run: cargo test -- -Z unstable-options --format json --report-time | tee test_results_debug.json
       env: # See https://github.com/johnterickson/cargo2junit/issues/79
         RUSTC_BOOTSTRAP: 1
 
     - name: Build release
-      run: ${{ matrix.CARGO_CMD }} build --release
+      run: cargo build --release
     - name: Test release
-      run: ${{ matrix.CARGO_CMD }} test --release -- -Z unstable-options --format json --report-time | tee test_results_release.json
+      run: cargo test --release -- -Z unstable-options --format json --report-time | tee test_results_release.json
       env: # See https://github.com/johnterickson/cargo2junit/issues/79
         RUSTC_BOOTSTRAP: 1
         
