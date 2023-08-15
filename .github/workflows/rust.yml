@@ -37,26 +37,31 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: determine LKG_VERSION
+      run: echo "LKG_VERSION=$(curl "https://crates.io/api/v1/crates/cargo2junit/versions" | jq .versions[0].num -r)" >> $GITHUB_ENV
+
     - name: Dump Environment
       run: env
 
     - uses: actions/cache@v3
       name: cache Rust dependencies
+      id: cache-cargo
       with:
         path: |
           ~/.cargo/bin/
           ~/.cargo/registry/index/
           ~/.cargo/registry/cache/
           ~/.cargo/git/db/
-        key: ${{ runner.os }}-cargo-build-${{ hashFiles('**/Cargo.toml') }}
+        key: ${{ runner.os }}-cargo-build-$LKG_VERSION-${{ hashFiles('**/Cargo.toml') }}
         restore-keys: |
-          ${{ runner.os }}-cargo-build
+          ${{ runner.os }}-cargo-build-$LKG_VERSION
 
     - name: refresh crates.io index
       run: cargo update --dry-run
 
-    - name: Install (LKG) cargo2junit
-      run: cargo install --force --locked cargo2junit
+    - if: ${{ steps.cache-cargo.outputs.cache-hit != 'true' }}
+      name: Install (LKG) cargo2junit
+      run: cargo install --locked cargo2junit
 
     - name: Build
       run: cargo build
