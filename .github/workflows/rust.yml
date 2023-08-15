@@ -52,9 +52,9 @@ jobs:
           ~/.cargo/registry/index/
           ~/.cargo/registry/cache/
           ~/.cargo/git/db/
-        key: ${{ runner.os }}-cargo-build-$LKG_VERSION-${{ hashFiles('**/Cargo.toml') }}
+        key: ${{ runner.os }}-cargo-build-${{ env.LKG_VERSION }}-${{ hashFiles('**/Cargo.toml') }}
         restore-keys: |
-          ${{ runner.os }}-cargo-build-$LKG_VERSION
+          ${{ runner.os }}-cargo-build-${{ env.LKG_VERSION }}
 
     - name: refresh crates.io index
       run: cargo update --dry-run
