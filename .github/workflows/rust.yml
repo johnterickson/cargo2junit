@@ -41,23 +41,22 @@ jobs:
       run: env
 
     - uses: actions/cache@v2
+      name: cache Rust dependencies
       with:
         path: |
           ~/.cargo/bin/
           ~/.cargo/registry/index/
           ~/.cargo/registry/cache/
           ~/.cargo/git/db/
-          target/
-        key: ${{ runner.os }}-cargo-build-${{ hashFiles('~/.cargo/.crates*') }}-${{ hashFiles('**/Cargo.toml') }}
+        key: ${{ runner.os }}-cargo-build-${{ hashFiles('**/Cargo.toml') }}
         restore-keys: |
-          ${{ runner.os }}-cargo-build-${{ hashFiles('~/.cargo/.crates*') }}
           ${{ runner.os }}-cargo-build
 
     - name: refresh crates.io index
       run: cargo update --dry-run
 
     - name: Install (LKG) cargo2junit
-      run: cargo install --locked cargo2junit --root ~/.cargo
+      run: cargo install --locked cargo2junit
 
     - name: Build
       run: cargo build
