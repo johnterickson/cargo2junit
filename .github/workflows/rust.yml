@@ -27,20 +27,12 @@ jobs:
         - name: Linux x86_64 stable
           os: ubuntu-latest
           rust: stable
-          CARGO_CMD: cargo
         - name: Windows x86_64 stable
           os: windows-latest
           rust: stable
-          CARGO_CMD: cargo
         - name: Mac x86_64 stable
           os: macos-latest
           rust: stable
-          CARGO_CMD: cargo
-        - name: Linux x86_64 stable AnyBuildx4
-          os: ubuntu-latest
-          CARGO_CMD: build/cargo
-          CARGO_BUILD_JOBS: 4
-          ANYBUILD: 1
 
     steps:
     - uses: actions/checkout@v3
@@ -62,22 +54,22 @@ jobs:
           ${{ runner.os }}-cargo-build
 
     - name: refresh crates.io index
-      run: ${{ matrix.CARGO_CMD }} update --dry-run
+      run: cargo update --dry-run
 
     - name: Install (LKG) cargo2junit
-      run: ${{ matrix.CARGO_CMD }} install --locked cargo2junit --root ~/.cargo
+      run: cargo install --locked cargo2junit --root ~/.cargo
 
     - name: Build
-      run: ${{ matrix.CARGO_CMD }} build
+      run: cargo build
     - name: Test
-      run: ${{ matrix.CARGO_CMD }} test -- -Z unstable-options --format json --report-time | tee test_results_debug.json
+      run: cargo test -- -Z unstable-options --format json --report-time | tee test_results_debug.json
       env: # See https://github.com/johnterickson/cargo2junit/issues/79
         RUSTC_BOOTSTRAP: 1
 
     - name: Build release
-      run: ${{ matrix.CARGO_CMD }} build --release
+      run: cargo build --release
     - name: Test release
-      run: ${{ matrix.CARGO_CMD }} test --release -- -Z unstable-options --format json --report-time | tee test_results_release.json
+      run: cargo test --release -- -Z unstable-options --format json --report-time | tee test_results_release.json
       env: # See https://github.com/johnterickson/cargo2junit/issues/79
         RUSTC_BOOTSTRAP: 1
         
