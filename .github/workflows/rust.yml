@@ -56,7 +56,7 @@ jobs:
       run: cargo update --dry-run
 
     - name: Install (LKG) cargo2junit
-      run: cargo install --locked cargo2junit
+      run: cargo install --force --locked cargo2junit
 
     - name: Build
       run: cargo build
