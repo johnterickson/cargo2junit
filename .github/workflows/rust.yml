@@ -59,9 +59,9 @@ jobs:
     - name: refresh crates.io index
       run: cargo update --dry-run
 
-    - if: ${{ steps.cache-cargo.outputs.cache-hit != 'true' }}
-      name: Install (LKG) cargo2junit
-      run: cargo install --locked cargo2junit
+    # - if: ${{ steps.cache-cargo.outputs.cache-hit != 'true' }}
+    #   name: Install (LKG) cargo2junit
+    #   run: cargo install --locked cargo2junit
 
     - name: Build
       run: cargo build
@@ -77,24 +77,24 @@ jobs:
       env: # See https://github.com/johnterickson/cargo2junit/issues/79
         RUSTC_BOOTSTRAP: 1
         
-    - name: convert to junit using LKG cargo2junit
-      run: |
-        cat test_results_debug.json | cargo2junit > test_results_debug_lkg.xml
-        cat test_results_release.json | cargo2junit > test_results_release_lkg.xml
+    # - name: convert to junit using LKG cargo2junit
+    #   run: |
+    #     cat test_results_debug.json | cargo2junit > test_results_debug_lkg.xml
+    #     cat test_results_release.json | cargo2junit > test_results_release_lkg.xml
 
-    - name: Publish Test Report Debug LKG
-      uses: mikepenz/action-junit-report@v3
-      if: always() # always run even if the previous step fails
-      with:
-        report_paths: 'test_results_debug_lkg.xml'
-        check_title_template: ${{ matrix.name }} debug_lkg
+    # - name: Publish Test Report Debug LKG
+    #   uses: mikepenz/action-junit-report@v3
+    #   if: always() # always run even if the previous step fails
+    #   with:
+    #     report_paths: 'test_results_debug_lkg.xml'
+    #     check_title_template: ${{ matrix.name }} debug_lkg
 
-    - name: Publish Test Report Release LKG
-      uses: mikepenz/action-junit-report@v3
-      if: always() # always run even if the previous step fails
-      with:
-        report_paths: 'test_results_release_lkg.xml'
-        check_title_template: ${{ matrix.name }} release_lkg
+    # - name: Publish Test Report Release LKG
+    #   uses: mikepenz/action-junit-report@v3
+    #   if: always() # always run even if the previous step fails
+    #   with:
+    #     report_paths: 'test_results_release_lkg.xml'
+    #     check_title_template: ${{ matrix.name }} release_lkg
 
     - name: convert to junit using just-built cargo2junit
       run: |
