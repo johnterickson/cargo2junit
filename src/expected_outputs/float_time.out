@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
   <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="1" errors="0" failures="0" hostname="localhost" timestamp="2023-04-02T23:45:57.758681146Z" time="0.001401918">
     <testcase name="test_something" time="0.001401918" classname="" />

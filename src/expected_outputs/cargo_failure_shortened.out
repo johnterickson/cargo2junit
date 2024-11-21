@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
   <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="25" errors="0" failures="0" hostname="localhost" timestamp="2022-07-26T19:36:57.395501958Z" time="0">
     <testcase name="bad_parsing" time="0" classname="core::package_id_spec::tests" />
