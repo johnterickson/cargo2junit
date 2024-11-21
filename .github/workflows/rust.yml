@@ -18,21 +18,32 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - uses: actions/checkout@v3
+    - name: publish if necessary
+      run: |
+        export THIS_VERSION=$(cargo pkgid | sed 's/.*#\(.*\)/\1/')
+        export LKG_VERSION=$(curl "https://crates.io/api/v1/crates/cargo2junit/versions" | jq .versions[0].num -r)
+        if [ "$THIS_VERSION" != "$LKG_VERSION" ]; then
+          cargo publish
+        fi
+      env:
+        CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO }}
   build:
-
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         include:
         - name: Linux x86_64 stable
           os: ubuntu-latest
-          rust: stable
         - name: Windows x86_64 stable
           os: windows-latest
-          rust: stable
         - name: Mac x86_64 stable
           os: macos-latest
-          rust: stable
 
     steps:
     - uses: actions/checkout@v3
