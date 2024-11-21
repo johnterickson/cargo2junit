@@ -83,18 +83,11 @@ enum Event {
         event: SuiteEvent,
     },
     #[serde(rename = "test")]
-    TestStringTime {
+    Test {
         #[serde(flatten)]
         event: TestEvent,
         duration: Option<f64>,
         exec_time: Option<ExecTime>,
-    },
-    #[serde(rename = "test")]
-    TestFloatTime {
-        #[serde(flatten)]
-        event: TestEvent,
-        duration: Option<f64>,
-        exec_time: Option<f64>,
     },
 }
 
@@ -102,7 +95,7 @@ impl Event {
     fn get_duration(&self) -> Duration {
         match &self {
             Event::Suite { event: _ } => panic!(),
-            Event::TestStringTime {
+            Event::Test {
                 event: _,
                 duration,
                 exec_time,
@@ -125,20 +118,7 @@ impl Event {
                     (Some(ms), None) => (ms * 1_000_000.0) as i64,
                     (None, None) => 0,
                 };
-
-                Duration::nanoseconds(duration_ns)
-            }
-            Event::TestFloatTime {
-                event: _,
-                duration,
-                exec_time,
-            } => {
-                let duration_ns = match (duration, exec_time) {
-                    (_, Some(seconds)) => (seconds * 1_000_000_000.0) as i64,
-                    (Some(ms), None) => (ms * 1_000_000.0) as i64,
-                    (None, None) => 0,
-                };
-
+                
                 Duration::nanoseconds(duration_ns)
             }
         }
@@ -215,12 +195,7 @@ fn parse<T: BufRead>(
                     current_suite_maybe = None;
                 }
             },
-            Event::TestStringTime {
-                event,
-                duration: _,
-                exec_time: _,
-            }
-            | Event::TestFloatTime {
+            Event::Test {
                 event,
                 duration: _,
                 exec_time: _,
