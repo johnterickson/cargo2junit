@@ -1,0 +1,15 @@
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "ignored": 0, "measured": 0, "filtered_out": 0, "exec_time": 0.000110368 }
+{ "type": "suite", "event": "started", "test_count": 0 }
+{ "type": "suite", "event": "ok", "passed": 0, "failed": 0, "ignored": 0, "measured": 0, "filtered_out": 0, "exec_time": 0.000061506 }
+{ "type": "suite", "event": "started", "test_count": 4 }
+{ "type": "test", "event": "started", "name": "src/lib.rs - foo (line 11)" }
+{ "type": "test", "event": "started", "name": "src/lib.rs - foo (line 15)" }
+{ "type": "test", "event": "started", "name": "src/lib.rs - foo (line 2)" }
+{ "type": "test", "event": "started", "name": "src/lib.rs - foo (line 7)" }
+{ "type": "test", "name": "src/lib.rs - foo (line 15)", "event": "ignored" }
+{ "type": "test", "name": "src/lib.rs - foo (line 2)", "event": "ok", "exec_time": 0.001401198 }
+{ "type": "test", "name": "src/lib.rs - foo (line 7)", "event": "failed", "exec_time": 0.058641184, "stdout": "Test executable failed (exit status: 101).\n\nstderr:\n\nthread 'main' (3272617) panicked at /tmp/rustdoctestzqkU8w/doctest_bundle_2024.rs:24:1:\nassertion `left == right` failed\n  left: 1\n right: 2\nstack backtrace:\n   0: __rustc::rust_begin_unwind\n             at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/panicking.rs:698:5\n   1: core::panicking::panic_fmt\n             at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/core/src/panicking.rs:80:14\n   2: core::panicking::assert_failed_inner\n             at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/core/src/panicking.rs:444:17\n   3: core::panicking::assert_failed\n             at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/core/src/panicking.rs:399:5\n   4: doctest_bundle_2024::__doctest_3::main\n   5: doctest_bundle_2024::__doctest_3::__main_fn\n   6: doctest_runner_2024::__doctest_3::TEST::{{closure}}\n   7: core::ops::function::FnOnce::call_once\n   8: doctest_runner_2024::main\n   9: core::ops::function::FnOnce::call_once\nnote: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.\n\n" }
+{ "type": "test", "name": "src/lib.rs - foo (line 11)", "event": "ok", "exec_time": 0.059067266 }
+{ "type": "suite", "event": "failed", "passed": 2, "failed": 1, "ignored": 1, "measured": 0, "filtered_out": 0, "exec_time": 0.059319241 }
+{ "type": "report", "total_time": 0.225519393, "compilation_time": 0.162774902 }
