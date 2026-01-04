@@ -66,12 +66,12 @@ enum ExecTime {
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(untagged)]
 enum MaybeTypedEvent {
-    HasKnownTypeField(Event),
-    HasUnknownTypeField{
+    Known(Event),
+    Unknown{
         #[serde(rename = "type")]
         type_field: String
     },
-    NoTypeField(serde_json::Value)
+    None(serde_json::Value)
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
@@ -163,20 +163,17 @@ fn parse<T: BufRead>(
                 let line = line.replace('\\', "\\\\");
                 match serde_json::from_str(&line) {
                     Ok(event) => Ok(event),
-                    Err(_) => Err(Error::new(
-                        ErrorKind::Other,
-                        format!("Error parsing '{}': {}", &line, orig_err),
-                    )),
+                    Err(_) => Err(Error::other(format!("Error parsing '{}': {}", &line, orig_err))),
                 }
             }
         }?;
 
         let e = match e {
-            MaybeTypedEvent::HasKnownTypeField(e) => e,
-            MaybeTypedEvent::HasUnknownTypeField { type_field } => {
+            MaybeTypedEvent::Known(e) => e,
+            MaybeTypedEvent::Unknown { type_field } => {
                 panic!("Unknown event type: '{}'", &type_field);
             },
-            MaybeTypedEvent::NoTypeField(..) => {
+            MaybeTypedEvent::None(..) => {
                 // JSON output from something else
                 continue;
             },
@@ -301,7 +298,7 @@ fn determine_exit_code(report: &Report) -> Result<()> {
         .flat_map(|suite| suite.testcases().iter())
         .any(|testcase| testcase.is_error() || testcase.is_failure())
     {
-        Err(Error::new(ErrorKind::Other, "One or more tests failed.".to_owned()))
+        Err(Error::other("One or more tests failed.".to_owned()))
     } else {
         Ok(())
     }
@@ -329,7 +326,7 @@ fn main() -> Result<()> {
     let mut stdout = stdout.lock();
     report
         .write_xml(&mut stdout)
-        .map_err(|e| Error::new(ErrorKind::Other, format!("{}", e)))?;
+        .map_err(|e| Error::other(format!("{}", e)))?;
     writeln!(stdout)?;
 
     determine_exit_code(&report)
