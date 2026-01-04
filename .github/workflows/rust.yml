@@ -27,10 +27,7 @@ jobs:
     - name: publish if necessary
       run: |
         export THIS_VERSION=$(cargo pkgid | sed 's/.*#\(.*\)/\1/')
-        export LKG_VERSION=$(curl "https://crates.io/api/v1/crates/cargo2junit/versions" | jq .versions[0].num -r)
-        if [ "$THIS_VERSION" != "$LKG_VERSION" ]; then
-          cargo publish
-        fi
+        curl --head --fail https://static.crates.io/crates/cargo2junit/$THIS_VERSION/download || cargo publish
       env:
         CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO }}
   build:
