@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite id="0" name="cargo test #0" package="testsuite/cargo test #0" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2025-12-28T10:22:18.211031876Z" time="0" />
+  <testsuite id="1" name="cargo test #1" package="testsuite/cargo test #1" tests="0" errors="0" failures="0" hostname="localhost" timestamp="2025-12-28T10:22:18.211031876Z" time="0" />
+  <testsuite id="2" name="cargo test #2" package="testsuite/cargo test #2" tests="4" errors="0" failures="1" hostname="localhost" timestamp="2025-12-28T10:22:18.211031876Z" time="0.119109648">
+    <testcase name="src/lib.rs - foo (line 15)" time="0">
+      <skipped />
+    </testcase>
+    <testcase name="src/lib.rs - foo (line 2)" time="0.001401198" classname="" />
+    <testcase name="src/lib.rs - foo (line 7)" time="0.058641184" classname="">
+      <failure type="cargo test" message="failed ::src/lib.rs - foo (line 7)"><![CDATA[Test executable failed (exit status: 101).
+
+stderr:
+
+thread 'main' (3272617) panicked at /tmp/rustdoctestzqkU8w/doctest_bundle_2024.rs:24:1:
+assertion `left == right` failed
+  left: 1
+ right: 2
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+             at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/panicking.rs:698:5
+   1: core::panicking::panic_fmt
+             at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/core/src/panicking.rs:80:14
+   2: core::panicking::assert_failed_inner
+             at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/core/src/panicking.rs:444:17
+   3: core::panicking::assert_failed
+             at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/core/src/panicking.rs:399:5
+   4: doctest_bundle_2024::__doctest_3::main
+   5: doctest_bundle_2024::__doctest_3::__main_fn
+   6: doctest_runner_2024::__doctest_3::TEST::{{closure}}
+   7: core::ops::function::FnOnce::call_once
+   8: doctest_runner_2024::main
+   9: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+]]></failure>
+    </testcase>
+    <testcase name="src/lib.rs - foo (line 11)" time="0.059067266" classname="" />
+  </testsuite>
+</testsuites>

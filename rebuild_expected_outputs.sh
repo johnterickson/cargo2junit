@@ -6,7 +6,8 @@ do
     if [[ "$f" == 'src/test_inputs/compile_fail.json' ]]; then continue; fi
     if [[ "$f" == 'src/test_inputs/float_time.json' ]]; then continue; fi
     if [[ "$f" == 'src/test_inputs/one_suite_no_tests.json' ]]; then continue; fi
-    cargo run < "$f" > "${f%.json}.out" ||  ( echo $f | grep "fail" )
+    if [[ "$f" == 'src/test_inputs/unknown_type.json' ]]; then continue; fi
+    cargo run < "$f" > "${f%.json}.out" || true
 done; 
 
 mv src/test_inputs/*.out src/expected_outputs/

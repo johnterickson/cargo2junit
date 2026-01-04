@@ -1,0 +1,13 @@
+[package]
+name = "doctests_edition2024"
+version = "0.1.0"
+
+# Since Rust edition 2024, rustdoc combines doctests into a single binary:
+# https://doc.rust-lang.org/edition-guide/rust-2024/rustdoc-doctests.html
+#
+# When it does so, it also produces `{ "type": "report" ... }` events after
+# the doctests are run. We are using edition 2024 here to generate test input
+# that contains such events.
+edition = "2024"
+
+[dependencies]
